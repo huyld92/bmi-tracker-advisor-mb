@@ -1,7 +1,9 @@
 import 'package:bmi_tracker_mb_advisor/config/build_server.dart';
-import 'package:bmi_tracker_mb_advisor/utils/app_export.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import '../util/app_export.dart';
 
 class JwtService {
   static final JwtService _instance = JwtService._internal();

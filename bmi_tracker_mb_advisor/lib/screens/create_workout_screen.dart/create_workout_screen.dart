@@ -1,20 +1,19 @@
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
-import 'package:bmi_tracker_mb_advisor/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-class CreateMenuScreen extends StatefulWidget {
-  final void Function()? onCreateMenuScreenClick;
-  const CreateMenuScreen({
+class CreateWorkoutScreen extends StatefulWidget {
+  final void Function()? onCreateWorkoutScreenClick;
+  const CreateWorkoutScreen({
     Key? key,
-    this.onCreateMenuScreenClick,
+    this.onCreateWorkoutScreenClick,
   }) : super(key: key);
 
   @override
-  _CreateMenuScreenState createState() => _CreateMenuScreenState();
+  _CreateWorkoutScreenState createState() => _CreateWorkoutScreenState();
 }
 
-class _CreateMenuScreenState extends State<CreateMenuScreen> {
-  // var controller = Get.put(CreateMenuScreenMealFoodController());
+class _CreateWorkoutScreenState extends State<CreateWorkoutScreen> {
+  // var controller = Get.put(CreateWorkoutScreenMealFoodController());
 
   final FocusNode _focusNode = FocusNode();
 
@@ -42,11 +41,11 @@ class _CreateMenuScreenState extends State<CreateMenuScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Create Menu',
+                    'Create Workout',
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   Text(
-                    'create a menu suitable for your member',
+                    'create a workout suitable for your member',
                     // 'Welcome Van Tung',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
@@ -76,7 +75,7 @@ class _CreateMenuScreenState extends State<CreateMenuScreen> {
               ),
               SizedBox(height: 30.h),
               Text(
-                'Menu name',
+                'Workout name',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
@@ -97,13 +96,13 @@ class _CreateMenuScreenState extends State<CreateMenuScreen> {
                   // },
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter Menu Name',
+                    hintText: 'Enter Workout Name',
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                'Menu Description',
+                'Workout Description',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
@@ -124,7 +123,7 @@ class _CreateMenuScreenState extends State<CreateMenuScreen> {
                   // },
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter Menu Description',
+                    hintText: 'Enter Workout Description',
                   ),
                 ),
               ),

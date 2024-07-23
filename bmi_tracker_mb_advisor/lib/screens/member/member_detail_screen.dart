@@ -1,4 +1,6 @@
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+import 'package:bmi_tracker_mb_advisor/widgets/member_info_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -28,27 +30,186 @@ class MemberDetailsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            width: double.infinity,
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      // '${blogController.currentBlog[0].users?.fullName}',
-                      'Jase Ramsey',
-                      style: Theme.of(context).textTheme.headlineSmall,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          // '${blogController.currentBlog[0].users?.fullName}',
+                          'Jase Ramsey',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        Text(
+                          'Age: 28',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(color: Colors.grey[25]),
+                        )
+                      ],
                     ),
-                    Text(
-                      'Fitness Instructor',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: Colors.grey),
-                    )
+                    // now button
+                    // FilledButton(
+                    //   onPressed: () {
+                    //     // controller.goToChoosePlan();
+                    //   },
+                    //   style: FilledButton.styleFrom(
+                    //     backgroundColor: Theme.of(context).primaryColor,
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(5),
+                    //     ),
+                    //   ),
+                    //   child: const Text('Static'),
+                    // )
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: MemberInfoCard(),
+                ),
+                Text(
+                  'Static',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        // now button
+                        FilledButton(
+                          onPressed: () {
+                            // controller.goToChoosePlan();
+                          },
+                          style: FilledButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 102, 212, 255),
+                            fixedSize: Size(150, 100),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Image(
+                            image: AssetImage('assets/images/weight-scale.png'),
+                            width: 60,
+                            height: 60,
+                          ),
+                        ),
+                        Text(
+                          'Weight Static',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 70,
+                    ),
+                    Column(
+                      children: [
+                        // now button
+                        FilledButton(
+                          onPressed: () {
+                            // controller.goToChoosePlan();
+                          },
+                          style: FilledButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 252, 252, 91),
+                            fixedSize: Size(150, 100),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Image(
+                            image: AssetImage('assets/images/calories.png'),
+                            width: 60,
+                            height: 60,
+                          ),
+                        ),
+                        Text(
+                          'Calories Static',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Text(
+                  'Customize Menu and Workout',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        // now button
+                        FilledButton(
+                          onPressed: () {
+                            // controller.goToChoosePlan();
+                          },
+                          style: FilledButton.styleFrom(
+                            backgroundColor: const Color(0xffd7ecb6),
+                            fixedSize: Size(150, 100),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Image(
+                            image: AssetImage('assets/images/menu.png'),
+                            width: 60,
+                            height: 60,
+                          ),
+                        ),
+                        Text(
+                          'Add Menu',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 70,
+                    ),
+                    Column(
+                      children: [
+                        // now button
+                        FilledButton(
+                          onPressed: () {
+                            // controller.goToChoosePlan();
+                          },
+                          style: FilledButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 54, 110, 231),
+                            fixedSize: Size(150, 100),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Image(
+                            image: AssetImage('assets/images/workout.png'),
+                            width: 60,
+                            height: 60,
+                          ),
+                        ),
+                        Text(
+                          'Add Workout',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],

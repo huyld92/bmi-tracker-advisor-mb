@@ -1,19 +1,21 @@
+import 'package:bmi_tracker_mb_advisor/screens/create_workout_screen.dart/create_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu/create_menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/menu_item.dart';
+import 'package:bmi_tracker_mb_advisor/widgets/workout_item.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:flutter/material.dart';
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class MenuView extends StatefulWidget {
-  const MenuView({super.key});
+class WorkoutView extends StatefulWidget {
+  const WorkoutView({super.key});
 
   @override
-  State<StatefulWidget> createState() => _MenuViewState();
+  State<StatefulWidget> createState() => _WorkoutViewState();
 }
 
-class _MenuViewState extends State<MenuView> {
+class _WorkoutViewState extends State<WorkoutView> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,14 +36,14 @@ class _MenuViewState extends State<MenuView> {
               ),
             ),
             onPressed: () {
-              Get.to(const CreateMenuScreen());
+              Get.to(const CreateWorkoutScreen());
             },
             child: SizedBox(
-              width: 85.h,
+              width: 100.h,
               height: 30.v,
               child: Center(
                 child: Text(
-                  'Create Menu',
+                  'Create Workout',
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold),
@@ -53,7 +55,6 @@ class _MenuViewState extends State<MenuView> {
         SizedBox(
           height: 570.v,
           child: ListView.builder(
-            // prototypeItem: const Divider(color: Colors.grey),
             itemCount: 2,
             itemBuilder: (context, index) {
               return Slidable(
@@ -78,11 +79,10 @@ class _MenuViewState extends State<MenuView> {
                     label: 'Delete',
                   ),
                 ]),
-                child: MenuItem(
+                child: WorkoutItem(
                     name: 'name',
-                    photo: 'photo',
                     description: 'description',
-                    totalKcal: 'totalKcal'),
+                    standardWeight: '75 kg'),
               );
             },
           ),

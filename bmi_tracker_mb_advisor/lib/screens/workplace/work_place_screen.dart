@@ -1,5 +1,6 @@
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/menu_row.dart';
+import 'package:bmi_tracker_mb_advisor/widgets/workout_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -61,7 +62,10 @@ class WorkPlaceScreen extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(),
                     tabs: [
                       Tab(
-                        icon: Icon(Icons.food_bank),
+                        icon: Icon(
+                          Icons.food_bank,
+                          color: Colors.green,
+                        ),
                         text: "Menu",
                       ),
                       Tab(
@@ -69,7 +73,7 @@ class WorkPlaceScreen extends StatelessWidget {
                           Icons.local_fire_department_rounded,
                           color: Colors.red,
                         ),
-                        text: "Exercises",
+                        text: "Workout",
                       ),
                     ],
                   ),
@@ -83,6 +87,7 @@ class WorkPlaceScreen extends StatelessWidget {
                         // const FoodView(),
 
                         const MenuView(),
+                        const WorkoutView(),
                       ],
                     ),
                   ),

@@ -6,20 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class MenuView extends StatefulWidget {
+
+class MenuView extends GetView<MenuController> {
   const MenuView({super.key});
 
-  @override
-  State<StatefulWidget> createState() => _MenuViewState();
-}
-
-class _MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          height: 35.h,
+          height: 40.v,
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
               backgroundColor: const Color(0xffd7ecb6),
@@ -51,7 +47,7 @@ class _MenuViewState extends State<MenuView> {
           ),
         ),
         SizedBox(
-          height: 570.v,
+          height: 550.v,
           child: ListView.builder(
             // prototypeItem: const Divider(color: Colors.grey),
             itemCount: 2,

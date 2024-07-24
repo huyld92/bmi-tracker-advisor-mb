@@ -1,7 +1,7 @@
 import 'package:bmi_tracker_mb_advisor/screens/member/member_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'workplace/work_place_screen.dart';
 
 // import 'package:flutter_health_menu/screens/screens.dart';
 
@@ -15,7 +15,7 @@ class BottomNavScreen extends StatefulWidget {
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = [
-    WorkPlaceScreen(),
+    WorkspaceScreen(),
     // // WeeklyMenuScreen(),
     MemberScreen(),
     // AdvisorScreen(),

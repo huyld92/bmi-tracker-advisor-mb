@@ -1,13 +1,10 @@
 // import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 
-import 'package:bmi_tracker_mb_advisor/screens/login/login_screen.dart';
+import 'package:bmi_tracker_mb_advisor/localization/app_localization.dart';
+import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
+ import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+import 'package:bmi_tracker_mb_advisor/util/initial_bindings.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:flutter_health_menu/routes/app_routes.dart';
-// import 'package:flutter_health_menu/util/initial_bindings.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-
-import 'config/theme.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -45,13 +42,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'BMI Tracker Advisor',
       debugShowCheckedModeBanner: false,
-      theme: theme(),
-      // initialBinding: InitialBindings(),
-      home: const LoginScreen(),
-      // initialRoute: AppRoutes.initialRoute,
-      // getPages: AppRoutes.pages,
+      translations: AppLocalization(),
+      theme: theme,
+      locale: Get.deviceLocale,
+      //for setting localization strings
+      fallbackLocale: const Locale('en', 'US'),
+      title: 'BMI Tracker Advisor',
+      initialBinding: InitialBindings(),
+      initialRoute: AppRoutes.initialRoute,
+      getPages: AppRoutes.pages,
     );
   }
 }

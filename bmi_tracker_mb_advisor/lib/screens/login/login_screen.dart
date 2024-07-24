@@ -1,3 +1,5 @@
+import 'package:bmi_tracker_mb_advisor/screens/login/controller/login_controller.dart';
+import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +8,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' as mbs;
 
 import '../../widgets/custom_text_form_field.dart';
 import '../../widgets/custom_text_form_password_field.dart';
-import '../bottom_nav.dart';
+import '../bottom_nav/bottom_nav.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -15,7 +17,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10.h),
         child: Column(
           children: [
             const Expanded(
@@ -80,7 +82,7 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class LoginBottomScreen extends StatelessWidget {
+class LoginBottomScreen extends GetView<LoginController> {
   const LoginBottomScreen({super.key});
 
   @override
@@ -101,7 +103,7 @@ class LoginBottomScreen extends StatelessWidget {
             vertical: 30.v,
           ),
           child: Form(
-            // key: controller.loginFormKey,
+            key: controller.loginFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -130,69 +132,71 @@ class LoginBottomScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Center(
-                              // child: Obx(
-                              //           () => Text(
-                              //             controller.errorString.value,
-                              //             style: Theme.of(context)
-                              //                 .textTheme
-                              //                 .bodyLarge!
-                              //                 .copyWith(
-                              //                     fontWeight: FontWeight.bold,
-                              //                     color: Colors.red),
-                              //           ),
-                              //         ),
+                            child: Obx(
+                              () => Text(
+                                controller.errorString.value,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red),
                               ),
+                            ),
+                          ),
                           SizedBox(height: 15.h),
-                          Text(
-                            'Your email',
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                            //! email field
+                          Container(
+                            margin: EdgeInsets.only(top: 15.v, bottom: 10.v),
+                            child: Text(
+                              'Your email',
+                              style: theme.textTheme.titleSmall,
+                              //! email field
+                            ),
                           ),
                           CustomTextFormField(
-                            // controller: controller.emailController,
-                            // onSaved: (value) {
-                            //   controller.email = value!;
-                            // },
-                            // validator: (value) {
-                            //   return controller.validateEmail(value!);
-                            // },
+                            controller: controller.emailController,
+                            onSaved: (value) {
+                              // controller.email = value!;
+                            },
+                            validator: (value) {
+                              return controller.validateEmail(value!);
+                            },
                             hintTxt: 'Enter your email',
                             suffixIcon: const Icon(Icons.email_outlined),
                           ),
 
-                          Text(
-                            'Password',
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                          Container(
+                            margin: EdgeInsets.only(top: 15.v, bottom: 10.v),
+                            child: Text(
+                              'Password',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
 
                           //! password field
-                          CustomTextPasswordField(
-                            keyboardType: TextInputType.visiblePassword,
-                            // controller: controller.passwordController,
-                            // onSaved: (value) {
-                            //   controller.password = value!;
-                            // },
-                            // validator: (value) {
-                            //   return controller.validatePassword(value!);
-                            // },
-                            hintTxt: 'Enter your password',
-                            // isObscure: controller.passwordVisible.value,
-                            // suffixIcon: IconButton(
-                            //   icon: controller.passwordVisible.value
-                            //       ? const Icon(Icons.visibility)
-                            //       : const Icon(Icons.visibility_off),
-                            //   onPressed: () {
-                            //     // chuyển đổi trạng thái ẩn hiện mât khẩu
-                            //     controller.passwordVisible.value =
-                            //         !controller.passwordVisible.value;
-                            //   },
-                            // ),
+                          Obx(
+                            () => CustomTextPasswordField(
+                              keyboardType: TextInputType.visiblePassword,
+                              controller: controller.passwordController,
+                              // onSaved: (value) {
+                              //   controller.password = value!;
+                              // },
+                              // validator: (value) {
+                              //   return controller.validatePassword(value!);
+                              // },
+                              hintTxt: 'Enter your password',
+                              isObscure: controller.passwordVisible.value,
+                              suffixIcon: IconButton(
+                                icon: controller.passwordVisible.value
+                                    ? const Icon(Icons.visibility)
+                                    : const Icon(Icons.visibility_off),
+                                onPressed: () {
+                                  // chuyển đổi trạng thái ẩn hiện mât khẩu
+                                  controller.passwordVisible.value =
+                                      !controller.passwordVisible.value;
+                                },
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -216,10 +220,9 @@ class LoginBottomScreen extends StatelessWidget {
                             //   debugPrint(
                             //       "Login failed with exception: ${e.message}");
                             // });
-                            // await controller.login(context);
-                            Get.to(BottomNavScreen());
+                            controller.login(context);
                           },
-                          text: 'Log in'),
+                          text: 'Login'),
                     ],
                   ),
                 ),

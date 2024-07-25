@@ -11,4 +11,14 @@ final Map<String, String> enUs = {
 
   //Menu details screen
   "txt_menu_details": "Menu details",
+
+  //Create menu
+  "txt_foods": "Foods",
+  "txt_save": "Save",
+  "txt_add_food": "Add Food",
+
+  //Add food to menu
+  "txt_select_meal_type": "Select meal type",
+  "txt_select_foods": "Select foods",
+  "txt_done": "Done",
 };

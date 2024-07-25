@@ -1,4 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/menu/create_menu_screen.dart';
+// import 'package:bmi_tracker_mb_advisor/screens/menu/create_menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/menu_item.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -30,7 +30,7 @@ class MenuView extends GetView<MenuController> {
               ),
             ),
             onPressed: () {
-              Get.to(const CreateMenuScreen());
+              // Get.to(const CreateMenuScreen());
             },
             child: SizedBox(
               width: 85.h,

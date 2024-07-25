@@ -87,14 +87,24 @@ class TextThemes {
           fontWeight: FontWeight.bold,
           fontSize: 16.fSize,
         ),
+        bodyLarge: TextStyle(
+          color: Color(0xff000000),
+          fontWeight: FontWeight.w400,
+          fontSize: 16.fSize,
+        ),
+        bodyMedium: TextStyle(
+          color: Color(0xff000000),
+          fontWeight: FontWeight.w400,
+          fontSize: 14.fSize,
+        ),
       );
 }
 
 /// Class containing the supported color schemes.
 class ColorSchemes {
   static const primaryColorScheme = ColorScheme.light(
-    primary: Color(0X3D40BFFF),
-    onPrimary: Color(0X87223263),
+    primary: Color(0XFF4CAF50),
+    onPrimary: Color(0X870D47A1),
     onPrimaryContainer: Color(0X87FFFFFF),
   );
 }
@@ -102,10 +112,18 @@ class ColorSchemes {
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
   Color get green500 => const Color(0XFF4CAF50);
+
   Color get grey300 => const Color(0XFFE0E0E0);
+
   Color get grey100 => const Color(0XFFF5F5F5);
+
   Color get white => const Color(0XFFFFFFFF);
 
+  Color get blueA700 => const Color(0XFF2962FF);
+
+  Color get blue900 => const Color(0X870D47A1);
+
+  Color get red500 => const Color(0XFFF44336);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

@@ -107,7 +107,7 @@ class MenuScreen extends GetView<MenuScreenController> {
           shape: const CircleBorder(),
           backgroundColor: appTheme.green500,
           onPressed: () {
-            controller.floatingAddButton();
+            controller.goToCreateMenu();
           },
           child: Icon(Icons.add, size: 50.adaptSize, color: appTheme.white),
         ),

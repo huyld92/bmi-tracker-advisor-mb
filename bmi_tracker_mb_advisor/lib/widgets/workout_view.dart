@@ -1,27 +1,19 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_workout_screen.dart/create_workout_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/menu/create_menu_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/create_workout_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workout/controller/workout_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
-import 'package:bmi_tracker_mb_advisor/widgets/menu_item.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/workout_item.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:flutter/material.dart';
-import 'package:async_button_builder/async_button_builder.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class WorkoutView extends StatefulWidget {
+class WorkoutView extends GetView<WorkoutController> {
   const WorkoutView({super.key});
 
-  @override
-  State<StatefulWidget> createState() => _WorkoutViewState();
-}
-
-class _WorkoutViewState extends State<WorkoutView> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          height: 35.h,
+          height: 40.h,
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
               backgroundColor: const Color(0xffd7ecb6),
@@ -53,7 +45,7 @@ class _WorkoutViewState extends State<WorkoutView> {
           ),
         ),
         SizedBox(
-          height: 570.v,
+          height: 550.v,
           child: ListView.builder(
             itemCount: 2,
             itemBuilder: (context, index) {

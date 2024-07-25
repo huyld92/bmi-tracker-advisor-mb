@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/models/food_model.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/controller/create_menu_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_menu/model/create_menu_model.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/model/menu_food_model.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 
@@ -61,6 +62,10 @@ class AddFoodToMenuController extends GetxController {
             mealType: selectedMeal.value.name,
             foodID: foodModels[i].foodID,
             foodPhoto: foodModels[i].foodPhoto));
+        createMenuController.createMenuFoodModels.add(CreateMenuFoodModel(
+          foodID: foodModels[i].foodID,
+          mealType: selectedMeal.value.name,
+        ));
       }
     }
     Get.back();

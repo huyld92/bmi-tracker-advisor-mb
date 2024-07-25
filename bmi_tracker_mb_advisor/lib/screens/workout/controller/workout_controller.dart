@@ -73,4 +73,10 @@ class WorkoutController extends GetxController {
 
   void goToWorkoutDetails(int index) {
   }
+
+  void deactivateWorkout(int index) {}
+
+  void activateWorkout(int index) {}
+
+  void goToUpdateWorkout(int index) {}
 }

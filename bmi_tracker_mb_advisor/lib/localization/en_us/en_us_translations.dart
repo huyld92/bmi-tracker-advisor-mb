@@ -8,6 +8,9 @@ final Map<String, String> enUs = {
 
   //Menu screen
   "txt_view_details": "View details",
+  "txt_deactivate": "Deactivate",
+  "txt_activate": "Activate",
+  "txt_update": "Update",
 
   //Menu details screen
   "txt_menu_details": "Menu details",

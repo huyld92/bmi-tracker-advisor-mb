@@ -71,7 +71,7 @@ class CreateMenuScreen extends GetView<CreateMenuController> {
                   ),
                   SizedBox(height: 30.v),
                   Text(
-                    'Menu name',
+                    'txt_menu_name'.tr,
                     style: theme.textTheme.titleSmall,
                   ),
                   SizedBox(height: 10.v),
@@ -81,11 +81,11 @@ class CreateMenuScreen extends GetView<CreateMenuController> {
                     // validator: (value) {
                     //   return feedbackController.validateTitle(value!);
                     // },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
-                      hintText: 'Enter Menu Name',
-                      focusedBorder: OutlineInputBorder(
+                      hintText: 'txt_hint_menu_name'.tr,
+                      focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green, width: 1.0),
                       ),
                       fillColor: Colors.white,
@@ -94,25 +94,25 @@ class CreateMenuScreen extends GetView<CreateMenuController> {
                   ),
                   SizedBox(height: 10.v),
                   Text(
-                    'Menu Description',
+                    'txt_menu_description'.tr,
                     style: theme.textTheme.titleSmall,
                   ),
                   SizedBox(height: 10.v),
                   TextFormField(
                     maxLines: 5,
-                    controller: controller.menuDescriptionController,
+                    controller: controller.txtMenuDescriptionController,
                     // validator: (value) {
                     //   return feedbackController.validateTitle(value!);
                     // },
 
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
-                      focusedBorder: OutlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green, width: 1.0),
                       ),
-                      hintText: 'Enter Menu Description',
+                      hintText: 'txt_hint_menu_description'.tr,
                       fillColor: Colors.white,
                       filled: true,
                     ),

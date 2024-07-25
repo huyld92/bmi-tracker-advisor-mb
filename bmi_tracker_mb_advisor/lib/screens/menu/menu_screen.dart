@@ -127,6 +127,7 @@ class MenuScreen extends GetView<MenuScreenController> {
                                                   EdgeInsets.only(right: 5.h),
                                               child: Icon(
                                                 Icons.circle,
+                                                size: 16.adaptSize,
                                                 color: controller
                                                         .menus[index].isActive!
                                                     ? appTheme.green500

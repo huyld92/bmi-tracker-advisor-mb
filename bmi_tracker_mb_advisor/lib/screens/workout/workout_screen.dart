@@ -179,7 +179,7 @@ class WorkoutScreen extends GetView<WorkoutController> {
           shape: const CircleBorder(),
           backgroundColor: appTheme.green500,
           onPressed: () {
-            controller.floatingAddButton();
+            controller.goToCreateNewWorkout();
           },
           child: Icon(Icons.add, size: 50.adaptSize, color: appTheme.white),
         ),

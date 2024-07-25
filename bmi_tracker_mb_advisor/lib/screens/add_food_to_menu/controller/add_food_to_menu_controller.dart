@@ -70,4 +70,8 @@ class AddFoodToMenuController extends GetxController {
     }
     Get.back();
   }
+
+  void goToFoodDetails(int? foodID) {
+    print('foodID:$foodID}');
+  }
 }

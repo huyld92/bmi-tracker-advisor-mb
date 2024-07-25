@@ -19,9 +19,36 @@ final Map<String, String> enUs = {
   "txt_foods": "Foods",
   "txt_save": "Save",
   "txt_add_food": "Add Food",
+  "txt_menu_name":"Menu name",
+  "txt_hint_menu_name":"Enter Menu Name",
+  "txt_menu_description":"Menu Description",
+  "txt_hint_menu_description":"Enter Menu Description",
 
   //Add food to menu
+  "txt_add_food_to_menu":"Add food to menu",
   "txt_select_meal_type": "Select meal type",
   "txt_select_foods": "Select foods",
   "txt_done": "Done",
+
+  //Create workout
+  "txt_exercises":"Exercises",
+  "txt_add_exercise":"Add exercises",
+  "title_appbar_crete_workout":"Create Workout",
+  "txt_workout_name":"Workout name",
+  "txt_hint_workout_name":"Enter Workout Name",
+  "txt_standard_weight":"Standard weight",
+  "txt_hint_standard_weight":"Enter weight",
+  "txt_workout_description":"Workout Description",
+  "txt_hint_workout_description":"Enter Workout Description",
+
+  // Add exercise to workout
+  "title_add_exercise_to_workout":"Add Exercise",
+  "txt_duration":"Duration",
+  "txt_min":"min",
+  "txt_tag":"Tag",
+  "txt_hint_duration":"Enter duration",
+  "txt_ok":"Ok",
+  "txt_calories_burned":"Calories burned",
+  "txt_cancel":"Cancel",
+
 };

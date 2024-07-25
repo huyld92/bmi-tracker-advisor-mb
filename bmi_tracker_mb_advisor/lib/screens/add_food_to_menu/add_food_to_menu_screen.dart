@@ -13,7 +13,10 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("txt_add_food_to_menu".tr,style: theme.textTheme.titleLarge,),
+        centerTitle: true,
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.h),
         child: Column(
@@ -67,7 +70,7 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
               );
             }),
             Container(
-              margin: EdgeInsets.only(top: 5.v,bottom: 5.v),
+              margin: EdgeInsets.only(top: 5.v, bottom: 5.v),
               child: Text(
                 "txt_select_foods".tr,
                 style: CustomTextStyles.titleMedium16Black,
@@ -75,7 +78,7 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
             ),
             Container(
               height: 100.v,
-               color: Colors.amberAccent,
+              color: Colors.amberAccent,
             ),
             // gridview food
             Expanded(
@@ -110,6 +113,9 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                                   "${controller.foodModels[index].serving}",
                               content3:
                                   "${controller.foodModels[index].foodCalories} kcal",
+                              onTitleTap: () {
+                                controller.goToFoodDetails(controller.foodModels[index].foodID);
+                              },
                             ),
                             Positioned(
                               top: 10,

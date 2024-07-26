@@ -6,6 +6,25 @@ final Map<String, String> enUs = {
   "txt_total": "Total",
   "txt_workout": "Workout",
 
+  // Member screen
+  "title_member_screen":"Members had subscription",
+  "txt_detail":"Details",
+  "txt_phone_number":"Phone Number",
+  "txt_no_results_found":"No results found",
+  "body_no_results":"Currently, there are no members subscribed to you.",
+
+  // Member details screen
+  "txt_age":"Age",
+  "txt_statistics":"Statistics",
+  "txt_height":"Height",
+  "txt_weight":"Weight",
+  "txt_bmi":"BMI",
+  "txt_weight_statistics":"Weight Statistics",
+  "txt_calories_statistics":"Calories Statistics",
+  "txt_customize_menu_and_Workout":"Customize menu and workout",
+  "txt_view_menu":"View menu",
+  "txt_view_workout":"View workout",
+
   //Menu screen
   "txt_view_details": "View details",
   "txt_deactivate": "Deactivate",

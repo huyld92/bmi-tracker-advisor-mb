@@ -121,9 +121,15 @@ class PrimaryColors {
 
   Color get blueA700 => const Color(0XFF2962FF);
 
+  Color get blueA100 => const Color(0XFF82B1FF);
+
   Color get blue900 => const Color(0X870D47A1);
 
   Color get red500 => const Color(0XFFF44336);
+
+  Color get yellow500 => const Color(0XFFFFEB3B);
+
+  Color get lightGreen200 => const Color(0XFFC5E1A5);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

@@ -12,6 +12,8 @@ import 'package:bmi_tracker_mb_advisor/screens/login/binding/login_binding.dart'
 import 'package:bmi_tracker_mb_advisor/screens/login/login_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member/binding/member_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member/member_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/member_details/binding/member_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/member_details/member_details.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/binding/workspace_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 
@@ -26,6 +28,7 @@ class AppRoutes {
   static const String createWorkoutScreen = '/createWorkoutScreen';
   static const String loginScreen = '/loginScreen';
   static const String memberScreen = '/memberScreen';
+  static const String memberDetailsScreen = '/memberDetailsScreen';
   static const String menuScreen = '/menuScreen';
   static const String menuDetailsScreen = '/menuDetailsScreen';
   static const String workoutScreen = '/workoutScreen';
@@ -67,6 +70,13 @@ class AppRoutes {
       page: () => const MemberScreen(),
       bindings: [
         MemberBinding(),
+      ],
+    ),
+    GetPage(
+      name: memberDetailsScreen,
+      page: () => const MemberDetailsScreen(),
+      bindings: [
+        MemberDetailsBinding(),
       ],
     ),
     GetPage(

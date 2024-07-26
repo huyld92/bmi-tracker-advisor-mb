@@ -19,6 +19,16 @@ class WorkspaceScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: Text("Workspace", style: theme.textTheme.titleLarge),
+          actions: [
+            Container(
+              margin: EdgeInsets.only(right: 10.h),
+              child: IconButton(
+                onPressed: () {},
+                iconSize: 28.adaptSize,
+                icon: Icon(Icons.notifications_active_outlined),
+              ),
+            )
+          ],
         ),
         // appBar: AppBar(
         //   toolbarHeight: 100,

@@ -12,7 +12,7 @@ import '../../../util/app_export.dart';
 
 class CreateMenuController extends GetxController {
   TextEditingController menuNameController = TextEditingController();
-  TextEditingController menuDescriptionController = TextEditingController();
+  TextEditingController txtMenuDescriptionController = TextEditingController();
 
   RxList<MenuFoodModel> menuFoodModels = RxList.empty();
   RxList<CreateMenuFoodModel> createMenuFoodModels = RxList.empty();
@@ -39,7 +39,7 @@ class CreateMenuController extends GetxController {
     CreateMenuModel createMenuModel = CreateMenuModel(
       menuPhoto: "",
       menuName: menuNameController.text,
-      menuDescription: menuDescriptionController.text,
+      menuDescription: txtMenuDescriptionController.text,
       menuFoods: createMenuFoodModels,
     );
 

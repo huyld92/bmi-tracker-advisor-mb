@@ -10,6 +10,8 @@ class CustomCard extends StatelessWidget {
   final String? content2;
   final String? content3;
   final String? content4;
+  final VoidCallback onTitleTap;
+
 
   CustomCard({
     required this.photoUrl,
@@ -18,6 +20,7 @@ class CustomCard extends StatelessWidget {
     this.content2,
     this.content3,
     this.content4,
+    required this.onTitleTap,
   });
 
   @override
@@ -45,12 +48,15 @@ class CustomCard extends StatelessWidget {
             SizedBox(height: 5.v),
             Padding(
               padding: EdgeInsets.only(bottom: 5.v),
-              child: Text(
-                title,
-                maxLines: 2,
-                softWrap: true,
-                style: CustomTextStyles.titleMedium16Black,
-                overflow: TextOverflow.ellipsis,
+              child: GestureDetector(
+                onTap: onTitleTap,
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  softWrap: true,
+                  style: CustomTextStyles.titleMedium16Black,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
             if (content1 != null) ...[

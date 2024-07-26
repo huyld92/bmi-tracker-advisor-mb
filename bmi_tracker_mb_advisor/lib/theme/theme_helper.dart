@@ -117,7 +117,7 @@ class PrimaryColors {
 
   Color get grey100 => const Color(0XFFF5F5F5);
 
-  Color get white => const Color(0XFFFFFFFF);
+  Color get white => const Color(0xffffffff);
 
   Color get blueA700 => const Color(0XFF2962FF);
 

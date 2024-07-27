@@ -1,28 +1,25 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:bmi_tracker_mb_advisor/models/member_basic_model.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../models/member_model.dart';
-
 class MemberCard extends StatefulWidget {
   final bool? isActive;
 
-  // final bool isBooking;
-  // final MemberModel member;
+  final MemberBasicModel member;
   final void Function()? onDetailClick;
   final void Function()? onMessageClick;
+
   // final void Function()? onBookClick;
 
   const MemberCard({
     Key? key,
-    // required this.member,
+    required this.member,
     this.isActive,
-    // required this.isBooking,
     this.onDetailClick,
     this.onMessageClick,
-    // this.onBookClick,
   }) : super(key: key);
 
   @override
@@ -49,9 +46,7 @@ class _MemberCardState extends State<MemberCard> {
                       width: 50.v,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(
-                              // '${widget.member.accountPhoto}'
-                              'https://res.cloudinary.com/dlipvbdwi/image/upload/v1700192116/avatar_snfpmg.jpg'),
+                          image: NetworkImage('${widget.member.accountPhoto}'),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(40),
@@ -79,12 +74,8 @@ class _MemberCardState extends State<MemberCard> {
                 ),
                 SizedBox(width: 10.v),
                 Text(
-                  // widget.member.fullName.toString(),
-                  'Quoc Bao',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: Colors.black),
+                  widget.member.fullName.toString(),
+                  style: theme.textTheme.titleLarge,
                 )
               ],
             ),
@@ -119,7 +110,7 @@ class _MemberCardState extends State<MemberCard> {
                               height: 20.h,
                               child: Center(
                                 child: Text(
-                                  'Detail',
+                                  'txt_detail'.tr,
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge!
@@ -217,7 +208,7 @@ class _MemberCardState extends State<MemberCard> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Phone Number',
+                          'txt_phone_number'.tr,
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!
@@ -238,15 +229,13 @@ class _MemberCardState extends State<MemberCard> {
                           onPressed: () {
                             Uri phoneUrl = Uri(
                               scheme: 'tel',
-                              // path: '${widget.member.phoneNumber}',
-                              path: '0943950670',
+                              path: '${widget.member.phoneNumber}',
                             );
                             launchUrl(phoneUrl);
                           },
                           child: Text(
-                            // '${widget.member.phoneNumber}',
-                            '0943950670',
-                            style: Theme.of(context)
+                            '${widget.member.phoneNumber}',
+                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(

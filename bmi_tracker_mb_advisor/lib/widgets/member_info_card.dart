@@ -1,7 +1,15 @@
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
 class MemberInfoCard extends StatelessWidget {
+  final String height;
+  final String weight;
+  final String bmi;
+
   const MemberInfoCard({
+    required this.height,
+    required this.weight,
+    required this.bmi,
     super.key,
   });
 
@@ -17,44 +25,44 @@ class MemberInfoCard extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text('165 cm', style: Theme.of(context).textTheme.titleLarge),
-                  const Text(
-                    'Height',
+                  Text(height, style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    'txt_height'.tr,
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ),
             Container(
-              width: 1,
-              height: 55,
+              width: 1.h,
+              height: 55.v,
               color: Colors.black,
             ),
             Expanded(
               child: Column(
                 children: [
                   Text(
-                    '65 kg',
+                    weight,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const Text(
-                    'Weight',
+                  Text(
+                    'txt_weight'.tr,
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ),
             Container(
-              width: 1,
-              height: 55,
+              width: 1.h,
+              height: 55.v,
               color: Colors.black,
             ),
             Expanded(
               child: Column(
                 children: [
-                  Text('26.6', style: Theme.of(context).textTheme.titleLarge),
-                  const Text(
-                    'BMI',
+                  Text(bmi, style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    'txt_bmi'.tr,
                     textAlign: TextAlign.center,
                   ),
                 ],

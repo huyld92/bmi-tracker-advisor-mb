@@ -17,9 +17,18 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
+
     emailController = TextEditingController();
     passwordController = TextEditingController();
     super.onInit();
+  }
+  @override
+  void onReady() {
+
+    if (PrefUtils.getAccessToken() != null) {
+      Get.offAllNamed(AppRoutes.bottomNavScreen);
+    }
+    super.onReady();
   }
 
   @override

@@ -75,13 +75,56 @@ class MenuScreenController extends GetxController {
     }
   }
 
-  void floatingAddButton() {}
-
   void goToMenuDetails(int index) {
     Get.toNamed(AppRoutes.menuDetailsScreen, arguments: menus[index].menuID);
   }
 
   void goToCreateMenu() {
     Get.toNamed(AppRoutes.createMenuScreen);
+  }
+
+  Future<void> deactivateMenu(int index) async {
+    // gọi API deactivate menu
+    var response = await MenuRepository.deactivateMenu(menus[index].menuID);
+    // kiểm tra kết quả
+    if (response.statusCode == 204) {
+      // 204 thành công cập nhật giá trị tại index
+      menus[index].isActive = false;
+      menus.refresh();
+      Get.snackbar("Deactivate menu", "Deactivate menu success!");
+    } else if (response.statusCode == 401) {
+      String message = jsonDecode(response.body)['message'];
+      if (message.contains("JWT token is expired")) {
+        Get.snackbar('Session Expired', 'Please login again');
+      }
+    } else {
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
+    }
+  }
+
+  void goToUpdateMenu(int index) {
+    print('gotoUpdateMenu:${index}');
+  }
+
+  Future<void> activateMenu(int index) async {
+    // gọi API deactivate menu
+    var response = await MenuRepository.activateMenu(menus[index].menuID);
+    // kiểm tra kết quả
+    if (response.statusCode == 204) {
+      // 204 thành công cập nhật giá trị tại index
+      menus[index].isActive = true;
+      menus.refresh();
+
+      Get.snackbar("Activate menu", "Activate menu success!");
+    } else if (response.statusCode == 401) {
+      String message = jsonDecode(response.body)['message'];
+      if (message.contains("JWT token is expired")) {
+        Get.snackbar('Session Expired', 'Please login again');
+      }
+    } else {
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
+    }
   }
 }

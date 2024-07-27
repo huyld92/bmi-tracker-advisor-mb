@@ -28,7 +28,7 @@ class WorkoutView extends GetView<WorkoutController> {
               ),
             ),
             onPressed: () {
-              Get.to(const CreateWorkoutScreen());
+              Get.to(  CreateWorkoutScreen());
             },
             child: SizedBox(
               width: 100.h,

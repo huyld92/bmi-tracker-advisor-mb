@@ -205,7 +205,7 @@ class MemberDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Add Workout',
+                          'Workout',
                           textAlign: TextAlign.center,
                         ),
                       ],

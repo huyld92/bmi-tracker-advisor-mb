@@ -11,6 +11,7 @@ class MemberInformationModel {
   DateTime? birthday;
   int? height;
   int? weight;
+  int? targetWeight;
   int? age;
   double? bmi;
   double? bmr;
@@ -27,6 +28,7 @@ class MemberInformationModel {
     this.birthday,
     this.height,
     this.weight,
+    this.targetWeight,
     this.age,
     this.bmi,
     this.bmr,
@@ -48,6 +50,7 @@ class MemberInformationModel {
           json['birthday'] != null ? DateTime.parse(json['birthday']) : null,
       height: json['height'],
       weight: json['weight'],
+      targetWeight: json['targetWeight'],
       age: json['age'],
       bmi: (json['bmi'] != null) ? json['bmi'].toDouble() : null,
       bmr: (json['bmr'] != null) ? json['bmr'].toDouble() : null,
@@ -67,6 +70,7 @@ class MemberInformationModel {
       'birthday': birthday?.toIso8601String(),
       'height': height,
       'weight': weight,
+      'targetWeight': targetWeight,
       'age': age,
       'bmi': bmi,
       'bmr': bmr,

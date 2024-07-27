@@ -46,7 +46,7 @@ class MemberDetailsController extends GetxController {
 
   void goToWeightStatistics() {
     Get.toNamed(AppRoutes.statisticsWeightScreen,
-        arguments: member.value.memberID);
+        arguments: [member.value.memberID, member.value.targetWeight]);
   }
 
   void goToCaloriesStatistics() {

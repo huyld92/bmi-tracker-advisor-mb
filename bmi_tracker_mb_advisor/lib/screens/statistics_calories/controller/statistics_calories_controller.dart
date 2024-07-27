@@ -42,10 +42,11 @@ class StatisticsCaloriesController extends GetxController {
     var response =
         await StatisticsRepository.getStatisticCalories(memberID, date);
     // kiểm tra kết quả
-    print('response:${response.statusCode}');
+
     if (response.statusCode == 200) {
       dailyRecordModels.value = statisticsDailyRecordsFromJson(response.body);
     } else if (response.statusCode == 204) {
+      dailyRecordModels.clear();
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {

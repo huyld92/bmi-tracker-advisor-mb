@@ -14,13 +14,13 @@ class StatisticsRepository {
     var response = await interceptedClient
         .get(
             BuildServer.buildUrl(
-                "statistics/dialy-record/week-by-date?memberID=$memberID&date=$date"),
+                "statistics/daily-record/week-by-date?memberID=$memberID&date=$date"),
             headers: header)
         .timeout(const Duration(seconds: 30));
     return response;
   }
 
-  static Future<http.Response> getStatisticWeight(
+  static Future<http.Response> getStatisticBodyMass(
       int memberID, String date) async {
     Map<String, String> header = {
       "Content-type": "application/json",

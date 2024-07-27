@@ -57,4 +57,12 @@ class MemberDetailsController extends GetxController {
   void goToMenu() {}
 
   void goToWorkout() {}
+
+  void goToActivityLogs() {
+    Get.toNamed(AppRoutes.activityLogsScreen, arguments: member.value.memberID);
+  }
+
+  void goToMealLogs() {
+    Get.toNamed(AppRoutes.mealLogsScreen, arguments: member.value.memberID);
+  }
 }

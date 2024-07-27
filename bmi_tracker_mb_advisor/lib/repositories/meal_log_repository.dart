@@ -14,7 +14,7 @@ class MealLogRepository {
     var response = await interceptedClient
         .get(
             BuildServer.buildUrl(
-                "meallog/member/get-by-date?date=$date&memberID=$memberID}"),
+                "meallog/member/get-by-date?date=$date&memberID=$memberID"),
             headers: header)
         .timeout(const Duration(seconds: 30));
     return response;

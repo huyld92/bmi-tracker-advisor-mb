@@ -175,7 +175,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                controller.goToWeightStatistics();
+                                controller.goToMealLogs();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.blueA100,
@@ -202,7 +202,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                controller.goToCaloriesStatistics();
+                                controller.goToActivityLogs();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.yellow500,

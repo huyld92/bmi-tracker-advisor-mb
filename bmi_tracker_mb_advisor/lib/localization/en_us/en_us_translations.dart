@@ -92,5 +92,7 @@ final Map<String, String> enUs = {
   "txt_goal_weight":"Goal Weight",
   "txt_current":"Current",
 
+  // Activity log screen
 
-};
+  // Activity log screen
+ };

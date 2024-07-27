@@ -14,7 +14,7 @@ class ActivityLogRepository {
     var response = await interceptedClient
         .get(
         BuildServer.buildUrl(
-            "activitylog/member/get-by-date?date=$date&memberID=$memberID}"),
+            "activitylog/member/get-by-date?date=$date&memberID=$memberID"),
         headers: header)
         .timeout(const Duration(seconds: 30));
     return response;

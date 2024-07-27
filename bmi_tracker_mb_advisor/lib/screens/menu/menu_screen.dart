@@ -11,12 +11,13 @@ class MenuScreen extends GetView<MenuScreenController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+
       if (controller.isLoading.value) {
-        return const Center(
-          child: CircularProgressIndicator.adaptive(
-            strokeWidth: 4,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Colors.white,
+        return Scaffold(
+          backgroundColor: appTheme.white,
+          body: Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
             ),
           ),
         );

@@ -40,7 +40,6 @@ dependencies:
   table_calendar: 3.0.9
   intl: any
   percent_indicator: 4.2.3
-  # syncfusion_flutter_charts: 23.1.40
   equatable: 2.0.5
   flutter_rating_bar: 4.0.1
   line_awesome_flutter: 2.0.0
@@ -48,7 +47,6 @@ dependencies:
   carousel_slider: 4.2.1
   # cometchat_chat_uikit: 4.1.0
   http: ^0.13.6
-  shared_preferences: 2.0.15
   sprintf: ^7.0.0
   crypto: ^3.0.3
   flutter_zalopay_sdk: ^0.1.14
@@ -59,9 +57,11 @@ dependencies:
   firebase_messaging: ^14.7.19
   http_interceptor: ^1.0.2
   async_button_builder: ^3.0.0+1
-  image_picker: ^1.0.8
   firebase_storage: ^11.6.9
+  cached_network_image: ^3.3.1
+  shared_preferences: ^2.2.3
   url_launcher: ^6.3.0
+  image_picker: ^1.0.8
 
 dev_dependencies:
   flutter_test:

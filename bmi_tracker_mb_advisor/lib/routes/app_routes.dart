@@ -16,6 +16,14 @@ import 'package:bmi_tracker_mb_advisor/screens/member/binding/member_binding.dar
 import 'package:bmi_tracker_mb_advisor/screens/member/member_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member_details/binding/member_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member_details/member_details.dart';
+import 'package:bmi_tracker_mb_advisor/screens/menu_details/binding/menu_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/menu_details/menu_details_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/binding/statistics_calories_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/statistics_calories_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/binding/statistics_weight_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/statistics_weight_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workout_details/binding/workout_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workout_details/workout_details_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/binding/workspace_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 
@@ -34,7 +42,10 @@ class AppRoutes {
   static const String memberDetailsScreen = '/memberDetailsScreen';
   static const String menuScreen = '/menuScreen';
   static const String menuDetailsScreen = '/menuDetailsScreen';
+  static const String statisticsCaloriesScreen = '/statisticsCaloriesScreen';
+  static const String statisticsWeightScreen = '/statisticsWeightScreen';
   static const String workoutScreen = '/workoutScreen';
+  static const String workoutDetailsScreen = '/workoutDetailsScreen';
   static const String workspaceScreen = '/workspaceScreen';
 
   static const String initialRoute = '/initialRoute';
@@ -62,8 +73,24 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: bottomNavScreen,
+      page: () => const BottomNavScreen(),
+      bindings: [
+        BottomNavBinding(),
+        WorkspaceBinding(),
+        MemberBinding(),
+      ],
+    ),
+    GetPage(
+      name: createMenuScreen,
+      page: () => CreateMenuScreen(),
+      bindings: [
+        CreateMenuBinding(),
+      ],
+    ),
+    GetPage(
       name: createWorkoutScreen,
-      page: () => CreateWorkoutScreen(),
+      page: () => const CreateWorkoutScreen(),
       bindings: [
         CreateWorkoutBinding(),
       ],
@@ -90,12 +117,31 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: bottomNavScreen,
-      page: () => const BottomNavScreen(),
+      name: menuDetailsScreen,
+      page: () => const MenuDetailsScreen(),
       bindings: [
-        BottomNavBinding(),
-        WorkspaceBinding(),
-        MemberBinding(),
+        MenuDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: statisticsCaloriesScreen,
+      page: () => const StatisticsCaloriesScreen(),
+      bindings: [
+        StatisticsCaloriesBinding(),
+      ],
+    ),
+    GetPage(
+      name: statisticsWeightScreen,
+      page: () => const StatisticsWeightScreen(),
+      bindings: [
+        StatisticsWeightBiding(),
+      ],
+    ),
+    GetPage(
+      name: workoutDetailsScreen,
+      page: () => const WorkoutDetailsScreen(),
+      bindings: [
+        WorkoutDetailsBinding(),
       ],
     ),
     GetPage(
@@ -103,13 +149,6 @@ class AppRoutes {
       page: () => const WorkspaceScreen(),
       bindings: [
         WorkspaceBinding(),
-      ],
-    ),
-    GetPage(
-      name: createMenuScreen,
-      page: () => CreateMenuScreen(),
-      bindings: [
-        CreateMenuBinding(),
       ],
     ),
     GetPage(

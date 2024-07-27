@@ -24,6 +24,9 @@ final Map<String, String> enUs = {
   "txt_customize_menu_and_Workout":"Customize menu and workout",
   "txt_view_menu":"View menu",
   "txt_view_workout":"View workout",
+  "txt_daily_record":"Daily record",
+  "txt_meal_logs":"Meal logs",
+  "txt_activity_logs":"Activity logs",
 
   //Menu screen
   "txt_view_details": "View details",
@@ -69,5 +72,25 @@ final Map<String, String> enUs = {
   "txt_ok":"Ok",
   "txt_calories_burned":"Calories burned",
   "txt_cancel":"Cancel",
+
+  // Statistics calories screen
+  "txt_statistics_calories":"Statistics calories",
+  "txt_last_7_days":"Last 7 Days",
+  "txt_average_calories_in":"Average Calories In",
+  "txt_average_calories_out":"Average Calories Out",
+  "txt_goal":"Goal",
+  "txt_default":"Default",
+  "txt_calories_in":"Calories In",
+  "txt_calories_out":"Calories Out",
+  "txt_history":"History",
+  "txt_not_enough_data_available_yet":"Not Enough data available yet",
+
+  // Statistics weight screen
+  "txt_statistics_weight":"Statistics weight",
+  "txt_last_30_days":"Last 30 Days",
+  "txt_starting_weight":"Starting Weight",
+  "txt_goal_weight":"Goal Weight",
+  "txt_current":"Current",
+
 
 };

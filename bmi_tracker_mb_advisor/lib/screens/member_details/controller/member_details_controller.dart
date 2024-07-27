@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/repositories/member_repository.dart';
+import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 
 import '../../../models/member_information_model.dart';
@@ -43,9 +44,15 @@ class MemberDetailsController extends GetxController {
 
   void chat() {}
 
-  void goToWeightStatistics() {}
+  void goToWeightStatistics() {
+    Get.toNamed(AppRoutes.statisticsWeightScreen,
+        arguments: [member.value.memberID, member.value.targetWeight]);
+  }
 
-  void goToCaloriesStatistics() {}
+  void goToCaloriesStatistics() {
+    Get.toNamed(AppRoutes.statisticsCaloriesScreen,
+        arguments: member.value.memberID);
+  }
 
   void goToMenu() {}
 

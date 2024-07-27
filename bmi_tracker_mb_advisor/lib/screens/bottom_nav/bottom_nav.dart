@@ -1,7 +1,8 @@
+import 'package:bmi_tracker_mb_advisor/screens/blog/blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member/member_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 import 'package:flutter/material.dart';
-
 
 // import 'package:flutter_health_menu/screens/screens.dart';
 
@@ -18,6 +19,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     WorkspaceScreen(),
     // // WeeklyMenuScreen(),
     MemberScreen(),
+    BlogScreen(),
+    ProfileScreen(),
     // AdvisorScreen(),
     // ProfileScreen(),
     // UpdateProfileScreen(),

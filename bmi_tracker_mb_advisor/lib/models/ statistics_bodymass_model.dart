@@ -53,10 +53,14 @@ class StatisticsMemberBodyMassModel {
   }
 }
 
-List<StatisticsMemberBodyMassModel> statisticsMemberBodyMassFromJson(
-    String str) {
-  final jsonData = json.decode(str);
-  return StatisticsMemberBodyMassModel.fromJsonList(jsonData);
+List<StatisticsMemberBodyMassModel> statisticsMemberBodyMassFromJson(String str) {
+  List<StatisticsMemberBodyMassModel> list = List<StatisticsMemberBodyMassModel>.from(
+      json.decode(str).map((x) => StatisticsMemberBodyMassModel.fromJson(x)));
+
+  // Sort the list by dateInput in descending order
+  list.sort((a, b) => a.dateInput!.compareTo(b.dateInput!));
+
+  return list;
 }
 
 String statisticsMemberBodyMassToJson(

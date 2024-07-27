@@ -4,6 +4,8 @@ import 'package:bmi_tracker_mb_advisor/screens/add_food_to_menu/add_food_to_menu
 import 'package:bmi_tracker_mb_advisor/screens/add_food_to_menu/binding/add_food_to_menu_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/binding/bottom_nav_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/bottom_nav.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/binding/create_workout_binding.dart';
@@ -25,6 +27,7 @@ class AppRoutes {
       '/addExerciseToWorkoutScreen';
   static const String bottomNavScreen = '/bottomNavScreen';
   static const String createMenuScreen = '/createMenuScreen';
+  static const String createBlogScreen = '/createBlogScreen';
   static const String createWorkoutScreen = '/createWorkoutScreen';
   static const String loginScreen = '/loginScreen';
   static const String memberScreen = '/memberScreen';
@@ -37,6 +40,13 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
+    GetPage(
+      name: createBlogScreen,
+      page: () => const CreateBlogScreen(),
+      bindings: [
+        CreateBlogBinding(),
+      ],
+    ),
     GetPage(
       name: addExerciseToWorkoutScreen,
       page: () => const AddExerciseToWorkoutScreen(),

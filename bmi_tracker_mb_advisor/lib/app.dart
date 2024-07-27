@@ -2,7 +2,8 @@
 
 import 'package:bmi_tracker_mb_advisor/localization/app_localization.dart';
 import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
- import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+import 'package:bmi_tracker_mb_advisor/screens/blog_detail/blog_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/initial_bindings.dart';
 import 'package:flutter/material.dart';
 
@@ -47,8 +48,10 @@ class _MyAppState extends State<MyApp> {
       theme: theme,
       locale: Get.deviceLocale,
       //for setting localization strings
+
       fallbackLocale: const Locale('en', 'US'),
       title: 'BMI Tracker Advisor',
+      // home: const BlogDetailScreen(),
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.initialRoute,
       getPages: AppRoutes.pages,

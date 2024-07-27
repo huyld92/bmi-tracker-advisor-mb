@@ -12,11 +12,13 @@ class CreateMenuScreen extends GetView<CreateMenuController> {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.isLoading.value) {
-        return const Scaffold(
-          backgroundColor: Colors.white,
+        return Scaffold(
+          backgroundColor: appTheme.white,
           body: Center(
-              child: CircularProgressIndicator.adaptive(
-                  backgroundColor: Colors.transparent)),
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
+          ),
         );
       }
       return GestureDetector(

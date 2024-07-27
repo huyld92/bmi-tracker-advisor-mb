@@ -6,6 +6,25 @@ final Map<String, String> enUs = {
   "txt_total": "Total",
   "txt_workout": "Workout",
 
+  // Member screen
+  "title_member_screen":"Members had subscription",
+  "txt_detail":"Details",
+  "txt_phone_number":"Phone Number",
+  "txt_no_results_found":"No results found",
+  "body_no_results":"Currently, there are no members subscribed to you.",
+
+  // Member details screen
+  "txt_age":"Age",
+  "txt_statistics":"Statistics",
+  "txt_height":"Height",
+  "txt_weight":"Weight",
+  "txt_bmi":"BMI",
+  "txt_weight_statistics":"Weight Statistics",
+  "txt_calories_statistics":"Calories Statistics",
+  "txt_customize_menu_and_Workout":"Customize menu and workout",
+  "txt_view_menu":"View menu",
+  "txt_view_workout":"View workout",
+
   //Menu screen
   "txt_view_details": "View details",
   "txt_deactivate": "Deactivate",
@@ -51,4 +70,14 @@ final Map<String, String> enUs = {
   "txt_calories_burned":"Calories burned",
   "txt_cancel":"Cancel",
 
-};
+  // Statistics calories screen
+  "txt_statistics_calories":"Statistics calories",
+  "txt_last_7_days":"Last 7 Days",
+  "txt_average_calories_in":"Average Calories In",
+  "txt_average_calories_out":"Average Calories Out",
+  "txt_goal":"Goal",
+  "txt_default":"Default",
+  "txt_calories_in":"Calories In",
+  "txt_calories_out":"Calories Out",
+  "txt_history":"History",
+ };

@@ -111,6 +111,8 @@ class ColorSchemes {
 
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
+  Color get orange500 => const Color(0XFFFF9800);
+
   Color get green500 => const Color(0XFF4CAF50);
 
   Color get grey300 => const Color(0XFFE0E0E0);
@@ -121,9 +123,15 @@ class PrimaryColors {
 
   Color get blueA700 => const Color(0XFF2962FF);
 
+  Color get blueA100 => const Color(0XFF82B1FF);
+
   Color get blue900 => const Color(0X870D47A1);
 
   Color get red500 => const Color(0XFFF44336);
+
+  Color get yellow500 => const Color(0XFFFFEB3B);
+
+  Color get lightGreen200 => const Color(0XFFC5E1A5);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

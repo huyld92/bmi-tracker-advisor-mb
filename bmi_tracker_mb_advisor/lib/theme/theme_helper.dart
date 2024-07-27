@@ -111,6 +111,8 @@ class ColorSchemes {
 
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
+  Color get orange500 => const Color(0XFFFF9800);
+
   Color get green500 => const Color(0XFF4CAF50);
 
   Color get grey300 => const Color(0XFFE0E0E0);

@@ -1,0 +1,196 @@
+import 'package:bmi_tracker_mb_advisor/models/statistics_daily_record_model.dart';
+import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/controller/statistics_calories_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../util/app_export.dart';
+
+class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
+  const StatisticsCaloriesScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    TooltipBehavior tooltip = TooltipBehavior(enable: true);
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Scaffold(
+          backgroundColor: appTheme.white,
+          body: Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
+          ),
+        );
+      }
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("txt_statistics_calories".tr,
+              style: theme.textTheme.titleLarge),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex:2,
+                child: Obx(
+                  () => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("txt_last_7_days".tr,
+                          style: Theme.of(context).textTheme.headlineMedium),
+                      RichText(
+                        text: TextSpan(
+                            text: "${"txt_average_calories_in".tr}: ",
+                            style: CustomTextStyles.bodyMedium16,
+                            children: [
+                              TextSpan(
+                                  text: "${controller.averageCaloriesIn} kcal",
+                                  style: CustomTextStyles.bodyMedium16Green500)
+                            ]),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                            text: "${"txt_average_calories_out".tr}: ",
+                            style: CustomTextStyles.bodyMedium16,
+                            children: [
+                              TextSpan(
+                                  text: "${controller.averageCaloriesOut} kcal",
+                                  style: CustomTextStyles.bodyMedium16Orange500)
+                            ]),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                            text: "${"txt_goal".tr}: ",
+                            style: CustomTextStyles.bodyMedium16,
+                            children: [
+                              TextSpan(
+                                  text: "${controller.goalCalories} kcal",
+                                  style: CustomTextStyles.bodyMedium16BlueA700)
+                            ]),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // biểu đồ calories in, out
+          Expanded(
+             flex: 7,
+                child: Obx(
+                  () => SfCartesianChart(
+                    primaryXAxis: const CategoryAxis(),
+                    primaryYAxis: NumericAxis(
+                        minimum: 0,
+                        maximum: controller.goalCalories.value + 1000,
+                        interval: 500,
+                        // đường kẻ ngang default calories
+                        plotBands: <PlotBand>[
+                          PlotBand(
+                              verticalTextPadding: '5%',
+                              horizontalTextPadding: '5%',
+                              // text: 'txt_default'.tr,
+                              textAngle: 0,
+                              start: controller.goalCalories.value,
+                              end: controller.goalCalories.value,
+                              textStyle: CustomTextStyles.bodyMedium16Green500,
+                              borderColor: appTheme.blueA700,
+                              borderWidth: 2)
+                        ]),
+                    tooltipBehavior: tooltip,
+                    series: <CartesianSeries<StatisticsDailyRecordModel,
+                        String>>[
+                      ColumnSeries<StatisticsDailyRecordModel, String>(
+                        dataSource: controller.dailyRecordModels,
+                        xValueMapper: (StatisticsDailyRecordModel data, _) =>
+                            data.date!.format("MM-dd"),
+                        yValueMapper: (StatisticsDailyRecordModel data, _) =>
+                            data.totalCaloriesIn,
+                        name: 'txt_calories_in'.tr,
+                        color: appTheme.green500,
+                      ),
+                      ColumnSeries<StatisticsDailyRecordModel, String>(
+                        dataSource: controller.dailyRecordModels,
+                        xValueMapper: (StatisticsDailyRecordModel data, _) =>
+                            data.date!.format("MM-dd"),
+                        yValueMapper: (StatisticsDailyRecordModel data, _) =>
+                            data.totalCaloriesOut,
+                        name: 'txt_calories_out'.tr,
+                        color: appTheme.orange500,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Text("${"txt_history".tr}:",
+                  style: Theme.of(context).textTheme.headlineMedium),
+              // danh sách calories in, out
+              Expanded(
+                flex: 5,
+                child: Obx(
+                  () => ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.dailyRecordModels.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              child: HistoryItem(
+                                  date: controller
+                                      .dailyRecordModels[index].date!
+                                      .format(),
+                                  caloriesIn: controller
+                                      .dailyRecordModels[index]
+                                      .totalCaloriesIn!,
+                                  caloriesOut: controller
+                                      .dailyRecordModels[index]
+                                      .totalCaloriesOut!),
+                            ),
+                            const Divider()
+                          ],
+                        );
+                      }),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    });
+  }
+}
+
+class HistoryItem extends StatelessWidget {
+  final String date;
+  final int caloriesIn;
+  final int caloriesOut;
+
+  const HistoryItem(
+      {super.key,
+      required this.date,
+      required this.caloriesIn,
+      required this.caloriesOut});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: context.mediaQuerySize.width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(date, style: CustomTextStyles.bodyMedium16),
+          const Spacer(),
+          Column(
+            children: [
+              Text("+ $caloriesIn kcal",
+                  style: CustomTextStyles.bodyMedium16Green500),
+              Text("- $caloriesOut kcal",
+                  style: CustomTextStyles.bodyMedium16Orange500),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}

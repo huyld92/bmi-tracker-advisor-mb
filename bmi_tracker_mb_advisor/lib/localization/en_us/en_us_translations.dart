@@ -70,4 +70,14 @@ final Map<String, String> enUs = {
   "txt_calories_burned":"Calories burned",
   "txt_cancel":"Cancel",
 
-};
+  // Statistics calories screen
+  "txt_statistics_calories":"Statistics calories",
+  "txt_last_7_days":"Last 7 Days",
+  "txt_average_calories_in":"Average Calories In",
+  "txt_average_calories_out":"Average Calories Out",
+  "txt_goal":"Goal",
+  "txt_default":"Default",
+  "txt_calories_in":"Calories In",
+  "txt_calories_out":"Calories Out",
+  "txt_history":"History",
+ };

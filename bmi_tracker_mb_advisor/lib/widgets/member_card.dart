@@ -106,7 +106,7 @@ class _MemberCardState extends State<MemberCard> {
                             ),
                             onPressed: widget.onDetailClick,
                             child: SizedBox(
-                              width: 36.v,
+                              width: 40.v,
                               height: 20.h,
                               child: Center(
                                 child: Text(
@@ -138,7 +138,7 @@ class _MemberCardState extends State<MemberCard> {
                             ),
                             onPressed: widget.onMessageClick,
                             child: SizedBox(
-                              width: 30.v,
+                              width: 40.v,
                               height: 20.h,
                               child: Center(
                                 child: Text(

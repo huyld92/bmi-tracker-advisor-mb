@@ -13,9 +13,10 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
       if (controller.isLoading.value) {
         return Scaffold(
           backgroundColor: appTheme.white,
-          body: const Center(
+          body: Center(
             child: CircularProgressIndicator.adaptive(
-                backgroundColor: Colors.transparent),
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
           ),
         );
       }

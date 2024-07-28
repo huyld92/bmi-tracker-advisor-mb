@@ -1,3 +1,4 @@
+import 'package:bmi_tracker_mb_advisor/screens/update_menu/update_menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -11,7 +12,6 @@ class MenuScreen extends GetView<MenuScreenController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-
       if (controller.isLoading.value) {
         return Scaffold(
           backgroundColor: appTheme.white,
@@ -52,7 +52,8 @@ class MenuScreen extends GetView<MenuScreenController> {
                               children: [
                                 SlidableAction(
                                   onPressed: (context) {
-                                    controller.goToUpdateMenu(index);
+                                    // controller.goToUpdateMenu(index);
+                                    Get.to(UpdateMenuScreen());
                                   },
                                   backgroundColor: const Color(0xFF1FBE1B),
                                   foregroundColor: Colors.white,

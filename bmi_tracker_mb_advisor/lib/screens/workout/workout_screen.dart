@@ -1,3 +1,4 @@
+import 'package:bmi_tracker_mb_advisor/screens/update_workout/update_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -11,7 +12,6 @@ class WorkoutScreen extends GetView<WorkoutController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-
       if (controller.isLoading.value) {
         return Scaffold(
           backgroundColor: appTheme.white,
@@ -46,13 +46,15 @@ class WorkoutScreen extends GetView<WorkoutController> {
                       itemCount: controller.workouts.length,
                       itemBuilder: (context, index) {
                         return Slidable(
-                          key: Key(controller.workouts[index].workoutID.toString()),
+                          key: Key(
+                              controller.workouts[index].workoutID.toString()),
                           endActionPane: ActionPane(
                               motion: const ScrollMotion(),
                               children: [
                                 SlidableAction(
                                   onPressed: (context) {
-                                    controller.goToUpdateWorkout(index);
+                                    // controller.goToUpdateWorkout(index);
+                                    Get.to(UpdateWorkoutScreen());
                                   },
                                   backgroundColor: const Color(0xFF1FBE1B),
                                   foregroundColor: Colors.white,
@@ -120,17 +122,17 @@ class WorkoutScreen extends GetView<WorkoutController> {
                                         overflow: TextOverflow.ellipsis,
                                         style: theme.textTheme.bodySmall,
                                       ),
-
                                       Obx(
-                                            () => Row(
+                                        () => Row(
                                           children: [
                                             Container(
                                               margin:
-                                              EdgeInsets.only(right: 5.h),
+                                                  EdgeInsets.only(right: 5.h),
                                               child: Icon(
                                                 Icons.circle,
                                                 color: controller
-                                                    .workouts[index].isActive!
+                                                        .workouts[index]
+                                                        .isActive!
                                                     ? appTheme.green500
                                                     : appTheme.red500,
                                               ),

@@ -1,3 +1,4 @@
+import 'package:bmi_tracker_mb_advisor/screens/plan_detail/plan_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/subscription_history_detail_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -5,8 +6,8 @@ import '../screens/subscription_history/controller/subscription_history_controll
 import '../util/app_export.dart';
 
 // ignore: must_be_immutable
-class SubscriptionItemWidget extends StatelessWidget {
-  SubscriptionItemWidget(
+class PlanItemWidget extends StatelessWidget {
+  PlanItemWidget(
     this.index, {
     Key? key,
   }) : super(
@@ -22,12 +23,12 @@ class SubscriptionItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // controller.goToSubscriptionsDetails(index);
-        Get.to(SubscriptionDetailsScreen());
+        Get.to(PlanDetailScreen());
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 4.v),
         decoration: ShapeDecoration(
-          color: Color.fromARGB(255, 230, 250, 208),
+          color: Color.fromARGB(255, 136, 212, 241),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -44,9 +45,7 @@ class SubscriptionItemWidget extends StatelessWidget {
                     //   Icons.account_balance_rounded,
                     //   color: Colors.white,
                     // ),
-                    Image(
-                        image: AssetImage(
-                            'assets/images/subcription history.png')),
+                    Image(image: AssetImage('assets/images/plan.png')),
                 radius: 20,
                 // backgroundColor: Colors.green,
               ),
@@ -69,8 +68,8 @@ class SubscriptionItemWidget extends StatelessWidget {
                 padding: EdgeInsets.only(left: 16.h),
                 child: Text(
                   // controller.subscriptionModels[index].getSubscriptionDate(),
-                  '2023-07-20',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  'Plan Name',
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ),
@@ -87,15 +86,15 @@ class SubscriptionItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Booking status",
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        "Duration",
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ),
                   Text(
                     // "${controller.subscriptionModels[index].subscriptionStatus}",
-                    'subscriptionStatus',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    '30 days',
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -111,15 +110,15 @@ class SubscriptionItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Plan duration",
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        "Price",
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ),
                   Text(
                     // "${controller.subscriptionModels[index].advisorID}",
-                    'advisorID',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    '100,000 VND',
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -133,14 +132,14 @@ class SubscriptionItemWidget extends StatelessWidget {
                   Opacity(
                     opacity: 1,
                     child: Text(
-                      "Amount",
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      "Number Of Uses",
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   Text(
                     // "${controller.subscriptionModels[index].amount}",
-                    'amount',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    '5 Members',
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),

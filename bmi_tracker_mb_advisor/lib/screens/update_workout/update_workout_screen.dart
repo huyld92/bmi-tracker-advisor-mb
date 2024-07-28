@@ -1,15 +1,11 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/controller/create_workout_controller.dart';
+import 'package:bmi_tracker_mb_advisor/theme/custom_button_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
-import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/custom_button_style.dart';
-import '../../theme/custom_text_style.dart';
+import '../../theme/theme_helper.dart';
 
-class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
-  const CreateWorkoutScreen({super.key});
-
-  // var controller = Get.put(CreateWorkoutScreenMealFoodController());
+class UpdateWorkoutScreen extends StatelessWidget {
+  const UpdateWorkoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +25,8 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'title_appbar_crete_workout'.tr,
+                    // 'title_appbar_crete_workout'.tr,
+                    'Update Workout',
                     style: theme.textTheme.titleLarge,
                   ),
                   Text(
@@ -76,7 +73,7 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
-                  controller: controller.txtWorkoutNameController,
+                  // controller: controller.txtWorkoutNameController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -101,7 +98,7 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
-                  controller: controller.txtStandardWeightController,
+                  // controller: controller.txtStandardWeightController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -127,7 +124,7 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                 const SizedBox(height: 10),
                 TextFormField(
                   maxLines: 5,
-                  controller: controller.txtWorkoutDescriptionController,
+                  // controller: controller.txtWorkoutDescriptionController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -151,70 +148,71 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                     style: theme.textTheme.titleSmall,
                   ),
                 ),
-                // danh sách workout exercise
-                Obx(
-                  () => ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: controller.workoutExercises.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 280.h,
-                                    child: Text(
-                                      "${controller.workoutExercises[index].emoji} "
-                                      "${controller.workoutExercises[index].exerciseName!}",
-                                      maxLines: 3,
-                                      softWrap: true,
-                                      overflow: TextOverflow.ellipsis,
-                                      style:
-                                          CustomTextStyles.titleMedium16Black,
-                                    ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  // itemCount: controller.workoutExercises.length,
+                  itemCount: 3,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 280.h,
+                                  child: Text(
+                                    // "${controller.workoutExercises[index].emoji} "
+                                    // "${controller.workoutExercises[index].exerciseName!}",
+                                    "emoji"
+                                    "exerciseName",
+                                    maxLines: 3,
+                                    softWrap: true,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: CustomTextStyles.titleMedium16Black,
                                   ),
-                                  RichText(
-                                    text: TextSpan(
-                                      text:
-                                          "${controller.workoutExercises[index].duration!.formatWithThousandSeparator()} min, ",
-                                      style: theme.textTheme.bodyMedium,
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              "${controller.workoutExercises[index].caloriesBurned!.formatWithThousandSeparator()} kcal",
-                                          style: theme.textTheme.bodyMedium,
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  controller.removeExercise(index);
-                                },
-                                icon: Icon(
-                                  Icons.highlight_remove,
-                                  color: appTheme.red500,
                                 ),
-                              )
-                            ],
-                          ),
-                          const Divider()
-                        ],
-                      );
-                    },
-                  ),
+                                RichText(
+                                  text: TextSpan(
+                                    text:
+                                        // "${controller.workoutExercises[index].duration!.formatWithThousandSeparator()} min, ",
+                                        "30 min",
+                                    style: theme.textTheme.bodyMedium,
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            // "${controller.workoutExercises[index].caloriesBurned!.formatWithThousandSeparator()} kcal",
+                                            "300 kcal",
+                                        style: theme.textTheme.bodyMedium,
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                // controller.removeExercise(index);
+                              },
+                              icon: Icon(
+                                Icons.highlight_remove,
+                                color: appTheme.red500,
+                              ),
+                            )
+                          ],
+                        ),
+                        const Divider()
+                      ],
+                    );
+                  },
                 ),
                 // add exercise button
                 InkWell(
                   onTap: () {
-                    controller.goToAddExercise();
+                    // controller.goToAddExercise();
                   },
                   child: Container(
                     height: 40.v,
@@ -245,7 +243,7 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
           child: ElevatedButton(
             style: CustomButtonStyles.outlineButtonGreen500,
             onPressed: () {
-              controller.createNewWorkout();
+              // controller.createNewWorkout();
             },
             child: Text(
               "txt_save".tr,

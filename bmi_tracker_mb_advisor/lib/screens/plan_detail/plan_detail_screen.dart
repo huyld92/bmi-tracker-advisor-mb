@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class SubscriptionDetailsScreen extends StatelessWidget {
-  const SubscriptionDetailsScreen({super.key});
+class PlanDetailScreen extends StatelessWidget {
+  const PlanDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Subscription Details',
+          'Plan Detail',
           style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          IconButton(
+              onPressed: () => {
+                    // controller.
+                  },
+              icon: const Icon(LineAwesomeIcons.trash)),
+        ],
         backgroundColor: Color.fromARGB(255, 230, 250, 208),
         elevation: 0,
       ),
@@ -19,56 +27,38 @@ class SubscriptionDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubscriptionDetailItem(
-              label: 'Subscription Date',
+            PlanDetailItemWidget(
+              label: 'Plan Name',
               value:
                   // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'SubscriptionDate',
+                  'Plan name',
             ),
-            SubscriptionDetailItem(
-              label: 'Amount',
+            PlanDetailItemWidget(
+              label: 'Price',
               value:
                   // controller.subscriptionModel.value.getSubscriptionDate()),
-                  '100,000 VND',
+                  'price',
             ),
             const Divider(
               color: Color.fromARGB(255, 112, 105, 105),
             ),
-            SubscriptionDetailItem(
-              label: 'Subscription Number',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Subscription Number',
-            ),
-            SubscriptionDetailItem(
+            PlanDetailItemWidget(
               label: 'Description',
               value:
                   // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Description',
+                  'The plan includes a recommended menu and exercises to achieve the best results in 30 days',
             ),
-            SubscriptionDetailItem(
-              label: 'Start Date',
+            PlanDetailItemWidget(
+              label: 'Plan Duration',
               value:
                   // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Start Date',
+                  'Plan duration',
             ),
-            SubscriptionDetailItem(
-              label: 'End Date',
+            PlanDetailItemWidget(
+              label: 'Number Of Uses',
               value:
                   // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'End Date',
-            ),
-            SubscriptionDetailItem(
-              label: 'Member Name',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Member Name',
-            ),
-            SubscriptionDetailItem(
-              label: 'Status',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Status',
+                  '5 Members',
             ),
           ],
         ),
@@ -77,11 +67,11 @@ class SubscriptionDetailsScreen extends StatelessWidget {
   }
 }
 
-class SubscriptionDetailItem extends StatelessWidget {
+class PlanDetailItemWidget extends StatelessWidget {
   final String? label;
   final String? value;
 
-  const SubscriptionDetailItem({super.key, this.label, this.value});
+  const PlanDetailItemWidget({super.key, this.label, this.value});
 
   @override
   Widget build(BuildContext context) {

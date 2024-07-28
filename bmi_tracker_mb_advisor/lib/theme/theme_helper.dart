@@ -115,6 +115,8 @@ class PrimaryColors {
 
   Color get green500 => const Color(0XFF4CAF50);
 
+  Color get grey500 => const Color(0XFF9E9E9E);
+
   Color get grey300 => const Color(0XFFE0E0E0);
 
   Color get grey100 => const Color(0XFFF5F5F5);

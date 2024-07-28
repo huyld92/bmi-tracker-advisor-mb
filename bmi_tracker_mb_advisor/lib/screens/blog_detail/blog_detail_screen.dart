@@ -1,4 +1,5 @@
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/controller/blog_detail_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,7 +15,7 @@ class BlogDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Food Details',
+          'Blog Details',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
@@ -27,6 +28,7 @@ class BlogDetailScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               // controller.goToFeedBack();
+              Get.to(EditBlogScreen());
             },
             icon: const Icon(LineAwesomeIcons.alternate_pencil),
           ),

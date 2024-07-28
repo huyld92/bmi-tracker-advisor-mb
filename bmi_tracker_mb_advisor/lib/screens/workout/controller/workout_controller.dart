@@ -24,28 +24,6 @@ class WorkoutController extends GetxController {
     await getAllWorkout();
 
     isLoading.value = false;
-
-    // workouts.add(WorkoutModel(
-    //     workoutName: "workoutName",
-    //     totalCaloriesBurned: 100,
-    //     workoutDescription: "description",
-    //     workoutID: 1,
-    //     isActive: true),
-    // );
-    // workouts.add(WorkoutModel(
-    //     workoutName: "workoutName",
-    //     totalCaloriesBurned: 100,
-    //     workoutDescription: "description",
-    //     workoutID: 1,
-    //     isActive: true),
-    // );
-    // workouts.add(WorkoutModel(
-    //     workoutName: "workoutName",
-    //     totalCaloriesBurned: 100,
-    //     workoutDescription: "description",
-    //     workoutID: 1,
-    //     isActive: true),
-    // );
   }
 
   Future<void> getAllWorkout() async {
@@ -74,7 +52,10 @@ class WorkoutController extends GetxController {
     Get.toNamed(AppRoutes.createWorkoutScreen);
   }
 
-  void goToWorkoutDetails(int index) {}
+  void goToWorkoutDetails(int index) {
+    Get.toNamed(AppRoutes.workoutDetailsScreen,
+        arguments: [workouts[index].workoutID, true]);
+  }
 
   Future<void> deactivateWorkout(int index) async {
     // gọi API deactivate workout

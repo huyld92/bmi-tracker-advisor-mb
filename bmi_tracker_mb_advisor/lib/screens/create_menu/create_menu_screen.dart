@@ -62,12 +62,13 @@ class CreateMenuScreen extends GetView<CreateMenuController> {
                     child: Column(
                       children: [
                         CircleAvatar(
-                          radius: 40,
-                          child: Icon(
-                            Icons.food_bank_rounded,
-                            size: 40.adaptSize,
-                          ),
-                        ),
+                            backgroundColor: appTheme.lightGreen200,
+                            radius: 40,
+                            child: Image(
+                              image: AssetImage('assets/images/menu.png'),
+                              width: 40.adaptSize,
+                              height: 40.adaptSize,
+                            )),
                       ],
                     ),
                   ),

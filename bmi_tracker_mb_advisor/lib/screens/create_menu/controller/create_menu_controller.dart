@@ -15,7 +15,7 @@ class CreateMenuController extends GetxController {
   TextEditingController txtMenuDescriptionController = TextEditingController();
 
   RxList<MenuFoodModel> menuFoodModels = RxList.empty();
-  RxList<CreateMenuFoodModel> createMenuFoodModels = RxList.empty();
+  RxList<MenuFoodRequestModel> createMenuFoodModels = RxList.empty();
 
   var isLoading = false.obs;
 

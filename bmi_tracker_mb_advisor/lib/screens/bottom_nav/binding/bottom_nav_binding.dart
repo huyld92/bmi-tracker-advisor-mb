@@ -7,10 +7,6 @@ import '../../../config/firebase_messaging_service.dart';
 class BottomNavBinding extends Bindings {
   @override
   Future<void> dependencies() async {
-    // Khởi tạo các controller
-    // Get.lazyPut(() => WorkspaceController());
-    // Get.lazyPut(() => MemberController());
-    // Get.lazyPut(() => AdvisorController());
 
     // Khởi tạo dịch vụ Firebase Messaging và đăng ký với GetX
     final firebaseMessagingService = FirebaseMessagingService();

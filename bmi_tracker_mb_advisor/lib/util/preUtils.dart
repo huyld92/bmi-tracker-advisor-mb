@@ -11,7 +11,6 @@ class PrefUtils {
     });
   }
 
-
   Future<void> init() async {
     _sharedPreferences ??= await SharedPreferences.getInstance();
     print('SharedPreference Initialized');
@@ -35,6 +34,14 @@ class PrefUtils {
   static String? getRefreshToken() =>
       _sharedPreferences?.getString(_refreshToken);
 
+  static int? getInt(String key) => _sharedPreferences?.getInt(key);
+
+  static Future<bool>? setInt(String key, int value) =>
+      _sharedPreferences?.setInt(key, value);
+
+  static Future<bool>? removeInt(String key) =>
+      _sharedPreferences?.remove(key);
+
   static String? getString(String key) => _sharedPreferences?.getString(key);
 
   static Future<bool>? setString(String key, String value) =>
@@ -48,7 +55,7 @@ class PrefUtils {
   static Future<bool>? setBool(String key, bool value) =>
       _sharedPreferences?.setBool(key, value);
 
-    Future<void> setThemeData(String value) {
+  Future<void> setThemeData(String value) {
     return _sharedPreferences!.setString('themeData', value);
   }
 

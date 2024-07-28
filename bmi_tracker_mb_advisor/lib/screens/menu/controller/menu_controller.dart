@@ -76,7 +76,8 @@ class MenuScreenController extends GetxController {
   }
 
   void goToMenuDetails(int index) {
-    Get.toNamed(AppRoutes.menuDetailsScreen, arguments: menus[index].menuID);
+    Get.toNamed(AppRoutes.menuDetailsScreen,
+        arguments: [menus[index].menuID, true]);
   }
 
   void goToCreateMenu() {

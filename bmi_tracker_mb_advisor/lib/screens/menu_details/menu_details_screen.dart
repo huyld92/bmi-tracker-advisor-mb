@@ -1,3 +1,4 @@
+import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_deltail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/controller/menu_details_controller.dart';
 
 import 'package:flutter/material.dart';
@@ -12,7 +13,6 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-
       if (controller.isLoading.value) {
         return Scaffold(
           backgroundColor: appTheme.white,
@@ -33,10 +33,10 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.symmetric(vertical: 10.v, horizontal: 15.h),
+          padding: EdgeInsets.symmetric(vertical: 5.v, horizontal: 10.h),
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, // Số cột trong GridView
+              crossAxisCount: 2, // Số cột trong GridView
               crossAxisSpacing: 10, // Khoảng cách giữa các cột
               mainAxisSpacing: 10, // Khoảng cách giữa các hàng
             ),
@@ -47,6 +47,8 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
               // Tạo các ô trong GridView
               return Container(
                 decoration: BoxDecoration(
+
+                    // shape: BoxShape.rectangle,
                     color: appTheme.white,
                     borderRadius:
                         BorderRadius.all(Radius.circular(10.adaptSize))),
@@ -55,9 +57,12 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                   child: Column(
                     children: [
                       CustomImageView(
+                        onTap: () {
+                          Get.to(FoodDetailScreen());
+                        },
                         imagePath: food?.foodPhoto,
-                        height: 70.adaptSize,
-                        // width: 70.adaptSize,
+                        height: 110.adaptSize,
+                        width: 150.adaptSize,
                         fit: BoxFit.fitWidth,
                         radius: BorderRadius.circular(5),
                       ),

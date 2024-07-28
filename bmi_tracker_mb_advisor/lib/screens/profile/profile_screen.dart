@@ -1,4 +1,6 @@
-import 'package:bmi_tracker_mb_advisor/edit_profile/edit_profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/edit_profile/edit_profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/subscription_history/subscription_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/profile_account.dart';
 import 'package:flutter/material.dart';
@@ -57,12 +59,16 @@ class ProfileScreen extends StatelessWidget {
               ProfileAccountWidget(
                 title: "Subscription History",
                 iconimage: AssetImage('assets/images/subcription history.png'),
-                onPress: () {},
+                onPress: () {
+                  Get.to(SubscriptionHistoryScreen());
+                },
               ),
               ProfileAccountWidget(
                 title: "Feedback",
                 iconimage: AssetImage('assets/images/feedback.png'),
-                onPress: () {},
+                onPress: () {
+                  Get.to(FeedbackScreen());
+                },
               ),
               const Divider(color: Colors.grey),
               SizedBox(height: 10.v),

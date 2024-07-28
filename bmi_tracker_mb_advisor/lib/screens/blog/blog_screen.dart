@@ -1,5 +1,6 @@
 import 'package:bmi_tracker_mb_advisor/screens/blog/controller/blog_controller.dart';
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/blog_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_card_blog_widget.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,8 @@ class BlogScreen extends GetView<BlogController> {
           shape: const CircleBorder(),
           backgroundColor: appTheme.green500,
           onPressed: () {
-            controller.goToCreateBlog();
+            // controller.goToCreateBlog();
+            Get.to(CreateBlogScreen());
           },
           child: Icon(Icons.add, size: 50.adaptSize, color: appTheme.white),
         ),

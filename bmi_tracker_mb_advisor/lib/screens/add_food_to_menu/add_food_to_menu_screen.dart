@@ -1,5 +1,3 @@
-import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_deltail_screen.dart';
-import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -118,8 +116,8 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                               content3:
                                   "${controller.foodModels[index].foodCalories} kcal",
                               onTitleTap: () {
-                                // controller.goToFoodDetails(controller.foodModels[index].foodID);
-                                Get.to(FoodDetailScreen());
+                                controller.goToFoodDetails(
+                                    controller.foodModels[index].foodID);
                               },
                             ),
                             Positioned(

@@ -18,14 +18,14 @@ class WorkspaceScreen extends StatelessWidget {
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text("Workspace", style: theme.textTheme.titleLarge),
+          title: Text("txt_workspace".tr, style: theme.textTheme.titleLarge),
           actions: [
             Container(
               margin: EdgeInsets.only(right: 10.h),
               child: IconButton(
                 onPressed: () {},
                 iconSize: 28.adaptSize,
-                icon: Icon(Icons.notifications_active_outlined),
+                icon: const Icon(Icons.notifications_active_outlined),
               ),
             )
           ],

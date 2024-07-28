@@ -25,6 +25,7 @@ class ProfileController extends GetxController {
   getProfile() async {
     var response = await AccountRepository.getProfile();
     if (response.statusCode == 200) {
+      accountModel.value = AccountModel();
       accountModel.value = AccountModel.fromJson(jsonDecode(response.body));
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
@@ -45,6 +46,19 @@ class ProfileController extends GetxController {
   }
 
   goToUpdateProfileScreen() {
-    Get.toNamed(AppRoutes.editProfileScreen);
+    Get.toNamed(AppRoutes.editProfileScreen)
+        ?.then((value) async => await fetchProfileScreeData());
+  }
+
+  void goToPlanScreen() {
+    Get.toNamed(AppRoutes.planScreen);
+  }
+
+  void goToSubscriptionHistory() {
+    Get.toNamed(AppRoutes.subscriptionHistoryScreen);
+  }
+
+  void goToFeedbackScreen() {
+    Get.toNamed(AppRoutes.feedbackScreen);
   }
 }

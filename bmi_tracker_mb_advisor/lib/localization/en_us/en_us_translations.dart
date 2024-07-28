@@ -107,4 +107,8 @@ final Map<String, String> enUs = {
   "txt_full_name": "Full name",
   "txt_gender": "Gender",
   "txt_your_birthday": "Your birthday",
+  "txt_plan": "Plan",
+
+  // workout details screen
+
 };

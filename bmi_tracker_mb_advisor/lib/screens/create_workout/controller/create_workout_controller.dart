@@ -83,4 +83,9 @@ class CreateWorkoutController extends GetxController {
   void removeExercise(int index) {
     workoutExercises.removeAt(index);
   }
+
+  void onSavedStandardWeight(String? newValue) {
+
+    print('newValue:$newValue');
+  }
 }

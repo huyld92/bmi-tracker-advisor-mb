@@ -1,10 +1,9 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/controller/create_workout_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/controller/create_workout_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/custom_button_style.dart';
-import '../../theme/custom_text_style.dart';
 
 class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
   const CreateWorkoutScreen({super.key});
@@ -102,6 +101,9 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                 TextFormField(
                   maxLines: 1,
                   controller: controller.txtStandardWeightController,
+                  onSaved: (newValue) {
+                    controller.onSavedStandardWeight(newValue);
+                  },
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },

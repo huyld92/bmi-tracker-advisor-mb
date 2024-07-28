@@ -71,12 +71,23 @@ class ProfileScreen extends GetView<ProfileController> {
                   title: "txt_subscription_history".tr,
                   iconimage: const AssetImage(
                       'assets/images/subscription_history.png'),
-                  onPress: () {},
+                  onPress: () {
+                    controller.goToSubscriptionHistory();
+                  },
                 ),
                 ProfileAccountWidget(
                   title: "txt_feedback".tr,
                   iconimage: const AssetImage('assets/images/feedback.png'),
-                  onPress: () {},
+                  onPress: () {
+                    controller.goToFeedbackScreen();
+                  },
+                ),
+                ProfileAccountWidget(
+                  title: "txt_plan".tr,
+                  iconimage: const AssetImage('assets/images/plan.png'),
+                  onPress: () {
+                    controller.goToPlanScreen();
+                  },
                 ),
                 Divider(color: appTheme.grey500),
                 SizedBox(height: 10.v),

@@ -152,10 +152,5 @@ class EditProfileController extends GetxController {
     // cập nhật lại thông tin member
     await getProfile();
 
-    // cập nhật thông tin member ở Homepage
-    var profileController = Get.find<ProfileController>();
-    profileController.accountModel.value = accountModel.value;
-
-
     isLoading.value = false;}
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import '../config/build_server.dart';
 import '../config/jwt_interceptor.dart';
@@ -45,7 +46,18 @@ class AccountRepository {
     return response;
   }
 
-  static updateProfile(Map<String, String> userUpdate) {
+  static updateProfile(Map<String, String> userUpdate) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient
+        .put(
+      BuildServer.buildUrl("accounts/update-profile"),
+      headers: header,
+      body: jsonEncode(userUpdate)
+    )
+        .timeout(const Duration(seconds: 30));
+    return response;
 
   }
 }

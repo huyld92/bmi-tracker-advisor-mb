@@ -26,8 +26,9 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
         appBar: AppBar(
           // backgroundColor: appTheme.white,
           title: Obx(
-            () => Text("${controller.menuDetailsModel.value.menuName}".tr,
-                style: theme.textTheme.headlineMedium),
+                () =>
+                Text("${controller.menuDetailsModel.value.menuName}".tr,
+                    style: theme.textTheme.titleLarge),
           ),
         ),
         body: SingleChildScrollView(
@@ -79,7 +80,8 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                               children: [
                                 TextSpan(
                                   text:
-                                      "${controller.menuDetailsModel.value.totalCalories} kcal",
+                                  "${controller.menuDetailsModel.value
+                                      .totalCalories} kcal",
                                   style: CustomTextStyles.bodyMedium16,
                                 )
                               ]),
@@ -95,7 +97,8 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                 children: [
                                   TextSpan(
                                     text:
-                                        "${controller.menuDetailsModel.value.menuDescription}",
+                                    "${controller.menuDetailsModel.value
+                                        .menuDescription}",
                                     style: CustomTextStyles.bodyMedium16,
                                   )
                                 ]),
@@ -114,9 +117,9 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                 Icons.circle,
                                 size: 16.adaptSize,
                                 color:
-                                    controller.menuDetailsModel.value.isActive!
-                                        ? appTheme.green500
-                                        : appTheme.red500,
+                                controller.menuDetailsModel.value.isActive!
+                                    ? appTheme.green500
+                                    : appTheme.red500,
                               ),
                             ),
                             Obx(() {
@@ -147,139 +150,153 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                   ),
                 ),
                 Obx(
-                  () => ListView.builder(
-                    shrinkWrap: true,
-                    itemCount:
+                      () =>
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount:
                         controller.menuDetailsModel.value.menuFoods?.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return Slidable(
-                        key: Key(controller
-                            .menuDetailsModel.value.menuFoods![index].menuFoodID
-                            .toString()),
-                        endActionPane:
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return Slidable(
+                            key: Key(controller
+                                .menuDetailsModel.value.menuFoods![index]
+                                .menuFoodID
+                                .toString()),
+                            endActionPane:
                             ActionPane(motion: const ScrollMotion(), children: [
-                          Obx(() {
-                            if (controller.menuDetailsModel.value
-                                .menuFoods![index].isActive!) {
-                              return SlidableAction(
-                                onPressed: (context) {
-                                  controller.deactivateFood(index);
-                                },
-                                backgroundColor: appTheme.red500,
-                                foregroundColor: Colors.white,
-                                icon: Icons.delete,
-                                label: 'txt_deactivate'.tr,
-                              );
-                            } else {
-                              return SlidableAction(
-                                onPressed: (context) {
-                                  controller.activateFood(index);
-                                },
-                                backgroundColor: const Color(0xFF1FBE1B),
-                                foregroundColor: Colors.white,
-                                icon: Icons.check_circle,
-                                label: 'txt_activate'.tr,
-                              );
-                            }
-                          }),
-                        ]),
-                        child: GestureDetector(
-                          onTap: () {
-                            controller.goToFoodDetails(controller
-                                .menuDetailsModel
-                                .value
-                                .menuFoods![index]
-                                .foodID);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(10.v),
-                            color: appTheme.white,
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                              Obx(() {
+                                if (controller.menuDetailsModel.value
+                                    .menuFoods![index].isActive!) {
+                                  return SlidableAction(
+                                    onPressed: (context) {
+                                      controller.deactivateFood(index);
+                                    },
+                                    backgroundColor: appTheme.red500,
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.delete,
+                                    label: 'txt_deactivate'.tr,
+                                  );
+                                } else {
+                                  return SlidableAction(
+                                    onPressed: (context) {
+                                      controller.activateFood(index);
+                                    },
+                                    backgroundColor: const Color(0xFF1FBE1B),
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.check_circle,
+                                    label: 'txt_activate'.tr,
+                                  );
+                                }
+                              }),
+                            ]),
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.goToFoodDetails(controller
+                                    .menuDetailsModel
+                                    .value
+                                    .menuFoods![index]
+                                    .foodID);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10.v),
+                                color: appTheme.white,
+                                child: Column(
                                   children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          controller.menuDetailsModel.value
-                                              .menuFoods![index].foodName!,
-                                          style: CustomTextStyles
-                                              .titleMedium16Black,
+                                        Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              controller.menuDetailsModel.value
+                                                  .menuFoods![index].foodName!,
+                                              style: CustomTextStyles
+                                                  .titleMedium16Black,
+                                            ),
+                                            Text(
+                                              controller.menuDetailsModel.value
+                                                  .menuFoods![index].mealType!,
+                                              style: CustomTextStyles
+                                                  .bodyMedium16,
+                                            ),
+                                            Text(
+                                              "${controller.menuDetailsModel
+                                                  .value.menuFoods![index]
+                                                  .foodCalories!} kcal",
+                                              style: CustomTextStyles
+                                                  .bodyMedium16,
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          controller.menuDetailsModel.value
-                                              .menuFoods![index].mealType!,
-                                          style: CustomTextStyles.bodyMedium16,
+
+                                        Container(
+                                          margin: EdgeInsets.only(right: 5.h),
+                                          child: Icon(
+                                            Icons.circle,
+                                            size: 16.adaptSize,
+                                            color: controller.menuDetailsModel
+                                                .value
+                                                .menuFoods![index].isActive!
+                                                ? appTheme.green500
+                                                : appTheme.red500,
+                                          ),
                                         ),
-                                        Text(
-                                          "${controller.menuDetailsModel.value.menuFoods![index].foodCalories!} kcal",
-                                          style: CustomTextStyles.bodyMedium16,
-                                        ),
+                                        // Obx(() {
+                                        //   if (controller.menuDetailsModel.value
+                                        //       .menuFoods![index].isActive!) {
+                                        //     return Text(
+                                        //       "Active",
+                                        //       style: CustomTextStyles.bodyMedium13Green,
+                                        //     );
+                                        //   } else {
+                                        //     return Text(
+                                        //       "Inactive",
+                                        //       style: CustomTextStyles.bodyMedium13Red,
+                                        //     );
+                                        //   }
+                                        // })
                                       ],
                                     ),
-
-                                    Container(
-                                      margin: EdgeInsets.only(right: 5.h),
-                                      child: Icon(
-                                        Icons.circle,
-                                        size: 16.adaptSize,
-                                        color: controller.menuDetailsModel.value
-                                                .menuFoods![index].isActive!
-                                            ? appTheme.green500
-                                            : appTheme.red500,
-                                      ),
-                                    ),
-                                    // Obx(() {
-                                    //   if (controller.menuDetailsModel.value
-                                    //       .menuFoods![index].isActive!) {
-                                    //     return Text(
-                                    //       "Active",
-                                    //       style: CustomTextStyles.bodyMedium13Green,
-                                    //     );
-                                    //   } else {
-                                    //     return Text(
-                                    //       "Inactive",
-                                    //       style: CustomTextStyles.bodyMedium13Red,
-                                    //     );
-                                    //   }
-                                    // })
+                                    // const Divider()
                                   ],
                                 ),
-                                // const Divider()
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                          );
+                        },
+                      ),
                 ),
-                InkWell(
-                  onTap: () {
-                    controller.goToAddFood();
-                  },
-                  child: SizedBox(
-                    height: 40.v,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.add_circle,
-                          color: appTheme.green500,
+                Obx(() {
+                  if (controller.isOwned.value) {
+                    return InkWell(
+                      onTap: () {
+                        controller.goToAddFood();
+                      },
+                      child: SizedBox(
+                        height: 40.v,
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.add_circle,
+                              color: appTheme.green500,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10.h),
+                              child: Text("txt_add_food".tr,
+                                  style: CustomTextStyles.bodyMediumGreen500),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10.h),
-                          child: Text("txt_add_food".tr,
-                              style: CustomTextStyles.bodyMediumGreen500),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                      ),
+                    );
+                  }
+                  else {
+                    return Container();
+                  }
+                }),
                 const Divider()
               ],
             ),

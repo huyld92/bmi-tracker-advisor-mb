@@ -2,7 +2,6 @@ import 'package:bmi_tracker_mb_advisor/screens/update_menu/update_menu_screen.da
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../../theme/custom_text_style.dart';
 import '../../util/app_export.dart';
 import 'controller/menu_controller.dart';
 

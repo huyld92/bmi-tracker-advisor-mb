@@ -46,7 +46,7 @@ class SubscriptionItemWidget extends StatelessWidget {
                     // ),
                     Image(
                         image: AssetImage(
-                            'assets/images/subcription history.png')),
+                            'assets/images/subscription_history.png')),
                 radius: 20,
                 // backgroundColor: Colors.green,
               ),

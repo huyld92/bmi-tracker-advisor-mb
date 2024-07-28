@@ -10,6 +10,7 @@ class MenuDetailsController extends GetxController {
   Rx<MenuDetailsModel> menuDetailsModel = MenuDetailsModel().obs;
 
   var isLoading = false.obs;
+  var isOwned = false.obs;
 
   @override
   void onInit() {
@@ -19,9 +20,11 @@ class MenuDetailsController extends GetxController {
 
   Future<void> fetchMenuDetailsScreen() async {
     isLoading.value = true;
-    // int menuID = Get.arguments;
-    int menuID = 1;
-    // await Future.delayed(Duration(seconds: 5));
+    var arguments = Get.arguments;
+
+    int menuID = arguments[0];
+    isOwned.value = arguments[1];
+
     await getMenuDetails(menuID);
 
     isLoading.value = false;
@@ -51,7 +54,7 @@ class MenuDetailsController extends GetxController {
     // gọi API lấy danh sách menu của advisor
     var response =
         await MenuRepository.createNewMenuFoods(createMenuFoodRequests);
-     // kiểm tra kết quả
+    // kiểm tra kết quả
     if (response.statusCode == 201) {
       // Parse the JSON string
       List<dynamic> jsonList = jsonDecode(response.body);

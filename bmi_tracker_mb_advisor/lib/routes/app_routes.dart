@@ -1,5 +1,3 @@
-import 'package:bmi_tracker_mb_advisor/screens/activity_logs/activity_logs_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/activity_logs/binding/activity_logs_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/add_exercise_to_workout/add_exercise_to_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/add_exercise_to_workout/binding/add_exercise_to_workout_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/add_food_to_menu/add_food_to_menu_screen.dart';
@@ -12,6 +10,10 @@ import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_b
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/binding/create_workout_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/create_workout_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/edit_profile/binding/edit_profile_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/edit_profile/edit_profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/binding/login_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/login_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/meal_logs/binding/meal_logs_binding.dart';
@@ -21,6 +23,8 @@ import 'package:bmi_tracker_mb_advisor/screens/member/member_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member_details/binding/member_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/binding/menu_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/menu_details_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/binding/statistics_calories_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/statistics_calories_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/binding/statistics_weight_binding.dart';
@@ -42,12 +46,15 @@ class AppRoutes {
   static const String createMenuScreen = '/createMenuScreen';
   static const String createBlogScreen = '/createBlogScreen';
   static const String createWorkoutScreen = '/createWorkoutScreen';
+  static const String editProfileScreen = '/editProfileScreen';
+  static const String foodDetailsScreen = '/foodDetailsScreen';
   static const String loginScreen = '/loginScreen';
   static const String mealLogsScreen = '/mealLogsScreen';
   static const String memberScreen = '/memberScreen';
   static const String memberDetailsScreen = '/memberDetailsScreen';
   static const String menuScreen = '/menuScreen';
   static const String menuDetailsScreen = '/menuDetailsScreen';
+  static const String profileScreen = '/profileScreen';
   static const String statisticsCaloriesScreen = '/statisticsCaloriesScreen';
   static const String statisticsWeightScreen = '/statisticsWeightScreen';
   static const String workoutScreen = '/workoutScreen';
@@ -57,13 +64,6 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
-    GetPage(
-      name: createBlogScreen,
-      page: () => const CreateBlogScreen(),
-      bindings: [
-        CreateBlogBinding(),
-      ],
-    ),
     GetPage(
       name: addExerciseToWorkoutScreen,
       page: () => const AddExerciseToWorkoutScreen(),
@@ -85,6 +85,14 @@ class AppRoutes {
         BottomNavBinding(),
         WorkspaceBinding(),
         MemberBinding(),
+        ProfileBinding(),
+      ],
+    ),
+    GetPage(
+      name: createBlogScreen,
+      page: () => const CreateBlogScreen(),
+      bindings: [
+        CreateBlogBinding(),
       ],
     ),
     GetPage(
@@ -99,6 +107,20 @@ class AppRoutes {
       page: () => const CreateWorkoutScreen(),
       bindings: [
         CreateWorkoutBinding(),
+      ],
+    ),
+    GetPage(
+      name: editProfileScreen,
+      page: () => const EditProfileScreen(),
+      bindings: [
+        EditProfileBinding(),
+      ],
+    ),
+    GetPage(
+      name: foodDetailsScreen,
+      page: () => const FoodDetailScreen(),
+      bindings: [
+        FoodDetailsBinding(),
       ],
     ),
     GetPage(
@@ -134,6 +156,13 @@ class AppRoutes {
       page: () => const MenuDetailsScreen(),
       bindings: [
         MenuDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: profileScreen,
+      page: () => const ProfileScreen(),
+      bindings: [
+        ProfileBinding(),
       ],
     ),
     GetPage(

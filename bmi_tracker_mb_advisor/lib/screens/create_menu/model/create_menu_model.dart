@@ -4,7 +4,7 @@ class CreateMenuModel {
   String? menuName;
   String? menuPhoto;
   String? menuDescription;
-  List<CreateMenuFoodModel>? menuFoods;
+  List<MenuFoodRequestModel>? menuFoods;
 
   CreateMenuModel({
     this.menuName,
@@ -19,8 +19,8 @@ class CreateMenuModel {
       menuPhoto: json['menuPhoto'],
       menuDescription: json['menuDescription'],
       menuFoods: json['menuFoods'] != null
-          ? List<CreateMenuFoodModel>.from(
-          json['menuFoods'].map((x) => CreateMenuFoodModel.fromJson(x)))
+          ? List<MenuFoodRequestModel>.from(
+          json['menuFoods'].map((x) => MenuFoodRequestModel.fromJson(x)))
           : null,
     );
   }
@@ -37,17 +37,17 @@ class CreateMenuModel {
   }
 }
 
-class CreateMenuFoodModel {
+class MenuFoodRequestModel {
   int? foodID;
   String? mealType;
 
-  CreateMenuFoodModel({
+  MenuFoodRequestModel({
     this.foodID,
     this.mealType,
   });
 
-  factory CreateMenuFoodModel.fromJson(Map<String, dynamic> json) {
-    return CreateMenuFoodModel(
+  factory MenuFoodRequestModel.fromJson(Map<String, dynamic> json) {
+    return MenuFoodRequestModel(
       foodID: json['foodID'],
       mealType: json['mealType'],
     );
@@ -65,4 +65,10 @@ List<CreateMenuModel> menuModelsFromJson(String str) =>
     List<CreateMenuModel>.from(json.decode(str).map((x) => CreateMenuModel.fromJson(x)));
 
 String menuModelsToJson(List<CreateMenuModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+List<MenuFoodRequestModel> menuFoodModelsFromJson(String str) =>
+    List<MenuFoodRequestModel>.from(json.decode(str).map((x) => MenuFoodRequestModel.fromJson(x)));
+
+String menuFoodModelsToJson(List<MenuFoodRequestModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));

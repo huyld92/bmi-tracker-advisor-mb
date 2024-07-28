@@ -24,6 +24,12 @@ class CustomTextStyles {
   static get bodyMedium13Green => theme.textTheme.bodyMedium!
       .copyWith(color: Colors.green, fontSize: 13.fSize);
 
+  static get bodyMedium16Red => theme.textTheme.bodyMedium!
+      .copyWith(color: Colors.red, fontSize: 16.fSize);
+
+  static get bodyMedium16Green => theme.textTheme.bodyMedium!
+      .copyWith(color: Colors.green, fontSize: 16.fSize);
+
   static get bodyMedium14 => theme.textTheme.bodyMedium!
       .copyWith(color: Colors.black, fontSize: 14.fSize);
 

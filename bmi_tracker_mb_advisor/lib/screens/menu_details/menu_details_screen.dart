@@ -1,11 +1,9 @@
-import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_deltail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/controller/menu_details_controller.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../../models/menu_food_model.dart';
 import '../../util/app_export.dart';
-import '../../widgets/custom_image_view.dart';
 
 class MenuDetailsScreen extends GetView<MenuDetailsController> {
   const MenuDetailsScreen({super.key});
@@ -24,57 +22,267 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
         );
       }
       return Scaffold(
-        backgroundColor: appTheme.grey300,
+        backgroundColor: appTheme.grey100,
         appBar: AppBar(
-          backgroundColor: appTheme.white,
+          // backgroundColor: appTheme.white,
           title: Obx(
-            () => Text("${controller.menuFoodModel.value.menuName}".tr,
+            () => Text("${controller.menuDetailsModel.value.menuName}".tr,
                 style: theme.textTheme.headlineMedium),
           ),
         ),
-        body: Container(
-          padding: EdgeInsets.symmetric(vertical: 5.v, horizontal: 10.h),
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Số cột trong GridView
-              crossAxisSpacing: 10, // Khoảng cách giữa các cột
-              mainAxisSpacing: 10, // Khoảng cách giữa các hàng
-            ),
-            itemCount: controller.menuFoodModel.value.menuFoods?.length,
-            itemBuilder: (context, index) {
-              Food? food =
-                  controller.menuFoodModel.value.menuFoods![index].food;
-              // Tạo các ô trong GridView
-              return Container(
-                decoration: BoxDecoration(
-
-                    // shape: BoxShape.rectangle,
-                    color: appTheme.white,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(10.adaptSize))),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(16.0.v),
+          child: Container(
+            margin: EdgeInsets.only(bottom: 70.v),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
                   child: Column(
                     children: [
-                      CustomImageView(
-                        onTap: () {
-                          Get.to(FoodDetailScreen());
-                        },
-                        imagePath: food?.foodPhoto,
-                        height: 110.adaptSize,
-                        width: 150.adaptSize,
-                        fit: BoxFit.fitWidth,
-                        radius: BorderRadius.circular(5),
-                      ),
-                      Center(
-                        child: Text("${food?.foodName}",
-                            style: theme.textTheme.bodySmall),
+                      CircleAvatar(
+                        radius: 40,
+                        child: Icon(
+                          Icons.food_bank_rounded,
+                          size: 40.adaptSize,
+                        ),
                       ),
                     ],
                   ),
                 ),
-              );
-            },
+                // menu information
+                Container(
+                  margin: EdgeInsets.only(top: 15.v),
+                  padding: EdgeInsets.all(10.v),
+                  decoration: BoxDecoration(
+                    color: appTheme.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: appTheme.grey500,
+                        // offset: Offset(0, 5),
+                        blurStyle: BlurStyle.outer,
+                        blurRadius: 10,
+                      )
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.v),
+                        child: RichText(
+                          text: TextSpan(
+                              text: "${"txt_total_calories".tr}: ",
+                              style: theme.textTheme.titleSmall,
+                              children: [
+                                TextSpan(
+                                  text:
+                                      "${controller.menuDetailsModel.value.totalCalories} kcal",
+                                  style: CustomTextStyles.bodyMedium16,
+                                )
+                              ]),
+                        ),
+                      ),
+                      Obx(() {
+                        if (controller.menuDetailsModel.value.menuDescription!
+                            .isNotEmpty) {
+                          return RichText(
+                            text: TextSpan(
+                                text: "${"txt_description".tr}: ",
+                                style: theme.textTheme.titleSmall,
+                                children: [
+                                  TextSpan(
+                                    text:
+                                        "${controller.menuDetailsModel.value.menuDescription}",
+                                    style: CustomTextStyles.bodyMedium16,
+                                  )
+                                ]),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.v),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 5.h),
+                              child: Icon(
+                                Icons.circle,
+                                size: 16.adaptSize,
+                                color:
+                                    controller.menuDetailsModel.value.isActive!
+                                        ? appTheme.green500
+                                        : appTheme.red500,
+                              ),
+                            ),
+                            Obx(() {
+                              if (controller.menuDetailsModel.value.isActive!) {
+                                return Text(
+                                  "Active",
+                                  style: CustomTextStyles.bodyMedium16Green,
+                                );
+                              } else {
+                                return Text(
+                                  "Inactive",
+                                  style: CustomTextStyles.bodyMedium16Red,
+                                );
+                              }
+                            })
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                //menu food information
+                Container(
+                  margin: EdgeInsets.only(top: 20.v, bottom: 10.v),
+                  child: Text(
+                    "txt_foods".tr,
+                    style: theme.textTheme.titleSmall,
+                  ),
+                ),
+                Obx(
+                  () => ListView.builder(
+                    shrinkWrap: true,
+                    itemCount:
+                        controller.menuDetailsModel.value.menuFoods?.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Slidable(
+                        key: Key(controller
+                            .menuDetailsModel.value.menuFoods![index].menuFoodID
+                            .toString()),
+                        endActionPane:
+                            ActionPane(motion: const ScrollMotion(), children: [
+                          Obx(() {
+                            if (controller.menuDetailsModel.value
+                                .menuFoods![index].isActive!) {
+                              return SlidableAction(
+                                onPressed: (context) {
+                                  controller.deactivateFood(index);
+                                },
+                                backgroundColor: appTheme.red500,
+                                foregroundColor: Colors.white,
+                                icon: Icons.delete,
+                                label: 'txt_deactivate'.tr,
+                              );
+                            } else {
+                              return SlidableAction(
+                                onPressed: (context) {
+                                  controller.activateFood(index);
+                                },
+                                backgroundColor: const Color(0xFF1FBE1B),
+                                foregroundColor: Colors.white,
+                                icon: Icons.check_circle,
+                                label: 'txt_activate'.tr,
+                              );
+                            }
+                          }),
+                        ]),
+                        child: GestureDetector(
+                          onTap: () {
+                            controller.goToFoodDetails(controller
+                                .menuDetailsModel
+                                .value
+                                .menuFoods![index]
+                                .foodID);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10.v),
+                            color: appTheme.white,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          controller.menuDetailsModel.value
+                                              .menuFoods![index].foodName!,
+                                          style: CustomTextStyles
+                                              .titleMedium16Black,
+                                        ),
+                                        Text(
+                                          controller.menuDetailsModel.value
+                                              .menuFoods![index].mealType!,
+                                          style: CustomTextStyles.bodyMedium16,
+                                        ),
+                                        Text(
+                                          "${controller.menuDetailsModel.value.menuFoods![index].foodCalories!} kcal",
+                                          style: CustomTextStyles.bodyMedium16,
+                                        ),
+                                      ],
+                                    ),
+
+                                    Container(
+                                      margin: EdgeInsets.only(right: 5.h),
+                                      child: Icon(
+                                        Icons.circle,
+                                        size: 16.adaptSize,
+                                        color: controller.menuDetailsModel.value
+                                                .menuFoods![index].isActive!
+                                            ? appTheme.green500
+                                            : appTheme.red500,
+                                      ),
+                                    ),
+                                    // Obx(() {
+                                    //   if (controller.menuDetailsModel.value
+                                    //       .menuFoods![index].isActive!) {
+                                    //     return Text(
+                                    //       "Active",
+                                    //       style: CustomTextStyles.bodyMedium13Green,
+                                    //     );
+                                    //   } else {
+                                    //     return Text(
+                                    //       "Inactive",
+                                    //       style: CustomTextStyles.bodyMedium13Red,
+                                    //     );
+                                    //   }
+                                    // })
+                                  ],
+                                ),
+                                // const Divider()
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    controller.goToAddFood();
+                  },
+                  child: SizedBox(
+                    height: 40.v,
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.add_circle,
+                          color: appTheme.green500,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.h),
+                          child: Text("txt_add_food".tr,
+                              style: CustomTextStyles.bodyMediumGreen500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const Divider()
+              ],
+            ),
           ),
         ),
       );

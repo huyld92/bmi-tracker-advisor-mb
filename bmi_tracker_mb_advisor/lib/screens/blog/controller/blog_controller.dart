@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/screens/blog/model/blog_model.dart';
@@ -13,18 +14,18 @@ class BlogController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    int advisorID = Get.arguments;
-    await getBlogByAdvisorID(advisorID);
+    await getAllBlog();
     super.onInit();
   }
 
-  Future<void> getBlogByAdvisorID(int advisorID) async {
-    var response = await BlogRepository.getBlogByAdvisorId(advisorID);
+  Future<void> getAllBlog() async {
+    var response = await BlogRepository.getAllBlog();
 
     // log('response: ${response}');
     if (response.statusCode == 200) {
       // chuyển dổi từ json sang advisor model
       blogList.value = blogModelFromJson(response.body);
+      log('get all blog');
     } else if (response.statusCode == 204) {
       // Quay về màn hình trước đó khi advisor không tồn tại
       blogList.clear();

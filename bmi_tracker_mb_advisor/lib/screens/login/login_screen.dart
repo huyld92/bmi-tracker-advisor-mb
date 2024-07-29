@@ -1,3 +1,4 @@
+import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forget_password_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/controller/login_controller.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
@@ -199,6 +200,19 @@ class LoginBottomScreen extends GetView<LoginController> {
                             ),
                           ),
                         ],
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          controller.goToForgetPasswordScreen();
+                          // Get.to(ForgotPasswordScreen());
+                        },
+                        child: Text(
+                          'Forgot password?',
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                        ),
                       ),
                     ],
                   ),

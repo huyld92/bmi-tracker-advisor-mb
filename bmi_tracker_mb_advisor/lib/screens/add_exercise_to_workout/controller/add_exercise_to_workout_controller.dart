@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/models/exercise_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/exercise_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/controller/create_workout_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/model/create_workout_model.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/model/workout_exercise.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/controller/create_workout_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/model/create_workout_model.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/model/workout_exercise.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/controller/workout_details_controller.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_button_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';

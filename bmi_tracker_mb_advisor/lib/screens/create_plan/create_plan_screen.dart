@@ -64,7 +64,7 @@ class CreatePlanScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 30.h),
                 Text(
-                  'txt_workout_name'.tr,
+                  'Plan Name',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!

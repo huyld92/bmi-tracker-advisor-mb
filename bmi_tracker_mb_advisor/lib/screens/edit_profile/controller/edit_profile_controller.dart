@@ -81,8 +81,8 @@ class EditProfileController extends GetxController {
           image); // Upload ảnh lên Firebase Storage và nhận link tải xuống
       if (downloadUrl != null) {
         // Gọi API để cập nhật link ảnh lên server
-        // currentMember.value.accountPhoto = downloadUrl;
-        updatePhotoLink(downloadUrl);
+        accountModel.value.accountPhoto = downloadUrl;
+        // updatePhotoLink(downloadUrl);
       } else {
         log('Failed to get download URL'); // Xử lý lỗi nếu không nhận được link tải xuống
       }
@@ -152,5 +152,6 @@ class EditProfileController extends GetxController {
     // cập nhật lại thông tin member
     await getProfile();
 
-    isLoading.value = false;}
+    isLoading.value = false;
+  }
 }

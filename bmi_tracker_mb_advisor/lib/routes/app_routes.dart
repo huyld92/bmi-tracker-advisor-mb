@@ -12,8 +12,8 @@ import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_b
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/binding/create_workout_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/create_workout_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/binding/create_workout_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/create_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_blog/binding/edit_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_profile/binding/edit_profile_binding.dart';
@@ -142,6 +142,7 @@ class AppRoutes {
         WorkspaceBinding(),
         MemberBinding(),
         ProfileBinding(),
+        BlogBinding(),
       ],
     ),
     GetPage(

@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/config/jwt_interceptor.dart';
 import 'package:bmi_tracker_mb_advisor/models/update_workout_request.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/model/create_workout_model.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/model/create_workout_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/build_server.dart';

@@ -78,7 +78,10 @@ class PlanDetailItemWidget extends StatelessWidget {
             label!,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          Text(value ?? ''),
+          Text(
+            value ?? '',
+            maxLines: 2,
+          ),
         ],
       ),
     );

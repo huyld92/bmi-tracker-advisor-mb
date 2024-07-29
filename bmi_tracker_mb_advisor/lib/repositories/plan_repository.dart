@@ -18,13 +18,24 @@ class PlanRepository {
     return response;
   }
 
+  // static Future<http.Response> createNewPlan(PlanModel createPlan) async {
+  //   Map<String, String> header = {
+  //     "Content-type": "application/json",
+  //   };
+  //   var response = await interceptedClient
+  //       .post(BuildServer.buildUrl('plans/createNew'), headers: header)
+  //       .timeout(const Duration(seconds: 30));
+  //   return response;
+  // }
+
   static Future<http.Response> createNewPlan(PlanModel createPlan) async {
     Map<String, String> header = {
       "Content-type": "application/json",
     };
-    var response = await interceptedClient
-        .post(BuildServer.buildUrl('plans/createNew'), headers: header)
-        .timeout(const Duration(seconds: 30));
+    var response = await interceptedClient.post(
+        BuildServer.buildUrl("plans/createNew"),
+        headers: header,
+        body: json.encode(createPlan.toJson()));
     return response;
   }
 

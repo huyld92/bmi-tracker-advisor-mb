@@ -49,4 +49,8 @@ class BlogController extends GetxController {
   void goToCreateBlog() {
     Get.toNamed(AppRoutes.createBlogScreen);
   }
+
+  void goToBlogDetail(int index) {
+    Get.toNamed(AppRoutes.blogDetailsScreen, arguments: blogList[index]);
+  }
 }

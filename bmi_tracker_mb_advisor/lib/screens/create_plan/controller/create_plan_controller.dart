@@ -63,8 +63,9 @@ class CreatePlanController extends GetxController {
       // convert list exercises from json
       var planController = Get.find<PlanController>();
       await planController.fetchPlan();
-      Get.snackbar("Success", jsonDecode(response.body)["message"]);
+
       Get.back();
+      Get.snackbar("Success", jsonDecode(response.body)["message"]);
     } else if (response.statusCode == 400) {
       // thông báo lỗi
       Get.snackbar("Create failed!", jsonDecode(response.body)["message"]);

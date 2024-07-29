@@ -32,7 +32,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
             children: [
               Obx(
                 () => Container(
-                  height: 260.h,
+                  height: 300.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     // color: Colors.amber,

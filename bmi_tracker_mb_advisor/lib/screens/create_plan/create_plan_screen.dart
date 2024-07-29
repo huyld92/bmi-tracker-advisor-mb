@@ -100,6 +100,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
+                  controller: controller.planPriceController,
                   // controller: controller.txtStandardWeightController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
@@ -128,6 +129,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 3,
+                  controller: controller.planDescriptionController,
                   // controller: controller.txtStandardWeightController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
@@ -155,6 +157,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
+                  controller: controller.planDurationController,
                   // controller: controller.txtStandardWeightController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);

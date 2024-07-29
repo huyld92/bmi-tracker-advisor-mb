@@ -321,7 +321,7 @@ class WorkoutDetailsScreen extends GetView<WorkoutDetailsController> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
-                                          width: 270.h,
+                                          width: 260.h,
                                           child: Text(
                                             "${TagEmojiUtils.getEmojiForTag(controller.workoutModel.value.workoutExercises![index].tagID)} "
                                             "${controller.workoutModel.value.workoutExercises![index].exerciseName!}",

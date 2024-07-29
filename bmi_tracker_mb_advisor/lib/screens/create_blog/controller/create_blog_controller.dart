@@ -93,7 +93,7 @@ class CreateBlogController extends GetxController {
         // Gọi API để cập nhật link ảnh lên server
         blogModel.value.blogPhoto = downloadUrl;
         log('upload success');
-        Get.snackbar('upload photo success', 'upload photo success');
+        // Get.snackbar('upload photo success', 'upload photo success');
         // updatePhotoLink(downloadUrl);
       } else {
         log('Failed to get download URL'); // Xử lý lỗi nếu không nhận được link tải xuống
@@ -161,8 +161,9 @@ class CreateBlogController extends GetxController {
       // convert list exercises from json
       var blogController = Get.find<BlogController>();
       await blogController.getAllBlog();
-      Get.snackbar("Success", jsonDecode(response.body)["message"]);
+
       Get.back();
+      Get.snackbar("Success", jsonDecode(response.body)["message"]);
     } else if (response.statusCode == 400) {
       // thông báo lỗi
       Get.snackbar("Create failed!", jsonDecode(response.body)["message"]);

@@ -53,10 +53,23 @@ class CreateBlogScreen extends GetView<CreateBlogController> {
                         height: 250.v,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
-                          child: Image(
-                              image: NetworkImage(
-                                  'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg' ??
-                                      controller.blogModel.value.blogPhoto!)),
+                          child: Obx(
+                            () {
+                              // Check if blogPhoto is null or not
+                              String? imageUrl =
+                                  controller.blogModel.value.blogPhoto;
+
+                              // Provide a default image URL if blogPhoto is null
+                              if (imageUrl == null) {
+                                imageUrl =
+                                    'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg';
+                              }
+
+                              return Image(
+                                image: NetworkImage(imageUrl),
+                              );
+                            },
+                          ),
                         ),
                       ),
                       Positioned(

@@ -57,7 +57,9 @@ class BlogScreen extends GetView<BlogController> {
                             itemCount: controller.blogList.length,
                             itemBuilder: (context, index) {
                               return GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  controller.goToBlogDetail(index);
+                                },
                                 child: Stack(
                                   children: [
                                     CustomBlogCard(
@@ -65,7 +67,7 @@ class BlogScreen extends GetView<BlogController> {
                                       // photoUrl: controller.blogModel.value.blogPhoto,
                                       // title: controller.blogModel.value.blogName,
                                       onTitleTap: () {
-                                        Get.to(BlogDetailScreen());
+                                        // Get.to(BlogDetailScreen());
                                       },
                                     ),
                                   ],

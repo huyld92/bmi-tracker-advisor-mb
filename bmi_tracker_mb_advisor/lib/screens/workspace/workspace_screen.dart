@@ -18,7 +18,7 @@ class WorkspaceScreen extends GetView<WorkspaceController> {
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text("txt_workspace".tr, style: theme.textTheme.titleLarge),
+          title: Text("Workplace", style: theme.textTheme.titleLarge),
           actions: [
             Container(
               margin: EdgeInsets.only(right: 10.h),
@@ -62,7 +62,7 @@ class WorkspaceScreen extends GetView<WorkspaceController> {
                   ),
                   Container(
                     padding: EdgeInsets.only(bottom: 5.h),
-                    height: 600.v,
+                    height: 575.v,
                     // width: 50.v,
                     child: const TabBarView(
                       physics: NeverScrollableScrollPhysics(),

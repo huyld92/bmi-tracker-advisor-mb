@@ -1,8 +1,8 @@
+import 'package:bmi_tracker_mb_advisor/screens/plan/controller/plan_controller.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan_detail/plan_detail_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/subscription_history_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/subscription_history/controller/subscription_history_controller.dart';
 import '../util/app_export.dart';
 
 // ignore: must_be_immutable
@@ -16,14 +16,14 @@ class PlanItemWidget extends StatelessWidget {
 
   int index;
 
-  // var controller = Get.find<SubscriptionHistoryController>();
+  var controller = Get.find<PlanController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // controller.goToSubscriptionsDetails(index);
-        Get.to(PlanDetailScreen());
+        controller.goToPlanDetail(index);
+        // Get.to(PlanDetailScreen());
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 4.v),
@@ -66,10 +66,11 @@ class PlanItemWidget extends StatelessWidget {
               opacity: 0.5,
               child: Padding(
                 padding: EdgeInsets.only(left: 16.h),
-                child: Text(
-                  // controller.subscriptionModels[index].getSubscriptionDate(),
-                  'Plan Name',
-                  style: Theme.of(context).textTheme.bodyLarge,
+                child: Obx(
+                  () => Text(
+                    "${controller.planModel[index].planName}",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ),
             ),
@@ -91,10 +92,11 @@ class PlanItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    // "${controller.subscriptionModels[index].subscriptionStatus}",
-                    '30 days',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                  Obx(
+                    () => Text(
+                      "${controller.planModel[index].planDuration} days",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),
@@ -115,10 +117,11 @@ class PlanItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    // "${controller.subscriptionModels[index].advisorID}",
-                    '100,000 VND',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                  Obx(
+                    () => Text(
+                      "${controller.planModel[index].price?.round().formatWithThousandSeparator()} VND",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),
@@ -136,10 +139,11 @@ class PlanItemWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
-                  Text(
-                    // "${controller.subscriptionModels[index].amount}",
-                    '5 Members',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                  Obx(
+                    () => Text(
+                      "${controller.planModel[index].numberOfUses}",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),

@@ -37,15 +37,16 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                   decoration: BoxDecoration(
                     // color: Colors.amber,
                     image: DecorationImage(
-                      image:
-                          NetworkImage("${controller.member.value.accountPhoto}"),
+                      image: NetworkImage(
+                          "${controller.member.value.accountPhoto}"),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -185,8 +186,8 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                 ),
                               ),
                               child: Image(
-                                image: const AssetImage(
-                                    'assets/images/meal.png'),
+                                image:
+                                    const AssetImage('assets/images/meal.png'),
                                 width: 60.adaptSize,
                                 height: 60.adaptSize,
                               ),
@@ -230,7 +231,8 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                       height: 10.h,
                     ),
                     Text(
-                      'txt_customize_menu_and_Workout'.tr,
+                      // 'txt_customize_menu_and_Workout'.tr,
+                      'Assign menu and workout',
                       style: theme.textTheme.titleLarge,
                     ),
                     SizedBox(
@@ -254,13 +256,15 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                 ),
                               ),
                               child: Image(
-                                image: const AssetImage('assets/images/menu.png'),
+                                image:
+                                    const AssetImage('assets/images/menu.png'),
                                 width: 60.adaptSize,
                                 height: 60.adaptSize,
                               ),
                             ),
                             Text(
-                              'txt_view_menu'.tr,
+                              // 'txt_view_menu'.tr,
+                              'Menu',
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyMedium,
                             ),
@@ -281,14 +285,15 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                 ),
                               ),
                               child: Image(
-                                image:
-                                    const AssetImage('assets/images/workout.png'),
+                                image: const AssetImage(
+                                    'assets/images/workout.png'),
                                 width: 60.adaptSize,
                                 height: 60.adaptSize,
                               ),
                             ),
                             Text(
-                              'txt_view_workout'.tr,
+                              // 'txt_view_workout'.tr,
+                              "Workout",
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyMedium,
                             ),

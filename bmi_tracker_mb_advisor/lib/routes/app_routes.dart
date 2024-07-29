@@ -12,6 +12,8 @@ import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_b
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_plan_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_plan_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_blog/binding/edit_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_profile/binding/edit_profile_binding.dart';
@@ -33,6 +35,7 @@ import 'package:bmi_tracker_mb_advisor/screens/menu_details/binding/menu_details
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/menu_details_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/binding/plan_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/plan_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/plan_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan_detail/plan_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
@@ -99,6 +102,13 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
+    GetPage(
+      name: createPlanScreen,
+      page: () => const CreatePlanScreen(),
+      bindings: [
+        CreatePlanBinding(),
+      ],
+    ),
     GetPage(
       name: activityLogsScreen,
       page: () => const ActivityLogsScreen(),
@@ -247,7 +257,7 @@ class AppRoutes {
       name: planDetailsScreen,
       page: () => const PlanDetailScreen(),
       bindings: [
-        PlanBinding(),
+        PlanDetailsBinding(),
       ],
     ),
     GetPage(

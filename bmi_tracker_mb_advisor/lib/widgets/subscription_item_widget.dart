@@ -1,4 +1,5 @@
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/subscription_history_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/subscription_history/controller/subscription_history_controller.dart';
@@ -15,14 +16,14 @@ class SubscriptionItemWidget extends StatelessWidget {
 
   int index;
 
-  // var controller = Get.find<SubscriptionHistoryController>();
+  var controller = Get.find<SubscriptionHistoryController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // controller.goToSubscriptionsDetails(index);
-        Get.to(SubscriptionDetailsScreen());
+        controller.goToSubscriptionsDetails(index);
+        // Get.to(SubscriptionDetailsScreen());
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 4.v),
@@ -67,10 +68,11 @@ class SubscriptionItemWidget extends StatelessWidget {
               opacity: 0.5,
               child: Padding(
                 padding: EdgeInsets.only(left: 16.h),
-                child: Text(
-                  // controller.subscriptionModels[index].getSubscriptionDate(),
-                  '2023-07-20',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                child: Obx(
+                  () => Text(
+                    controller.subscriptionModels[index].getSubscriptionDate(),
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                 ),
               ),
             ),
@@ -87,15 +89,16 @@ class SubscriptionItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Booking status",
+                        "Subscription status",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ),
-                  Text(
-                    // "${controller.subscriptionModels[index].subscriptionStatus}",
-                    'subscriptionStatus',
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Obx(
+                    () => Text(
+                      "${controller.subscriptionModels[index].subscriptionStatus}",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),
@@ -116,10 +119,11 @@ class SubscriptionItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    // "${controller.subscriptionModels[index].advisorID}",
-                    'advisorID',
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Obx(
+                    () => Text(
+                      "${controller.subscriptionModels[index].advisorID} days",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),
@@ -137,10 +141,11 @@ class SubscriptionItemWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
-                  Text(
-                    // "${controller.subscriptionModels[index].amount}",
-                    'amount',
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Obx(
+                    () => Text(
+                      "${controller.subscriptionModels[index].amount?.round().formatWithThousandSeparator()} VND",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),

@@ -1,10 +1,11 @@
+import 'package:bmi_tracker_mb_advisor/screens/create_plan/controller/create_plan_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/custom_button_style.dart';
 import '../../theme/theme_helper.dart';
 
-class CreatePlanScreen extends StatelessWidget {
+class CreatePlanScreen extends GetView<CreatePlanController> {
   const CreatePlanScreen({super.key});
 
   @override
@@ -90,7 +91,7 @@ class CreatePlanScreen extends StatelessWidget {
                 SizedBox(height: 10.v),
                 Text(
                   // 'txt_standard_weight'.tr,
-                  'Price',
+                  'Price (VND)',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -145,7 +146,7 @@ class CreatePlanScreen extends StatelessWidget {
                 SizedBox(height: 10.v),
                 Text(
                   // 'txt_standard_weight'.tr,
-                  'Plan Duration',
+                  'Plan Duration (days)',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -182,6 +183,7 @@ class CreatePlanScreen extends StatelessWidget {
             style: CustomButtonStyles.outlineButtonGreen500,
             onPressed: () {
               // controller.createNewWorkout();
+              controller.createBlog();
             },
             child: Text(
               "txt_save".tr,

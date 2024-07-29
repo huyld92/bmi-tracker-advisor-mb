@@ -1,6 +1,10 @@
+import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/controller/subscription_history_details_controller.dart';
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 
-class SubscriptionDetailsScreen extends StatelessWidget {
+class SubscriptionDetailsScreen
+    extends GetView<SubscriptionHistoryDetailsController> {
   const SubscriptionDetailsScreen({super.key});
 
   @override
@@ -21,55 +25,36 @@ class SubscriptionDetailsScreen extends StatelessWidget {
           children: [
             SubscriptionDetailItem(
               label: 'Subscription Date',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'SubscriptionDate',
+              value: controller.subscriptionModel.value.getSubscriptionDate(),
+              // 'SubscriptionDate',
             ),
             SubscriptionDetailItem(
-              label: 'Amount',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  '100,000 VND',
-            ),
+                label: 'Amount',
+                value:
+                    '${controller.subscriptionModel.value.amount?.round().formatWithThousandSeparator()} VND'),
             const Divider(
               color: Color.fromARGB(255, 112, 105, 105),
             ),
             SubscriptionDetailItem(
-              label: 'Subscription Number',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Subscription Number',
-            ),
+                label: 'Subscription Number',
+                value: controller.subscriptionModel.value.subscriptionNumber),
             SubscriptionDetailItem(
-              label: 'Description',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Description',
-            ),
+                label: 'Description',
+                value:
+                    controller.subscriptionModel.value.subscriptionDescription),
             SubscriptionDetailItem(
-              label: 'Start Date',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Start Date',
-            ),
+                label: 'Start Date',
+                value: controller.subscriptionModel.value.getStartDate()),
             SubscriptionDetailItem(
-              label: 'End Date',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'End Date',
-            ),
+                label: 'End Date',
+                value: controller.subscriptionModel.value.getEndDate()),
             SubscriptionDetailItem(
-              label: 'Member Name',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Member Name',
-            ),
+                label: 'Member Name',
+                value:
+                    controller.subscriptionModel.value.memberName.toString()),
             SubscriptionDetailItem(
-              label: 'Status',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Status',
-            ),
+                label: 'Status',
+                value: controller.subscriptionModel.value.subscriptionStatus),
           ],
         ),
       ),

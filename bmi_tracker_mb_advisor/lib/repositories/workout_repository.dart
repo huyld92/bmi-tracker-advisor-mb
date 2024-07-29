@@ -3,10 +3,11 @@ import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/config/jwt_interceptor.dart';
 import 'package:bmi_tracker_mb_advisor/models/update_workout_request.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/model/create_workout_model.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workout_details/model/workout_exercise_request_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/build_server.dart';
+import '../screens/create_workout/model/create_workout_model.dart';
 
 class WorkoutRepository {
   static Future<http.Response> getAllWorkout() async {
@@ -82,6 +83,34 @@ class WorkoutRepository {
         headers: {
           "Content-type": "application/json",
         });
+
+    return response;
+  }
+
+  static createWorkoutExercise(WorkoutExerciseRequestModel requestModel) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.post(
+      BuildServer.buildUrl("workouts/createWorkoutExercises"),
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: jsonEncode(requestModel),
+    );
+
+    return response;
+  }
+
+  static deleteWorkoutExercise(int workoutExerciseID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.delete(
+      BuildServer.buildUrl(
+          "workouts/workout-exercise/delete?workoutExerciseID=$workoutExerciseID"),
+      headers: header,
+    );
 
     return response;
   }

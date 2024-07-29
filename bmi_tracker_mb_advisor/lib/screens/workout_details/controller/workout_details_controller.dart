@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 
+import '../../../models/workout_exercise_model.dart';
 import '../../../models/workout_model.dart';
 import '../../../repositories/workout_repository.dart';
+import '../model/workout_exercise_request_model.dart';
 
 class WorkoutDetailsController extends GetxController {
   Rx<WorkoutModel> workoutModel = WorkoutModel().obs;
@@ -46,14 +48,64 @@ class WorkoutDetailsController extends GetxController {
     }
   }
 
-  void deactivateWorkoutExercise(int index) {}
+  createWorkoutExercise(WorkoutExerciseRequestModel requestModel) async {
+    isLoading.value = true;
+    // gọi API create workout exercise
+    var response = await WorkoutRepository.createWorkoutExercise(requestModel);
 
-  void activateWorkoutExercise(int index) {}
+    // kiểm tra kết quả
+    if (response.statusCode == 201) {
+      // thành công cập nhật lại giao diện
+      int workoutID = workoutModel.value.workoutID!;
+      workoutModel.value = WorkoutModel();
+      await getWorkoutDetails(workoutID);
+    } else if (response.statusCode == 204) {
+    } else if (response.statusCode == 401) {
+      String message = jsonDecode(response.body)['message'];
+      if (message.contains("JWT token is expired")) {
+        Get.snackbar('Session Expired', 'Please login again');
+      }
+    } else {
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
+    }
+    isLoading.value = false;
+  }
 
   void goToExerciseDetails(foodID) {}
 
   void goToAddExercise() {
     Get.toNamed(AppRoutes.addExerciseToWorkoutScreen,
-        arguments: workoutModel.value.workoutID);
+            arguments: workoutModel.value.workoutID)
+        ?.then((value) async {
+      await createWorkoutExercise(value);
+    });
+  }
+
+  Future<void> deleteWorkoutExercise(int index) async {
+    isLoading.value = true;
+    // gọi API create workout exercise
+    int workoutExerciseID =
+        workoutModel.value.workoutExercises![index].workoutExerciseID!;
+    var response =
+        await WorkoutRepository.deleteWorkoutExercise(workoutExerciseID);
+
+    // kiểm tra kết quả
+    if (response.statusCode == 204) {
+      // thành công cập nhật lại giao diện
+      int workoutID = workoutModel.value.workoutID!;
+      workoutModel.value = WorkoutModel();
+      await getWorkoutDetails(workoutID);
+    } else if (response.statusCode == 204) {
+    } else if (response.statusCode == 401) {
+      String message = jsonDecode(response.body)['message'];
+      if (message.contains("JWT token is expired")) {
+        Get.snackbar('Session Expired', 'Please login again');
+      }
+    } else {
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
+    }
+    isLoading.value = false;
   }
 }

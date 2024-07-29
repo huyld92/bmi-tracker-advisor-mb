@@ -56,15 +56,10 @@ class MenuDetailsController extends GetxController {
         await MenuRepository.createNewMenuFoods(createMenuFoodRequests);
     // kiểm tra kết quả
     if (response.statusCode == 201) {
-      // Parse the JSON string
-      List<dynamic> jsonList = jsonDecode(response.body);
-
-      // Convert each JSON item to a MenuFoodModel object
-      List<MenuFoodModel> menuFoodModels =
-          jsonList.map((json) => MenuFoodModel.fromJson(json)).toList();
-
-      menuDetailsModel.value.menuFoods?.addAll(menuFoodModels);
-      menuDetailsModel.refresh();
+      // cập nhật thông tin food
+      int menuID = menuDetailsModel.value.menuID!;
+      menuDetailsModel.value = MenuDetailsModel();
+      await getMenuDetails(menuID);
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -123,6 +118,7 @@ class MenuDetailsController extends GetxController {
   void activateFood(int index) {
     menuDetailsModel.value.menuFoods![index].isActive = true;
     int menuFoodID = menuDetailsModel.value.menuFoods![index].menuFoodID!;
+
     activateMenuFood(menuFoodID);
     menuDetailsModel.refresh();
   }
@@ -140,5 +136,30 @@ class MenuDetailsController extends GetxController {
 
   void goToFoodDetails(int? foodID) {
     Get.toNamed(AppRoutes.foodDetailsScreen, arguments: foodID!);
+  }
+
+  Future<void> deleteMenuFood(int index) async {
+    isLoading.value = true;
+    // gọi API create workout exercise
+    int menuFoodID = menuDetailsModel.value.menuFoods![index].menuFoodID!;
+    var response = await MenuRepository.deleteMenuFood(menuFoodID);
+
+    // kiểm tra kết quả
+    if (response.statusCode == 204) {
+      // thành công cập nhật lại giao diện
+      int menuID = menuDetailsModel.value.menuID!;
+      menuDetailsModel.value = MenuDetailsModel();
+      await getMenuDetails(menuID);
+    } else if (response.statusCode == 204) {
+    } else if (response.statusCode == 401) {
+      String message = jsonDecode(response.body)['message'];
+      if (message.contains("JWT token is expired")) {
+        Get.snackbar('Session Expired', 'Please login again');
+      }
+    } else {
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
+    }
+    isLoading.value = false;
   }
 }

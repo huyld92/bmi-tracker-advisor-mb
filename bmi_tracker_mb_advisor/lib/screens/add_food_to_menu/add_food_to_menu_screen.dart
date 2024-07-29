@@ -78,10 +78,10 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                 style: CustomTextStyles.titleMedium16Black,
               ),
             ),
-            Container(
-              height: 100.v,
-              color: Colors.amberAccent,
-            ),
+            // Container(
+            //   height: 100.v,
+            //   color: Colors.amberAccent,
+            // ),
             // gridview food
             Expanded(
               child: Container(

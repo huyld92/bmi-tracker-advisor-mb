@@ -15,4 +15,14 @@ class FoodRepository {
         .timeout(const Duration(seconds: 30));
     return response;
   }
+
+  static getFoodByID(int foodID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient
+        .get(BuildServer.buildUrl("foods/getByID/$foodID"), headers: header)
+        .timeout(const Duration(seconds: 30));
+    return response;
+  }
 }

@@ -101,4 +101,16 @@ class MenuRepository {
     );
     return response;
   }
+
+  static deleteMenuFood(int menuFoodID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.delete(
+      BuildServer.buildUrl(
+          "menus/menu-food/delete/$menuFoodID"),
+      headers: header,
+    );
+
+    return response;}
 }

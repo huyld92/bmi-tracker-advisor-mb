@@ -26,14 +26,6 @@ class WorkoutModel {
   });
 
   factory WorkoutModel.fromJson(Map<String, dynamic> json) {
-    var exercisesJson = json['workoutExercises'] == null
-        ? []
-        : json['workoutExercises'] as List;
-
-    List<WorkoutExerciseModel> exerciseList = exercisesJson
-        .map((exercise) => WorkoutExerciseModel.fromJson(exercise))
-        .toList();
-
     return WorkoutModel(
       workoutID: json['workoutID'],
       workoutName: json['workoutName'],
@@ -43,7 +35,10 @@ class WorkoutModel {
       isActive: json['isActive'],
       advisorID: json['advisorID'],
       fullName: json['fullName'],
-      workoutExercises: exerciseList,
+      workoutExercises: json['workoutExercises'] != null
+          ? List<WorkoutExerciseModel>.from(json['workoutExercises']
+              .map((x) => WorkoutExerciseModel.fromJson(x)))
+          : List.empty(growable: true),
     );
   }
 

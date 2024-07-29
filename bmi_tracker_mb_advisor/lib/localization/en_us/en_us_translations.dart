@@ -109,6 +109,10 @@ final Map<String, String> enUs = {
   "txt_your_birthday": "Your birthday",
   "txt_plan": "Plan",
 
-  // workout details screen
-
+  // Food details screen
+  "txt_food_details": "Food Details",
+  "txt_nutrition": "Nutrition",
+  "txt_link_processing_video": "Link processing video",
+  "txt_video_link": "Video Link",
+  "txt_ingredients": "Ingredients",
 };

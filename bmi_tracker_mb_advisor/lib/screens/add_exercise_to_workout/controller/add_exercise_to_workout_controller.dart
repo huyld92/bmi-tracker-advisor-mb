@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/models/exercise_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/exercise_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout/controller/create_workout_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout/model/create_workout_model.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_workout/model/workout_exercise.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/controller/workout_details_controller.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_button_style.dart';
@@ -11,6 +9,8 @@ import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/calories_calculator.dart';
 import 'package:flutter/material.dart';
 
+import '../../create_workout/controller/create_workout_controller.dart';
+import '../../create_workout/model/create_workout_model.dart';
 import '../../workout_details/model/workout_exercise_request_model.dart';
 
 class AddExerciseToWorkoutController extends GetxController {
@@ -146,6 +146,7 @@ class AddExerciseToWorkoutController extends GetxController {
               int duration = int.parse(txtDurationController.text);
               await addExerciseToWorkout(index, duration);
               caloriesBurned.value = 0;
+              Get.back();
             }
           },
           style: CustomButtonStyles.outlineButtonGreen500,
@@ -268,6 +269,7 @@ class AddExerciseToWorkoutController extends GetxController {
         exerciseName: exerciseModels[index].exerciseName,
         caloriesBurned: caloriesBurned.value,
         duration: duration,
+        met: exerciseModels[index].met,
         emoji: exerciseModels[index].emoji,
       );
       createWorkoutController.workoutExercises.add(workoutExercise);

@@ -48,6 +48,7 @@ class EditProfileController extends GetxController {
     var response = await AccountRepository.getProfile();
     if (response.statusCode == 200) {
       accountModel.value = AccountModel.fromJson(jsonDecode(response.body));
+      print('accountModel:${accountModel.value.accountPhoto}');
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -81,8 +82,12 @@ class EditProfileController extends GetxController {
           image); // Upload ảnh lên Firebase Storage và nhận link tải xuống
       if (downloadUrl != null) {
         // Gọi API để cập nhật link ảnh lên server
-        accountModel.value.accountPhoto = downloadUrl;
-        // updatePhotoLink(downloadUrl);
+        // currentMember.value.accountPhoto = downloadUrl;
+        updatePhotoLink(downloadUrl);
+
+        // cập nhật lại thông tin member
+        accountModel.value = AccountModel();
+        await getProfile();
       } else {
         log('Failed to get download URL'); // Xử lý lỗi nếu không nhận được link tải xuống
       }
@@ -150,8 +155,8 @@ class EditProfileController extends GetxController {
     }
 
     // cập nhật lại thông tin member
+    accountModel.value = AccountModel();
     await getProfile();
-
     isLoading.value = false;
   }
 }

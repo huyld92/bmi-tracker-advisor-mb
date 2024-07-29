@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:bmi_tracker_mb_advisor/repositories/workout_repository.dart';
 import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/screens/add_exercise_to_workout/add_exercise_to_workout_screen.dart';
-
 import 'package:bmi_tracker_mb_advisor/screens/workout/controller/workout_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
+import '../../../util/calories_calculator.dart';
 import '../model/create_workout_model.dart';
 import '../model/workout_exercise.dart';
 
@@ -55,7 +55,7 @@ class CreateWorkoutController extends GetxController {
       standardWeight: standardWeight,
       workoutExerciseRequests: workoutExerciseRequests,
     );
-    // gọi API create new menu
+    // gọi API create new workout
     var response = await WorkoutRepository.createNewWorkout(createWorkoutModel);
     print('response:${response.statusCode}');
     // kiểm tra kết quả
@@ -86,7 +86,16 @@ class CreateWorkoutController extends GetxController {
     workoutExercises.removeAt(index);
   }
 
-  void onSavedStandardWeight(String? newValue) {
-    print('newValue:$newValue');
+  void onSubmittedStandardWeight(String? newValue) {
+    for (var workoutExercise in workoutExercises) {
+      double met = workoutExercise.met!;
+      String weight = txtStandardWeightController.text;
+      weight = weight.isEmpty ? "0" : weight;
+      int weightKg = int.parse(weight);
+      int duration = workoutExercise.duration!;
+      workoutExercise.caloriesBurned =
+          CaloriesCalculator.calculateCaloriesBurned(met, weightKg, duration);
+    }
+    workoutExercises.refresh();
   }
 }

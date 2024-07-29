@@ -4,7 +4,7 @@ class WorkoutExerciseModel {
   String? exerciseName;
   String? exercisePhoto;
   String? exerciseVideo;
-  int? met;
+  double? met;
   String? exerciseDescription;
   int? tagID;
   String? tagName;

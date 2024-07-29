@@ -27,7 +27,6 @@ class AddExerciseToWorkoutScreen
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Expanded(
                 child: Container(
                   margin: EdgeInsets.only(bottom: 15.v),
@@ -51,9 +50,8 @@ class AddExerciseToWorkoutScreen
                           child: Stack(
                             children: [
                               CustomCard(
-                                photoUrl:
-                                // controller
-                                //         .exerciseModels[index].exercisePhoto ??
+                                photoUrl: controller
+                                        .exerciseModels[index].exercisePhoto ??
                                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnxL_hu4jflVBvj-Cs8LEC52L_e7y9PjySxg&s",
                                 title:
                                     "${controller.exerciseModels[index].exerciseName}",

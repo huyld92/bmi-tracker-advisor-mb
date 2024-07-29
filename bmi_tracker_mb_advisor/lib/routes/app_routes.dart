@@ -12,8 +12,6 @@ import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_b
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout/binding/create_workout_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_workout/create_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_blog/binding/edit_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/edit_profile/binding/edit_profile_binding.dart';
@@ -54,6 +52,8 @@ import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 
 import '../screens/blog/binding/blog_binding.dart';
 import '../screens/blog_detail/binding/blog_details_binding.dart';
+import '../screens/create_workout/binding/create_workout_binding.dart';
+import '../screens/create_workout/create_workout_screen.dart';
 import '../screens/member_details/member_details_screen.dart';
 import '../screens/subscription_history_detail/binding/subscription_history_details_binding.dart';
 import '../screens/update_menu/binding/update_menu_binding.dart';

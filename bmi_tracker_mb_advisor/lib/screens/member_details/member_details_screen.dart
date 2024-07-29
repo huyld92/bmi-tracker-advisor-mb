@@ -231,8 +231,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                       height: 10.h,
                     ),
                     Text(
-                      // 'txt_customize_menu_and_Workout'.tr,
-                      'Assign menu and workout',
+                      'txt_customize_menu_and_Workout'.tr,
                       style: theme.textTheme.titleLarge,
                     ),
                     SizedBox(
@@ -246,7 +245,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                controller.goToMenu();
+                                controller.goToMenuHistory();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.lightGreen200,
@@ -263,8 +262,8 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                               ),
                             ),
                             Text(
-                              // 'txt_view_menu'.tr,
-                              'Menu',
+                              'txt_view_menu_history'.tr,
+                              // 'Menu',
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyMedium,
                             ),
@@ -275,7 +274,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                controller.goToWorkout();
+                                controller.goToWorkoutHistory();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.blueA700,
@@ -292,8 +291,8 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                               ),
                             ),
                             Text(
-                              // 'txt_view_workout'.tr,
-                              "Workout",
+                              'txt_view_workout_history'.tr,
+                              // "Workout",
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyMedium,
                             ),

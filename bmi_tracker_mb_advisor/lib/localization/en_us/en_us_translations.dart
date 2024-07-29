@@ -22,8 +22,8 @@ final Map<String, String> enUs = {
   "txt_weight_statistics": "Weight Statistics",
   "txt_calories_statistics": "Calories Statistics",
   "txt_customize_menu_and_Workout": "Customize menu and workout",
-  "txt_view_menu": "View menu",
-  "txt_view_workout": "View workout",
+  "txt_view_menu_history": "View menu history",
+  "txt_view_workout_history": "View workout history",
   "txt_daily_record": "Daily record",
   "txt_meal_logs": "Meal logs",
   "txt_activity_logs": "Activity logs",
@@ -115,4 +115,14 @@ final Map<String, String> enUs = {
   "txt_link_processing_video": "Link processing video",
   "txt_video_link": "Video Link",
   "txt_ingredients": "Ingredients",
+
+  // Update menu information
+  "txt_update_menu": "Update Menu",
+
+  // Update Workout
+  "title_appbar_update_workout":"Update Workout",
+
+  // menu history
+  "title_appbar_menu_history":"Menu History",
+  "txt_no_data_available_yet":"No data available yet",
 };

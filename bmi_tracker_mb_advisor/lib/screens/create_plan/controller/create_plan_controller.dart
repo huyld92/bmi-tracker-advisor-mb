@@ -11,7 +11,7 @@ import 'dart:ffi';
 import 'dart:io';
 
 class CreatePlanController extends GetxController {
-  late TextEditingController planNameController;
+  late TextEditingController txtPlanNameController;
   late TextEditingController planPriceController;
   late TextEditingController planDescriptionController;
   late TextEditingController planDurationController;
@@ -27,7 +27,7 @@ class CreatePlanController extends GetxController {
 
   @override
   void onInit() {
-    planNameController = TextEditingController();
+    txtPlanNameController = TextEditingController();
     planPriceController = TextEditingController();
     planDescriptionController = TextEditingController();
     planDurationController = TextEditingController();
@@ -38,7 +38,7 @@ class CreatePlanController extends GetxController {
   @override
   void onClose() {
     // dispose controller
-    planNameController.dispose();
+    txtPlanNameController.dispose();
     planPriceController.dispose();
     planDescriptionController.dispose();
     planDurationController.dispose();
@@ -47,10 +47,11 @@ class CreatePlanController extends GetxController {
 
   Future<void> createBlog() async {
     isLoading = true.obs;
-
+    print('aa:${planPriceController.text}');
+    double price = double.parse(planPriceController.text);
     PlanModel createPlan = PlanModel(
-      planName: planNameController.text,
-      price: double.parse(planPriceController.text),
+      planName: txtPlanNameController.text,
+      price: price,
       description: planDescriptionController.text,
       planDuration: int.parse(planDurationController.text),
     );

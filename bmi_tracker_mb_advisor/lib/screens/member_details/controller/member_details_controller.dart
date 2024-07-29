@@ -27,7 +27,6 @@ class MemberDetailsController extends GetxController {
     // gọi API lấy danh sách menu của advisor
     var response = await MemberRepository.getMemberInformation(memberID);
 
-
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       // convert list exercises from json
@@ -55,9 +54,14 @@ class MemberDetailsController extends GetxController {
         arguments: member.value.memberID);
   }
 
-  void goToMenu() {}
+  void goToMenuHistory() {
+    Get.toNamed(AppRoutes.menuHistoryScreen,arguments: member.value.memberID);
+  }
 
-  void goToWorkout() {}
+  void goToWorkoutHistory() {
+    Get.toNamed(AppRoutes.menuHistoryScreen,arguments: member.value.memberID);
+
+  }
 
   void goToActivityLogs() {
     Get.toNamed(AppRoutes.activityLogsScreen, arguments: member.value.memberID);

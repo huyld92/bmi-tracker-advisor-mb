@@ -309,15 +309,21 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                         ),
                                       ],
                                     ),
-                                    IconButton(
-                                      onPressed: () {
-                                        controller.deleteMenuFood(index);
-                                      },
-                                      icon: Icon(
-                                        Icons.highlight_remove,
-                                        color: appTheme.red500,
-                                      ),
-                                    )
+                                    Obx(() {
+                                      if (controller.isOwned.value) {
+                                        return IconButton(
+                                          onPressed: () {
+                                            controller.deleteMenuFood(index);
+                                          },
+                                          icon: Icon(
+                                            Icons.highlight_remove,
+                                            color: appTheme.red500,
+                                          ),
+                                        );
+                                      } else {
+                                        return Container();
+                                      }
+                                    })
                                   ],
                                 ),
                                 const Divider()

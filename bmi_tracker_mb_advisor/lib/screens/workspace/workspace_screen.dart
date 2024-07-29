@@ -3,9 +3,9 @@ import 'package:bmi_tracker_mb_advisor/screens/workout/workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/menu_view.dart';
+import 'controller/workspace_controller.dart';
 
-class WorkspaceScreen extends StatelessWidget {
+class WorkspaceScreen extends GetView<WorkspaceController> {
   const WorkspaceScreen({super.key});
 
   @override
@@ -23,44 +23,15 @@ class WorkspaceScreen extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(right: 10.h),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.goToNotifications();
+                },
                 iconSize: 28.adaptSize,
                 icon: const Icon(Icons.notifications_active_outlined),
               ),
             )
           ],
         ),
-        // appBar: AppBar(
-        //   toolbarHeight: 100,
-        //   title: Column(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     crossAxisAlignment: CrossAxisAlignment.center,
-        //     children: [
-        //       Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           Text(
-        //             // 'Welcome ${controller.currentMember.value.fullName}',
-        //             'Welcome Van Tung',
-        //             style: Theme.of(context).textTheme.bodyLarge,
-        //           ),
-        //           Text(
-        //             'Let see how can we\ncook today?',
-        //             style: Theme.of(context).textTheme.headlineSmall,
-        //           ),
-        //         ],
-        //       ),
-        //       // IconButton(
-        //       //     onPressed: () {
-        //       //       controller.goToNotification();
-        //       //     },
-        //       //     icon: Icon(
-        //       //       Icons.notifications,
-        //       //       color: Theme.of(context).primaryColor,
-        //       //     ))
-        //     ],
-        //   ),
-        // ),
         body: Column(
           children: [
             DefaultTabController(

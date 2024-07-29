@@ -74,7 +74,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
-                  // controller: controller.txtWorkoutNameController,
+                  controller: controller.txtPlanNameController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },

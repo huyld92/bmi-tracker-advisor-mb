@@ -33,6 +33,8 @@ import 'package:bmi_tracker_mb_advisor/screens/menu/binding/menu_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu/menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/binding/menu_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/menu_details_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/menus_history/binding/menus_history_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/menus_history/menus_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/binding/plan_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/plan_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/plan_details_binding.dart';
@@ -85,6 +87,7 @@ class AppRoutes {
   static const String memberDetailsScreen = '/memberDetailsScreen';
   static const String menuScreen = '/menuScreen';
   static const String menuDetailsScreen = '/menuDetailsScreen';
+  static const String menuHistoryScreen = '/menuHistoryScreen';
   static const String planScreen = '/planScreen';
   static const String planDetailsScreen = '/planDetailsScreen';
   static const String profileScreen = '/profileScreen';
@@ -244,6 +247,13 @@ class AppRoutes {
       page: () => const MenuDetailsScreen(),
       bindings: [
         MenuDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: menuHistoryScreen,
+      page: () => MenuHistoryScreen(),
+      bindings: [
+        MenuHistoryBinding(),
       ],
     ),
     GetPage(

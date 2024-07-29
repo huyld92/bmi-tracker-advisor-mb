@@ -7,4 +7,6 @@ class WorkspaceController  extends GetxController{
     // TODO: implement onInit
     super.onInit();
   }
+
+  void goToNotifications() {}
 }

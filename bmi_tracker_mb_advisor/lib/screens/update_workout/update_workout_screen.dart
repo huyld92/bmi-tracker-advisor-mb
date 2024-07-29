@@ -1,10 +1,9 @@
+import 'package:bmi_tracker_mb_advisor/screens/update_workout/controller/update_workout_controller.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_button_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/theme_helper.dart';
-
-class UpdateWorkoutScreen extends StatelessWidget {
+class UpdateWorkoutScreen extends GetView<UpdateWorkoutController> {
   const UpdateWorkoutScreen({super.key});
 
   @override
@@ -16,7 +15,6 @@ class UpdateWorkoutScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
-          toolbarHeight: 100,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,14 +23,8 @@ class UpdateWorkoutScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    // 'title_appbar_crete_workout'.tr,
-                    'Update Workout',
+                    'title_appbar_update_workout'.tr,
                     style: theme.textTheme.titleLarge,
-                  ),
-                  Text(
-                    'create a workout suitable for your member',
-                    // 'Welcome Van Tung',
-                    style: theme.textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -73,7 +65,7 @@ class UpdateWorkoutScreen extends StatelessWidget {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
-                  // controller: controller.txtWorkoutNameController,
+                  controller: controller.txtWorkoutNameController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -98,7 +90,7 @@ class UpdateWorkoutScreen extends StatelessWidget {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
-                  // controller: controller.txtStandardWeightController,
+                  controller: controller.txtStandardWeightController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -124,7 +116,7 @@ class UpdateWorkoutScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 TextFormField(
                   maxLines: 5,
-                  // controller: controller.txtWorkoutDescriptionController,
+                  controller: controller.txtWorkoutDescriptionController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -141,97 +133,6 @@ class UpdateWorkoutScreen extends StatelessWidget {
                     filled: true,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.v),
-                  child: Text(
-                    "txt_exercises".tr,
-                    style: theme.textTheme.titleSmall,
-                  ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  // itemCount: controller.workoutExercises.length,
-                  itemCount: 3,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 280.h,
-                                  child: Text(
-                                    // "${controller.workoutExercises[index].emoji} "
-                                    // "${controller.workoutExercises[index].exerciseName!}",
-                                    "emoji"
-                                    "exerciseName",
-                                    maxLines: 3,
-                                    softWrap: true,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: CustomTextStyles.titleMedium16Black,
-                                  ),
-                                ),
-                                RichText(
-                                  text: TextSpan(
-                                    text:
-                                        // "${controller.workoutExercises[index].duration!.formatWithThousandSeparator()} min, ",
-                                        "30 min",
-                                    style: theme.textTheme.bodyMedium,
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            // "${controller.workoutExercises[index].caloriesBurned!.formatWithThousandSeparator()} kcal",
-                                            "300 kcal",
-                                        style: theme.textTheme.bodyMedium,
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                // controller.removeExercise(index);
-                              },
-                              icon: Icon(
-                                Icons.highlight_remove,
-                                color: appTheme.red500,
-                              ),
-                            )
-                          ],
-                        ),
-                        const Divider()
-                      ],
-                    );
-                  },
-                ),
-                // add exercise button
-                InkWell(
-                  onTap: () {
-                    // controller.goToAddExercise();
-                  },
-                  child: Container(
-                    height: 40.v,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.add_circle,
-                          color: appTheme.green500,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10.h),
-                          child: Text("txt_add_exercise".tr,
-                              style: CustomTextStyles.bodyMediumGreen500),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const Divider()
               ],
             ),
           ),
@@ -243,7 +144,8 @@ class UpdateWorkoutScreen extends StatelessWidget {
           child: ElevatedButton(
             style: CustomButtonStyles.outlineButtonGreen500,
             onPressed: () {
-              // controller.createNewWorkout();
+              FocusScope.of(context).unfocus();
+              controller.updateWorkout();
             },
             child: Text(
               "txt_save".tr,

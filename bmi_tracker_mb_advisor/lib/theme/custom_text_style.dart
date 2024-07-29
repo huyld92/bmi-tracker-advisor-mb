@@ -18,11 +18,11 @@ class CustomTextStyles {
         // fontWeight: FontWeight.bold,
       );
 
-  static get bodyMedium13Red => theme.textTheme.bodyMedium!
-      .copyWith(color: Colors.red, fontSize: 13.fSize);
+  static get bodyMedium14Red => theme.textTheme.bodyMedium!
+      .copyWith(color: Colors.red, fontSize: 14.fSize);
 
-  static get bodyMedium13Green => theme.textTheme.bodyMedium!
-      .copyWith(color: Colors.green, fontSize: 13.fSize);
+  static get bodyMedium14Green => theme.textTheme.bodyMedium!
+      .copyWith(color: Colors.green, fontSize: 14.fSize);
 
   static get bodyMedium16Red => theme.textTheme.bodyMedium!
       .copyWith(color: Colors.red, fontSize: 16.fSize);

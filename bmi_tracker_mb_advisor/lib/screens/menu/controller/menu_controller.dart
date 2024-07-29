@@ -23,34 +23,6 @@ class MenuScreenController extends GetxController {
     await getAllMenu();
 
     isLoading.value = false;
-
-    // menus.add(MenuModel(
-    //     advisorID: 1,
-    //     isActive: true,
-    //     advisorName: "Aaa",
-    //     menuDescription: "Menu description",
-    //     menuID: 1,
-    //     menuName: "menu name",
-    //     menuPhoto: "linkphoto",
-    //     totalCalories: 200));
-    // menus.add(MenuModel(
-    //     advisorID: 1,
-    //     isActive: true,
-    //     advisorName: "Aaa",
-    //     menuDescription: "Menu description",
-    //     menuID: 1,
-    //     menuName: "menu name",
-    //     menuPhoto: "linkphoto",
-    //     totalCalories: 200));
-    // menus.add(MenuModel(
-    //     advisorID: 1,
-    //     isActive: true,
-    //     advisorName: "Aaa",
-    //     menuDescription: "Menu description acsac ascascacacascsakcsamckasmckasmckamkkan ckn ackmas ckmaskcmaskcm akm caskcm akcmaskcm askcmaskcmksacm sakcm kascm akscmsakcmaskcmaskcmskm",
-    //     menuID: 1,
-    //     menuName: "menu name",
-    //     menuPhoto: "linkphoto",
-    //     totalCalories: 200));
   }
 
   getAllMenu() async {
@@ -105,7 +77,13 @@ class MenuScreenController extends GetxController {
   }
 
   void goToUpdateMenu(int index) {
-    print('gotoUpdateMenu:${index}');
+    Get.toNamed(AppRoutes.updateMenuScreen, arguments: menus[index])
+        ?.then((value) {
+      if (value != null) {
+        menus[index] = value;
+        menus.refresh();
+      }
+    });
   }
 
   Future<void> activateMenu(int index) async {

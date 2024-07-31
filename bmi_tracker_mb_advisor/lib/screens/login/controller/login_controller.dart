@@ -17,14 +17,13 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-
     emailController = TextEditingController();
     passwordController = TextEditingController();
     super.onInit();
   }
+
   @override
   void onReady() {
-
     if (PrefUtils.getAccessToken() != null) {
       Get.offAllNamed(AppRoutes.bottomNavScreen);
     }
@@ -107,7 +106,7 @@ class LoginController extends GetxController {
 
       // lưu accessToken và refresh token vào SharedPreferences
       PrefUtils.setAccessToken(data["accessToken"]);
-      print('a:${data["accessToken"]}');
+
       PrefUtils.setRefreshToken(data["refreshToken"]);
       errorString.value = "";
       // await loginComet(loginedUser.value);

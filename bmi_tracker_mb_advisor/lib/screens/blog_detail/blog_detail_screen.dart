@@ -6,8 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../util/app_export.dart';
 
-// class BlogDetailScreen extends GetView<BlogDetailController> {
-class BlogDetailScreen extends StatelessWidget {
+class BlogDetailScreen extends GetView<BlogDetailController> {
+// class BlogDetailScreen extends StatelessWidget {
   const BlogDetailScreen({super.key});
 
   @override
@@ -58,7 +58,8 @@ class BlogDetailScreen extends StatelessWidget {
                     image: NetworkImage(
                         // controller
                         //       .foodModel.value.foodPhoto ??
-                        'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg'),
+                        controller.blogModel.value.blogPhoto ??
+                            'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -66,7 +67,7 @@ class BlogDetailScreen extends StatelessWidget {
               //! Title
               Text(
                 // controller.foodModel.value.foodName ??
-                "This is a title",
+                controller.blogModel.value.blogName ?? "This is a title",
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               //Content
@@ -80,7 +81,8 @@ class BlogDetailScreen extends StatelessWidget {
                   width: double.infinity,
                   child: Text(
                     // controller.foodModel.value.description ??
-                    'This is the description!',
+                    controller.blogModel.value.blogContent ??
+                        'This is the description!',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
@@ -112,7 +114,7 @@ class BlogDetailScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        launchUrl(Uri.parse(
+                        launchUrl(Uri.parse(controller.blogModel.value.link ??
                             'https://www.youtube.com/watch?v=LPDnemFoqVk'));
                       },
                       child: SizedBox(

@@ -1,9 +1,10 @@
+import 'package:bmi_tracker_mb_advisor/screens/update_menu/controller/update_menu_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/custom_button_style.dart';
 
-class UpdateMenuScreen extends StatelessWidget {
+class UpdateMenuScreen extends GetView<UpdateMenuController> {
   const UpdateMenuScreen({super.key});
 
   @override
@@ -15,7 +16,7 @@ class UpdateMenuScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
-          toolbarHeight: 100,
+          // toolbarHeight: 100,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,7 +25,7 @@ class UpdateMenuScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Update Menu',
+                    'txt_update_menu'.tr,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ],
@@ -62,15 +63,14 @@ class UpdateMenuScreen extends StatelessWidget {
                 SizedBox(height: 10.v),
                 TextFormField(
                   maxLines: 1,
-                  // controller: controller.menuNameController,
+                  controller: controller.txtMenuNameController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    // hintText: 'txt_hint_menu_name'.tr,
-                    hintText: 'Update menu name',
+                    hintText: 'txt_hint_menu_name'.tr,
                     focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 1.0),
                     ),
@@ -85,7 +85,7 @@ class UpdateMenuScreen extends StatelessWidget {
                 ),
                 TextFormField(
                   maxLines: 5,
-                  // controller: controller.txtMenuDescriptionController,
+                  controller: controller.txtMenuDescriptionController,
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
                   // },
@@ -97,76 +97,11 @@ class UpdateMenuScreen extends StatelessWidget {
                     focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 1.0),
                     ),
-                    // hintText: 'txt_hint_menu_description'.tr,
-                    hintText: 'Update menu description',
+                    hintText: 'txt_hint_menu_description'.tr,
                     fillColor: Colors.white,
                     filled: true,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.v),
-                  child: Text(
-                    "txt_foods".tr,
-                    style: theme.textTheme.titleSmall,
-                  ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  // itemCount: controller.menuFoodModels.length,
-                  itemCount: 3,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('foodname'),
-                                Text('mealType',
-                                    style: theme.textTheme.bodyMedium),
-                              ],
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                // controller.removeFood(index);
-                              },
-                              icon: Icon(
-                                Icons.highlight_remove,
-                                color: appTheme.red500,
-                              ),
-                            )
-                          ],
-                        ),
-                        const Divider()
-                      ],
-                    );
-                  },
-                ),
-                InkWell(
-                  onTap: () {
-                    // controller.goToAddFood();
-                  },
-                  child: SizedBox(
-                    height: 40.v,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.add_circle,
-                          color: appTheme.green500,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10.h),
-                          child: Text("txt_add_food".tr,
-                              style: CustomTextStyles.bodyMediumGreen500),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const Divider()
               ],
             ),
           ),
@@ -177,10 +112,11 @@ class UpdateMenuScreen extends StatelessWidget {
           child: ElevatedButton(
             style: CustomButtonStyles.outlineButtonGreen500,
             onPressed: () {
-              // controller.createNewMenu();
+              FocusScope.of(context).unfocus();
+              controller.updateMenuInformation();
             },
             child: Text(
-              "txt_save".tr,
+              "txt_update".tr,
             ),
           ),
         ),

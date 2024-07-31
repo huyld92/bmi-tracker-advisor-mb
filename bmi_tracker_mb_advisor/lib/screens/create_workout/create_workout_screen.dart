@@ -101,8 +101,8 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                 TextFormField(
                   maxLines: 1,
                   controller: controller.txtStandardWeightController,
-                  onSaved: (newValue) {
-                    controller.onSavedStandardWeight(newValue);
+                  onFieldSubmitted: (newValue) {
+                    controller.onSubmittedStandardWeight(newValue);
                   },
                   // validator: (value) {
                   //   return feedbackController.validateTitle(value!);
@@ -218,7 +218,7 @@ class CreateWorkoutScreen extends GetView<CreateWorkoutController> {
                   onTap: () {
                     controller.goToAddExercise();
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 40.v,
                     child: Row(
                       children: [

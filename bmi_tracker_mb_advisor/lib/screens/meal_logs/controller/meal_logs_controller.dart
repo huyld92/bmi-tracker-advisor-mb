@@ -32,6 +32,7 @@ class MealLogsController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       mealLogModels.value = mealLogsFromJson(response.body);
+      mealLogModels.sort((a, b) => a.mealType!.compareTo(b.mealType!));
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       mealLogModels.clear();
@@ -52,6 +53,5 @@ class MealLogsController extends GetxController {
     getMealLogByDateAndMemberID(date.format(), memberID);
 
     isLoading.value = false;
-
   }
 }

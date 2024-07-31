@@ -51,8 +51,7 @@ class MenuScreen extends GetView<MenuScreenController> {
                               children: [
                                 SlidableAction(
                                   onPressed: (context) {
-                                    // controller.goToUpdateMenu(index);
-                                    Get.to(UpdateMenuScreen());
+                                    controller.goToUpdateMenu(index);
                                   },
                                   backgroundColor: const Color(0xFF1FBE1B),
                                   foregroundColor: Colors.white,
@@ -112,7 +111,7 @@ class MenuScreen extends GetView<MenuScreenController> {
                                       Text(
                                         "${controller.menus[index].totalCalories} kcal",
                                         style:
-                                            CustomTextStyles.bodyMedium13Green,
+                                            CustomTextStyles.bodyMedium14Green,
                                       ),
                                       Text(
                                         "${controller.menus[index].menuDescription}",
@@ -141,13 +140,13 @@ class MenuScreen extends GetView<MenuScreenController> {
                                                 return Text(
                                                   "Active",
                                                   style: CustomTextStyles
-                                                      .bodyMedium13Green,
+                                                      .bodyMedium14Green,
                                                 );
                                               } else {
                                                 return Text(
                                                   "Inactive",
                                                   style: CustomTextStyles
-                                                      .bodyMedium13Red,
+                                                      .bodyMedium14Red,
                                                 );
                                               }
                                             })

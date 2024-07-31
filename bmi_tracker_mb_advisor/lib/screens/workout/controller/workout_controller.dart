@@ -100,5 +100,12 @@ class WorkoutController extends GetxController {
     }
   }
 
-  void goToUpdateWorkout(int index) {}
+  void goToUpdateWorkout(int index) {
+    Get.toNamed(AppRoutes.updateWorkoutScreen, arguments: workouts[index])
+        ?.then((value) {
+          if(value!=null){
+            workouts[index]= value;
+          }
+    });
+  }
 }

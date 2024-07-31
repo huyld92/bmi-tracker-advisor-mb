@@ -38,37 +38,46 @@ class BlogScreen extends GetView<BlogController> {
             children: [
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 15.v),
-                  child: GridView.builder(
-                    padding: const EdgeInsets.all(10.0),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Number of columns
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                      childAspectRatio:
-                          0.7, // Adjust the aspect ratio as needed
-                    ),
-                    itemCount: 4,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: Stack(
-                          children: [
-                            CustomBlogCard(
-                              photoUrl:
-                                  "https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg",
-                              title: "This is a title",
-                              onTitleTap: () {
-                                Get.to(BlogDetailScreen());
-                              },
+                    margin: EdgeInsets.only(bottom: 15.v),
+                    child: Obx(
+                      () {
+                        if (controller.isLoading.value) {
+                          return const CircularProgressIndicator();
+                        } else {
+                          return GridView.builder(
+                            padding: const EdgeInsets.all(10.0),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, // Number of columns
+                              crossAxisSpacing: 10.0,
+                              mainAxisSpacing: 10.0,
+                              childAspectRatio:
+                                  0.7, // Adjust the aspect ratio as needed
                             ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                            itemCount: controller.blogList.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  controller.goToBlogDetail(index);
+                                },
+                                child: Stack(
+                                  children: [
+                                    CustomBlogCard(
+                                      blog: controller.blogList[index],
+                                      // photoUrl: controller.blogModel.value.blogPhoto,
+                                      // title: controller.blogModel.value.blogName,
+                                      onTitleTap: () {
+                                        // Get.to(BlogDetailScreen());
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                    )),
               ),
             ],
           ),
@@ -77,8 +86,7 @@ class BlogScreen extends GetView<BlogController> {
           shape: const CircleBorder(),
           backgroundColor: appTheme.green500,
           onPressed: () {
-            // controller.goToCreateBlog();
-            Get.to(CreateBlogScreen());
+            controller.goToCreateBlog();
           },
           child: Icon(Icons.add, size: 50.adaptSize, color: appTheme.white),
         ),

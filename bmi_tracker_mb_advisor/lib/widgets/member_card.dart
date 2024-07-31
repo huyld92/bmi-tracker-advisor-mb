@@ -123,37 +123,37 @@ class _MemberCardState extends State<MemberCard> {
                           ),
                         ),
                         SizedBox(width: 10.v),
-                        SizedBox(
-                          height: 35.h,
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 10,
-                                  style: BorderStyle.solid,
-                                ),
-                              ),
-                            ),
-                            onPressed: widget.onMessageClick,
-                            child: SizedBox(
-                              width: 40.v,
-                              height: 20.h,
-                              child: Center(
-                                child: Text(
-                                  'Chat',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelLarge!
-                                      .copyWith(
-                                          color: Theme.of(context).primaryColor,
-                                          fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   height: 35.h,
+                        //   child: OutlinedButton(
+                        //     style: OutlinedButton.styleFrom(
+                        //       shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(5),
+                        //         side: BorderSide(
+                        //           color: Theme.of(context).primaryColor,
+                        //           width: 10,
+                        //           style: BorderStyle.solid,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     onPressed: widget.onMessageClick,
+                        //     child: SizedBox(
+                        //       width: 40.v,
+                        //       height: 20.h,
+                        //       child: Center(
+                        //         child: Text(
+                        //           'Chat',
+                        //           style: Theme.of(context)
+                        //               .textTheme
+                        //               .labelLarge!
+                        //               .copyWith(
+                        //                   color: Theme.of(context).primaryColor,
+                        //                   fontWeight: FontWeight.bold),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         // IconButton(
                         //   onPressed: widget.onMessageClick,
                         //   icon: Icon(
@@ -235,7 +235,7 @@ class _MemberCardState extends State<MemberCard> {
                           },
                           child: Text(
                             '${widget.member.phoneNumber}',
-                             style: Theme.of(context)
+                            style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(

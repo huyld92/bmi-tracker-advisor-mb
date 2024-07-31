@@ -53,8 +53,7 @@ class WorkoutScreen extends GetView<WorkoutController> {
                               children: [
                                 SlidableAction(
                                   onPressed: (context) {
-                                    // controller.goToUpdateWorkout(index);
-                                    Get.to(UpdateWorkoutScreen());
+                                    controller.goToUpdateWorkout(index);
                                   },
                                   backgroundColor: const Color(0xFF1FBE1B),
                                   foregroundColor: Colors.white,
@@ -114,7 +113,7 @@ class WorkoutScreen extends GetView<WorkoutController> {
                                           style: theme.textTheme.titleLarge),
                                       Text(
                                         "${controller.workouts[index].totalCaloriesBurned} kcal",
-                                        style: CustomTextStyles.bodyMedium13Red,
+                                        style: CustomTextStyles.bodyMedium14Red,
                                       ),
                                       Text(
                                         "${controller.workouts[index].workoutDescription}",
@@ -143,13 +142,13 @@ class WorkoutScreen extends GetView<WorkoutController> {
                                                 return Text(
                                                   "Active",
                                                   style: CustomTextStyles
-                                                      .bodyMedium13Green,
+                                                      .bodyMedium14Green,
                                                 );
                                               } else {
                                                 return Text(
                                                   "Inactive",
                                                   style: CustomTextStyles
-                                                      .bodyMedium13Red,
+                                                      .bodyMedium14Red,
                                                 );
                                               }
                                             })

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../../../repositories/subscription_repository.dart';
+import '../../../routes/app_routes.dart';
 import '../../../util/app_export.dart';
 import '../model/subscription_model.dart';
 
@@ -31,10 +32,10 @@ class SubscriptionHistoryController extends GetxController {
     super.onInit();
   }
 
-  // void goToSubscriptionsDetails(int index) {
-  //   Get.toNamed(AppRoutes.subscriptionDetailsScreen,
-  //       arguments: subscriptionModels[index]);
-  // }
+  void goToSubscriptionsDetails(int index) {
+    Get.toNamed(AppRoutes.subscriptionHistoryDetailsScreen,
+        arguments: subscriptionModels[index]);
+  }
 
   Future<void> fetchSubscriptionsHistory() async {
     var response = await SubscriptionsRepository.getAllSubscriptionByAdvisor();

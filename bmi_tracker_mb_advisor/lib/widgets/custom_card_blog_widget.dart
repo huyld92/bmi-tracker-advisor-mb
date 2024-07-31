@@ -1,11 +1,13 @@
+import 'package:bmi_tracker_mb_advisor/screens/blog/model/blog_model.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:bmi_tracker_mb_advisor/theme/theme_helper.dart';
 import 'package:bmi_tracker_mb_advisor/util/size_utils.dart';
 import 'package:flutter/material.dart';
 
 class CustomBlogCard extends StatelessWidget {
-  final String photoUrl;
-  final String title;
+  // final String photoUrl;
+  // final String title;
+  final BlogModel blog;
   // final String? content1;
   // final String? content2;
   // final String? content3;
@@ -13,8 +15,9 @@ class CustomBlogCard extends StatelessWidget {
   final VoidCallback onTitleTap;
 
   CustomBlogCard({
-    required this.photoUrl,
-    required this.title,
+    required this.blog,
+    // required this.photoUrl,
+    // required this.title,
     // this.content1,
     // this.content2,
     // this.content3,
@@ -38,7 +41,7 @@ class CustomBlogCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.network(
-                photoUrl,
+                '${blog.blogPhoto}',
                 height: 120.v,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -50,7 +53,7 @@ class CustomBlogCard extends StatelessWidget {
               child: GestureDetector(
                 onTap: onTitleTap,
                 child: Text(
-                  title,
+                  '${blog.blogName}',
                   maxLines: 2,
                   softWrap: true,
                   style: CustomTextStyles.titleMedium16Black,

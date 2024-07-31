@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:bmi_tracker_mb_advisor/config/jwt_interceptor.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/model/create_menu_model.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/model/create_menu_food_request.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_menu/model/update_menu_request.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/build_server.dart';
@@ -15,6 +16,17 @@ class MenuRepository {
     };
     var response = await interceptedClient
         .get(BuildServer.buildUrl("menus/getMenuByAdvisor"), headers: header)
+        .timeout(const Duration(seconds: 30));
+    return response;
+  }
+
+  static Future<http.Response> getAllMenuAvailable() async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient
+        .get(BuildServer.buildUrl("menus/advisor/get-available"),
+            headers: header)
         .timeout(const Duration(seconds: 30));
     return response;
   }
@@ -99,6 +111,44 @@ class MenuRepository {
       body: createMenuFoodRequestsToJson(createMenuFoodRequests),
       headers: header,
     );
+    return response;
+  }
+
+  static deleteMenuFood(int menuFoodID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.delete(
+      BuildServer.buildUrl("menus/menu-food/delete/$menuFoodID"),
+      headers: header,
+    );
+
+    return response;
+  }
+
+  static updateMenu(UpdateMenuRequest updateMenuRequest) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.put(
+      BuildServer.buildUrl("menus/update"),
+      headers: header,
+      body: json.encode(updateMenuRequest.toJson()),
+    );
+
+    return response;
+  }
+
+  static assignMenu(int memberID, int menuID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.put(
+      BuildServer.buildUrl(
+          "menu-history/assignMenu?menuID=$menuID&memberID=$memberID"),
+      headers: header,
+    );
+
     return response;
   }
 }

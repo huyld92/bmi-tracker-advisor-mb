@@ -32,20 +32,21 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
             children: [
               Obx(
                 () => Container(
-                  height: 260.h,
+                  height: 300.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     // color: Colors.amber,
                     image: DecorationImage(
-                      image:
-                          NetworkImage("${controller.member.value.accountPhoto}"),
+                      image: NetworkImage(
+                          "${controller.member.value.accountPhoto}"),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -185,8 +186,8 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                 ),
                               ),
                               child: Image(
-                                image: const AssetImage(
-                                    'assets/images/meal.png'),
+                                image:
+                                    const AssetImage('assets/images/meal.png'),
                                 width: 60.adaptSize,
                                 height: 60.adaptSize,
                               ),
@@ -244,7 +245,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                controller.goToMenu();
+                                controller.goToMenuHistory();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.lightGreen200,
@@ -254,13 +255,15 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                 ),
                               ),
                               child: Image(
-                                image: const AssetImage('assets/images/menu.png'),
+                                image:
+                                    const AssetImage('assets/images/menu.png'),
                                 width: 60.adaptSize,
                                 height: 60.adaptSize,
                               ),
                             ),
                             Text(
-                              'txt_view_menu'.tr,
+                              'txt_view_menu_history'.tr,
+                              // 'Menu',
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyMedium,
                             ),
@@ -271,7 +274,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                controller.goToWorkout();
+                                controller.goToWorkoutHistory();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.blueA700,
@@ -281,14 +284,15 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                 ),
                               ),
                               child: Image(
-                                image:
-                                    const AssetImage('assets/images/workout.png'),
+                                image: const AssetImage(
+                                    'assets/images/workout.png'),
                                 width: 60.adaptSize,
                                 height: 60.adaptSize,
                               ),
                             ),
                             Text(
-                              'txt_view_workout'.tr,
+                              'txt_view_workout_history'.tr,
+                              // "Workout",
                               textAlign: TextAlign.center,
                               style: theme.textTheme.bodyMedium,
                             ),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/models/food_model.dart';
+import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/controller/create_menu_controller.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/model/create_menu_model.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/model/menu_food_model.dart';
@@ -81,7 +82,8 @@ class AddFoodToMenuController extends GetxController {
       }
       Get.back();
     } else {
-      List<CreateMenuFoodRequest> createMenuFoodRequests = List.empty(growable: true);
+      List<CreateMenuFoodRequest> createMenuFoodRequests =
+          List.empty(growable: true);
       for (int i = 0; i < foodSelected.length; i++) {
         if (foodSelected[i]) {
           createMenuFoodRequests.add(CreateMenuFoodRequest(
@@ -96,6 +98,6 @@ class AddFoodToMenuController extends GetxController {
   }
 
   void goToFoodDetails(int? foodID) {
-    print('foodID:$foodID}');
+    Get.toNamed(AppRoutes.foodDetailsScreen, arguments: foodID);
   }
 }

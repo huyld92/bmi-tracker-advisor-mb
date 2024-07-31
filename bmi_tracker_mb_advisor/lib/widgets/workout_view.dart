@@ -1,4 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_workout.dart/create_workout_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_workout/create_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout/controller/workout_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/workout_item.dart';
@@ -28,7 +28,7 @@ class WorkoutView extends GetView<WorkoutController> {
               ),
             ),
             onPressed: () {
-              Get.to(  CreateWorkoutScreen());
+              Get.to(CreateWorkoutScreen());
             },
             child: SizedBox(
               width: 100.h,

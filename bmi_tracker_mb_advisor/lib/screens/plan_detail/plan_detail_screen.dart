@@ -1,7 +1,10 @@
+import 'package:bmi_tracker_mb_advisor/screens/plan_detail/controller/plan_details_controller.dart';
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class PlanDetailScreen extends StatelessWidget {
+class PlanDetailScreen extends GetView<PlanDetailsController> {
   const PlanDetailScreen({super.key});
 
   @override
@@ -19,7 +22,7 @@ class PlanDetailScreen extends StatelessWidget {
                   },
               icon: const Icon(LineAwesomeIcons.trash)),
         ],
-        backgroundColor: Color.fromARGB(255, 230, 250, 208),
+        backgroundColor: Color.fromARGB(255, 136, 212, 241),
         elevation: 0,
       ),
       body: Padding(
@@ -29,36 +32,27 @@ class PlanDetailScreen extends StatelessWidget {
           children: [
             PlanDetailItemWidget(
               label: 'Plan Name',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Plan name',
+              value: controller.planModel.value.planName,
             ),
             PlanDetailItemWidget(
               label: 'Price',
               value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'price',
+                  '${controller.planModel.value.price?.round().formatWithThousandSeparator()} VND',
             ),
             const Divider(
               color: Color.fromARGB(255, 112, 105, 105),
             ),
             PlanDetailItemWidget(
               label: 'Description',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'The plan includes a recommended menu and exercises to achieve the best results in 30 days',
+              value: controller.planModel.value.description,
             ),
             PlanDetailItemWidget(
               label: 'Plan Duration',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  'Plan duration',
+              value: '${controller.planModel.value.planDuration} days',
             ),
             PlanDetailItemWidget(
               label: 'Number Of Uses',
-              value:
-                  // controller.subscriptionModel.value.getSubscriptionDate()),
-                  '5 Members',
+              value: '${controller.planModel.value.numberOfUses}',
             ),
           ],
         ),
@@ -84,7 +78,10 @@ class PlanDetailItemWidget extends StatelessWidget {
             label!,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          Text(value ?? ''),
+          Text(
+            value ?? '',
+            maxLines: 2,
+          ),
         ],
       ),
     );

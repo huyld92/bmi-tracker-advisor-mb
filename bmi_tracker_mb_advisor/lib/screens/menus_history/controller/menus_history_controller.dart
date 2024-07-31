@@ -52,5 +52,13 @@ class MenuHistoryController extends GetxController {
         arguments: [menuHistoryModels[index].menuID, false]);
   }
 
-  void assignNewMenu() {}
+  void assignMenu() {
+    Get.toNamed(AppRoutes.assignMenuScreen,
+            arguments: menuHistoryModels[0].memberID)
+        ?.then((value) async {
+      if (value != null && value) {
+        await fetchDataMenuHistoryScreen();
+      }
+    });
+  }
 }

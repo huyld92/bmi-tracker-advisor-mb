@@ -1,10 +1,9 @@
+import 'package:bmi_tracker_mb_advisor/screens/workout_history/controller/workout_history_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
-import 'controller/menus_history_controller.dart';
-
-class MenuHistoryScreen extends GetView<MenuHistoryController> {
-  const MenuHistoryScreen({super.key});
+class WorkoutHistoryScreen extends GetView<WorkoutHistoryController> {
+  const WorkoutHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +21,11 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
       return Scaffold(
         backgroundColor: appTheme.grey100,
         appBar: AppBar(
-          title: Text("title_appbar_menu_history".tr,
+          title: Text("title_appbar_workout_history".tr,
               style: theme.textTheme.titleLarge),
         ),
         body: Obx(() {
-          if (controller.menuHistoryModels.isEmpty) {
+          if (controller.workoutHistoryModels.isEmpty) {
             return SizedBox(
               width: double.maxFinite,
               child: Column(
@@ -51,7 +50,7 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                          "${"txt_total".tr} (${controller.menuHistoryModels.length})"),
+                          "${"txt_total".tr} (${controller.workoutHistoryModels.length})"),
                       // const Spacer(),
                       // Text("txt_sort_by".tr),
                     ],
@@ -61,11 +60,11 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
                     flex: 15,
                     child: Obx(
                       () => ListView.builder(
-                        itemCount: controller.menuHistoryModels.length,
+                        itemCount: controller.workoutHistoryModels.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              controller.goToMenuDetails(index);
+                              controller.goToWorkoutDetails(index);
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -91,10 +90,10 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                            "${controller.menuHistoryModels[index].menuName}",
+                                            "${controller.workoutHistoryModels[index].workoutName}",
                                             style: theme.textTheme.titleLarge),
                                         Text(
-                                          "${controller.menuHistoryModels[index].menuDescription}",
+                                          "${controller.workoutHistoryModels[index].workoutDescription}",
                                           maxLines: 3,
                                           overflow: TextOverflow.ellipsis,
                                           style: theme.textTheme.bodyMedium,
@@ -105,13 +104,13 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
                                           children: [
                                             Text(
                                               controller
-                                                  .menuHistoryModels[index]
+                                                  .workoutHistoryModels[index]
                                                   .dateOfAssigned!
                                                   .format(),
                                               style: theme.textTheme.bodyMedium,
                                             ),
                                             Text(
-                                              "${controller.menuHistoryModels[index].totalCalories} kcal",
+                                              "${controller.workoutHistoryModels[index].totalCaloriesBurned} kcal",
                                               style: CustomTextStyles
                                                   .bodyMedium14Green,
                                             ),
@@ -125,7 +124,7 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
                                                       Icons.circle,
                                                       size: 16.adaptSize,
                                                       color: controller
-                                                              .menuHistoryModels[
+                                                              .workoutHistoryModels[
                                                                   index]
                                                               .isActive!
                                                           ? appTheme.green500
@@ -134,7 +133,7 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
                                                   ),
                                                   Obx(() {
                                                     if (controller
-                                                        .menuHistoryModels[
+                                                        .workoutHistoryModels[
                                                             index]
                                                         .isActive!) {
                                                       return Text(
@@ -173,7 +172,7 @@ class MenuHistoryScreen extends GetView<MenuHistoryController> {
           shape: const CircleBorder(),
           backgroundColor: appTheme.green500,
           onPressed: () {
-            controller.assignMenu();
+            controller.assignWorkout();
           },
           child: Icon(Icons.add, size: 50.adaptSize, color: appTheme.white),
         ),

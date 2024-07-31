@@ -44,7 +44,7 @@ class NotificationModel {
   }
 }
 
-List<NotificationModel> notificationFromJson(String str) {
+List<NotificationModel> notificationsFromJson(String str) {
   final jsonData = json.decode(str);
   return NotificationModel.fromJsonList(jsonData);
 }

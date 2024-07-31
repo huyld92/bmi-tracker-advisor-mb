@@ -120,9 +120,22 @@ final Map<String, String> enUs = {
   "txt_update_menu": "Update Menu",
 
   // Update Workout
-  "title_appbar_update_workout":"Update Workout",
+  "title_appbar_update_workout": "Update Workout",
 
   // menu history
-  "title_appbar_menu_history":"Menu History",
-  "txt_no_data_available_yet":"No data available yet",
+  "title_appbar_menu_history": "Menu History",
+  "txt_no_data_available_yet": "No data available yet",
+
+  // workout history
+  "title_appbar_workout_history": "Workout History",
+
+  // Assign menu screen
+  "title_appbar_assign_menu": "Assign menu",
+  "txt_assign": "Assign",
+
+  // Assign workout screen
+  "title_appbar_assign_workout": "Assign workout",
+
+  // Notification screen
+  "title_appbar_notification": "Notifications",
 };

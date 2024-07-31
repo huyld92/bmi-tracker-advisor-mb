@@ -106,7 +106,7 @@ class LoginController extends GetxController {
 
       // lưu accessToken và refresh token vào SharedPreferences
       PrefUtils.setAccessToken(data["accessToken"]);
-      print('a:${data["accessToken"]}');
+
       PrefUtils.setRefreshToken(data["refreshToken"]);
       errorString.value = "";
       // await loginComet(loginedUser.value);

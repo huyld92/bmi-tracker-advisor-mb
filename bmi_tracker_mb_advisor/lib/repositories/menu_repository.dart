@@ -20,6 +20,17 @@ class MenuRepository {
     return response;
   }
 
+  static Future<http.Response> getAllMenuAvailable() async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient
+        .get(BuildServer.buildUrl("menus/advisor/get-available"),
+            headers: header)
+        .timeout(const Duration(seconds: 30));
+    return response;
+  }
+
   static Future<http.Response> getMenuByMenuID(int menuID) async {
     Map<String, String> header = {
       "Content-type": "application/json",
@@ -123,6 +134,19 @@ class MenuRepository {
       BuildServer.buildUrl("menus/update"),
       headers: header,
       body: json.encode(updateMenuRequest.toJson()),
+    );
+
+    return response;
+  }
+
+  static assignMenu(int memberID, int menuID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.put(
+      BuildServer.buildUrl(
+          "menu-history/assignMenu?menuID=$menuID&memberID=$memberID"),
+      headers: header,
     );
 
     return response;

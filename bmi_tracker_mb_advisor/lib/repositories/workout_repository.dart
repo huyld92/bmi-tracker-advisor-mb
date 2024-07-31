@@ -20,6 +20,17 @@ class WorkoutRepository {
     return response;
   }
 
+  static Future<http.Response> getAvailableWorkout() async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient
+        .get(BuildServer.buildUrl("workouts/advisor/get-available"),
+            headers: header)
+        .timeout(const Duration(seconds: 30));
+    return response;
+  }
+
   static Future<http.Response> getWorkoutByWorkoutID(int workoutID) async {
     Map<String, String> header = {
       "Content-type": "application/json",
@@ -79,10 +90,9 @@ class WorkoutRepository {
       "Content-type": "application/json",
     };
     var response = await interceptedClient.put(
-        BuildServer.buildUrl("workouts/activate?workoutID=$workoutID"),
-        headers: {
-          "Content-type": "application/json",
-        });
+      BuildServer.buildUrl("workouts/activate?workoutID=$workoutID"),
+      headers: header,
+    );
 
     return response;
   }
@@ -93,9 +103,7 @@ class WorkoutRepository {
     };
     var response = await interceptedClient.post(
       BuildServer.buildUrl("workouts/createWorkoutExercises"),
-      headers: {
-        "Content-type": "application/json",
-      },
+      headers: header,
       body: jsonEncode(requestModel),
     );
 
@@ -109,6 +117,19 @@ class WorkoutRepository {
     var response = await interceptedClient.delete(
       BuildServer.buildUrl(
           "workouts/workout-exercise/delete?workoutExerciseID=$workoutExerciseID"),
+      headers: header,
+    );
+
+    return response;
+  }
+
+  static assignWorkout(memberID, int workoutID) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.put(
+      BuildServer.buildUrl(
+          "workout-history/assignWorkout?workoutID=$workoutID&memberID=$memberID"),
       headers: header,
     );
 

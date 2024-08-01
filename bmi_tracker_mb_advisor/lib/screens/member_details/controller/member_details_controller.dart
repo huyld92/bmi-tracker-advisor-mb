@@ -59,7 +59,7 @@ class MemberDetailsController extends GetxController {
   }
 
   void goToWorkoutHistory() {
-    Get.toNamed(AppRoutes.menuHistoryScreen,arguments: member.value.memberID);
+    Get.toNamed(AppRoutes.workoutHistoryScreen,arguments: member.value.memberID);
 
   }
 

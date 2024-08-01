@@ -4,6 +4,10 @@ import 'package:bmi_tracker_mb_advisor/screens/add_exercise_to_workout/add_exerc
 import 'package:bmi_tracker_mb_advisor/screens/add_exercise_to_workout/binding/add_exercise_to_workout_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/add_food_to_menu/add_food_to_menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/add_food_to_menu/binding/add_food_to_menu_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/assign_menu/assign_menu_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/assign_menu/binding/assign_menu_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/assign_workout/assign_workout_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/assign_workout/binding/assign_workout_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/blog/blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/blog_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/binding/bottom_nav_binding.dart';
@@ -35,6 +39,8 @@ import 'package:bmi_tracker_mb_advisor/screens/menu_details/binding/menu_details
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/menu_details_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menus_history/binding/menus_history_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/menus_history/menus_history_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/notification/binding/notification_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/notification/notification_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/binding/plan_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/plan_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/plan_details_binding.dart';
@@ -52,6 +58,8 @@ import 'package:bmi_tracker_mb_advisor/screens/update_menu/update_menu_screen.da
 import 'package:bmi_tracker_mb_advisor/screens/update_workout/update_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/binding/workout_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/workout_details_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workout_history/binding/workout_history_biding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/workout_history/workout_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/binding/workspace_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 
@@ -70,6 +78,8 @@ class AppRoutes {
   static const String addExerciseToWorkoutScreen =
       '/addExerciseToWorkoutScreen';
   static const String addFoodToMenuScreen = '/addFoodToMenuScreen';
+  static const String assignMenuScreen = '/assignMenuScreen';
+  static const String assignWorkoutScreen = '/assignWorkoutScreen';
   static const String blogScreen = '/blogScreen';
   static const String blogDetailsScreen = '/blogDetailsScreen';
   static const String bottomNavScreen = '/bottomNavScreen';
@@ -88,6 +98,7 @@ class AppRoutes {
   static const String menuScreen = '/menuScreen';
   static const String menuDetailsScreen = '/menuDetailsScreen';
   static const String menuHistoryScreen = '/menuHistoryScreen';
+  static const String notificationScreen = '/notificationScreen';
   static const String planScreen = '/planScreen';
   static const String planDetailsScreen = '/planDetailsScreen';
   static const String profileScreen = '/profileScreen';
@@ -100,6 +111,7 @@ class AppRoutes {
   static const String updateWorkoutScreen = '/updateWorkoutScreen';
   static const String workoutScreen = '/workoutScreen';
   static const String workoutDetailsScreen = '/workoutDetailsScreen';
+  static const String workoutHistoryScreen = '/workoutHistoryScreen';
   static const String workspaceScreen = '/workspaceScreen';
 
   static const String initialRoute = '/initialRoute';
@@ -131,6 +143,20 @@ class AppRoutes {
       page: () => const AddFoodToMenuScreen(),
       bindings: [
         AddFoodToMenuBinding(),
+      ],
+    ),
+    GetPage(
+      name: assignMenuScreen,
+      page: () => AssignMenuScreen(),
+      bindings: [
+        AssignMenuBinding(),
+      ],
+    ),
+    GetPage(
+      name: assignWorkoutScreen,
+      page: () => const AssignWorkoutScreen(),
+      bindings: [
+        AssignWorkoutBinding(),
       ],
     ),
     GetPage(
@@ -257,6 +283,13 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: notificationScreen,
+      page: () => NotificationScreen(),
+      bindings: [
+        NotificationBinding(),
+      ],
+    ),
+    GetPage(
       name: planScreen,
       page: () => const PlanScreen(),
       bindings: [
@@ -331,6 +364,13 @@ class AppRoutes {
       page: () => const WorkspaceScreen(),
       bindings: [
         WorkspaceBinding(),
+      ],
+    ),
+    GetPage(
+      name: workoutHistoryScreen,
+      page: () => WorkoutHistoryScreen(),
+      bindings: [
+        WorkoutHistoryBinding(),
       ],
     ),
     GetPage(

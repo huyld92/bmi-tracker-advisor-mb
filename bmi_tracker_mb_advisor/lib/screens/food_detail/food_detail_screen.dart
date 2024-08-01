@@ -92,7 +92,7 @@ class FoodDetailScreen extends GetView<FoodDetailsController> {
 
                 // Danh sách tag của food
                 Obx(
-                      () => Wrap(
+                  () => Wrap(
                     spacing: 8.0,
                     // Khoảng cách giữa các tag theo chiều ngang
                     runSpacing: 4.0,

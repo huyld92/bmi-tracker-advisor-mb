@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      translations: AppLocalization(),
+      translations: AppLocalization(),  
       theme: theme,
       locale: Get.deviceLocale,
       //for setting localization strings

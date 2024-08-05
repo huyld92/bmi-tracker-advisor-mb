@@ -74,14 +74,22 @@ class PlanDetailItemWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label!,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          SizedBox(
+            width: 100.h,
+            child: Text(
+              label!,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
-          Text(
-            value ?? '',
-            maxLines: 2,
-          ),
+          Flexible(
+            child: Text(
+              value ?? '',
+              style: TextStyle(fontSize: 15.fSize),
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 5,
+            ),
+          )
         ],
       ),
     );

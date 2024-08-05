@@ -274,7 +274,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                             // now button
                             FilledButton(
                               onPressed: () {
-                                // controller.goToWorkoutHistory();
+                                controller.goToWorkoutHistory();
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: appTheme.blueA700,

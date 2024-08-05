@@ -1,9 +1,14 @@
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:bmi_tracker_mb_advisor/models/account_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/authentication_repository.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
+import 'package:cometchat_sdk/cometchat_sdk.dart';
 
+import '../../../config/constants.dart';
 import '../../../routes/app_routes.dart';
 import '../model/login_model.dart';
 
@@ -108,6 +113,9 @@ class LoginController extends GetxController {
       PrefUtils.setAccessToken(data["accessToken"]);
 
       PrefUtils.setRefreshToken(data["refreshToken"]);
+
+      AccountModel currentAdvisor = AccountModel.fromJson(data);
+      await loginComet(currentAdvisor);
       errorString.value = "";
       // await loginComet(loginedUser.value);
 
@@ -121,6 +129,26 @@ class LoginController extends GetxController {
 
     // ẩn dialog loading
     isLoading = false.obs;
+  }
+
+  Future<void> loginComet(AccountModel loginAdvisor) async {
+    final user = await CometChat.getLoggedInUser();
+    if (user == null) {
+      await CometChat.login(loginAdvisor.accountID!.toString(), cometAuthKey,
+          onSuccess: (User user) {
+        log("User logged in successfully  ${user.name}");
+      }, onError: (CometChatException ce) {
+        log("Login failed with exception:  ${ce.message}");
+      });
+    }
+  }
+
+  void logoutComet() {
+    CometChat.logout(onSuccess: (message) {
+      debugPrint("Logout successful with message $message");
+    }, onError: (CometChatException ce) {
+      debugPrint("Logout failed with exception:  ${ce.message}");
+    });
   }
 
   void goToForgetPasswordScreen() {

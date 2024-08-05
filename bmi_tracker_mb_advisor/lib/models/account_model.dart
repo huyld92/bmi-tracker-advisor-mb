@@ -7,6 +7,8 @@ class AccountModel {
   String? accountPhoto;
   String? phoneNumber;
   String? gender;
+  String? bankName;
+  String? bankNumber;
   DateTime? birthday;
   List<String>? roleNames;
   bool? isActive;
@@ -18,6 +20,8 @@ class AccountModel {
     this.accountPhoto,
     this.phoneNumber,
     this.gender,
+    this.bankName,
+    this.bankNumber,
     this.birthday,
     this.roleNames,
     this.isActive,
@@ -33,6 +37,8 @@ class AccountModel {
           "https://res.cloudinary.com/dlipvbdwi/image/upload/v1700192116/avatar_snfpmg.jpg",
       phoneNumber: json['phoneNumber'],
       gender: json['gender'] ?? "Male",
+      bankName: json['bankName'] ?? "",
+      bankNumber: json['bankNumber'] ?? "",
       birthday: DateTime.parse(date),
       roleNames: List<String>.from(json['roleNames']),
       isActive: json['isActive'],
@@ -47,12 +53,12 @@ class AccountModel {
       'accountPhoto': accountPhoto,
       'phoneNumber': phoneNumber,
       'gender': gender,
+      'bankName': bankName,
+      'bankNumber': bankNumber,
       'birthday': birthday,
       'roleNames': roleNames,
       'isActive': isActive,
     };
-
-
   }
 
   @override

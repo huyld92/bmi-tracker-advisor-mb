@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
- import 'package:cached_network_image/cached_network_image.dart';
+ // import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomImageView extends StatelessWidget {
@@ -106,28 +106,28 @@ class CustomImageView extends StatelessWidget {
             fit: fit ?? BoxFit.cover,
             color: color,
           );
-        case ImageType.network:
-          return CachedNetworkImage(
-            height: height,
-            width: width,
-            fit: fit,
-            imageUrl: imagePath!,
-            color: color,
-            placeholder: (context, url) => Container(
-              height: 30,
-              width: 30,
-              child: LinearProgressIndicator(
-                color: Colors.grey.shade200,
-                backgroundColor: Colors.grey.shade100,
-              ),
-            ),
-            errorWidget: (context, url, error) => Image.asset(
-              placeHolder,
-              height: height,
-              width: width,
-              fit: fit ?? BoxFit.cover,
-            ),
-          );
+        // case ImageType.network:
+        //   return CachedNetworkImage(
+        //     height: height,
+        //     width: width,
+        //     fit: fit,
+        //     imageUrl: imagePath!,
+        //     color: color,
+        //     placeholder: (context, url) => Container(
+        //       height: 30,
+        //       width: 30,
+        //       child: LinearProgressIndicator(
+        //         color: Colors.grey.shade200,
+        //         backgroundColor: Colors.grey.shade100,
+        //       ),
+        //     ),
+        //     errorWidget: (context, url, error) => Image.asset(
+        //       placeHolder,
+        //       height: height,
+        //       width: width,
+        //       fit: fit ?? BoxFit.cover,
+        //     ),
+        //   );
         case ImageType.png:
         default:
           return Image.asset(

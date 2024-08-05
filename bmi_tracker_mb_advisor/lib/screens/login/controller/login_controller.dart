@@ -4,9 +4,11 @@ import 'dart:developer';
 import 'package:bmi_tracker_mb_advisor/models/account_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/authentication_repository.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
-import 'package:flutter/material.dart';
 import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
-import 'package:cometchat_sdk/cometchat_sdk.dart';
+import 'package:flutter/material.dart';
+
+// import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
+// import 'package:cometchat_sdk/cometchat_sdk.dart';
 
 import '../../../config/constants.dart';
 import '../../../routes/app_routes.dart';
@@ -114,10 +116,10 @@ class LoginController extends GetxController {
 
       PrefUtils.setRefreshToken(data["refreshToken"]);
 
-      AccountModel currentAdvisor = AccountModel.fromJson(data);
-      await loginComet(currentAdvisor);
+      // AccountModel currentAdvisor = AccountModel.fromJson(data);
+      // await loginComet(currentAdvisor);
       errorString.value = "";
-      // await loginComet(loginedUser.value);
+      await loginComet(data["accountID"].toString());
 
       // chuyển sang màn hình Home
       Get.offAllNamed(AppRoutes.bottomNavScreen);
@@ -131,11 +133,10 @@ class LoginController extends GetxController {
     isLoading = false.obs;
   }
 
-  Future<void> loginComet(AccountModel loginAdvisor) async {
+  Future<void> loginComet(String accountID) async {
     final user = await CometChat.getLoggedInUser();
     if (user == null) {
-      await CometChat.login(loginAdvisor.accountID!.toString(), cometAuthKey,
-          onSuccess: (User user) {
+      await CometChat.login(accountID, cometAuthKey, onSuccess: (User user) {
         log("User logged in successfully  ${user.name}");
       }, onError: (CometChatException ce) {
         log("Login failed with exception:  ${ce.message}");

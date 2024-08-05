@@ -15,6 +15,7 @@ class EditProfileController extends GetxController {
   Rx<AccountModel> accountModel = AccountModel().obs;
   TextEditingController txtFullNameController = TextEditingController();
   TextEditingController txtPhoneNumberController = TextEditingController();
+  TextEditingController txtBankNumberController = TextEditingController();
   RxString birthday = "".obs;
   RxString gender = "".obs;
 
@@ -135,8 +136,8 @@ class EditProfileController extends GetxController {
     var userUpdate = {
       "fullName": txtFullNameController.text,
       "phoneNumber": txtPhoneNumberController.text,
-      "accountPhoto": accountModel.value.accountPhoto!,
       "gender": gender.value,
+      "bankNumber": txtBankNumberController.text,
       "birthday": birthday.value
     };
     // gọi repository update profile

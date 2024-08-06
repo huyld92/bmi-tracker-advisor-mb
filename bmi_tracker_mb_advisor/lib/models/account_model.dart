@@ -34,7 +34,7 @@ class AccountModel {
       phoneNumber: json['phoneNumber'],
       gender: json['gender'] ?? "Male",
       birthday: DateTime.parse(date),
-      roleNames: List<String>.from(json['roleNames']),
+      roleNames: List<String>.from(json['role']),
       isActive: json['isActive'],
     );
   }
@@ -48,11 +48,9 @@ class AccountModel {
       'phoneNumber': phoneNumber,
       'gender': gender,
       'birthday': birthday,
-      'roleNames': roleNames,
+      'role': roleNames,
       'isActive': isActive,
     };
-
-
   }
 
   @override

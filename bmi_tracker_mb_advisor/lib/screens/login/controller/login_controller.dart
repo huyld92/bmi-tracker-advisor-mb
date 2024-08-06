@@ -5,7 +5,6 @@ import 'package:bmi_tracker_mb_advisor/models/account_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/authentication_repository.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:cometchat_sdk/cometchat_sdk.dart';
 
 import '../../../config/constants.dart';

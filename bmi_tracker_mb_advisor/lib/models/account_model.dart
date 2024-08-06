@@ -40,7 +40,7 @@ class AccountModel {
       bankName: json['bankName'] ?? "",
       bankNumber: json['bankNumber'] ?? "",
       birthday: DateTime.parse(date),
-      roleNames: List<String>.from(json['role']),
+      roleNames: List<String>.from(json['roleNames']),
       isActive: json['isActive'],
     );
   }
@@ -56,7 +56,7 @@ class AccountModel {
       'bankName': bankName,
       'bankNumber': bankNumber,
       'birthday': birthday,
-      'role': roleNames,
+      'roleNames': roleNames,
       'isActive': isActive,
     };
   }

@@ -4,9 +4,11 @@ import 'dart:io';
 
 import 'package:bmi_tracker_mb_advisor/screens/profile/controller/profile_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
+import '../../../config/constants.dart';
 import '../../../models/account_model.dart';
 import '../../../repositories/account_repository.dart';
 import 'package:image_picker/image_picker.dart';
@@ -67,11 +69,28 @@ class EditProfileController extends GetxController {
     if (response.statusCode == 200) {
       // thành công gán giá trị cho member
       accountModel.value.accountPhoto = photoUrl;
+      await updateComet();
     } else {
       // thât bại show snack bar kết quả
       var jsonResult = jsonDecode(response.body);
       Get.snackbar("Failed upload image", "${jsonResult["message"]}");
     }
+  }
+
+  Future<void> updateComet() async {
+    CometChat.updateUser(
+      User(
+          name: accountModel.value.fullName!,
+          avatar: accountModel.value.accountPhoto!,
+          uid: accountModel.value.accountID.toString()),
+      cometRestKey,
+      onSuccess: (message) {
+        debugPrint('Update successfully: $message');
+      },
+      onError: (CometChatException ce) {
+        debugPrint('Create user failed: ${ce.message}');
+      },
+    );
   }
 
   Future<void> selectAndUploadImage() async {
@@ -158,6 +177,7 @@ class EditProfileController extends GetxController {
     // cập nhật lại thông tin member
     accountModel.value = AccountModel();
     await getProfile();
+    await updateComet();
     isLoading.value = false;
   }
 }

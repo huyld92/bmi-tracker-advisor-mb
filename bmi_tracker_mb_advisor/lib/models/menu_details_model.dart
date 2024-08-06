@@ -69,7 +69,7 @@ class MenuFoodModel {
   double? protein;
   double? fat;
   int? foodTimeProcess;
-  String? serving;
+  int? serving;
   String? mealType;
 
   MenuFoodModel({

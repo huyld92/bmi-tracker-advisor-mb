@@ -2,6 +2,7 @@ import 'package:bmi_tracker_mb_advisor/theme/custom_button_style.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'controller/create_menu_controller.dart';
 
@@ -78,21 +79,25 @@ class CreateMenuScreen extends GetView<CreateMenuController> {
                     style: theme.textTheme.titleSmall,
                   ),
                   SizedBox(height: 10.v),
-                  TextFormField(
-                    maxLines: 1,
-                    controller: controller.menuNameController,
-                    // validator: (value) {
-                    //   return feedbackController.validateTitle(value!);
-                    // },
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      hintText: 'txt_hint_menu_name'.tr,
-                      focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green, width: 1.0),
+                  Form(
+                    child: TextFormField(
+                      maxLines: 1,
+                      controller: controller.menuNameController,
+                      // validator: (value) {
+                      //   return feedbackController.validateTitle(value!);
+                      // },
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        hintText: 'txt_hint_menu_name'.tr,
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.green, width: 1.0),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
                       ),
-                      fillColor: Colors.white,
-                      filled: true,
                     ),
                   ),
                   SizedBox(height: 10.v),

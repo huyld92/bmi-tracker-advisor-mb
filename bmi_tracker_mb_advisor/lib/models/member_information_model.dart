@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 class MemberInformationModel {
+  int? accountID;
   int? memberID;
   String? email;
   String? accountPhoto;
@@ -18,6 +19,7 @@ class MemberInformationModel {
   double? tdee;
 
   MemberInformationModel({
+    this.accountID,
     this.memberID,
     this.email,
     this.accountPhoto,
@@ -37,6 +39,7 @@ class MemberInformationModel {
 
   factory MemberInformationModel.fromJson(Map<String, dynamic> json) {
     return MemberInformationModel(
+      accountID: json['accountID'],
       memberID: json['memberID'],
       email: json['email'],
       accountPhoto: json['accountPhoto'],
@@ -60,6 +63,7 @@ class MemberInformationModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'accountID': accountID,
       'memberID': memberID,
       'email': email,
       'accountPhoto': accountPhoto,

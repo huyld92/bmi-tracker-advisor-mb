@@ -11,6 +11,7 @@ import 'dart:ffi';
 import 'dart:io';
 
 class CreatePlanController extends GetxController {
+  final GlobalKey<FormState> createPlanFormKey = GlobalKey<FormState>();
   late TextEditingController txtPlanNameController;
   late TextEditingController planPriceController;
   late TextEditingController planDescriptionController;
@@ -21,6 +22,7 @@ class CreatePlanController extends GetxController {
   var link = '';
   var planDescription = '';
   var planDuration = '';
+  var errorString = ''.obs;
   var isLoading = false.obs;
 
   Rx<PlanModel> planModel = PlanModel().obs;
@@ -31,7 +33,7 @@ class CreatePlanController extends GetxController {
     planPriceController = TextEditingController();
     planDescriptionController = TextEditingController();
     planDurationController = TextEditingController();
-
+    errorString.obs;
     super.onInit();
   }
 
@@ -45,8 +47,41 @@ class CreatePlanController extends GetxController {
     super.onClose();
   }
 
-  Future<void> createBlog() async {
+  String? validatePlanName(String value) {
+    if (value.isEmpty) {
+      return "Plan name is invalid";
+    }
+    return null;
+  }
+
+  String? validatePlanPrice(String value) {
+    if (value.isEmpty) {
+      return "Price is invalid";
+    }
+    return null;
+  }
+
+  String? validatePlanDescription(String value) {
+    if (value.isEmpty) {
+      return "Plan Description is invalid";
+    }
+    return null;
+  }
+
+  String? validatePlanDuration(String value) {
+    if (value.isEmpty) {
+      return "Plan Duration is invalid";
+    }
+    return null;
+  }
+
+  Future<void> createPlan() async {
     isLoading = true.obs;
+    final isValid = createPlanFormKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    createPlanFormKey.currentState!.save();
     print('aa:${planPriceController.text}');
     double price = double.parse(planPriceController.text);
     PlanModel createPlan = PlanModel(
@@ -65,7 +100,8 @@ class CreatePlanController extends GetxController {
       await planController.fetchPlan();
 
       Get.back();
-      Get.snackbar("Success", jsonDecode(response.body)["message"]);
+      Get.snackbar('Success', 'Create plan successful');
+      log(jsonDecode(response.body));
     } else if (response.statusCode == 400) {
       // thông báo lỗi
       Get.snackbar("Create failed!", jsonDecode(response.body)["message"]);

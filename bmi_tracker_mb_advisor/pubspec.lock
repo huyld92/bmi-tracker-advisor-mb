@@ -109,26 +109,26 @@ packages:
     dependency: "direct main"
     description:
       name: cometchat_chat_uikit
-      sha256: "87345a4e9f5c3a3542f6314db3707fb3dc881439bab1dd4cb3f47aefd318d8d3"
+      sha256: "980a68430a5e8dc548f8698e080f5874b24d8372b4e6ab148b3952c9a1a95150"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "4.4.0"
   cometchat_sdk:
     dependency: transitive
     description:
       name: cometchat_sdk
-      sha256: "024994b57f6c00d209a0f34167470ac4eb9cd070b0e38e8d9cb4fa528dac63cf"
+      sha256: "1ecd460437524c4aef05ddc945db82aac90fb0788662a7bd5024e1ef54eb93d7"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.4"
+    version: "4.0.16"
   cometchat_uikit_shared:
     dependency: transitive
     description:
       name: cometchat_uikit_shared
-      sha256: "5e0bebcdc3715595c7e46c294d08bc82ad92431f355c64995fa8e6135e4e8fa1"
+      sha256: "37523c084fe2c277bd3cff12d1fea7df5a06f87c30b58e87ca6445c866568975"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "4.3.0"
   cross_file:
     dependency: transitive
     description:

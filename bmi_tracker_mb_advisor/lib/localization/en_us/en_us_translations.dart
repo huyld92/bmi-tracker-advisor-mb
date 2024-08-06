@@ -143,4 +143,7 @@ final Map<String, String> enUs = {
   // Notification screen
   "title_appbar_notification": "Notifications",
   "txt_no_notifications_available_yet": "No notifications available yet",
+
+  // Update blog
+  "txt_update_blog":"Update blog"
 };

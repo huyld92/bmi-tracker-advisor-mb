@@ -50,7 +50,7 @@ class ProfileController extends GetxController {
   }
 
   goToUpdateProfileScreen() {
-    Get.toNamed(AppRoutes.editProfileScreen)
+    Get.toNamed(AppRoutes.updateProfileScreen)
         ?.then((value) async => await fetchProfileScreeData());
   }
 

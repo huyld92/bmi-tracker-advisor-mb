@@ -22,7 +22,7 @@ class PlanDetailScreen extends GetView<PlanDetailsController> {
                   },
               icon: const Icon(LineAwesomeIcons.trash)),
         ],
-        backgroundColor: Color.fromARGB(255, 136, 212, 241),
+        // backgroundColor: Color.fromARGB(255, 136, 212, 241),
         elevation: 0,
       ),
       body: Padding(

@@ -1,10 +1,11 @@
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/controller/blog_detail_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
+import 'package:bmi_tracker_mb_advisor/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../util/app_export.dart';
+import '../update_blog/update_blog_screen.dart';
 
 class BlogDetailScreen extends GetView<BlogDetailController> {
 // class BlogDetailScreen extends StatelessWidget {
@@ -27,8 +28,7 @@ class BlogDetailScreen extends GetView<BlogDetailController> {
           ),
           IconButton(
             onPressed: () {
-              // controller.goToFeedBack();
-              Get.to(EditBlogScreen());
+              controller.goToUpdateBlogScreen();
             },
             icon: const Icon(LineAwesomeIcons.alternate_pencil),
           ),
@@ -54,14 +54,11 @@ class BlogDetailScreen extends GetView<BlogDetailController> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   //! photo
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        // controller
-                        //       .foodModel.value.foodPhoto ??
-                        controller.blogModel.value.blogPhoto ??
-                            'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+                ),
+                child: CustomImageView(
+                  imagePath: controller.blogModel.value.blogPhoto ??
+                      'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg',
+                  fit: BoxFit.cover,
                 ),
               ),
               //! Title

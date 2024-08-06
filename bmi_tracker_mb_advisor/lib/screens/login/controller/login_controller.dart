@@ -113,10 +113,10 @@ class LoginController extends GetxController {
 
       PrefUtils.setRefreshToken(data["refreshToken"]);
 
-      AccountModel currentAdvisor = AccountModel.fromJson(data);
-      await loginComet(currentAdvisor);
+      // AccountModel currentAdvisor = AccountModel.fromJson(data);
+      // await loginComet(currentAdvisor);
       errorString.value = "";
-      // await loginComet(loginedUser.value);
+      await loginComet(data["accountID"].toString());
 
       // chuyển sang màn hình Home
       Get.offAllNamed(AppRoutes.bottomNavScreen);
@@ -130,11 +130,10 @@ class LoginController extends GetxController {
     isLoading = false.obs;
   }
 
-  Future<void> loginComet(AccountModel loginAdvisor) async {
+  Future<void> loginComet(String accountID) async {
     final user = await CometChat.getLoggedInUser();
     if (user == null) {
-      await CometChat.login(loginAdvisor.accountID!.toString(), cometAuthKey,
-          onSuccess: (User user) {
+      await CometChat.login(accountID, cometAuthKey, onSuccess: (User user) {
         log("User logged in successfully  ${user.name}");
       }, onError: (CometChatException ce) {
         log("Login failed with exception:  ${ce.message}");

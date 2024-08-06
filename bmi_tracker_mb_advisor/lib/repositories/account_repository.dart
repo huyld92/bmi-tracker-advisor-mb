@@ -28,7 +28,7 @@ class AccountRepository {
       "Content-type": "application/json",
     };
     var response = await interceptedClient
-        .get(BuildServer.buildUrl("accounts/get-profile"), headers: header)
+        .get(BuildServer.buildUrl("accounts/advisor/get-profile"), headers: header)
         .timeout(const Duration(seconds: 30));
     return response;
   }
@@ -52,7 +52,7 @@ class AccountRepository {
     };
     var response = await interceptedClient
         .put(
-      BuildServer.buildUrl("accounts/update-profile"),
+      BuildServer.buildUrl("accounts/advisor/update-profile"),
       headers: header,
       body: jsonEncode(userUpdate)
     )

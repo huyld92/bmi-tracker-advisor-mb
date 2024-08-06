@@ -117,8 +117,9 @@ class FoodDetailScreen extends GetView<FoodDetailsController> {
                   child: SizedBox(
                     width: double.infinity,
                     child: Text(
-                      controller.foodModel.value.foodNutrition ??
-                          "food nutrition",
+                      "carbs:${controller.foodModel.value.carbs} g, "
+                          "protein:${controller.foodModel.value.protein} g,"
+                          " fat:${controller.foodModel.value.fat} g",
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),

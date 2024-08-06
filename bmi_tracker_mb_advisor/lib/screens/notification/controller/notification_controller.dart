@@ -63,4 +63,25 @@ class NotificationController extends GetxController {
           jsonDecode(response.body)['message']);
     }
   }
+
+  Future<void> readAll(int index) async {
+    // gọi API lấy danh sách menu history của advisor
+    var response = await NotificationRepository.readAll();
+
+    // kiểm tra kết quả
+    if (response.statusCode == 204) {
+      for (var notification in notifications) {
+        notification.isRead = true;
+      }
+      notifications.refresh();
+    } else if (response.statusCode == 401) {
+      String message = jsonDecode(response.body)['message'];
+      if (message.contains("JWT token is expired")) {
+        Get.snackbar('Session Expired', 'Please login again');
+      }
+    } else {
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
+    }
+  }
 }

@@ -7,9 +7,11 @@ class FoodModel {
   String? description;
   String? foodPhoto;
   String? foodVideo;
-  String? foodNutrition;
   int? foodTimeProcess;
-  String? serving;
+  double? carbs;
+  double? protein;
+  double? fat;
+  int? serving;
   String? creationDate;
   bool? isActive;
 
@@ -20,7 +22,9 @@ class FoodModel {
     this.description,
     this.foodPhoto,
     this.foodVideo,
-    this.foodNutrition,
+    this.carbs,
+    this.protein,
+    this.fat,
     this.foodTimeProcess,
     this.serving,
     this.creationDate,
@@ -35,7 +39,9 @@ class FoodModel {
       description: json['description'],
       foodPhoto: json['foodPhoto'],
       foodVideo: json['foodVideo'],
-      foodNutrition: json['foodNutrition'],
+      carbs: json['carbs'] ?? 0,
+      protein: json['protein'] ?? 0,
+      fat: json['fat'] ?? 0,
       foodTimeProcess: json['foodTimeProcess'],
       serving: json['serving'],
       creationDate: json['creationDate'],
@@ -51,7 +57,9 @@ class FoodModel {
       'description': description,
       'foodPhoto': foodPhoto,
       'foodVideo': foodVideo,
-      'foodNutrition': foodNutrition,
+      'carbs': carbs,
+      'protein': protein,
+      'fat': fat,
       'foodTimeProcess': foodTimeProcess,
       'serving': serving,
       'creationDate': creationDate,

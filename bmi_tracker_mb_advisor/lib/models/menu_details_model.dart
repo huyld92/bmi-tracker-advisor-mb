@@ -28,7 +28,8 @@ class MenuDetailsModel {
       totalCalories: json['totalCalories'],
       isActive: json['isActive'],
       menuFoods: json['menuFoods'] != null
-          ? List<MenuFoodModel>.from(json['menuFoods'].map((x) => MenuFoodModel.fromJson(x)))
+          ? List<MenuFoodModel>.from(
+              json['menuFoods'].map((x) => MenuFoodModel.fromJson(x)))
           : List.empty(),
     );
   }
@@ -64,11 +65,12 @@ class MenuFoodModel {
   String? description;
   String? foodPhoto;
   String? foodVideo;
-  String? foodNutrition;
+  double? carbs;
+  double? protein;
+  double? fat;
   int? foodTimeProcess;
   String? serving;
   String? mealType;
-  bool? isActive;
 
   MenuFoodModel({
     this.menuFoodID,
@@ -78,11 +80,12 @@ class MenuFoodModel {
     this.description,
     this.foodPhoto,
     this.foodVideo,
-    this.foodNutrition,
+    this.carbs,
+    this.protein,
+    this.fat,
     this.foodTimeProcess,
     this.serving,
     this.mealType,
-    this.isActive,
   });
 
   factory MenuFoodModel.fromJson(Map<String, dynamic> json) {
@@ -94,11 +97,12 @@ class MenuFoodModel {
       description: json['description'],
       foodPhoto: json['foodPhoto'],
       foodVideo: json['foodVideo'],
-      foodNutrition: json['foodNutrition'],
+      carbs: json['carbs'] ?? 0,
+      protein: json['protein'] ?? 0,
+      fat: json['fat'] ?? 0,
       foodTimeProcess: json['foodTimeProcess'],
       serving: json['serving'],
       mealType: json['mealType'],
-      isActive: json['isActive'],
     );
   }
 
@@ -111,11 +115,12 @@ class MenuFoodModel {
       'description': description,
       'foodPhoto': foodPhoto,
       'foodVideo': foodVideo,
-      'foodNutrition': foodNutrition,
+      'carbs': carbs,
+      'protein': protein,
+      'fat': fat,
       'foodTimeProcess': foodTimeProcess,
       'serving': serving,
       'mealType': mealType,
-      'isActive': isActive,
     };
   }
 
@@ -123,7 +128,6 @@ class MenuFoodModel {
     return jsonList.map((json) => MenuFoodModel.fromJson(json)).toList();
   }
 }
-
 
 List<MenuDetailsModel> menuFromJson(String str) {
   final jsonData = json.decode(str);

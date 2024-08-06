@@ -8,14 +8,20 @@ import '../../../repositories/blog_repository.dart';
 import '../../../util/app_export.dart';
 
 class BlogController extends GetxController {
-  var isLoading = true.obs;
+  var isLoading = false.obs;
   var blogList = <BlogModel>[].obs;
   var blogModel = BlogModel().obs;
 
   @override
   Future<void> onInit() async {
-    await getAllBlog();
+    fetchDataBlogScreen();
     super.onInit();
+  }
+
+  Future<void> fetchDataBlogScreen() async {
+    isLoading.value = true;
+    await getAllBlog();
+    isLoading.value = false;
   }
 
   Future<void> getAllBlog() async {

@@ -33,6 +33,10 @@ final Map<String, String> enUs = {
   "txt_deactivate": "Deactivate",
   "txt_activate": "Activate",
   "txt_update": "Update",
+  "txt_no_menu_available_yet": "No menu available yet",
+
+  //workout screen
+  "txt_no_workout_available_yet": "No workout available yet",
 
   //Menu details screen
   "txt_menu_details": "Menu details",
@@ -138,4 +142,5 @@ final Map<String, String> enUs = {
 
   // Notification screen
   "title_appbar_notification": "Notifications",
+  "txt_no_notifications_available_yet": "No notifications available yet",
 };

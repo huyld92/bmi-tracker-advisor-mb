@@ -9,10 +9,12 @@ class FoodDetailsModel {
   String? description;
   String? foodPhoto;
   String? foodVideo;
-  String? foodNutrition;
   int? foodTimeProcess;
   String? creationDate;
-  String? serving;
+  double? carbs;
+  double? protein;
+  double? fat;
+  int? serving;
   bool? isActive;
   List<FoodTag>? foodTags;
   List<Recipe>? recipes;
@@ -24,7 +26,9 @@ class FoodDetailsModel {
     this.description,
     this.foodPhoto,
     this.foodVideo,
-    this.foodNutrition,
+    this.carbs,
+    this.protein,
+    this.fat,
     this.foodTimeProcess,
     this.creationDate,
     this.serving,
@@ -41,7 +45,9 @@ class FoodDetailsModel {
       description: json['description'],
       foodPhoto: json['foodPhoto'],
       foodVideo: json['foodVideo'],
-      foodNutrition: json['foodNutrition'],
+      carbs: json['carbs'] ?? 0,
+      protein: json['protein'] ?? 0,
+      fat: json['fat'] ?? 0,
       foodTimeProcess: json['foodTimeProcess'],
       creationDate: json['creationDate'],
       serving: json['serving'],
@@ -63,7 +69,9 @@ class FoodDetailsModel {
       'description': description,
       'foodPhoto': foodPhoto,
       'foodVideo': foodVideo,
-      'foodNutrition': foodNutrition,
+      'carbs': carbs,
+      'protein': protein,
+      'fat': fat,
       'foodTimeProcess': foodTimeProcess,
       'creationDate': creationDate,
       'serving': serving,

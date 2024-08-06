@@ -34,7 +34,7 @@ class NotificationScreen extends GetView<NotificationController> {
                 children: [
                   Image.asset("assets/images/not_found.png",
                       width: 128.adaptSize),
-                  Text("${"txt_no_data_available_yet".tr}.",
+                  Text("${"txt_no_notifications_available_yet".tr}.",
                       style: CustomTextStyles.titleMedium16Black),
                   // Text("body_no_results".tr, style: theme.textTheme.bodyMedium,)
                 ],

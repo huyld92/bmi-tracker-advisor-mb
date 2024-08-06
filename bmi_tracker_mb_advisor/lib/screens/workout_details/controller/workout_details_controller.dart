@@ -78,7 +78,9 @@ class WorkoutDetailsController extends GetxController {
     Get.toNamed(AppRoutes.addExerciseToWorkoutScreen,
             arguments: workoutModel.value.workoutID)
         ?.then((value) async {
-      await createWorkoutExercise(value);
+      if (value != null) {
+        await createWorkoutExercise(value);
+      }
     });
   }
 
@@ -96,7 +98,6 @@ class WorkoutDetailsController extends GetxController {
       int workoutID = workoutModel.value.workoutID!;
       workoutModel.value = WorkoutModel();
       await getWorkoutDetails(workoutID);
-    } else if (response.statusCode == 204) {
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {

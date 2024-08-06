@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bmi_tracker_mb_advisor/models/account_model.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+// import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 
 import '../../../repositories/account_repository.dart';
 import '../../../routes/app_routes.dart';
@@ -41,7 +42,10 @@ class ProfileController extends GetxController {
     // Alert.showLoadingIndicatorDialog(context);
     PrefUtils.clearPreferencesData();
     await AccountRepository.logout();
-
+    // await CometChat.logout(
+    //   onSuccess: (message) {},
+    //   onError: (excep) {},
+    // );
     Get.offAllNamed(AppRoutes.loginScreen);
   }
 

@@ -10,7 +10,6 @@ class WorkoutExerciseModel {
   String? tagName;
   int? duration;
   int? caloriesBurned;
-  bool? isActive;
 
   WorkoutExerciseModel({
     this.workoutExerciseID,
@@ -24,7 +23,6 @@ class WorkoutExerciseModel {
     this.tagName,
     this.duration,
     this.caloriesBurned,
-    this.isActive,
   });
 
   factory WorkoutExerciseModel.fromJson(Map<String, dynamic> json) {
@@ -40,7 +38,6 @@ class WorkoutExerciseModel {
       tagName: json['tagName'],
       duration: json['duration'],
       caloriesBurned: json['caloriesBurned'],
-      isActive: json['isActive'],
     );
   }
 
@@ -57,7 +54,6 @@ class WorkoutExerciseModel {
       'tagName': tagName,
       'duration': duration,
       'caloriesBurned': caloriesBurned,
-      'isActive': isActive,
     };
   }
 }

@@ -61,12 +61,11 @@ class CreateBlogScreen extends GetView<CreateBlogController> {
 
                               // Provide a default image URL if blogPhoto is null
                               if (imageUrl == null) {
-                                imageUrl =
-                                    'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg';
+                                imageUrl = 'assets/images/default image.png';
                               }
 
                               return Image(
-                                image: NetworkImage(imageUrl),
+                                image: AssetImage(imageUrl),
                               );
                             },
                           ),

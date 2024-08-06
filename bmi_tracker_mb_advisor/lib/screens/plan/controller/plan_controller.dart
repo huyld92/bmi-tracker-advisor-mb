@@ -9,16 +9,23 @@ import '../model/plan_model.dart';
 class PlanController extends GetxController {
   RxList<PlanModel> planModel = RxList.empty();
 
-  var isLoading = true.obs;
+  var isLoading = false.obs;
+
   @override
   void onInit() async {
-    await fetchPlan();
+    await fetchDataPlanScreen();
     isLoading.value = false;
     super.onInit();
   }
 
   void goToPlanDetail(int index) {
     Get.toNamed(AppRoutes.planDetailsScreen, arguments: planModel[index]);
+  }
+
+  fetchDataPlanScreen() async {
+    isLoading.value = true;
+    await fetchPlan();
+    isLoading.value = false;
   }
 
   Future<void> fetchPlan() async {
@@ -38,9 +45,6 @@ class PlanController extends GetxController {
       Get.snackbar("Error server ${response.statusCode}",
           json.decode(response.body)['message']);
     }
-    isLoading.value = false;
-
-    update();
   }
 
   void goToCreatePlan() {

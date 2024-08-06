@@ -23,7 +23,23 @@ class MenuScreen extends GetView<MenuScreenController> {
       }
       return Scaffold(
         backgroundColor: appTheme.grey100,
-        body: Padding(
+        body: Obx(() {
+          if (controller.menus.isEmpty) {
+            return SizedBox(
+              width: double.maxFinite,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/images/not_found.png",
+                      width: 128.adaptSize),
+                  Text("${"txt_no_menu_available_yet".tr}.",
+                      style: CustomTextStyles.titleMedium16Black),
+                  // Text("body_no_results".tr, style: theme.textTheme.bodyMedium,)
+                ],
+              ),
+            );
+          }
+          return Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.h),
           child: Column(
             children: [
@@ -178,7 +194,8 @@ class MenuScreen extends GetView<MenuScreenController> {
                   ))
             ],
           ),
-        ),
+        );
+    }),
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
           backgroundColor: appTheme.green500,

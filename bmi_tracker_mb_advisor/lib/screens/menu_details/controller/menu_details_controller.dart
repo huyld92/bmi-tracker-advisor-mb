@@ -108,20 +108,20 @@ class MenuDetailsController extends GetxController {
     }
   }
 
-  void deactivateFood(int index) {
-    menuDetailsModel.value.menuFoods![index].isActive = false;
-    int menuFoodID = menuDetailsModel.value.menuFoods![index].menuFoodID!;
-    deactivateMenuFood(menuFoodID);
-    menuDetailsModel.refresh();
-  }
-
-  void activateFood(int index) {
-    menuDetailsModel.value.menuFoods![index].isActive = true;
-    int menuFoodID = menuDetailsModel.value.menuFoods![index].menuFoodID!;
-
-    activateMenuFood(menuFoodID);
-    menuDetailsModel.refresh();
-  }
+  // void deactivateFood(int index) {
+  //   menuDetailsModel.value.menuFoods![index].isActive = false;
+  //   int menuFoodID = menuDetailsModel.value.menuFoods![index].menuFoodID!;
+  //   deactivateMenuFood(menuFoodID);
+  //   menuDetailsModel.refresh();
+  // }
+  //
+  // void activateFood(int index) {
+  //   menuDetailsModel.value.menuFoods![index].isActive = true;
+  //   int menuFoodID = menuDetailsModel.value.menuFoods![index].menuFoodID!;
+  //
+  //   activateMenuFood(menuFoodID);
+  //   menuDetailsModel.refresh();
+  // }
 
   void goToAddFood() {
     Get.toNamed(AppRoutes.addFoodToMenuScreen,

@@ -5,7 +5,6 @@ class Recipe {
   String? ingredientPhoto;
   double? quantity;
   String? unit;
-  bool? isActive;
 
   Recipe({
     this.recipeID,
@@ -14,7 +13,6 @@ class Recipe {
     this.ingredientPhoto,
     this.quantity,
     this.unit,
-    this.isActive,
   });
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
@@ -25,7 +23,6 @@ class Recipe {
       ingredientPhoto: json['ingredientPhoto'],
       quantity: json['quantity'],
       unit: json['unit'],
-      isActive: json['isActive'],
     );
   }
 
@@ -37,7 +34,6 @@ class Recipe {
       'ingredientPhoto': ingredientPhoto,
       'quantity': quantity,
       'unit': unit,
-      'isActive': isActive,
     };
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_elevated_button.dart';
@@ -12,22 +13,6 @@ class ForgotPasswordVerifyScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               flex: 2,
               child: Padding(
@@ -54,13 +39,7 @@ class ForgotPasswordVerifyScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: CustomElevatedButton(
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginScreen(),
-                ),
-                (route) => false,
-              );
+              Get.offAll(() => const LoginScreen());
             },
             text: 'Continue'),
       ),

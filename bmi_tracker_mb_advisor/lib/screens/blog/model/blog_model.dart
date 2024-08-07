@@ -49,6 +49,13 @@ class BlogModel {
         "isActive": isActive,
       };
 
+  Map<String, dynamic> toCreateJson() => {
+     "blogName": blogName,
+    "blogContent": blogContent,
+    "blogPhoto": blogPhoto,
+    "link": link,
+  };
+
   Map<String, dynamic> toUpdateJson() => {
         "blogID": blogId,
         "blogName": blogName,

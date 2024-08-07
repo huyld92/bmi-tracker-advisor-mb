@@ -66,7 +66,7 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                                       text:
                                           "${controller.statisticsBodyMassModels.first.weight} kg",
                                       style:
-                                          CustomTextStyles.bodyMedium16Grey300)
+                                          CustomTextStyles.bodyMedium16Red)
                                 ]),
                           ),
                           RichText(
@@ -89,7 +89,7 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                                       text:
                                           "${controller.statisticsBodyMassModels.last.weight} kg",
                                       style:
-                                          CustomTextStyles.bodyMedium16Grey300)
+                                          CustomTextStyles.bodyMedium16Grey500)
                                 ]),
                           ),
                         ],
@@ -179,7 +179,7 @@ class HistoryItem extends StatelessWidget {
             const Spacer(),
             Column(
               children: [
-                Text("$weight kg", style: CustomTextStyles.bodyMedium16Grey300),
+                Text("$weight kg", style: CustomTextStyles.bodyMedium16Grey500),
               ],
             )
           ],

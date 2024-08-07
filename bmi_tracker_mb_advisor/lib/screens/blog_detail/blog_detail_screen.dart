@@ -1,9 +1,11 @@
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/controller/blog_detail_controller.dart';
+import 'package:bmi_tracker_mb_advisor/widgets/custom_elevated_button.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../theme/custom_button_style.dart';
 import '../../util/app_export.dart';
 import '../update_blog/update_blog_screen.dart';
 
@@ -22,7 +24,30 @@ class BlogDetailScreen extends GetView<BlogDetailController> {
         actions: [
           IconButton(
             onPressed: () {
-              // controller.goToFeedBack();
+              Get.defaultDialog(
+                backgroundColor: Colors.white,
+                title: "Confirm delete blog",
+                titleStyle: CustomTextStyles.titleMedium16Black,
+                content: Text("Are you sure to delete blog?"),
+                barrierDismissible: false,
+                cancel: ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  style: CustomButtonStyles.outlineButtonGrey300,
+                  child: Text("txt_cancel".tr,
+                      style: CustomTextStyles.bodyMedium14White),
+                ),
+                confirm: ElevatedButton(
+                  onPressed: () async {
+                    Get.back();
+                    controller.deactivateBlog();
+                  },
+                  style: CustomButtonStyles.outlineButtonRed500,
+                  child: Text("txt_delete".tr,
+                      style: CustomTextStyles.bodyMedium14White),
+                ),
+              );
             },
             icon: const Icon(LineAwesomeIcons.trash),
           ),
@@ -55,17 +80,21 @@ class BlogDetailScreen extends GetView<BlogDetailController> {
                   borderRadius: BorderRadius.circular(15),
                   //! photo
                 ),
-                child: CustomImageView(
-                  imagePath: controller.blogModel.value.blogPhoto ??
-                      'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg',
-                  fit: BoxFit.cover,
+                child: Obx(
+                  () => CustomImageView(
+                    imagePath: controller.blogModel.value.blogPhoto ??
+                        'https://res.cloudinary.com/dlipvbdwi/image/upload/v1696896651/cld-sample-3.jpg',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               //! Title
-              Text(
-                // controller.foodModel.value.foodName ??
-                controller.blogModel.value.blogName ?? "This is a title",
-                style: Theme.of(context).textTheme.headlineMedium,
+              Obx(
+                () => Text(
+                  // controller.foodModel.value.foodName ??
+                  controller.blogModel.value.blogName ?? "This is a title",
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
               //Content
               Text(
@@ -76,11 +105,13 @@ class BlogDetailScreen extends GetView<BlogDetailController> {
                 padding: EdgeInsets.symmetric(vertical: 10.v),
                 child: SizedBox(
                   width: double.infinity,
-                  child: Text(
-                    // controller.foodModel.value.description ??
-                    controller.blogModel.value.blogContent ??
-                        'This is the description!',
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  child: Obx(
+                    () => Text(
+                      // controller.foodModel.value.description ??
+                      controller.blogModel.value.blogContent ??
+                          'This is the description!',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                 ),
               ),

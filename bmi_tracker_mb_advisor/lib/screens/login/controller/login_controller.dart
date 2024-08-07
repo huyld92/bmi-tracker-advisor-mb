@@ -149,7 +149,7 @@ class LoginController extends GetxController {
     });
   }
 
-  void goToForgetPasswordScreen() {
-    // Get.toNamed(AppRoutes.forgotPasswordScreen);
+  void goToForgotPasswordScreen() {
+    Get.toNamed(AppRoutes.forgotPasswordScreen);
   }
 }

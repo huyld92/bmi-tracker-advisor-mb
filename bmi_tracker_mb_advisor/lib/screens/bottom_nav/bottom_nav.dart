@@ -42,7 +42,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.work_outline_rounded),
-            label: 'WorkPlace',
+            label: 'Workspace',
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.menu_book),

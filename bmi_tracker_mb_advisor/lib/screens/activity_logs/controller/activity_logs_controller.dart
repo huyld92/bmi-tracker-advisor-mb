@@ -19,6 +19,7 @@ class ActivityLogsController extends GetxController {
   Future<void> fetchActivityLogScreenData() async {
     isLoading.value = true;
     memberID = Get.arguments;
+    date.value = DateTime.now().format();
 
     await getActivityLogByDateAndMemberID(date.value, memberID);
     isLoading.value = false;

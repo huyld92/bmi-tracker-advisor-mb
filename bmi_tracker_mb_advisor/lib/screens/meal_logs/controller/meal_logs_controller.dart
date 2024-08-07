@@ -20,7 +20,7 @@ class MealLogsController extends GetxController {
   Future<void> fetchMealLogScreenData() async {
     isLoading.value = true;
     memberID = Get.arguments;
-
+    date.value = DateTime.now().format();
     await getMealLogByDateAndMemberID(date.value, memberID);
     isLoading.value = false;
   }

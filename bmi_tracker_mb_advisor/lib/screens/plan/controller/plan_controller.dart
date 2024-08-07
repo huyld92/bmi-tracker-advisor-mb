@@ -34,6 +34,9 @@ class PlanController extends GetxController {
     if (response.statusCode == 200) {
       // convert list foods from json
       planModel.value = planModelFromJson(response.body);
+      planModel.sort(
+        (a, b) => b.planId!.compareTo(a.planId!),
+      );
       planModel.refresh();
     } else if (response.statusCode == 204) {
       planModel.clear();

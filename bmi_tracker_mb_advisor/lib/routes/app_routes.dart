@@ -22,6 +22,8 @@ import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding
 import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/forgot_password/binding/forgot_password_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forgot_password_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/binding/login_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/login_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/meal_logs/binding/meal_logs_binding.dart';
@@ -89,6 +91,7 @@ class AppRoutes {
   static const String createWorkoutScreen = '/createWorkoutScreen';
   static const String feedbackScreen = '/feedbackScreen';
   static const String foodDetailsScreen = '/foodDetailsScreen';
+  static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String loginScreen = '/loginScreen';
   static const String mealLogsScreen = '/mealLogsScreen';
   static const String memberScreen = '/memberScreen';
@@ -217,6 +220,13 @@ class AppRoutes {
       page: () => const FoodDetailScreen(),
       bindings: [
         FoodDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: forgotPasswordScreen,
+      page: () => const ForgotPasswordScreen(),
+      bindings: [
+        ForgotPasswordBinding(),
       ],
     ),
     GetPage(

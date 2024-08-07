@@ -34,6 +34,9 @@ class WorkoutController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       workouts.value = workoutModelsFromJson(response.body);
+      workouts.sort(
+        (a, b) => b.workoutID!.compareTo(a.workoutID!),
+      );
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       workouts.clear();
@@ -66,7 +69,8 @@ class WorkoutController extends GetxController {
       // 204 thành công cập nhật giá trị tại index
       workouts[index].isActive = false;
       workouts.refresh();
-      Get.snackbar("Deactivate workout", "Deactivate workout success!");
+      // Get.snackbar("Deactivate workout", "Deactivate workout success!",
+      //     duration: Duration(milliseconds: 700));
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -88,7 +92,7 @@ class WorkoutController extends GetxController {
       workouts[index].isActive = true;
       workouts.refresh();
 
-      Get.snackbar("Activate workout", "Activate workout success!");
+      // Get.snackbar("Activate workout", "Activate workout success!");
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -103,9 +107,9 @@ class WorkoutController extends GetxController {
   void goToUpdateWorkout(int index) {
     Get.toNamed(AppRoutes.updateWorkoutScreen, arguments: workouts[index])
         ?.then((value) {
-          if(value!=null){
-            workouts[index]= value;
-          }
+      if (value != null) {
+        workouts[index] = value;
+      }
     });
   }
 }

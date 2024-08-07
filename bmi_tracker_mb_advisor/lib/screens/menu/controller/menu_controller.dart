@@ -33,6 +33,7 @@ class MenuScreenController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       menus.value = menuModelsFromJson(response.body);
+      menus.sort((a, b) => b.menuID!.compareTo(a.menuID!));
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       menus.clear();
@@ -64,7 +65,7 @@ class MenuScreenController extends GetxController {
       // 204 thành công cập nhật giá trị tại index
       menus[index].isActive = false;
       menus.refresh();
-      Get.snackbar("Deactivate menu", "Deactivate menu success!");
+      // Get.snackbar("Deactivate menu", "Deactivate menu success!");
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -95,7 +96,7 @@ class MenuScreenController extends GetxController {
       menus[index].isActive = true;
       menus.refresh();
 
-      Get.snackbar("Activate menu", "Activate menu success!");
+      // Get.snackbar("Activate menu", "Activate menu success!");
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {

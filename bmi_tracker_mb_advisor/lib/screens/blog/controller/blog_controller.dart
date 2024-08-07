@@ -10,7 +10,8 @@ import '../../../util/app_export.dart';
 class BlogController extends GetxController {
   var isLoading = false.obs;
   var blogList = <BlogModel>[].obs;
-  var blogModel = BlogModel().obs;
+
+  // var blogModel = BlogModel().obs;
 
   @override
   Future<void> onInit() async {
@@ -35,6 +36,7 @@ class BlogController extends GetxController {
     } else if (response.statusCode == 204) {
       // Quay về màn hình trước đó khi advisor không tồn tại
       blogList.clear();
+      blogList.sort((a, b) => b.blogId!.compareTo(a.blogId!));
       // Get.back();
       // Get.snackbar(
       //     "Blogs does not exist!", 'This advisor has not created any blog yet');
@@ -53,10 +55,21 @@ class BlogController extends GetxController {
   }
 
   void goToCreateBlog() {
-    Get.toNamed(AppRoutes.createBlogScreen);
+    Get.toNamed(AppRoutes.createBlogScreen)?.then((value) => {
+          if (value != null && value) {fetchDataBlogScreen()}
+        });
   }
 
   void goToBlogDetail(int index) {
-    Get.toNamed(AppRoutes.blogDetailsScreen, arguments: blogList[index]);
+    Get.toNamed(AppRoutes.blogDetailsScreen, arguments: blogList[index])
+        ?.then((value) {
+      if (value != null && value) {
+        blogList.removeAt(index);
+       }
+      isLoading.value = true;
+      blogList.refresh();
+      isLoading.value = false;
+    });
+    ;
   }
 }

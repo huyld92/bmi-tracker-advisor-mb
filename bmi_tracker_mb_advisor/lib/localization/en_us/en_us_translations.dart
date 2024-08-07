@@ -145,5 +145,8 @@ final Map<String, String> enUs = {
   "txt_no_notifications_available_yet": "No notifications available yet",
 
   // Update blog
-  "txt_update_blog":"Update blog"
+  "txt_update_blog":"Update blog",
+
+  //blog details
+  "txt_delete":"Delete",
 };

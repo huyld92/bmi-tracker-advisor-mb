@@ -6,6 +6,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../constants/size.dart';
 import '../../widgets/custom_elevated_button.dart';
+import '../../widgets/custom_image_view.dart';
 
 class CreateBlogScreen extends GetView<CreateBlogController> {
   const CreateBlogScreen({super.key});
@@ -53,26 +54,18 @@ class CreateBlogScreen extends GetView<CreateBlogController> {
                           SizedBox(
                             width: 500.h,
                             height: 250.v,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Obx(
-                                () {
-                                  // Check if blogPhoto is null or not
-                                  String? imageUrl =
-                                      controller.blogModel.value.blogPhoto;
-
-                                  // Provide a default image URL if blogPhoto is null
-                                  if (imageUrl == null) {
-                                    imageUrl =
-                                        'assets/images/default image.png';
-                                  }
-
-                                  return Image(
-                                    image: AssetImage(imageUrl),
-                                  );
-                                },
-                              ),
-                            ),
+                            child: Obx(() {
+                              if (controller.isFile.value) {
+                                return CustomImageView(
+                                  imagePath: controller.imagePath.value,
+                                );
+                              } else {
+                                return CustomImageView(
+                                  imagePath:
+                                      controller.blogModel.value.blogPhoto,
+                                );
+                              }
+                            }),
                           ),
                           Positioned(
                             bottom: 0,
@@ -88,7 +81,7 @@ class CreateBlogScreen extends GetView<CreateBlogController> {
                                 icon: Icon(LineAwesomeIcons.camera,
                                     size: 20.0.fSize, color: Colors.black),
                                 onPressed: () {
-                                  controller.selectAndUploadImage();
+                                  controller.selectImage();
                                 },
                               ),
                             ),

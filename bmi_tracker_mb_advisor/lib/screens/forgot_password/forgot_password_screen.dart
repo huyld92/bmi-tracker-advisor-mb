@@ -1,13 +1,16 @@
 import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forgot_password_verify_screen.dart';
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
+import 'controller/forgot_password_controller.dart';
+
 // import 'package:flutter_health_menu/screens/forget_password/change_new_password_screen.dart';
 // import 'package:flutter_health_menu/screens/login/login_screen.dart';
 // import 'package:flutter_health_menu/screens/register/rergister_info_screen.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
   const ForgotPasswordScreen({super.key});
 
   @override
@@ -82,12 +85,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: CustomElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ForgotPasswordVerifyScreen(),
-                  ),
-                );
+                Get.offAll(() => const ForgotPasswordVerifyScreen());
               },
               text: 'Continue'),
         ),

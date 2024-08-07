@@ -28,7 +28,7 @@ class UpdateBlogScreen extends GetView<UpdateBlogController> {
           // leading: IconButton(
           //     onPressed: () => Get.back(),
           //     icon: const Icon(LineAwesomeIcons.angle_left)),
-          title: Text('Edit Blog',
+          title: Text('Update Blog',
               style: Theme.of(context).textTheme.headlineMedium),
         ),
         body: GestureDetector(

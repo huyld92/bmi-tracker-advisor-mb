@@ -39,7 +39,7 @@ class BlogRepository {
     var response = await interceptedClient.post(
         BuildServer.buildUrl("blogs/createNew"),
         headers: header,
-        body: json.encode(blogModel.toJson()));
+        body: json.encode(blogModel.toCreateJson()));
     return response;
   }
 
@@ -52,7 +52,16 @@ class BlogRepository {
         headers: header,
         body: json.encode(blogModel.toUpdateJson()));
     return response;
+  }
 
-
+  static Future<http.Response> deactivateBlog(int? blogId) async {
+    Map<String, String> header = {
+      "Content-type": "application/json",
+    };
+    var response = await interceptedClient.delete(
+      BuildServer.buildUrl("blogs/deactivate/$blogId"),
+      headers: header,
+    );
+    return response;
   }
 }

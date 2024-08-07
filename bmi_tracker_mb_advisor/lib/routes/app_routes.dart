@@ -18,10 +18,6 @@ import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_b
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_plan_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_plan_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_blog/binding/edit_blog_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_profile/binding/edit_profile_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_profile/edit_profile_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
@@ -54,7 +50,10 @@ import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/statistics_weig
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history/binding/subscription_history_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history/subscription_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/subscription_history_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_blog/binding/update_blog_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_blog/update_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/update_menu/update_menu_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_profile/binding/update_profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/update_workout/update_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/binding/workout_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/workout_details_screen.dart';
@@ -70,6 +69,7 @@ import '../screens/create_workout/create_workout_screen.dart';
 import '../screens/member_details/member_details_screen.dart';
 import '../screens/subscription_history_detail/binding/subscription_history_details_binding.dart';
 import '../screens/update_menu/binding/update_menu_binding.dart';
+import '../screens/update_profile/update_profile_screen.dart';
 import '../screens/update_workout/binding/update_workout_binding.dart';
 import '../util/app_export.dart';
 
@@ -87,8 +87,6 @@ class AppRoutes {
   static const String createMenuScreen = '/createMenuScreen';
   static const String createPlanScreen = '/createPlanScreen';
   static const String createWorkoutScreen = '/createWorkoutScreen';
-  static const String editBlogScreen = '/editBlogScreen';
-  static const String editProfileScreen = '/editProfileScreen';
   static const String feedbackScreen = '/feedbackScreen';
   static const String foodDetailsScreen = '/foodDetailsScreen';
   static const String loginScreen = '/loginScreen';
@@ -107,7 +105,9 @@ class AppRoutes {
   static const String subscriptionHistoryScreen = '/subscriptionHistoryScreen';
   static const String subscriptionHistoryDetailsScreen =
       '/subscriptionHistoryDetailsScreen';
+  static const String updateBlogScreen = '/updateBlogScreen';
   static const String updateMenuScreen = '/updateMenuScreen';
+  static const String updateProfileScreen = '/updateProfileScreen';
   static const String updateWorkoutScreen = '/updateWorkoutScreen';
   static const String workoutScreen = '/workoutScreen';
   static const String workoutDetailsScreen = '/workoutDetailsScreen';
@@ -203,20 +203,6 @@ class AppRoutes {
       page: () => const CreateWorkoutScreen(),
       bindings: [
         CreateWorkoutBinding(),
-      ],
-    ),
-    GetPage(
-      name: editBlogScreen,
-      page: () => const EditBlogScreen(),
-      bindings: [
-        EditBlogBinding(),
-      ],
-    ),
-    GetPage(
-      name: editProfileScreen,
-      page: () => const EditProfileScreen(),
-      bindings: [
-        EditProfileBinding(),
       ],
     ),
     GetPage(
@@ -339,10 +325,24 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: updateBlogScreen,
+      page: () => const UpdateBlogScreen(),
+      bindings: [
+        UpdateBlogBinding(),
+      ],
+    ),
+    GetPage(
       name: updateMenuScreen,
       page: () => const UpdateMenuScreen(),
       bindings: [
         UpdateMenuBinding(),
+      ],
+    ),
+    GetPage(
+      name: updateProfileScreen,
+      page: () => const UpdateProfileScreen(),
+      bindings: [
+        UpdateProfileBinding(),
       ],
     ),
     GetPage(

@@ -13,7 +13,7 @@ import '../../../models/account_model.dart';
 import '../../../repositories/account_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
-class EditProfileController extends GetxController {
+class UpdateProfileController extends GetxController {
   Rx<AccountModel> accountModel = AccountModel().obs;
   TextEditingController txtFullNameController = TextEditingController();
   TextEditingController txtPhoneNumberController = TextEditingController();

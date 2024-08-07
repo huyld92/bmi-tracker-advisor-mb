@@ -17,7 +17,7 @@ class BlogModel {
   String? blogPhoto;
   String? link;
   int? advisorId;
-  bool? active;
+  bool? isActive;
 
   BlogModel({
     this.blogId,
@@ -26,7 +26,7 @@ class BlogModel {
     this.blogPhoto,
     this.link,
     this.advisorId,
-    this.active,
+    this.isActive,
   });
 
   factory BlogModel.fromJson(Map<String, dynamic> json) => BlogModel(
@@ -36,7 +36,7 @@ class BlogModel {
         blogPhoto: json["blogPhoto"],
         link: json["link"],
         advisorId: json["advisorID"],
-        active: json["active"],
+        isActive: json["isActive"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -46,6 +46,14 @@ class BlogModel {
         "blogPhoto": blogPhoto,
         "link": link,
         "advisorID": advisorId,
-        "active": active,
+        "isActive": isActive,
+      };
+
+  Map<String, dynamic> toUpdateJson() => {
+        "blogID": blogId,
+        "blogName": blogName,
+        "blogContent": blogContent,
+        "blogPhoto": blogPhoto,
+        "link": link,
       };
 }

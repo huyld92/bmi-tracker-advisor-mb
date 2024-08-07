@@ -1,4 +1,3 @@
-import 'package:bmi_tracker_mb_advisor/screens/edit_profile/controller/edit_profile_controller.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_text_form_field.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_textnumber_form_field.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +5,10 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../util/app_export.dart';
 import '../../widgets/custom_drop_down_gender.dart';
 import '../../widgets/custom_elevated_button.dart';
+import 'controller/update_profile_controller.dart';
 
-class EditProfileScreen extends GetView<EditProfileController> {
-  const EditProfileScreen({super.key});
+class UpdateProfileScreen extends GetView<UpdateProfileController> {
+  const UpdateProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

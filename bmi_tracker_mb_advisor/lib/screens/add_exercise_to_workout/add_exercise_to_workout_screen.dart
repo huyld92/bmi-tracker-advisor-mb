@@ -55,8 +55,8 @@ class AddExerciseToWorkoutScreen
                                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnxL_hu4jflVBvj-Cs8LEC52L_e7y9PjySxg&s",
                                 title:
                                     "${controller.exerciseModels[index].exerciseName}",
-                                content1:
-                                    "${"txt_tag".tr}: ${controller.exerciseModels[index].tagName}",
+                                // content1:
+                                //     "${"txt_tag".tr}: ${controller.exerciseModels[index].tagName}",
                                 content2:
                                     "METs: ${controller.exerciseModels[index].met}",
                                 onTitleTap: () {

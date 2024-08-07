@@ -41,8 +41,8 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                         controller.selectMeal(meal);
                       },
                       child: Container(
-                        margin: const EdgeInsets.all(4.0),
-                        padding: const EdgeInsets.all(10.0),
+                        margin: const EdgeInsets.all(3.0),
+                        padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
                           color: controller.selectedMeal.value == meal
                               ? appTheme.green500
@@ -111,9 +111,9 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                                   "https://i.ytimg.com/vi/XowvxiGYsRI/maxresdefault.jpg",
                               title: "${controller.foodModels[index].foodName}",
                               content1:
-                                  "${controller.foodModels[index].foodTimeProcess} min",
-                              content2:
-                                  "${controller.foodModels[index].serving}",
+                                  "Time: ${controller.foodModels[index].foodTimeProcess} min",
+                              // content2:
+                              //     "${controller.foodModels[index].serving}",
                               content3:
                                   "${controller.foodModels[index].foodCalories} kcal",
                               onTitleTap: () {

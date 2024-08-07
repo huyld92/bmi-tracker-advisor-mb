@@ -15,7 +15,7 @@ import '../../../routes/app_routes.dart';
 import '../../../util/app_export.dart';
 
 class CreateBlogController extends GetxController {
-  // final GlobalKey<FormState> blogFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> blogFormKey = GlobalKey<FormState>();
   late TextEditingController blogNameController;
   late TextEditingController blogContentController;
   // late TextEditingController blogPhotoController;

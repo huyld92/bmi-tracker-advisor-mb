@@ -116,8 +116,10 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                       padding: EdgeInsets.symmetric(vertical: 10.v),
                       child: Obx(
                         () => MemberInfoCard(
-                          height: controller.member.value.height.toString(),
-                          weight: controller.member.value.weight.toString(),
+                          height:
+                              '${controller.member.value.height.toString()} cm',
+                          weight:
+                              '${controller.member.value.weight.toString()} kg',
                           bmi: controller.member.value.bmi!.round().toString(),
                         ),
                       ),

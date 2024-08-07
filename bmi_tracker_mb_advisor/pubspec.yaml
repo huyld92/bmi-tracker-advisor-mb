@@ -44,7 +44,7 @@ dependencies:
   line_awesome_flutter: 2.0.0
   get: 4.6.5
   carousel_slider: 4.2.1
-  cometchat_chat_uikit: 4.1.0
+  cometchat_chat_uikit: 4.4.0
   # cometchat_chat_uikit: 4.5.1
   http: 0.13.6
   sprintf: 7.0.0

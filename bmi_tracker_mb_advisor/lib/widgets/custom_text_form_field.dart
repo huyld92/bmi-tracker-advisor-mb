@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
   bool? enable;
   double? borderRadius;
   Color fillColor;
+  int? maxLines = 1;
 
   // bool isObscure;
 
@@ -29,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.controller,
     this.suffixIcon,
+    this.maxLines,
     this.prefixicon,
     // this.isObscure = true,
     this.enable,

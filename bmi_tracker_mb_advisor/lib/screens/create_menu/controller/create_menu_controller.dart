@@ -11,12 +11,14 @@ import 'package:flutter/cupertino.dart';
 import '../../../util/app_export.dart';
 
 class CreateMenuController extends GetxController {
+  final GlobalKey<FormState> createMenuFormKey = GlobalKey<FormState>();
   TextEditingController menuNameController = TextEditingController();
   TextEditingController txtMenuDescriptionController = TextEditingController();
 
   RxList<MenuFoodModel> menuFoodModels = RxList.empty();
   RxList<MenuFoodRequestModel> createMenuFoodModels = RxList.empty();
-
+  var menuName = '';
+  var menuDescription = '';
   var isLoading = false.obs;
 
 // List<Create>
@@ -34,8 +36,28 @@ class CreateMenuController extends GetxController {
     menuFoodModels.removeAt(index);
   }
 
+  String? validateMenuName(String value) {
+    if (value.isEmpty) {
+      return "Menu name is invalid";
+    }
+    return null;
+  }
+
+  String? validateMenuDescription(String value) {
+    if (value.isEmpty) {
+      return "Menu description is invalid";
+    }
+    return null;
+  }
+
   Future<void> createNewMenu() async {
-    isLoading.value = true;
+    // isLoading.value = true;
+    isLoading = true.obs;
+    final isValid = createMenuFormKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    createMenuFormKey.currentState!.save();
     CreateMenuModel createMenuModel = CreateMenuModel(
       menuPhoto: "",
       menuName: menuNameController.text,

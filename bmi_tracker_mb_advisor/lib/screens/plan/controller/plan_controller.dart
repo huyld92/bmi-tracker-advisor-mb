@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:bmi_tracker_mb_advisor/repositories/plan_repository.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
@@ -33,6 +34,7 @@ class PlanController extends GetxController {
     if (response.statusCode == 200) {
       // convert list foods from json
       planModel.value = planModelFromJson(response.body);
+      planModel.refresh();
     } else if (response.statusCode == 204) {
       planModel.clear();
       print('list empty');

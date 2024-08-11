@@ -75,7 +75,7 @@ class _MemberCardState extends State<MemberCard> {
                 SizedBox(width: 10.v),
                 Text(
                   widget.member.fullName.toString(),
-                  style: theme.textTheme.titleLarge,
+                  style: theme.textTheme.titleSmall,
                 )
               ],
             ),

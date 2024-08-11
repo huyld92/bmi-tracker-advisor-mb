@@ -1,18 +1,18 @@
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/controller/plan_details_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan_detail/controller/package_details_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class PlanDetailScreen extends GetView<PlanDetailsController> {
-  const PlanDetailScreen({super.key});
+class PackageDetailScreen extends GetView<PackageDetailsController> {
+  const PackageDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Plan Detail',
+          'Package Detail',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
@@ -31,28 +31,28 @@ class PlanDetailScreen extends GetView<PlanDetailsController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             PlanDetailItemWidget(
-              label: 'Plan Name',
-              value: controller.planModel.value.planName,
+              label: 'Package Name',
+              value: controller.packageModel.value.packageName,
             ),
             PlanDetailItemWidget(
               label: 'Price',
               value:
-                  '${controller.planModel.value.price?.round().formatWithThousandSeparator()} VND',
+                  '${controller.packageModel.value.price?.round().formatWithThousandSeparator()} VND',
             ),
             const Divider(
               color: Color.fromARGB(255, 112, 105, 105),
             ),
             PlanDetailItemWidget(
               label: 'Description',
-              value: controller.planModel.value.description,
+              value: controller.packageModel.value.description,
             ),
             PlanDetailItemWidget(
-              label: 'Plan Duration',
-              value: '${controller.planModel.value.planDuration} days',
+              label: 'Package Duration',
+              value: '${controller.packageModel.value.packageDuration} days',
             ),
             PlanDetailItemWidget(
               label: 'Number Of Uses',
-              value: '${controller.planModel.value.numberOfUses}',
+              value: '${controller.packageModel.value.numberOfUses}',
             ),
           ],
         ),

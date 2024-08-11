@@ -69,7 +69,7 @@ class CreateBlogController extends GetxController {
 
   String? validateLink(String value) {
     if (value.isEmpty) {
-      return "Blogname is invalid";
+      return "Link is invalid";
     }
     return null;
   }

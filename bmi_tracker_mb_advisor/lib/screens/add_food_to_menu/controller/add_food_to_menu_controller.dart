@@ -100,4 +100,8 @@ class AddFoodToMenuController extends GetxController {
   void goToFoodDetails(int? foodID) {
     Get.toNamed(AppRoutes.foodDetailsScreen, arguments: foodID);
   }
+
+  void goToCreateRequest() {
+    Get.toNamed(AppRoutes.createRequestScreen);
+  }
 }

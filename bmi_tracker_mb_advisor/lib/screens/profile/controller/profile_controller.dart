@@ -54,15 +54,15 @@ class ProfileController extends GetxController {
         ?.then((value) async => await fetchProfileScreeData());
   }
 
-  void goToPlanScreen() {
-    Get.toNamed(AppRoutes.planScreen);
+  void goToPackageScreen() {
+    Get.toNamed(AppRoutes.packageScreen);
   }
 
   void goToSubscriptionHistory() {
     Get.toNamed(AppRoutes.subscriptionHistoryScreen);
   }
 
-  void goToFeedbackScreen() {
-    Get.toNamed(AppRoutes.feedbackScreen);
+  void goToRequestScreen() {
+    Get.toNamed(AppRoutes.requestScreen);
   }
 }

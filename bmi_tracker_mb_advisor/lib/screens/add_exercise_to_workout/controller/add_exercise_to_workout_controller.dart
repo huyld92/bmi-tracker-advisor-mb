@@ -9,6 +9,7 @@ import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/calories_calculator.dart';
 import 'package:flutter/material.dart';
 
+import '../../../routes/app_routes.dart';
 import '../../create_workout/controller/create_workout_controller.dart';
 import '../../create_workout/model/create_workout_model.dart';
 import '../../workout_details/model/workout_exercise_request_model.dart';
@@ -288,4 +289,8 @@ class AddExerciseToWorkoutController extends GetxController {
   }
 
   void goToExerciseDetails(int? exerciseID) {}
+
+  void goToCreateRequest() {
+    Get.toNamed(AppRoutes.createRequestScreen);
+  }
 }

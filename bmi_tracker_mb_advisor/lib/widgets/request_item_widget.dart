@@ -1,13 +1,14 @@
 import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan_detail/package_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request/controller/request_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../util/app_export.dart';
 
 // ignore: must_be_immutable
-class PackageItemWidget extends StatelessWidget {
-  PackageItemWidget(
+class RequestItemWidget extends StatelessWidget {
+  RequestItemWidget(
     this.index, {
     Key? key,
   }) : super(
@@ -16,19 +17,19 @@ class PackageItemWidget extends StatelessWidget {
 
   int index;
 
-  var controller = Get.find<PackageController>();
+  var controller = Get.find<RequestController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        controller.goToPackageDetail(index);
+        controller.goToRequestDetail(index);
         // Get.to(PlanDetailScreen());
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 4.v),
         decoration: ShapeDecoration(
-          color: Color.fromARGB(255, 136, 212, 241),
+          color: Color.fromARGB(255, 230, 250, 208),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -45,7 +46,7 @@ class PackageItemWidget extends StatelessWidget {
                     //   Icons.account_balance_rounded,
                     //   color: Colors.white,
                     // ),
-                    Image(image: AssetImage('assets/images/plan.png')),
+                    Image(image: AssetImage('assets/images/request.png')),
                 radius: 20,
                 // backgroundColor: Colors.green,
               ),
@@ -68,7 +69,7 @@ class PackageItemWidget extends StatelessWidget {
                 padding: EdgeInsets.only(left: 16.h),
                 child: Obx(
                   () => Text(
-                    "${controller.packageModel[index].packageName}",
+                    controller.requestModel[index].getCreationDate(),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
@@ -87,14 +88,14 @@ class PackageItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Duration",
+                        "Type",
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ),
                   Obx(
                     () => Text(
-                      "${controller.packageModel[index].packageDuration} days",
+                      "${controller.requestModel[index].type}",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -112,14 +113,14 @@ class PackageItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Price",
+                        "Status",
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ),
                   Obx(
                     () => Text(
-                      "${controller.packageModel[index].price?.round().formatWithThousandSeparator()} VND",
+                      "${controller.requestModel[index].status}",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -127,28 +128,28 @@ class PackageItemWidget extends StatelessWidget {
               ),
             ),
             SizedBox(height: 9.v),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Opacity(
-                    opacity: 1,
-                    child: Text(
-                      "Number Of Uses",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                  Obx(
-                    () => Text(
-                      "${controller.packageModel[index].numberOfUses}",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 1.v),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 16.h),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Opacity(
+            //         opacity: 1,
+            //         child: Text(
+            //           "Number Of Uses",
+            //           style: Theme.of(context).textTheme.bodyLarge,
+            //         ),
+            //       ),
+            //       Obx(
+            //         () => Text(
+            //           "${controller.packageModel[index].numberOfUses}",
+            //           style: Theme.of(context).textTheme.bodySmall,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 1.v),
           ],
         ),
       ),

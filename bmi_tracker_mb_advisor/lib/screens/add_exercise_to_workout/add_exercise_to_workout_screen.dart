@@ -17,11 +17,16 @@ class AddExerciseToWorkoutScreen
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "title_add_exercise_to_workout".tr,
-            style: theme.textTheme.titleLarge,
-          ),
-        ),
+            title: Text(
+              "title_add_exercise_to_workout".tr,
+              style: theme.textTheme.titleLarge,
+            ),
+            centerTitle: true,
+            actions: [
+              IconButton(
+                  onPressed: () => {controller.goToCreateRequest()},
+                  icon: const Icon(Icons.add_circle)),
+            ]),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 10.h),
           child: Column(

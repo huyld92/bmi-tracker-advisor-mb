@@ -18,6 +18,7 @@ class UpdateProfileController extends GetxController {
   TextEditingController txtFullNameController = TextEditingController();
   TextEditingController txtPhoneNumberController = TextEditingController();
   TextEditingController txtBankNumberController = TextEditingController();
+
   RxString birthday = "".obs;
   RxString gender = "".obs;
 
@@ -39,6 +40,8 @@ class UpdateProfileController extends GetxController {
 
     txtPhoneNumberController =
         TextEditingController(text: accountModel.value.phoneNumber);
+    txtBankNumberController =
+        TextEditingController(text: accountModel.value.bankNumber);
 
     gender.value = accountModel.value.gender!;
 

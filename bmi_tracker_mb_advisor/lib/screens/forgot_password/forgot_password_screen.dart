@@ -41,10 +41,10 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                       children: [
                         Text(
                           'Forget Password',
-                          style: Theme.of(context).textTheme.headlineSmall,
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         Text(
-                          'Enter your registered email below!',
+                          'We will send a new password for you\n in your email!',
                           style: Theme.of(context).textTheme.bodyLarge,
                         )
                       ],
@@ -57,24 +57,33 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 35),
-                  child: Column(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Email address',
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                          ),
-                          CustomTextFormField(
-                            hintTxt: 'Enter your email',
-                          ),
-                        ],
-                      )
-                    ],
+                  child: Form(
+                    key: controller.forgotPasswordFormKey,
+                    child: Column(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Email address',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            CustomTextFormField(
+                              controller: controller.txtEmailController,
+                              validator: (value) {
+                                return controller.validateEmail(value!);
+                              },
+                              hintTxt: 'Enter your email',
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )
@@ -85,7 +94,7 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
           padding: const EdgeInsets.all(15.0),
           child: CustomElevatedButton(
               onPressed: () {
-                Get.offAll(() => const ForgotPasswordVerifyScreen());
+                controller.forgotPassword();
               },
               text: 'Continue'),
         ),

@@ -65,13 +65,20 @@ class MemberScreen extends GetView<MemberController> {
                             width: 128.adaptSize),
                         Text("${"txt_no_results_found".tr}.",
                             style: CustomTextStyles.titleMedium16Black),
-                        Text("body_no_results".tr, style: theme.textTheme.bodyMedium,)
+                        Text(
+                          "body_no_results".tr,
+                          style: theme.textTheme.bodyMedium,
+                        )
                       ],
                     ),
                   );
                 } else {
-                  return Obx(
-                    () => ListView.builder(
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      // Call your refresh function here
+                      await controller.refreshData();
+                    },
+                    child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: controller.members.length,
                       itemBuilder: (context, index) {
@@ -87,31 +94,6 @@ class MemberScreen extends GetView<MemberController> {
                                 },
                                 onMessageClick: () {
                                   log('message clicked');
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) =>
-                                  //         CometChatConversationsWithMessages(
-                                  //       conversationsConfiguration:
-                                  //           ConversationsConfiguration(
-                                  //         backButton: IconButton(
-                                  //           onPressed: () {
-                                  //             controller.getBack();
-                                  //           },
-                                  //           icon:
-                                  //               const Icon(Icons.arrow_back_ios_new),
-                                  //         ),
-                                  //       ),
-                                  //       // user: User.fromUID(
-                                  //       //   uid: controller
-                                  //       //       .memberList[index].memberID
-                                  //       //       .toString(),
-                                  //       //   name: controller
-                                  //       //       .memberList[index].fullName,
-                                  //       // ),
-                                  //     ),
-                                  //   ),
-                                  // );
                                 },
                               ),
                               SizedBox(height: 10.h),

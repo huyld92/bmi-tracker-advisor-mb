@@ -115,6 +115,29 @@ class UpdateProfileScreen extends GetView<UpdateProfileController> {
                           controller: controller.txtPhoneNumberController,
                           suffixIcon: const Icon(Icons.phone),
                         ),
+                        Text(
+                          'Bank Name'.tr,
+                          style:
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        CustomTextFormField(
+                          enable: false,
+                          labelText: controller.accountModel.value.bankName,
+                          suffixIcon: const Icon(Icons.account_balance),
+                        ),
+                        Text(
+                          'Bank Number'.tr,
+                          style:
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        CustomTextNumberFormField(
+                          controller: controller.txtBankNumberController,
+                          // suffixIcon: const Icon(Icons.),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

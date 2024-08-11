@@ -1,7 +1,7 @@
 // import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
-import 'package:bmi_tracker_mb_advisor/repositories/plan_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/controller/plan_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/model/plan_model.dart';
+import 'package:bmi_tracker_mb_advisor/repositories/package_repository.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan/model/package_model.dart';
 import 'package:flutter/material.dart';
 import '../../../routes/app_routes.dart';
 import '../../../util/app_export.dart';
@@ -10,29 +10,29 @@ import 'dart:developer';
 import 'dart:ffi';
 import 'dart:io';
 
-class CreatePlanController extends GetxController {
-  final GlobalKey<FormState> createPlanFormKey = GlobalKey<FormState>();
-  late TextEditingController txtPlanNameController;
-  late TextEditingController planPriceController;
-  late TextEditingController planDescriptionController;
-  late TextEditingController planDurationController;
+class CreatePackageController extends GetxController {
+  final GlobalKey<FormState> createPackageFormKey = GlobalKey<FormState>();
+  late TextEditingController txtPackageNameController;
+  late TextEditingController packagePriceController;
+  late TextEditingController packageDescriptionController;
+  late TextEditingController packageDurationController;
 
-  var planName = '';
-  var planPrice = '';
+  var packageName = '';
+  var packagePrice = '';
   var link = '';
-  var planDescription = '';
-  var planDuration = '';
+  var packageDescription = '';
+  var packageDuration = '';
   var errorString = ''.obs;
   var isLoading = false.obs;
 
-  Rx<PlanModel> planModel = PlanModel().obs;
+  Rx<PackageModel> packageModel = PackageModel().obs;
 
   @override
   void onInit() {
-    txtPlanNameController = TextEditingController();
-    planPriceController = TextEditingController();
-    planDescriptionController = TextEditingController();
-    planDurationController = TextEditingController();
+    txtPackageNameController = TextEditingController();
+    packagePriceController = TextEditingController();
+    packageDescriptionController = TextEditingController();
+    packageDurationController = TextEditingController();
     errorString.obs;
     super.onInit();
   }
@@ -40,67 +40,72 @@ class CreatePlanController extends GetxController {
   @override
   void onClose() {
     // dispose controller
-    txtPlanNameController.dispose();
-    planPriceController.dispose();
-    planDescriptionController.dispose();
-    planDurationController.dispose();
+    txtPackageNameController.dispose();
+    packagePriceController.dispose();
+    packageDescriptionController.dispose();
+    packageDurationController.dispose();
     super.onClose();
   }
 
-  String? validatePlanName(String value) {
+  String? validatePackageName(String value) {
     if (value.isEmpty) {
-      return "Plan name is invalid";
+      return "Package name is invalid";
     }
     return null;
   }
 
-  String? validatePlanPrice(String value) {
+  String? validatePackagePrice(String value) {
     if (value.isEmpty) {
+      return "Price is invalid";
+    }
+    // Kiểm tra xem phải là số dương
+    int? packagePrice = int.tryParse(value);
+    if (packagePrice! <= 0) {
       return "Price is invalid";
     }
     return null;
   }
 
-  String? validatePlanDescription(String value) {
+  String? validatePackageDescription(String value) {
     if (value.isEmpty) {
       return "Plan Description is invalid";
     }
     return null;
   }
 
-  String? validatePlanDuration(String value) {
+  String? validatePackageDuration(String value) {
     if (value.isEmpty) {
-      return "Plan Duration is invalid";
+      return "Package Duration is invalid";
     }
     return null;
   }
 
-  Future<void> createPlan() async {
+  Future<void> createPackage() async {
     isLoading = true.obs;
-    final isValid = createPlanFormKey.currentState!.validate();
+    final isValid = createPackageFormKey.currentState!.validate();
     if (!isValid) {
       return;
     }
-    createPlanFormKey.currentState!.save();
-    print('aa:${planPriceController.text}');
-    double price = double.parse(planPriceController.text);
-    PlanModel createPlan = PlanModel(
-      planName: txtPlanNameController.text,
+    createPackageFormKey.currentState!.save();
+    // print('aa:${planPriceController.text}');
+    double price = double.parse(packagePriceController.text);
+    PackageModel createPackage = PackageModel(
+      packageName: txtPackageNameController.text,
       price: price,
-      description: planDescriptionController.text,
-      planDuration: int.parse(planDurationController.text),
+      description: packageDescriptionController.text,
+      packageDuration: int.parse(packageDurationController.text),
     );
 
-    var response = await PlanRepository.createNewPlan(createPlan);
+    var response = await PackageRepository.createNewPackage(createPackage);
 
     //kiểm tra kết quả
     if (response.statusCode == 201) {
       // convert list exercises from json
-      var planController = Get.find<PlanController>();
-      await planController.fetchPlan();
+      var packageController = Get.find<PackageController>();
+      await packageController.fetchPackage();
 
       Get.back();
-      Get.snackbar('Success', 'Create plan successful');
+      Get.snackbar('Success', 'Create package successful');
       log(jsonDecode(response.body));
     } else if (response.statusCode == 400) {
       // thông báo lỗi

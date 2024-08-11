@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../theme/custom_button_style.dart';
 import '../../theme/theme_helper.dart';
 
-class CreatePlanScreen extends GetView<CreatePlanController> {
-  const CreatePlanScreen({super.key});
+class CreatePackageScreen extends GetView<CreatePackageController> {
+  const CreatePackageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,11 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                 children: [
                   Text(
                     // 'title_appbar_crete_workout'.tr,
-                    'Create Plan',
+                    'Create Package',
                     style: theme.textTheme.titleLarge,
                   ),
                   Text(
-                    'create a plan suitable for your member',
+                    'create a package suitable for your member',
                     // 'Welcome Van Tung',
                     style: theme.textTheme.bodyMedium,
                   ),
@@ -45,7 +45,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
           child: Container(
             margin: EdgeInsets.only(bottom: 80.v),
             child: Form(
-              key: controller.createPlanFormKey,
+              key: controller.createPackageFormKey,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +67,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   ),
                   SizedBox(height: 30.h),
                   Text(
-                    'Plan Name',
+                    'Package Name',
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge!
@@ -76,16 +76,16 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   SizedBox(height: 10.v),
                   TextFormField(
                     maxLines: 1,
-                    controller: controller.txtPlanNameController,
+                    controller: controller.txtPackageNameController,
                     onSaved: (value) {
-                      controller.planName = value!;
+                      controller.packageName = value!;
                     },
                     validator: (value) {
-                      return controller.validatePlanName(value!);
+                      return controller.validatePackageName(value!);
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Enter plan name'.tr,
+                      hintText: 'Enter here'.tr,
                       focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green, width: 1.0),
                       ),
@@ -105,17 +105,17 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   SizedBox(height: 10.v),
                   TextFormField(
                     maxLines: 1,
-                    controller: controller.planPriceController,
+                    controller: controller.packagePriceController,
                     onSaved: (value) {
-                      controller.planPrice = value!;
+                      controller.packagePrice = value!;
                     },
                     validator: (value) {
-                      return controller.validatePlanPrice(value!);
+                      return controller.validatePackagePrice(value!);
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // hintText: 'txt_hint_standard_weight'.tr,
-                      hintText: 'Enter price',
+                      hintText: '100,000',
                       focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green, width: 1.0),
                       ),
@@ -127,7 +127,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   SizedBox(height: 10.v),
                   Text(
                     // 'txt_standard_weight'.tr,
-                    'Plan Description',
+                    'Package Description',
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge!
@@ -136,17 +136,17 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   SizedBox(height: 10.v),
                   TextFormField(
                     maxLines: 3,
-                    controller: controller.planDescriptionController,
+                    controller: controller.packageDescriptionController,
                     onSaved: (value) {
-                      controller.planDescription = value!;
+                      controller.packageDescription = value!;
                     },
                     validator: (value) {
-                      return controller.validatePlanDescription(value!);
+                      return controller.validatePackageDescription(value!);
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // hintText: 'txt_hint_standard_weight'.tr,
-                      hintText: 'Enter plan description',
+                      hintText: 'Enter here',
                       focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green, width: 1.0),
                       ),
@@ -157,7 +157,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   SizedBox(height: 10.v),
                   Text(
                     // 'txt_standard_weight'.tr,
-                    'Plan Duration (days)',
+                    'Package Duration (days)',
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge!
@@ -166,17 +166,17 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
                   SizedBox(height: 10.v),
                   TextFormField(
                     maxLines: 1,
-                    controller: controller.planDurationController,
+                    controller: controller.packageDurationController,
                     onSaved: (value) {
-                      controller.planDuration = value!;
+                      controller.packageDuration = value!;
                     },
                     validator: (value) {
-                      return controller.validatePlanDuration(value!);
+                      return controller.validatePackageDuration(value!);
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       // hintText: 'txt_hint_standard_weight'.tr,
-                      hintText: 'Enter plan duration',
+                      hintText: 'Enter here',
                       focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green, width: 1.0),
                       ),
@@ -198,7 +198,7 @@ class CreatePlanScreen extends GetView<CreatePlanController> {
             style: CustomButtonStyles.outlineButtonGreen500,
             onPressed: () {
               // controller.createNewWorkout();
-              controller.createPlan();
+              controller.createPackage();
             },
             child: Text(
               "txt_save".tr,

@@ -13,12 +13,16 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "txt_add_food_to_menu".tr,
-          style: theme.textTheme.titleLarge,
-        ),
-        centerTitle: true,
-      ),
+          title: Text(
+            "txt_add_food_to_menu".tr,
+            style: theme.textTheme.titleLarge,
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () => {controller.goToCreateRequest()},
+                icon: const Icon(Icons.add_circle)),
+          ]),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.h),
         child: Column(

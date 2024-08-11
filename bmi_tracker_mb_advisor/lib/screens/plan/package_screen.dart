@@ -1,11 +1,11 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_plan_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/controller/plan_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/plan_item_widget.dart';
 import 'package:flutter/material.dart';
 
-class PlanScreen extends GetView<PlanController> {
-  const PlanScreen({super.key});
+class PackageScreen extends GetView<PackageController> {
+  const PackageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +23,16 @@ class PlanScreen extends GetView<PlanController> {
       return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'My Plan',
+            'My Package',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
           elevation: 0,
         ),
         body: Obx(() {
-          if (controller.planModel.isEmpty) {
+          if (controller.packageModel.isEmpty) {
             return const Center(
-              child: Text('No plan found.'),
+              child: Text('No package found.'),
             );
           } else {
             return Padding(
@@ -44,10 +44,10 @@ class PlanScreen extends GetView<PlanController> {
                 separatorBuilder: (context, index) {
                   return SizedBox(height: 10.v);
                 },
-                itemCount: controller.planModel.length,
+                itemCount: controller.packageModel.length,
                 // itemCount: 5,
                 itemBuilder: (context, index) {
-                  return PlanItemWidget(index);
+                  return PackageItemWidget(index);
                 },
               ),
             );
@@ -58,7 +58,7 @@ class PlanScreen extends GetView<PlanController> {
           backgroundColor: Color.fromARGB(255, 104, 127, 142),
           onPressed: () {
             // controller.goToCreateBlog();
-            controller.goToCreatePlan();
+            controller.goToCreatePackage();
           },
           child: Icon(Icons.add, size: 50.adaptSize, color: appTheme.white),
         ),

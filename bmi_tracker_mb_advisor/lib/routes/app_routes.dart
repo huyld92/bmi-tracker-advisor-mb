@@ -16,8 +16,10 @@ import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_b
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_plan_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_plan_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_request/binding/create_request_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_request/create_request_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
@@ -39,12 +41,16 @@ import 'package:bmi_tracker_mb_advisor/screens/menus_history/binding/menus_histo
 import 'package:bmi_tracker_mb_advisor/screens/menus_history/menus_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/binding/notification_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/notification_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/binding/plan_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/plan_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/plan_details_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/plan_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan/binding/package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan/package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/package_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/plan_detail/package_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request/binding/request_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request/request_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request_detail/binding/request_detail_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request_detail/request_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/binding/statistics_calories_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/statistics_calories_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/binding/statistics_weight_binding.dart';
@@ -87,7 +93,7 @@ class AppRoutes {
   static const String bottomNavScreen = '/bottomNavScreen';
   static const String createBlogScreen = '/createBlogScreen';
   static const String createMenuScreen = '/createMenuScreen';
-  static const String createPlanScreen = '/createPlanScreen';
+  static const String createPackageScreen = '/createPackageScreen';
   static const String createWorkoutScreen = '/createWorkoutScreen';
   static const String feedbackScreen = '/feedbackScreen';
   static const String foodDetailsScreen = '/foodDetailsScreen';
@@ -100,8 +106,8 @@ class AppRoutes {
   static const String menuDetailsScreen = '/menuDetailsScreen';
   static const String menuHistoryScreen = '/menuHistoryScreen';
   static const String notificationScreen = '/notificationScreen';
-  static const String planScreen = '/planScreen';
-  static const String planDetailsScreen = '/planDetailsScreen';
+  static const String packageScreen = '/packageScreen';
+  static const String packageDetailsScreen = '/packageDetailsScreen';
   static const String profileScreen = '/profileScreen';
   static const String statisticsCaloriesScreen = '/statisticsCaloriesScreen';
   static const String statisticsWeightScreen = '/statisticsWeightScreen';
@@ -116,15 +122,39 @@ class AppRoutes {
   static const String workoutDetailsScreen = '/workoutDetailsScreen';
   static const String workoutHistoryScreen = '/workoutHistoryScreen';
   static const String workspaceScreen = '/workspaceScreen';
+  static const String requestDetailScreen = '/requestDetailScreen';
+  static const String createRequestScreen = '/createRequestScreen';
+  static const String requestScreen = '/requestScreen';
 
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
     GetPage(
-      name: createPlanScreen,
-      page: () => const CreatePlanScreen(),
+      name: requestScreen,
+      page: () => const RequestScreen(),
       bindings: [
-        CreatePlanBinding(),
+        RequestBinding(),
+      ],
+    ),
+    GetPage(
+      name: requestDetailScreen,
+      page: () => const RequestDetailsScreen(),
+      bindings: [
+        RequestDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: createRequestScreen,
+      page: () => const CreateRequestScreen(),
+      bindings: [
+        CreateRequestBinding(),
+      ],
+    ),
+    GetPage(
+      name: createPackageScreen,
+      page: () => const CreatePackageScreen(),
+      bindings: [
+        CreatePackageBinding(),
       ],
     ),
     GetPage(
@@ -286,17 +316,17 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: planScreen,
-      page: () => const PlanScreen(),
+      name: packageScreen,
+      page: () => const PackageScreen(),
       bindings: [
-        PlanBinding(),
+        PackageBinding(),
       ],
     ),
     GetPage(
-      name: planDetailsScreen,
-      page: () => const PlanDetailScreen(),
+      name: packageDetailsScreen,
+      page: () => const PackageDetailScreen(),
       bindings: [
-        PlanDetailsBinding(),
+        PackageDetailsBinding(),
       ],
     ),
     GetPage(

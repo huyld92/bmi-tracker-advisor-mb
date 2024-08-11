@@ -61,6 +61,8 @@ dependencies:
   shared_preferences: 2.2.3
   url_launcher: 6.3.0
   image_picker: 1.0.8
+  flutter_zalopay_sdk: 0.1.14
+  numberpicker: 2.1.2
 
 dev_dependencies:
   flutter_test:

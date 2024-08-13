@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:bmi_tracker_mb_advisor/models/enums/enum_user_request.dart';
 import 'package:bmi_tracker_mb_advisor/models/request_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/request_repository.dart';
 import 'package:bmi_tracker_mb_advisor/screens/request/controller/request_controller.dart';
@@ -9,24 +10,24 @@ import 'package:flutter/material.dart';
 
 class CreateRequestController extends GetxController {
   final GlobalKey<FormState> createRequestFormKey = GlobalKey<FormState>();
-  // late TextEditingController txtTypeController;
+
+  late TextEditingController txtFoodNameController;
   late TextEditingController txtPurposeController;
 
-  late String requestType;
+  RxString requestType = ''.obs;
 
   // var type = '';
-  var purpose = '';
+  var purposeToolTip = '';
   var errorString = ''.obs;
   var isLoading = false.obs;
+  List<String> dropDownType = List.empty(growable: true);
 
   Rx<RequestModel> requestModel = RequestModel().obs;
 
   @override
   void onInit() {
+    fetchCreateRequestScreenData();
     // txtTypeController = TextEditingController();
-    requestType = 'Create food request';
-    txtPurposeController = TextEditingController();
-    errorString.obs;
     super.onInit();
   }
 
@@ -36,6 +37,36 @@ class CreateRequestController extends GetxController {
     txtPurposeController.dispose();
 
     super.onClose();
+  }
+
+  void fetchCreateRequestScreenData() {
+    isLoading.value = true;
+
+    EUserRequestType argument = Get.arguments ?? EUserRequestType.OTHER;
+    if (argument == EUserRequestType.CREATE_FOOD) {
+      requestType.value = argument.name;
+      dropDownType.add(requestType.value);
+      purposeToolTip = 'msg_purpose_create_food_request'.tr;
+      txtFoodNameController = TextEditingController();
+    } else if(argument == EUserRequestType.CREATE_EXERCISE){
+      requestType.value = argument.name;
+      dropDownType.add(requestType.value);
+      purposeToolTip = 'msg_purpose_create_exercise_request'.tr;
+    } else {
+      requestType.value = argument.name;
+      dropDownType.add("Create food request");
+      dropDownType.add("Create exercise request");
+      dropDownType.add("Menu");
+      dropDownType.add("Food");
+      dropDownType.add("Member");
+      dropDownType.add("Other");
+      purposeToolTip = 'msg_purpose_request_other'.tr;
+    }
+
+    txtPurposeController = TextEditingController();
+
+    errorString.obs;
+    isLoading.value = false;
   }
 
   String? validatePurpose(String value) {
@@ -54,20 +85,17 @@ class CreateRequestController extends GetxController {
       return;
     }
     createRequestFormKey.currentState!.save();
-
+    String purpose =
+        "Food name:${txtFoodNameController.text}\n${txtPurposeController.text}";
     RequestModel createRequest = RequestModel(
-      type: requestType,
-      purpose: txtPurposeController.text,
+      type: requestType.value,
+      purpose: purpose,
     );
 
     var response = await RequestRepository.createNewRequest(createRequest);
-
+    print('response:${response.statusCode}');
     //kiểm tra kết quả
     if (response.statusCode == 201) {
-      // convert list exercises from json
-      var requestController = Get.find<RequestController>();
-      await requestController.fetchRequest();
-
       Get.back();
       Get.snackbar('Success', 'Create request successful');
       log(jsonDecode(response.body));
@@ -80,5 +108,9 @@ class CreateRequestController extends GetxController {
     }
 
     isLoading = false.obs;
+  }
+
+  void selectType(String? newValue) {
+    requestType.value = newValue!;
   }
 }

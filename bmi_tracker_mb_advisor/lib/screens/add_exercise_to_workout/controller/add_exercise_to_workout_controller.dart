@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bmi_tracker_mb_advisor/models/enums/enum_user_request.dart';
 import 'package:bmi_tracker_mb_advisor/models/exercise_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/exercise_repository.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_workout/model/workout_exercise.dart';
@@ -15,10 +16,14 @@ import '../../create_workout/model/create_workout_model.dart';
 import '../../workout_details/model/workout_exercise_request_model.dart';
 
 class AddExerciseToWorkoutController extends GetxController {
-  RxList<ExerciseModel> exerciseModels = RxList.empty();
+  List<ExerciseModel> exerciseDefaults = List.empty();
+  RxList<ExerciseModel> exerciseUIModels = RxList.empty();
   RxInt caloriesBurned = 0.obs;
   int? workoutID;
   var isLoading = false.obs;
+
+  // giá trị của sort
+  RxString currentSortCriteria = 'Sort Ascending'.obs;
 
   @override
   Future<void> onInit() async {
@@ -48,11 +53,12 @@ class AddExerciseToWorkoutController extends GetxController {
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       // convert list exercises from json
-      exerciseModels.value = exerciseModelsFromJson(response.body);
-      exerciseModels.sort((a, b) => b.exerciseID!.compareTo(a.exerciseID!));
+      exerciseUIModels.value = exerciseModelsFromJson(response.body);
+      exerciseDefaults = exerciseModelsFromJson(response.body);
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
-      exerciseModels.clear();
+      exerciseDefaults.clear();
+      exerciseUIModels.clear();
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -265,7 +271,7 @@ class AddExerciseToWorkoutController extends GetxController {
   }
 
   void calculatorCaloriesBurned(int index, int duration, int weightKg) {
-    double met = exerciseModels[index].met!;
+    double met = exerciseUIModels[index].met!;
     caloriesBurned.value =
         CaloriesCalculator.calculateCaloriesBurned(met, weightKg, duration);
   }
@@ -275,21 +281,21 @@ class AddExerciseToWorkoutController extends GetxController {
       var createWorkoutController = Get.find<CreateWorkoutController>();
 
       WorkoutExercise workoutExercise = WorkoutExercise(
-        exerciseID: exerciseModels[index].exerciseID,
-        exerciseName: exerciseModels[index].exerciseName,
+        exerciseID: exerciseUIModels[index].exerciseID,
+        exerciseName: exerciseUIModels[index].exerciseName,
         caloriesBurned: caloriesBurned.value,
         duration: duration,
-        met: exerciseModels[index].met,
-        emoji: exerciseModels[index].emoji,
+        met: exerciseUIModels[index].met,
+        emoji: exerciseUIModels[index].emoji,
       );
       createWorkoutController.workoutExercises.add(workoutExercise);
       createWorkoutController.workoutExerciseRequests.add(
         WorkoutExerciseRequest(
-            duration: duration, exerciseID: exerciseModels[index].exerciseID),
+            duration: duration, exerciseID: exerciseUIModels[index].exerciseID),
       );
     } else {
       WorkoutExerciseRequestModel weRequestModel = WorkoutExerciseRequestModel(
-        exerciseID: exerciseModels[index].exerciseID,
+        exerciseID: exerciseUIModels[index].exerciseID,
         duration: duration,
         workoutID: workoutID,
       );
@@ -300,6 +306,53 @@ class AddExerciseToWorkoutController extends GetxController {
   void goToExerciseDetails(int? exerciseID) {}
 
   void goToCreateRequest() {
-    Get.toNamed(AppRoutes.createRequestScreen);
+    Get.toNamed(AppRoutes.createRequestScreen,
+        arguments: EUserRequestType.CREATE_EXERCISE);
+  }
+
+  void searchExerciseName(String value) {
+    // xóa danh sách exercise đang hiển thị hiện tại
+    exerciseUIModels.clear();
+
+    // nếu giá trị của search box empty thì hiển thị tất cả food
+    if (value.isEmpty) {
+      exerciseUIModels.addAll(exerciseDefaults);
+    }
+    // duyệt danh sách food default để tìm food name theo value
+    for (var exercise in exerciseDefaults) {
+      // chuyển foodName và value và lowerCase để so sánh
+      if (exercise.exerciseName!.toLowerCase().contains(value.toLowerCase())) {
+        // nếu food Name có giá trị phù hợp với value => thêm food vào foodUIModels
+        exerciseUIModels.add(exercise);
+      }
+    }
+    sortExercise(currentSortCriteria.value);
+  }
+
+  void sortExercise(String? newValue) {
+    // cập nhật giá trị đang được chọn của sort
+    currentSortCriteria.value = newValue!;
+
+    // Xác định giá trị đang được chọn
+    switch (currentSortCriteria.value) {
+      // Alphabet giảm dần
+      case 'Sort Ascending':
+        exerciseUIModels
+            .sort((a, b) => a.exerciseName!.compareTo(b.exerciseName!));
+        break;
+      // Alphabet tăbg dần
+      case 'Sort Descending':
+        exerciseUIModels
+            .sort((a, b) => b.exerciseName!.compareTo(a.exerciseName!));
+        break;
+      //  mới nhất
+      case 'Sort Newest':
+        exerciseUIModels.sort((a, b) => b.exerciseID!.compareTo(a.exerciseID!));
+        break;
+      //  cũ nhất
+      case 'Sort Oldest':
+        exerciseUIModels.sort((a, b) => a.exerciseID!.compareTo(b.exerciseID!));
+        break;
+    }
   }
 }

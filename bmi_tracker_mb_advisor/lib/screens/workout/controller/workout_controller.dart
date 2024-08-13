@@ -8,6 +8,7 @@ import '../../../models/workout_model.dart';
 
 class WorkoutController extends GetxController {
   RxList<WorkoutModel> workouts = RxList.empty();
+  RxString currentSortCriteria = 'Sort Ascending'.obs;
 
   var isLoading = false.obs;
 
@@ -22,7 +23,7 @@ class WorkoutController extends GetxController {
     isLoading.value = true;
 
     await getAllWorkout();
-
+    sortItems("Sort Newest");
     isLoading.value = false;
   }
 
@@ -34,9 +35,6 @@ class WorkoutController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       workouts.value = workoutModelsFromJson(response.body);
-      workouts.sort(
-        (a, b) => b.workoutID!.compareTo(a.workoutID!),
-      );
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       workouts.clear();
@@ -111,5 +109,23 @@ class WorkoutController extends GetxController {
         workouts[index] = value;
       }
     });
+  }
+
+  void sortItems(String? newValue) {
+    currentSortCriteria.value = newValue!;
+    switch (currentSortCriteria.value) {
+      case 'Sort Ascending':
+        workouts.sort((a, b) => a.workoutName!.compareTo(b.workoutName!));
+        break;
+      case 'Sort Descending':
+        workouts.sort((a, b) => b.workoutName!.compareTo(a.workoutName!));
+        break;
+      case 'Sort Newest':
+        workouts.sort((a, b) => b.workoutID!.compareTo(a.workoutID!));
+        break;
+      case 'Sort Oldest':
+        workouts.sort((a, b) => a.workoutID!.compareTo(b.workoutID!));
+        break;
+    }
   }
 }

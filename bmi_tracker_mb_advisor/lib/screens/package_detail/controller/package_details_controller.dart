@@ -1,5 +1,6 @@
-import 'package:bmi_tracker_mb_advisor/screens/plan/model/package_model.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+
+import '../../package/model/package_model.dart';
 
 class PackageDetailsController extends GetxController {
   var isLoading = true.obs;

@@ -1,5 +1,4 @@
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/controller/blog_detail_controller.dart';
-import 'package:bmi_tracker_mb_advisor/widgets/custom_elevated_button.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -7,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../theme/custom_button_style.dart';
 import '../../util/app_export.dart';
-import '../update_blog/update_blog_screen.dart';
 
 class BlogDetailScreen extends GetView<BlogDetailController> {
 // class BlogDetailScreen extends StatelessWidget {
@@ -115,18 +113,17 @@ class BlogDetailScreen extends GetView<BlogDetailController> {
                   ),
                 ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 150,
+                  SizedBox(
+                    width: 100.h,
                     child: Text(
                       "Video Link",
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
-                  SizedBox(width: 20.v),
+                  // SizedBox(width: 20.v),
                   SizedBox(
                     height: 35.h,
                     child: OutlinedButton(

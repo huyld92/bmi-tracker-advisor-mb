@@ -45,10 +45,10 @@ import 'package:bmi_tracker_mb_advisor/screens/menus_history/binding/menus_histo
 import 'package:bmi_tracker_mb_advisor/screens/menus_history/menus_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/binding/notification_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/notification_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/binding/package_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/package_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/package_details_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/package_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/binding/package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package_detail/binding/package_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package_detail/package_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/register_account/binding/register_account_binding.dart';

@@ -3,7 +3,6 @@ import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/custom_button_style.dart';
-import '../../theme/theme_helper.dart';
 
 class CreatePackageScreen extends GetView<CreatePackageController> {
   const CreatePackageScreen({super.key});
@@ -57,7 +56,8 @@ class CreatePackageScreen extends GetView<CreatePackageController> {
                           backgroundColor: Color.fromARGB(255, 136, 212, 241),
                           radius: 40,
                           child: Image(
-                            image: const AssetImage('assets/images/plan.png'),
+                            image:
+                                const AssetImage('assets/images/package.png'),
                             width: 40.adaptSize,
                             height: 40.adaptSize,
                           ),
@@ -190,7 +190,7 @@ class CreatePackageScreen extends GetView<CreatePackageController> {
             ),
           ),
         ),
-        // save plan button
+        // save package button
         floatingActionButton: SizedBox(
           height: 50.v,
           width: 200.h,

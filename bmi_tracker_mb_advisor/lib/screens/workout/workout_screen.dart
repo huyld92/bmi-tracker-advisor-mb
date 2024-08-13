@@ -1,4 +1,5 @@
 import 'package:bmi_tracker_mb_advisor/screens/update_workout/update_workout_screen.dart';
+import 'package:bmi_tracker_mb_advisor/theme/custom_button_style.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -34,8 +35,27 @@ class WorkoutScreen extends GetView<WorkoutController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text("${"txt_total".tr} (${controller.workouts.length})"),
-                    Spacer(),
-                    Text("txt_sort_by".tr),
+                    const Spacer(),
+                    Obx(
+                      () => DropdownButton<String>(
+                        value: controller.currentSortCriteria.value,
+                        onChanged: (String? newValue) {
+                          controller.sortItems(newValue);
+                        },
+                        items: <String>[
+                          'Sort Ascending',
+                          'Sort Descending',
+                          'Sort Newest',
+                          'Sort Oldest',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        underline: const SizedBox.shrink(), // Remove the underline
+                      ),
+                    ),
                   ],
                 ),
               ),

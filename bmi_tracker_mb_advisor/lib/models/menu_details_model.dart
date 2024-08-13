@@ -8,6 +8,7 @@ class MenuDetailsModel {
   int? totalCalories;
   bool? isActive;
   List<MenuFoodModel>? menuFoods;
+  List<String>? membersUsing;
 
   MenuDetailsModel({
     this.menuID,
@@ -17,6 +18,7 @@ class MenuDetailsModel {
     this.totalCalories,
     this.isActive,
     this.menuFoods,
+    this.membersUsing,
   });
 
   factory MenuDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,9 @@ class MenuDetailsModel {
       menuFoods: json['menuFoods'] != null
           ? List<MenuFoodModel>.from(
               json['menuFoods'].map((x) => MenuFoodModel.fromJson(x)))
+          : List.empty(),
+      membersUsing: json['membersUsing'] != null
+          ? List<String>.from(json['membersUsing'])
           : List.empty(),
     );
   }

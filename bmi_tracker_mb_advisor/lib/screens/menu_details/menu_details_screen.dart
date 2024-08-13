@@ -86,6 +86,7 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                           ),
                         ),
                       ),
+                      // menu description
                       Obx(() {
                         if (controller.menuDetailsModel.value.menuDescription!
                             .isNotEmpty) {
@@ -100,6 +101,29 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                     style: CustomTextStyles.bodyMedium16,
                                   )
                                 ]),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
+                      // member using
+                      Obx(() {
+                        if (controller
+                            .menuDetailsModel.value.membersUsing!.isNotEmpty) {
+                          return Padding(
+                            padding: EdgeInsets.only(top: 10.v),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "${"txt_members_using".tr}: ",
+                                  style: theme.textTheme.titleSmall,
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          "${controller.menuDetailsModel.value.membersUsing}",
+                                      style: CustomTextStyles.bodyMedium16,
+                                    )
+                                  ]),
+                            ),
                           );
                         } else {
                           return Container();
@@ -180,10 +204,14 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                            controller.menuDetailsModel.value
-                                                .menuFoods![index].foodName!,
-                                            style: theme.textTheme.titleSmall),
+                                        SizedBox(
+                                          width: 250.h,
+                                          child: Text(
+                                              controller.menuDetailsModel.value
+                                                  .menuFoods![index].foodName!,
+                                              style:
+                                                  theme.textTheme.titleSmall),
+                                        ),
                                         Text(
                                             controller.menuDetailsModel.value
                                                 .menuFoods![index].mealType!,

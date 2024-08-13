@@ -20,6 +20,7 @@ class MenuHistoryController extends GetxController {
   Future<void> fetchDataMenuHistoryScreen() async {
     isLoading.value = true;
     memberID = Get.arguments!;
+    memberID = Get.arguments!;
     await getMenuHistoryOfMember(memberID);
     isLoading.value = false;
   }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bmi_tracker_mb_advisor/repositories/authentication_repository.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
@@ -46,12 +48,15 @@ class ForgotPasswordController extends GetxController {
     http.Response response = await AuthenticationRepository.forgotPassword(
         'auth/forgot-password?email=$email');
 
-    if (response.statusCode == 201) {
-      Get.offAll(() => const ForgotPasswordComplete());
+    if (response.statusCode == 200) {
+      Get.toNamed(AppRoutes.loginScreen);
       // isUpdate = true;
-      // Get.snackbar("Success");
+      Get.snackbar("Success", "Please get new password in your email");
+    } else if (response.statusCode == 400) {
+      Get.snackbar("Failed", "We couldn't find your email, please try again");
     } else {
-      errorString.value = 'Error your email';
+      Get.snackbar("Error server ${response.statusCode}",
+          jsonDecode(response.body)['message']);
     }
 
     isLoading.value = false;

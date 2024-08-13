@@ -96,6 +96,14 @@ class ProfileScreen extends GetView<ProfileController> {
                     controller.goToPackageScreen();
                   },
                 ),
+                ProfileAccountWidget(
+                  title: 'Change Password',
+                  iconimage:
+                      const AssetImage('assets/images/change_password.png'),
+                  onPress: () {
+                    controller.goToChangePasswordScreen();
+                  },
+                ),
                 Divider(color: appTheme.grey500),
                 SizedBox(height: 10.v),
                 ProfileAccountWidget(

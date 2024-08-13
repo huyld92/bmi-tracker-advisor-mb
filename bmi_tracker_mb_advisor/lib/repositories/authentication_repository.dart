@@ -28,6 +28,14 @@ class AuthenticationRepository {
     return response;
   }
 
+  static Future<http.Response> changePassword(String endpoint) async {
+    var response = await interceptedClient.post(
+      BuildServer.buildUrl(endpoint),
+      headers: {"Content-type": "application/json"},
+    ).timeout(const Duration(seconds: 30));
+    return response;
+  }
+
   static Future<String> logout() async {
     try {
       Map<String, String> header = {

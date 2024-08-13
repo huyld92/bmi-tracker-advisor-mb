@@ -118,26 +118,28 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                       ),
                     ),
                     // sort
-                    Container(
-                      margin: EdgeInsets.only(left: 5.h),
-                      child: DropdownButton<String>(
-                        value: controller.currentSortCriteria.value,
-                        onChanged: (String? newValue) {
-                          controller.sortFood(newValue);
-                        },
-                        items: <String>[
-                          'Sort Ascending',
-                          'Sort Descending',
-                          'Sort Newest',
-                          'Sort Oldest',
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        // Remove the underline
-                        underline: const SizedBox.shrink(),
+                    Obx(
+                      () => Container(
+                        margin: EdgeInsets.only(left: 5.h),
+                        child: DropdownButton<String>(
+                          value: controller.currentSortCriteria.value,
+                          onChanged: (String? newValue) {
+                            controller.sortFood(newValue);
+                          },
+                          items: <String>[
+                            'Sort Ascending',
+                            'Sort Descending',
+                            'Sort Newest',
+                            'Sort Oldest',
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          // Remove the underline
+                          underline: const SizedBox.shrink(),
+                        ),
                       ),
                     ),
                   ],
@@ -150,57 +152,63 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                     child: Container(
                       margin: EdgeInsets.only(bottom: 15.v),
                       child: Obx(
-                        () => GridView.builder(
-                          padding: const EdgeInsets.all(10.0),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, // Number of columns
-                            crossAxisSpacing: 10.0,
-                            mainAxisSpacing: 10.0,
-                            childAspectRatio:
-                                0.7, // Adjust the aspect ratio as needed
-                          ),
-                          itemCount: controller.foodUIModels.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                controller.onSelectFood(index);
-                              },
-                              child: Stack(
-                                children: [
-                                  CustomCard(
-                                    photoUrl: controller
-                                            .foodUIModels[index].foodPhoto ??
-                                        "https://i.ytimg.com/vi/XowvxiGYsRI/maxresdefault.jpg",
-                                    title:
-                                        "${controller.foodUIModels[index].foodName}",
-                                    content1:
-                                        "Time: ${controller.foodUIModels[index].foodTimeProcess} min",
-                                    // content2:
-                                    //     "${controller.foodModels[index].serving}",
-                                    content3:
-                                        "${controller.foodUIModels[index].foodCalories} kcal",
-                                    onTitleTap: () {
-                                      controller.goToFoodDetails(controller
-                                          .foodUIModels[index].foodID);
-                                    },
-                                  ),
-                                  Positioned(
-                                    top: 10,
-                                    right: 10,
-                                    child: Obx(
-                                      () => Checkbox(
-                                        value: controller.foodSelected[index],
-                                        onChanged: (bool? value) {
-                                          controller.onSelectFood(index);
-                                        },
+                        () => RefreshIndicator(
+                          onRefresh: () async {
+                            // Call your refresh function here
+                            await controller.refreshData();
+                          },
+                          child: GridView.builder(
+                            padding: const EdgeInsets.all(10.0),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, // Number of columns
+                              crossAxisSpacing: 10.0,
+                              mainAxisSpacing: 10.0,
+                              childAspectRatio:
+                                  0.7, // Adjust the aspect ratio as needed
+                            ),
+                            itemCount: controller.foodUIModels.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  controller.onSelectFood(index);
+                                },
+                                child: Stack(
+                                  children: [
+                                    CustomCard(
+                                      photoUrl: controller
+                                              .foodUIModels[index].foodPhoto ??
+                                          "https://i.ytimg.com/vi/XowvxiGYsRI/maxresdefault.jpg",
+                                      title:
+                                          "${controller.foodUIModels[index].foodName}",
+                                      content1:
+                                          "Time: ${controller.foodUIModels[index].foodTimeProcess} min",
+                                      // content2:
+                                      //     "${controller.foodModels[index].serving}",
+                                      content3:
+                                          "${controller.foodUIModels[index].foodCalories} kcal",
+                                      onTitleTap: () {
+                                        controller.goToFoodDetails(controller
+                                            .foodUIModels[index].foodID);
+                                      },
+                                    ),
+                                    Positioned(
+                                      top: 10,
+                                      right: 10,
+                                      child: Obx(
+                                        () => Checkbox(
+                                          value: controller.foodSelected[index],
+                                          onChanged: (bool? value) {
+                                            controller.onSelectFood(index);
+                                          },
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),

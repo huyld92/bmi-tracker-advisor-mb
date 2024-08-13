@@ -1,7 +1,5 @@
 // import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/package_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/model/package_model.dart';
 import 'package:flutter/material.dart';
 import '../../../routes/app_routes.dart';
 import '../../../util/app_export.dart';
@@ -9,6 +7,9 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:ffi';
 import 'dart:io';
+
+import '../../package/controller/package_controller.dart';
+import '../../package/model/package_model.dart';
 
 class CreatePackageController extends GetxController {
   final GlobalKey<FormState> createPackageFormKey = GlobalKey<FormState>();

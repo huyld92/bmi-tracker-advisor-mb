@@ -24,6 +24,8 @@ import 'package:bmi_tracker_mb_advisor/screens/create_package/binding/create_pac
 import 'package:bmi_tracker_mb_advisor/screens/create_package/create_package_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_request/binding/create_request_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_request/create_request_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/exercise_detail/binding/exercise_detail_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/exercise_detail/exercise_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
@@ -80,6 +82,8 @@ import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 
 import '../screens/blog/binding/blog_binding.dart';
 import '../screens/blog_detail/binding/blog_details_binding.dart';
+import '../screens/change_password/binding/change_password_binding.dart';
+import '../screens/change_password/change_password_screen.dart';
 import '../screens/create_workout/binding/create_workout_binding.dart';
 import '../screens/create_workout/create_workout_screen.dart';
 import '../screens/member_details/member_details_screen.dart';
@@ -137,10 +141,26 @@ class AppRoutes {
   static const String registerCertificateScreen = '/registerCertificateScreen';
   static const String certificateScreen = '/certificateScreen';
   static const String createCertificateScreen = '/createCertificateScreen';
+  static const String exerciseDetailsScreen = '/exerciseDetailsScreen';
+  static const String changePasswordScreen = '/changePasswordScreen';
 
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
+    GetPage(
+      name: changePasswordScreen,
+      page: () => const ChangePasswordScreen(),
+      bindings: [
+        ChangePasswordBinding(),
+      ],
+    ),
+    GetPage(
+      name: exerciseDetailsScreen,
+      page: () => const ExerciseDetailsScreen(),
+      bindings: [
+        ExerciseDetailsBinding(),
+      ],
+    ),
     GetPage(
       name: createCertificateScreen,
       page: () => const CreateCertificateScreen(),

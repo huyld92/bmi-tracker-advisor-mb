@@ -56,26 +56,28 @@ class AddExerciseToWorkoutScreen
                       ),
                     ),
                     // sort
-                    Container(
-                      margin: EdgeInsets.only(left: 5.h),
-                      child: DropdownButton<String>(
-                        value: controller.currentSortCriteria.value,
-                        onChanged: (String? newValue) {
-                          controller.sortExercise(newValue);
-                        },
-                        items: <String>[
-                          'Sort Ascending',
-                          'Sort Descending',
-                          'Sort Newest',
-                          'Sort Oldest',
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        // Remove the underline
-                        underline: const SizedBox.shrink(),
+                    Obx(
+                      () => Container(
+                        margin: EdgeInsets.only(left: 5.h),
+                        child: DropdownButton<String>(
+                          value: controller.currentSortCriteria.value,
+                          onChanged: (String? newValue) {
+                            controller.sortExercise(newValue);
+                          },
+                          items: <String>[
+                            'Sort Ascending',
+                            'Sort Descending',
+                            'Sort Newest',
+                            'Sort Oldest',
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          // Remove the underline
+                          underline: const SizedBox.shrink(),
+                        ),
                       ),
                     ),
                     // // filter
@@ -112,43 +114,49 @@ class AddExerciseToWorkoutScreen
                     child: Container(
                       margin: EdgeInsets.only(bottom: 15.v),
                       child: Obx(
-                        () => GridView.builder(
-                          padding: const EdgeInsets.all(10.0),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, // Number of columns
-                            crossAxisSpacing: 10.0,
-                            mainAxisSpacing: 10.0,
-                            childAspectRatio:
-                                0.7, // Adjust the aspect ratio as needed
-                          ),
-                          itemCount: controller.exerciseUIModels.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                controller.onSelectExercise(index);
-                              },
-                              child: Stack(
-                                children: [
-                                  CustomCard(
-                                    photoUrl: controller.exerciseUIModels[index]
-                                            .exercisePhoto ??
-                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnxL_hu4jflVBvj-Cs8LEC52L_e7y9PjySxg&s",
-                                    title:
-                                        "${controller.exerciseUIModels[index].exerciseName}",
-                                    // content1:
-                                    //     "${"txt_tag".tr}: ${controller.exerciseModels[index].tagName}",
-                                    content2:
-                                        "METs: ${controller.exerciseUIModels[index].met}",
-                                    onTitleTap: () {
-                                      controller.goToExerciseDetails(controller
-                                          .exerciseUIModels[index].exerciseID);
-                                    },
-                                  ),
-                                ],
-                              ),
-                            );
+                        () => RefreshIndicator(
+                          onRefresh: () async {
+                            // Call your refresh function here
+                            await controller.refreshData();
                           },
+                          child: GridView.builder(
+                            padding: const EdgeInsets.all(10.0),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, // Number of columns
+                              crossAxisSpacing: 10.0,
+                              mainAxisSpacing: 10.0,
+                              childAspectRatio:
+                                  0.7, // Adjust the aspect ratio as needed
+                            ),
+                            itemCount: controller.exerciseUIModels.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  controller.onSelectExercise(index);
+                                },
+                                child: Stack(
+                                  children: [
+                                    CustomCard(
+                                      photoUrl: controller
+                                              .exerciseUIModels[index]
+                                              .exercisePhoto ??
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnxL_hu4jflVBvj-Cs8LEC52L_e7y9PjySxg&s",
+                                      title:
+                                          "${controller.exerciseUIModels[index].exerciseName}",
+                                      // content1:
+                                      //     "${"txt_tag".tr}: ${controller.exerciseModels[index].tagName}",
+                                      content2:
+                                          "METs: ${controller.exerciseUIModels[index].met}",
+                                      onTitleTap: () {
+                                        controller.goToExerciseDetails(index);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),

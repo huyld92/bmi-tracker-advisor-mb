@@ -303,7 +303,10 @@ class AddExerciseToWorkoutController extends GetxController {
     }
   }
 
-  void goToExerciseDetails(int? exerciseID) {}
+  void goToExerciseDetails(int index) {
+    Get.toNamed(AppRoutes.exerciseDetailsScreen,
+        arguments: exerciseUIModels[index]);
+  }
 
   void goToCreateRequest() {
     Get.toNamed(AppRoutes.createRequestScreen,

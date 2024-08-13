@@ -124,7 +124,7 @@ class UpdateProfileScreen extends GetView<UpdateProfileController> {
                         ),
                         CustomTextFormField(
                           enable: false,
-                          labelText: controller.accountModel.value.bankName,
+                          labelText: 'TP Bank',
                           suffixIcon: const Icon(Icons.account_balance),
                         ),
                         Text(
@@ -173,22 +173,24 @@ class UpdateProfileScreen extends GetView<UpdateProfileController> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             // gender field
-                            Container(
-                              width: 100.h,
-                              padding: EdgeInsets.symmetric(horizontal: 10.h),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(10),
+                            Obx(
+                              () => Container(
+                                width: 100.h,
+                                padding: EdgeInsets.symmetric(horizontal: 10.h),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                //! type
+                                child: CustomDropDownGender(
+                                  textValue: controller.gender.value,
+                                  onChange: (value) {
+                                    // controller.currentMember.value.gender = value;
+                                    controller.gender.value = value;
+                                  },
+                                ),
+                                // nếu bị lỗi khi truyền custom list text thì thay đổi biến selectedValue trong widget này bằng 1 trong các text trong list
                               ),
-                              //! type
-                              child: CustomDropDownGender(
-                                textValue: controller.gender.value,
-                                onChange: (value) {
-                                  // controller.currentMember.value.gender = value;
-                                  controller.gender.value = value;
-                                },
-                              ),
-                              // nếu bị lỗi khi truyền custom list text thì thay đổi biến selectedValue trong widget này bằng 1 trong các text trong list
                             ),
                             //! birthday field
                             Obx(

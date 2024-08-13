@@ -44,7 +44,7 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         Text(
-                          'We will send a new password for you\n in your email!',
+                          'We will send a new password\n in your email!',
                           style: Theme.of(context).textTheme.bodyLarge,
                         )
                       ],

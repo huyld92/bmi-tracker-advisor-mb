@@ -119,6 +119,28 @@ class WorkoutDetailsScreen extends GetView<WorkoutDetailsController> {
                           return Container();
                         }
                       }),
+                      Obx(() {
+                        if (controller
+                            .workoutModel.value.membersUsing!.isNotEmpty) {
+                          return Padding(
+                            padding: EdgeInsets.only(top: 10.v),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "${"txt_members_using".tr}: ",
+                                  style: theme.textTheme.titleSmall,
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          "${controller.workoutModel.value.membersUsing}",
+                                      style: CustomTextStyles.bodyMedium16,
+                                    )
+                                  ]),
+                            ),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
                       Padding(
                         padding: EdgeInsets.only(top: 10.v),
                         child: Row(
@@ -160,131 +182,7 @@ class WorkoutDetailsScreen extends GetView<WorkoutDetailsController> {
                     style: theme.textTheme.titleSmall,
                   ),
                 ),
-                // Obx(
-                //   () => ListView.builder(
-                //     shrinkWrap: true,
-                //     itemCount:
-                //         controller.workoutModel.value.workoutExercises?.length,
-                //     physics: const NeverScrollableScrollPhysics(),
-                //     itemBuilder: (context, index) {
-                //       return Slidable(
-                //         key: Key(controller.workoutModel.value
-                //             .workoutExercises![index].workoutExerciseID
-                //             .toString()),
-                //         endActionPane:
-                //             ActionPane(motion: const ScrollMotion(), children: [
-                //           Obx(() {
-                //             if (controller.workoutModel.value
-                //                 .workoutExercises![index].isActive!) {
-                //               return SlidableAction(
-                //                 onPressed: (context) {
-                //                   controller.deactivateWorkoutExercise(index);
-                //                 },
-                //                 backgroundColor: appTheme.red500,
-                //                 foregroundColor: Colors.white,
-                //                 icon: Icons.delete,
-                //                 label: 'txt_deactivate'.tr,
-                //               );
-                //             } else {
-                //               return SlidableAction(
-                //                 onPressed: (context) {
-                //                   controller.activateWorkoutExercise(index);
-                //                 },
-                //                 backgroundColor: const Color(0xFF1FBE1B),
-                //                 foregroundColor: Colors.white,
-                //                 icon: Icons.check_circle,
-                //                 label: 'txt_activate'.tr,
-                //               );
-                //             }
-                //           }),
-                //         ]),
-                //         child: GestureDetector(
-                //           onTap: () {
-                //             controller.goToExerciseDetails(controller
-                //                 .workoutModel
-                //                 .value
-                //                 .workoutExercises![index]
-                //                 .exerciseID);
-                //           },
-                //           child: Container(
-                //             padding: EdgeInsets.all(10.v),
-                //             color: appTheme.white,
-                //             child: Column(
-                //               children: [
-                //                 Row(
-                //                   mainAxisAlignment:
-                //                       MainAxisAlignment.spaceBetween,
-                //                   children: [
-                //                     Column(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.start,
-                //                       children: [
-                //                         SizedBox(
-                //                           width: 280.h,
-                //                           child: Text(
-                //                             controller
-                //                                 .workoutModel
-                //                                 .value
-                //                                 .workoutExercises![index]
-                //                                 .exerciseName!,
-                //                             style: CustomTextStyles
-                //                                 .titleMedium16Black,
-                //                           ),
-                //                         ),
-                //                         RichText(
-                //                             text: TextSpan(
-                //                                 text:
-                //                                     "${controller.workoutModel.value.workoutExercises![index].duration.toString()} ${"txt_min".tr}, ",
-                //                                 style: CustomTextStyles
-                //                                     .bodyMedium16,
-                //                                 children: [
-                //                               TextSpan(
-                //                                 text:
-                //                                     "${controller.workoutModel.value.workoutExercises![index].caloriesBurned!} kcal",
-                //                               ),
-                //                             ])),
-                //                       ],
-                //                     ),
-                //
-                //                     Container(
-                //                       margin: EdgeInsets.only(right: 5.h),
-                //                       child: Icon(
-                //                         Icons.circle,
-                //                         size: 16.adaptSize,
-                //                         color: controller
-                //                                 .workoutModel
-                //                                 .value
-                //                                 .workoutExercises![index]
-                //                                 .isActive!
-                //                             ? appTheme.green500
-                //                             : appTheme.red500,
-                //                       ),
-                //                     ),
-                //                     // Obx(() {
-                //                     //   if (controller.menuDetailsModel.value
-                //                     //       .menuFoods![index].isActive!) {
-                //                     //     return Text(
-                //                     //       "Active",
-                //                     //       style: CustomTextStyles.bodyMedium13Green,
-                //                     //     );
-                //                     //   } else {
-                //                     //     return Text(
-                //                     //       "Inactive",
-                //                     //       style: CustomTextStyles.bodyMedium13Red,
-                //                     //     );
-                //                     //   }
-                //                     // })
-                //                   ],
-                //                 ),
-                //                 // const Divider()
-                //               ],
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // ),
+
                 //exercises
                 Container(
                   margin: EdgeInsets.only(top: 5.v),

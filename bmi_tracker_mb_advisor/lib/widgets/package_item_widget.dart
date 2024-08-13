@@ -1,5 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/package_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/controller/package_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 

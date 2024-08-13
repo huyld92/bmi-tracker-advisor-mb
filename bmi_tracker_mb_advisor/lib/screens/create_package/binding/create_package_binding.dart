@@ -1,4 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/controller/create_plan_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/controller/create_package_controller.dart';
 
 import '../../../util/app_export.dart';
 

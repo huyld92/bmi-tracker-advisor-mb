@@ -16,8 +16,8 @@ import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_b
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_package_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/binding/create_package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/create_package_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_request/binding/create_request_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_request/create_request_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
@@ -41,10 +41,10 @@ import 'package:bmi_tracker_mb_advisor/screens/menus_history/binding/menus_histo
 import 'package:bmi_tracker_mb_advisor/screens/menus_history/menus_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/binding/notification_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/notification_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/binding/package_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/package_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/package_details_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/package_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/binding/package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package_detail/binding/package_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package_detail/package_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/request/binding/request_binding.dart';

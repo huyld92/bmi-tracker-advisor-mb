@@ -47,4 +47,11 @@ class CustomButtonStyles {
         backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
         elevation: MaterialStateProperty.all<double>(0),
       );
+
+  // text button style
+  static ButtonStyle get black => ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+        elevation: MaterialStateProperty.all<double>(0),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      );
 }

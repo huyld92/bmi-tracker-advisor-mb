@@ -12,6 +12,7 @@ class WorkoutModel {
   int? advisorID;
   String? fullName;
   List<WorkoutExerciseModel>? workoutExercises;
+  List<String>? membersUsing;
 
   WorkoutModel({
     this.workoutID,
@@ -23,6 +24,7 @@ class WorkoutModel {
     this.advisorID,
     this.fullName,
     this.workoutExercises,
+    this.membersUsing,
   });
 
   factory WorkoutModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,9 @@ class WorkoutModel {
           ? List<WorkoutExerciseModel>.from(json['workoutExercises']
               .map((x) => WorkoutExerciseModel.fromJson(x)))
           : List.empty(growable: true),
+      membersUsing: json['membersUsing'] != null
+          ? List<String>.from(json['membersUsing'])
+          : List.empty(),
     );
   }
 

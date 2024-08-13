@@ -1,7 +1,7 @@
 // import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/package_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/model/package_model.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/controller/package_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/model/package_model.dart';
 import 'package:flutter/material.dart';
 import '../../../routes/app_routes.dart';
 import '../../../util/app_export.dart';
@@ -68,7 +68,7 @@ class CreatePackageController extends GetxController {
 
   String? validatePackageDescription(String value) {
     if (value.isEmpty) {
-      return "Plan Description is invalid";
+      return "package Description is invalid";
     }
     return null;
   }
@@ -87,7 +87,7 @@ class CreatePackageController extends GetxController {
       return;
     }
     createPackageFormKey.currentState!.save();
-    // print('aa:${planPriceController.text}');
+    // print('aa:${packagePriceController.text}');
     double price = double.parse(packagePriceController.text);
     PackageModel createPackage = PackageModel(
       packageName: txtPackageNameController.text,

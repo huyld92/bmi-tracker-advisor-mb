@@ -50,7 +50,26 @@ class MenuScreen extends GetView<MenuScreenController> {
                   children: [
                     Text("${"txt_total".tr} (${controller.menus.length})"),
                     const Spacer(),
-                    Text("txt_sort_by".tr),
+                    Obx(
+                          () => DropdownButton<String>(
+                        value: controller.currentSortCriteria.value,
+                        onChanged: (String? newValue) {
+                          controller.sortItems(newValue);
+                        },
+                        items: <String>[
+                          'Sort Ascending',
+                          'Sort Descending',
+                          'Sort Newest',
+                          'Sort Oldest',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        underline: const SizedBox.shrink(), // Remove the underline
+                      ),
+                    ),
                   ],
                 ),
               ),

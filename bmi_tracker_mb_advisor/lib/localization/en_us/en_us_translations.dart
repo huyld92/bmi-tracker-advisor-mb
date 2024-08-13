@@ -42,6 +42,7 @@ final Map<String, String> enUs = {
   "txt_menu_details": "Menu details",
   "txt_total_calories": "Total calories",
   "txt_description": "Description",
+  "txt_members_using": "Members using",
 
   //Create menu
   "txt_foods": "Foods",
@@ -57,6 +58,7 @@ final Map<String, String> enUs = {
   "txt_select_meal_type": "Select meal type",
   "txt_select_foods": "Select foods",
   "txt_done": "Done",
+  "txt_search": "Search",
 
   //Create workout
   "txt_exercises": "Exercises",
@@ -111,7 +113,7 @@ final Map<String, String> enUs = {
   "txt_full_name": "Full name",
   "txt_gender": "Gender",
   "txt_your_birthday": "Your birthday",
-  "txt_plan": "Plan",
+  "txt_package": "Package",
 
   // Food details screen
   "txt_food_details": "Food Details",

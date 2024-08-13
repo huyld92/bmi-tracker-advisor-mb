@@ -8,6 +8,7 @@ import '../../../util/app_export.dart';
 
 class MenuScreenController extends GetxController {
   RxList<MenuModel> menus = RxList.empty();
+  RxString currentSortCriteria = 'Sort Ascending'.obs;
 
   var isLoading = false.obs;
 
@@ -21,6 +22,7 @@ class MenuScreenController extends GetxController {
     isLoading.value = true;
 
     await getAllMenu();
+    sortItems("Sort Newest");
 
     isLoading.value = false;
   }
@@ -33,7 +35,6 @@ class MenuScreenController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       menus.value = menuModelsFromJson(response.body);
-      menus.sort((a, b) => b.menuID!.compareTo(a.menuID!));
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       menus.clear();
@@ -105,6 +106,24 @@ class MenuScreenController extends GetxController {
     } else {
       Get.snackbar("Error server ${response.statusCode}",
           jsonDecode(response.body)['message']);
+    }
+  }
+
+  void sortItems(String? newValue) {
+    currentSortCriteria.value = newValue!;
+    switch (currentSortCriteria.value) {
+      case 'Sort Ascending':
+        menus.sort((a, b) => a.menuName!.compareTo(b.menuName!));
+        break;
+      case 'Sort Descending':
+        menus.sort((a, b) => b.menuName!.compareTo(a.menuName!));
+        break;
+      case 'Sort Newest':
+        menus.sort((a, b) => b.menuID!.compareTo(a.menuID!));
+        break;
+      case 'Sort Oldest':
+        menus.sort((a, b) => a.menuID!.compareTo(b.menuID!));
+        break;
     }
   }
 }

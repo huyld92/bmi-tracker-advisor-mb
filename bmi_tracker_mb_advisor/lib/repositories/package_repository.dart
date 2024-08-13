@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:bmi_tracker_mb_advisor/screens/plan/model/package_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/build_server.dart';
 import '../config/jwt_interceptor.dart';
+import '../screens/package/model/package_model.dart';
 
 class PackageRepository {
   static Future<http.Response> getPackageByAdvisor() async {

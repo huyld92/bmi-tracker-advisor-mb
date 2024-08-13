@@ -27,23 +27,23 @@ class RequestDetailsScreen extends GetView<RequestDetailsController> {
               value: controller.requestModel.value.type!,
             ),
             RequestDetailItem(
-              label: 'Purpose',
-              value: controller.requestModel.value.purpose!,
-            ),
-            RequestDetailItem(
               label: 'Creation Date',
               value: controller.requestModel.value.getCreationDate(),
-            ),
-            RequestDetailItem(
-              label: 'ProcessNote',
-              value: controller.requestModel.value.processNote,
             ),
             RequestDetailItem(
               label: 'Status',
               value: controller.requestModel.value.status,
             ),
             RequestDetailItem(
-              label: 'Proccess Date',
+              label: 'Purpose',
+              value: controller.requestModel.value.purpose!,
+            ),
+            RequestDetailItem(
+              label: 'ProcessNote',
+              value: controller.requestModel.value.processNote,
+            ),
+            RequestDetailItem(
+              label: 'Processing Date',
               value: controller.requestModel.value.getProcessingDate(),
             ),
           ],
@@ -79,7 +79,7 @@ class RequestDetailItem extends StatelessWidget {
               style: TextStyle(fontSize: 15.fSize),
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              maxLines: 5,
+              maxLines: 10,
             ),
           )
         ],

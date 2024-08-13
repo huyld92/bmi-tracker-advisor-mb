@@ -7,6 +7,7 @@ class CustomTextStyles {
         fontSize: 18.fSize,
         fontWeight: FontWeight.bold,
       );
+
   static get titleMedium16Black => theme.textTheme.titleMedium!.copyWith(
         color: Colors.black,
         fontSize: 16.fSize,

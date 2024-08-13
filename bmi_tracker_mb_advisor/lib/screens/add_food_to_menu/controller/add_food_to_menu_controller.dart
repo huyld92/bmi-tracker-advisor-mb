@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bmi_tracker_mb_advisor/models/enums/enum_user_request.dart';
 import 'package:bmi_tracker_mb_advisor/models/food_model.dart';
 import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/controller/create_menu_controller.dart';
@@ -121,7 +122,8 @@ class AddFoodToMenuController extends GetxController {
   }
 
   void goToCreateRequest() {
-    Get.toNamed(AppRoutes.createRequestScreen);
+    Get.toNamed(AppRoutes.createRequestScreen,
+        arguments: EUserRequestType.CREATE_FOOD);
   }
 
   void searchFoodName(String value) {

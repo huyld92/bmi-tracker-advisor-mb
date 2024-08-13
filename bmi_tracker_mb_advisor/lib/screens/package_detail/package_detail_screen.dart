@@ -1,8 +1,9 @@
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/controller/package_details_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import 'controller/package_details_controller.dart';
 
 class PackageDetailScreen extends GetView<PackageDetailsController> {
   const PackageDetailScreen({super.key});

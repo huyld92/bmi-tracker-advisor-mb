@@ -65,13 +65,17 @@ class BlogScreen extends GetView<BlogController> {
                 children: [
                   Expanded(
                     child: Container(
-                        margin: EdgeInsets.only(bottom: 15.v),
-                        child: Obx(
-                          () {
-                            if (controller.isLoading.value) {
-                              return const CircularProgressIndicator();
-                            } else {
-                              return GridView.builder(
+                      margin: EdgeInsets.only(bottom: 15.v),
+                      child: Obx(
+                        () {
+                          if (controller.isLoading.value) {
+                            return const CircularProgressIndicator();
+                          } else {
+                            return RefreshIndicator(
+                              onRefresh: () async {
+                                await controller.refreshData();
+                              }, // Define your refresh function
+                              child: GridView.builder(
                                 padding: const EdgeInsets.all(10.0),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
@@ -103,10 +107,12 @@ class BlogScreen extends GetView<BlogController> {
                                     ),
                                   );
                                 },
-                              );
-                            }
-                          },
-                        )),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),

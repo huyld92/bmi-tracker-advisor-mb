@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../routes/app_routes.dart';
-import '../forgot_password_verify_screen.dart';
+import '../forgot_password_complete_screen.dart';
 
 class ForgotPasswordController extends GetxController {
   final GlobalKey<FormState> forgotPasswordFormKey = GlobalKey<FormState>();
@@ -47,7 +47,7 @@ class ForgotPasswordController extends GetxController {
         'auth/forgot-password?email=$email');
 
     if (response.statusCode == 201) {
-      Get.offAll(() => const ForgotPasswordVerifyScreen());
+      Get.offAll(() => const ForgotPasswordComplete());
       // isUpdate = true;
       // Get.snackbar("Success");
     } else {

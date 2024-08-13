@@ -91,6 +91,22 @@ class LoginController extends GetxController {
       PrefUtils.setAccessToken(data["accessToken"]);
       PrefUtils.setRefreshToken(data["refreshToken"]);
       errorString.value = "";
+
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('Provide more certificate for the account!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Get.offAllNamed(AppRoutes.profileScreen);
+                  },
+                  child: const Text('UPDATE NOW'),
+                )
+              ],
+            );
+          });
     } else if (response.statusCode == 500) {
       errorString.value = 'Timeout error occurred!';
       // có lỗi từ server
@@ -139,6 +155,10 @@ class LoginController extends GetxController {
         log("Login failed with exception:  ${ce.message}");
       });
     }
+  }
+
+  void goToRegisterScreen() {
+    Get.toNamed(AppRoutes.registerAccountScreen);
   }
 
   void logoutComet() {

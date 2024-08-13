@@ -34,7 +34,7 @@ class RequestController extends GetxController {
       // convert list foods from json
       requestModel.value = requestModelFromJson(response.body);
       requestModel.sort(
-        (a, b) => b.userRequestId!.compareTo(a.userRequestId!),
+        (a, b) => b.creationDate!.compareTo(a.creationDate!),
       );
       requestModel.refresh();
     } else if (response.statusCode == 204) {

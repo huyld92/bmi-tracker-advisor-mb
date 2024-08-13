@@ -19,6 +19,14 @@ class BlogController extends GetxController {
     super.onInit();
   }
 
+  Future<void> refreshData() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 1));
+    await fetchDataBlogScreen();
+    isLoading.value = false;
+    update();
+  }
+
   Future<void> fetchDataBlogScreen() async {
     isLoading.value = true;
     await getAllBlog();
@@ -65,7 +73,7 @@ class BlogController extends GetxController {
         ?.then((value) {
       if (value != null && value) {
         blogList.removeAt(index);
-       }
+      }
       isLoading.value = true;
       blogList.refresh();
       isLoading.value = false;

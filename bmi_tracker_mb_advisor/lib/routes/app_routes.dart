@@ -12,12 +12,16 @@ import 'package:bmi_tracker_mb_advisor/screens/blog/blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/blog_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/binding/bottom_nav_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/bottom_nav.dart';
+import 'package:bmi_tracker_mb_advisor/screens/certificate/binding/certificate_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/certificate/certificate_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_certificate/binding/create_certificate_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_certificate/create_certificate_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_package_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/binding/create_package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/create_package_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_request/binding/create_request_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_request/create_request_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
@@ -47,6 +51,10 @@ import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/package_detai
 import 'package:bmi_tracker_mb_advisor/screens/plan_detail/package_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_account/binding/register_account_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_account/register_account_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_certificate/binding/register_certificate_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_certificate/register_certificate_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/request/binding/request_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/request/request_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/request_detail/binding/request_detail_binding.dart';
@@ -125,10 +133,42 @@ class AppRoutes {
   static const String requestDetailScreen = '/requestDetailScreen';
   static const String createRequestScreen = '/createRequestScreen';
   static const String requestScreen = '/requestScreen';
+  static const String registerAccountScreen = '/registerAccountScreen';
+  static const String registerCertificateScreen = '/registerCertificateScreen';
+  static const String certificateScreen = '/certificateScreen';
+  static const String createCertificateScreen = '/createCertificateScreen';
 
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
+    GetPage(
+      name: createCertificateScreen,
+      page: () => const CreateCertificateScreen(),
+      bindings: [
+        CreateCertificateBinding(),
+      ],
+    ),
+    GetPage(
+      name: certificateScreen,
+      page: () => const CertificateScreen(),
+      bindings: [
+        CertificateBinding(),
+      ],
+    ),
+    GetPage(
+      name: registerCertificateScreen,
+      page: () => const RegisterCertificateScreen(),
+      bindings: [
+        RegisterCertificateBinding(),
+      ],
+    ),
+    GetPage(
+      name: registerAccountScreen,
+      page: () => const RegisterAccountScreen(),
+      bindings: [
+        RegisterAccountBinding(),
+      ],
+    ),
     GetPage(
       name: requestScreen,
       page: () => const RequestScreen(),

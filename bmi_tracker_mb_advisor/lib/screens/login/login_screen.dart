@@ -240,6 +240,23 @@ class LoginBottomScreen extends GetView<LoginController> {
                     ],
                   ),
                 ),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      Text("Don't have an account?",
+                          style: Theme.of(context).textTheme.labelLarge),
+                      const SizedBox(height: 10),
+                      CustomElevatedButton(
+                        onPressed: () {
+                          FocusScope.of(context).unfocus();
+                          controller.goToRegisterScreen();
+                        },
+                        text: 'Register',
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

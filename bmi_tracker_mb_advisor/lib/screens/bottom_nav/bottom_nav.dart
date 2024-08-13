@@ -55,7 +55,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.newspaper_rounded),
-            label: 'Blogs',
+            label: 'Exercise',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box_rounded),

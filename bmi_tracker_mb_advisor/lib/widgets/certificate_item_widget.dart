@@ -1,13 +1,13 @@
-import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/subscription_history_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/certificate/controller/certificate_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../screens/subscription_history/controller/subscription_history_controller.dart';
 import '../util/app_export.dart';
 
 // ignore: must_be_immutable
-class SubscriptionItemWidget extends StatelessWidget {
-  SubscriptionItemWidget(
+class CertificateItemWidget extends StatelessWidget {
+  CertificateItemWidget(
     this.index, {
     Key? key,
   }) : super(
@@ -16,14 +16,14 @@ class SubscriptionItemWidget extends StatelessWidget {
 
   int index;
 
-  var controller = Get.find<SubscriptionHistoryController>();
+  var controller = Get.find<CertificateController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        controller.goToSubscriptionsDetails(index);
-        // Get.to(SubscriptionDetailsScreen());
+        // controller.goToCertificateDetail(index);
+        // Get.to(PlanDetailScreen());
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 4.v),
@@ -45,9 +45,7 @@ class SubscriptionItemWidget extends StatelessWidget {
                     //   Icons.account_balance_rounded,
                     //   color: Colors.white,
                     // ),
-                    Image(
-                        image: AssetImage(
-                            'assets/images/subscription_history.png')),
+                    Image(image: AssetImage('assets/images/certificate.png')),
                 radius: 20,
                 // backgroundColor: Colors.green,
               ),
@@ -64,18 +62,7 @@ class SubscriptionItemWidget extends StatelessWidget {
               // backgroundColor: Theme.of(context).primaryColor,
             ),
             SizedBox(height: 3.v),
-            Opacity(
-              opacity: 0.5,
-              child: Padding(
-                padding: EdgeInsets.only(left: 16.h),
-                child: Obx(
-                  () => Text(
-                    controller.subscriptionModels[index].getSubscriptionDate(),
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ),
-              ),
-            ),
+
             const Divider(
               color: Color.fromARGB(255, 112, 105, 105),
             ),
@@ -89,14 +76,14 @@ class SubscriptionItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Subscription status",
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        "Certificate Name",
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ),
                   Obx(
                     () => Text(
-                      "${controller.subscriptionModels[index].subscriptionStatus}",
+                      "${controller.certificateModel[index].certificateName}",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -114,43 +101,56 @@ class SubscriptionItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Member Name",
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        "Link",
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ),
-                  Obx(
-                    () => Text(
-                      "${controller.subscriptionModels[index].memberName}",
-                      style: Theme.of(context).textTheme.bodySmall,
+                  TextButton(
+                    onPressed: () {
+                      // Uri phoneUrl = Uri(
+                      //   scheme: 'tel',
+                      //   path:
+                      //       '${controller.certificateModel[index].certificateLink}',
+                      // );
+                      launchUrl(Uri.parse(
+                          controller.certificateModel[index].certificateLink!));
+                    },
+                    child: Text(
+                      'View Link',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(height: 9.v),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Opacity(
-                    opacity: 1,
-                    child: Text(
-                      "Amount",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ),
-                  Obx(
-                    () => Text(
-                      "${controller.subscriptionModels[index].amount?.round().formatWithThousandSeparator()} VND",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 1.v),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 16.h),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Opacity(
+            //         opacity: 1,
+            //         child: Text(
+            //           "Number Of Uses",
+            //           style: Theme.of(context).textTheme.bodyLarge,
+            //         ),
+            //       ),
+            //       Obx(
+            //         () => Text(
+            //           "${controller.packageModel[index].numberOfUses}",
+            //           style: Theme.of(context).textTheme.bodySmall,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 1.v),
           ],
         ),
       ),

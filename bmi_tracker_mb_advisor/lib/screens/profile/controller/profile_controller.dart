@@ -65,4 +65,8 @@ class ProfileController extends GetxController {
   void goToRequestScreen() {
     Get.toNamed(AppRoutes.requestScreen);
   }
+
+  void goToCertificateScreen() {
+    Get.toNamed(AppRoutes.certificateScreen);
+  }
 }

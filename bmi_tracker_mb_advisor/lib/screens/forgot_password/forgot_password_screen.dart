@@ -1,4 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forgot_password_verify_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forgot_password_complete_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 

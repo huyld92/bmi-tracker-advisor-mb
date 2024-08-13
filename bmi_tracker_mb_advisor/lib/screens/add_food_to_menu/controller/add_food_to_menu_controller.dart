@@ -26,6 +26,14 @@ class AddFoodToMenuController extends GetxController {
     super.onInit();
   }
 
+  Future<void> refreshData() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 1));
+    await fetchAddFoodToMenuData();
+    isLoading.value = false;
+    update();
+  }
+
   Future<void> fetchAddFoodToMenuData() async {
     isLoading.value = true;
     menuID = Get.arguments;
@@ -46,6 +54,7 @@ class AddFoodToMenuController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       foodModels.value = foodModelsFromJson(response.body);
+      foodModels.sort((a, b) => b.foodID!.compareTo(a.foodID!));
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       foodModels.clear();

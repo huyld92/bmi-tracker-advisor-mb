@@ -68,7 +68,7 @@ class CreatePackageController extends GetxController {
 
   String? validatePackageDescription(String value) {
     if (value.isEmpty) {
-      return "Plan Description is invalid";
+      return "Package Description is invalid";
     }
     return null;
   }

@@ -26,6 +26,14 @@ class AddExerciseToWorkoutController extends GetxController {
     super.onInit();
   }
 
+  Future<void> refreshData() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 1));
+    await fetchAddExerciseToWorkout();
+    isLoading.value = false;
+    update();
+  }
+
   fetchAddExerciseToWorkout() async {
     isLoading.value = true;
     workoutID = Get.arguments;
@@ -41,6 +49,7 @@ class AddExerciseToWorkoutController extends GetxController {
     if (response.statusCode == 200) {
       // convert list exercises from json
       exerciseModels.value = exerciseModelsFromJson(response.body);
+      exerciseModels.sort((a, b) => b.exerciseID!.compareTo(a.exerciseID!));
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       exerciseModels.clear();

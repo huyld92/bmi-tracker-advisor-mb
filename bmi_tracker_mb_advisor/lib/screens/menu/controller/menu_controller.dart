@@ -17,6 +17,14 @@ class MenuScreenController extends GetxController {
     super.onInit();
   }
 
+  Future<void> refreshData() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 1));
+    await fetchMenuScreenData();
+    isLoading.value = false;
+    update();
+  }
+
   Future<void> fetchMenuScreenData() async {
     isLoading.value = true;
 

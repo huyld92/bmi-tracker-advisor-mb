@@ -83,6 +83,13 @@ class ProfileScreen extends GetView<ProfileController> {
                   },
                 ),
                 ProfileAccountWidget(
+                  title: 'Certificate',
+                  iconimage: const AssetImage('assets/images/certificate.png'),
+                  onPress: () {
+                    controller.goToCertificateScreen();
+                  },
+                ),
+                ProfileAccountWidget(
                   title: 'Package',
                   iconimage: const AssetImage('assets/images/plan.png'),
                   onPress: () {

@@ -1,4 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/create_package_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/plan/controller/package_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/plan_item_widget.dart';

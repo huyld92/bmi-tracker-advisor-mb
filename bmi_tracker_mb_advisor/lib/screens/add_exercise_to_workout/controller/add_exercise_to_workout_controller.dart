@@ -320,13 +320,16 @@ class AddExerciseToWorkoutController extends GetxController {
     // nếu giá trị của search box empty thì hiển thị tất cả food
     if (value.isEmpty) {
       exerciseUIModels.addAll(exerciseDefaults);
-    }
-    // duyệt danh sách food default để tìm food name theo value
-    for (var exercise in exerciseDefaults) {
-      // chuyển foodName và value và lowerCase để so sánh
-      if (exercise.exerciseName!.toLowerCase().contains(value.toLowerCase())) {
-        // nếu food Name có giá trị phù hợp với value => thêm food vào foodUIModels
-        exerciseUIModels.add(exercise);
+    } else {
+      // duyệt danh sách food default để tìm food name theo value
+      for (var exercise in exerciseDefaults) {
+        // chuyển foodName và value và lowerCase để so sánh
+        if (exercise.exerciseName!
+            .toLowerCase()
+            .contains(value.toLowerCase())) {
+          // nếu food Name có giá trị phù hợp với value => thêm food vào foodUIModels
+          exerciseUIModels.add(exercise);
+        }
       }
     }
     sortExercise(currentSortCriteria.value);

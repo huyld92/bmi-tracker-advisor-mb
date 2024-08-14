@@ -141,16 +141,18 @@ class AddFoodToMenuController extends GetxController {
     // nếu giá trị của search box empty thì hiển thị tất cả food
     if (value.isEmpty) {
       foodUIModels.addAll(foodDefaults);
-    }
-
-    // duyệt danh sách food default để tìm food name theo value
-    for (var food in foodDefaults) {
-      // chuyển foodName và value và lowerCase để so sánh
-      if (food.foodName!.toLowerCase().contains(value.toLowerCase())) {
-        // nếu food Name có giá trị phù hợp với value => thêm food vào foodUIModels
-        foodUIModels.add(food);
+    } else {
+      // duyệt danh sách food default để tìm food name theo value
+      for (var food in foodDefaults) {
+        // chuyển foodName và value và lowerCase để so sánh
+        if (food.foodName!.toLowerCase().contains(value.toLowerCase())) {
+          // nếu food Name có giá trị phù hợp với value => thêm food vào foodUIModels
+          foodUIModels.add(food);
+        }
       }
     }
+
+    sortFood(currentSortCriteria.value);
   }
 
   void filterFood(String? newValue) {

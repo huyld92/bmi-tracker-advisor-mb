@@ -1,4 +1,3 @@
-import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forgot_password_complete_screen.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -6,22 +5,28 @@ import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'controller/forgot_password_controller.dart';
 
-// import 'package:flutter_health_menu/screens/forget_password/change_new_password_screen.dart';
-// import 'package:flutter_health_menu/screens/login/login_screen.dart';
-// import 'package:flutter_health_menu/screens/register/rergister_info_screen.dart';
-
 class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
   const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Scaffold(
+          backgroundColor: appTheme.white,
+          body: Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
+          ),
+        );
+      }
+      return GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          body: Column(
             children: [
               Expanded(
                 child: Row(
@@ -89,16 +94,16 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
               )
             ],
           ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: CustomElevatedButton(
+                onPressed: () {
+                  controller.forgotPassword();
+                },
+                text: 'Continue'),
+          ),
         ),
-        bottomSheet: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: CustomElevatedButton(
-              onPressed: () {
-                controller.forgotPassword();
-              },
-              text: 'Continue'),
-        ),
-      ),
-    );
+      );
+    });
   }
 }

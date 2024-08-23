@@ -77,30 +77,21 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                         // Messages button
                         FilledButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    CometChatConversationsWithMessages(
-                                  conversationsConfiguration:
-                                      ConversationsConfiguration(
-                                    backButton: IconButton(
-                                      onPressed: () {
-                                        Get.back();
-                                      },
-                                      icon: Icon(Icons.arrow_back_ios_new),
-                                    ),
-                                  ),
-                                  user: User.fromUID(
-                                    uid: controller.member.value.accountID
-                                        .toString(),
-                                    name: controller.member.value.fullName!,
-                                    avatar:
-                                        controller.member.value.accountPhoto,
-                                  ),
-                                ),
+                            Get.to(()=>CometChatMessages(
+                              messageComposerConfiguration:
+                              const MessageComposerConfiguration(
+                                hideVoiceRecording: true,
                               ),
-                            );
+                              user: User.fromUID(
+                                uid: controller.member.value.accountID
+                                    .toString(),
+                                name:
+                                controller.member.value.fullName!,
+                                avatar: controller
+                                    .member.value.accountPhoto,
+                              ),
+                              hideDetails: true,
+                            ));
                           },
                           style: FilledButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,

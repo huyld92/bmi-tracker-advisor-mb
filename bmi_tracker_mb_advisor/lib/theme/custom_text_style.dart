@@ -25,6 +25,9 @@ class CustomTextStyles {
         // fontWeight: FontWeight.bold,
       );
 
+  static get bodyMedium11Red700 => theme.textTheme.bodyMedium!
+      .copyWith(color: appTheme.red700, fontSize: 11.fSize);
+
   static get bodyMedium14Red => theme.textTheme.bodyMedium!
       .copyWith(color: Colors.red, fontSize: 14.fSize);
 

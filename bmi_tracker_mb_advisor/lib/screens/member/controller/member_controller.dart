@@ -57,4 +57,6 @@ class MemberController extends GetxController {
     Get.toNamed(AppRoutes.memberDetailsScreen,
         arguments: members[index].memberID);
   }
+
+  void goToMessagesScreen() {}
 }

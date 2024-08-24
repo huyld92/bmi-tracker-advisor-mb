@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:bmi_tracker_mb_advisor/config/jwt_interceptor.dart';
@@ -21,6 +20,22 @@ class AuthenticationRepository {
     return response;
   }
 
+  static Future<http.Response> forgotPassword(String endpoint) async {
+    var response = await interceptedClient.post(
+      BuildServer.buildUrl(endpoint),
+      headers: {"Content-type": "application/json"},
+    ).timeout(const Duration(seconds: 30));
+    return response;
+  }
+
+  static Future<http.Response> changePassword(String endpoint) async {
+    var response = await interceptedClient.post(
+      BuildServer.buildUrl(endpoint),
+      headers: {"Content-type": "application/json"},
+    ).timeout(const Duration(seconds: 30));
+    return response;
+  }
+
   static Future<String> logout() async {
     try {
       Map<String, String> header = {
@@ -28,9 +43,9 @@ class AuthenticationRepository {
       };
       var response = await interceptedClient
           .post(
-        BuildServer.buildUrl("auth/logout"),
-        headers: header,
-      )
+            BuildServer.buildUrl("auth/logout"),
+            headers: header,
+          )
           .timeout(const Duration(seconds: 30));
       return response.body;
     } on TimeoutException catch (e) {

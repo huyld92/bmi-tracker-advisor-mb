@@ -12,7 +12,6 @@ class CustomCard extends StatelessWidget {
   final String? content4;
   final VoidCallback onTitleTap;
 
-
   CustomCard({
     required this.photoUrl,
     required this.title,
@@ -32,7 +31,7 @@ class CustomCard extends StatelessWidget {
       elevation: 5,
       child: Padding(
         padding:
-            EdgeInsets.only(bottom: 5.v, top: 10.v, left: 10.v, right: 10.v),
+            EdgeInsets.only(bottom: 3.v, top: 10.v, left: 10.v, right: 10.v),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

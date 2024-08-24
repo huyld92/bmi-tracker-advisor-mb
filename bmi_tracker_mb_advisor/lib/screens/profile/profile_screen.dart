@@ -76,17 +76,32 @@ class ProfileScreen extends GetView<ProfileController> {
                   },
                 ),
                 ProfileAccountWidget(
-                  title: "txt_feedback".tr,
-                  iconimage: const AssetImage('assets/images/feedback.png'),
+                  title: 'Support Request',
+                  iconimage: const AssetImage('assets/images/request.png'),
                   onPress: () {
-                    controller.goToFeedbackScreen();
+                    controller.goToRequestScreen();
                   },
                 ),
                 ProfileAccountWidget(
-                  title: "txt_plan".tr,
+                  title: 'Certificate',
+                  iconimage: const AssetImage('assets/images/certificate.png'),
+                  onPress: () {
+                    controller.goToCertificateScreen();
+                  },
+                ),
+                ProfileAccountWidget(
+                  title: 'Package',
                   iconimage: const AssetImage('assets/images/plan.png'),
                   onPress: () {
-                    controller.goToPlanScreen();
+                    controller.goToPackageScreen();
+                  },
+                ),
+                ProfileAccountWidget(
+                  title: 'Change Password',
+                  iconimage:
+                      const AssetImage('assets/images/change_password.png'),
+                  onPress: () {
+                    controller.goToChangePasswordScreen();
                   },
                 ),
                 Divider(color: appTheme.grey500),

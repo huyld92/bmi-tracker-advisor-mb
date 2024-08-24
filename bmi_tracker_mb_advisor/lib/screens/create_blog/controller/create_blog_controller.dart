@@ -10,14 +10,16 @@ import 'package:bmi_tracker_mb_advisor/screens/create_blog/model/create_blog_mod
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
 
 import '../../../routes/app_routes.dart';
 import '../../../util/app_export.dart';
 
 class CreateBlogController extends GetxController {
-  // final GlobalKey<FormState> blogFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> blogFormKey = GlobalKey<FormState>();
   late TextEditingController blogNameController;
   late TextEditingController blogContentController;
+
   // late TextEditingController blogPhotoController;
   late TextEditingController linkController;
   var blogName = '';
@@ -27,6 +29,10 @@ class CreateBlogController extends GetxController {
   var isLoading = false.obs;
 
   Rx<BlogModel> blogModel = BlogModel().obs;
+
+  var isFile = false.obs;
+
+  var imagePath = "".obs;
 
   @override
   void onInit() {
@@ -63,7 +69,7 @@ class CreateBlogController extends GetxController {
 
   String? validateLink(String value) {
     if (value.isEmpty) {
-      return "Blogname is invalid";
+      return "Link is invalid";
     }
     return null;
   }
@@ -82,29 +88,7 @@ class CreateBlogController extends GetxController {
   //   }
   // }
 
-  Future<void> selectAndUploadImage() async {
-    isLoading.value = true;
-
-    final XFile? image = await pickImage(); // Chọn ảnh từ thư viện
-    if (image != null) {
-      final String? downloadUrl = await uploadImage(
-          image); // Upload ảnh lên Firebase Storage và nhận link tải xuống
-      if (downloadUrl != null) {
-        // Gọi API để cập nhật link ảnh lên server
-        blogModel.value.blogPhoto = downloadUrl;
-        log('upload success');
-        // Get.snackbar('upload photo success', 'upload photo success');
-        // updatePhotoLink(downloadUrl);
-      } else {
-        log('Failed to get download URL'); // Xử lý lỗi nếu không nhận được link tải xuống
-      }
-    } else {
-      log('No image selected'); // Xử lý lỗi nếu không chọn ảnh
-    }
-    isLoading.value = false;
-  }
-
-// Hàm để chọn ảnh từ thư viện
+  // Hàm để chọn ảnh từ thư viện
   Future<XFile?> pickImage() async {
     final ImagePicker picker = ImagePicker(); // Khởi tạo ImagePicker
     final XFile? image = await picker.pickImage(
@@ -113,22 +97,36 @@ class CreateBlogController extends GetxController {
     return image; // Trả về ảnh đã chọn
   }
 
-  // Hàm để upload ảnh lên Firebase Storage và nhận link tải xuống
-  Future<String?> uploadImage(XFile image) async {
+  Future<void> selectImage() async {
+    isLoading.value = true;
+
+    final XFile? image = await pickImage(); // Chọn ảnh từ thư viện
+    if (image != null) {
+      print('aaaa:${imagePath}');
+      imagePath.value = image.path;
+      isFile.value = true;
+      isLoading.value = false;
+    } else {
+      log('No image selected'); // Xử lý lỗi nếu không chọn ảnh
+    }
+    isLoading.value = false;
+  }
+
+  Future<String?> uploadImage(String imagePath) async {
     try {
-      final objectHashCode = blogModel.value.hashCode;
-      final fileName = objectHashCode.toRadixString(16);
+      String fileName = path.basename(imagePath);
       // Tham chiếu đến Firebase Storage
       final storageRef = FirebaseStorage.instance.ref();
       // Tạo đường dẫn để lưu ảnh trong Firebase Storage
-      final imageRef = storageRef.child('$fileName.jpg');
+      final imageRef = storageRef.child('$fileName');
 
       // Upload ảnh lên Firebase Storage
-      final uploadTask = imageRef.putFile(File(image.path));
+      final uploadTask = imageRef.putFile(File(imagePath));
       // Đợi upload hoàn tất
       final snapshot = await uploadTask.whenComplete(() => null);
       // Lấy link tải xuống của ảnh
       final downloadUrl = await snapshot.ref.getDownloadURL();
+
       // Trả về link tải xuống
       return downloadUrl;
     } catch (e) {
@@ -146,6 +144,10 @@ class CreateBlogController extends GetxController {
     //   return;
     // }
     // blogFormKey.currentState!.save();
+    if (imagePath.isNotEmpty) {
+      String? imageUrl = await uploadImage(imagePath.value);
+      blogModel.value.blogPhoto = imageUrl;
+    }
 
     //tạo blog model
     BlogModel createBlog = BlogModel(
@@ -159,10 +161,8 @@ class CreateBlogController extends GetxController {
     //kiểm tra kết quả
     if (response.statusCode == 201) {
       // convert list exercises from json
-      var blogController = Get.find<BlogController>();
-      await blogController.getAllBlog();
 
-      Get.back();
+      Get.back(result: true);
       Get.snackbar("Success", jsonDecode(response.body)["message"]);
     } else if (response.statusCode == 400) {
       // thông báo lỗi

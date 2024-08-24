@@ -4,11 +4,8 @@ import 'dart:developer';
 import 'package:bmi_tracker_mb_advisor/models/account_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/authentication_repository.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
-import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
-// import 'package:cometchat_sdk/cometchat_sdk.dart';
+import 'package:cometchat_sdk/cometchat_sdk.dart';
 
 import '../../../config/constants.dart';
 import '../../../routes/app_routes.dart';
@@ -61,11 +58,12 @@ class LoginController extends GetxController {
 
   Future<void> login(BuildContext context) async {
     // Show loading khi đợi xác thực login
-    isLoading = true.obs;
+    isLoading.value = true;
 
     // kiểm tra các field đã hợp lệ chưa
     final isValid = loginFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
     loginFormKey.currentState!.save();
@@ -94,6 +92,22 @@ class LoginController extends GetxController {
       PrefUtils.setAccessToken(data["accessToken"]);
       PrefUtils.setRefreshToken(data["refreshToken"]);
       errorString.value = "";
+
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('Provide more certificate for the account!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Get.offAllNamed(AppRoutes.profileScreen);
+                  },
+                  child: const Text('UPDATE NOW'),
+                )
+              ],
+            );
+          });
     } else if (response.statusCode == 500) {
       errorString.value = 'Timeout error occurred!';
       // có lỗi từ server
@@ -126,11 +140,10 @@ class LoginController extends GetxController {
     } else {
       // Cập nhật errorString khi bắt được lỗi
       errorString.value = 'Your email or password is incorrect!!';
-      isLoading = false.obs;
     }
 
     // ẩn dialog loading
-    isLoading = false.obs;
+    isLoading.value = false;
   }
 
   Future<void> loginComet(String accountID) async {
@@ -144,6 +157,10 @@ class LoginController extends GetxController {
     }
   }
 
+  void goToRegisterScreen() {
+    Get.toNamed(AppRoutes.registerAccountScreen);
+  }
+
   void logoutComet() {
     CometChat.logout(onSuccess: (message) {
       debugPrint("Logout successful with message $message");
@@ -152,7 +169,7 @@ class LoginController extends GetxController {
     });
   }
 
-  void goToForgetPasswordScreen() {
-    // Get.toNamed(AppRoutes.forgotPasswordScreen);
+  void goToForgotPasswordScreen() {
+    Get.toNamed(AppRoutes.forgotPasswordScreen);
   }
 }

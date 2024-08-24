@@ -84,7 +84,7 @@ class MealLogsScreen extends GetView<MealLogsController> {
                                 name: mealLog.foodName ?? "Honey",
                                 mealType: mealLog.mealType ?? "",
                                 quantity:
-                                    '${mealLog.quantity} - ${mealLog.unit}',
+                                    '${mealLog.quantity} - ${mealLog.unit} serving',
                                 kcal: mealLog.calories.toString(),
                               ),
                               const Divider()

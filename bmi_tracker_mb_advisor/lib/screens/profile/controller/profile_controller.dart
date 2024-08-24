@@ -50,19 +50,27 @@ class ProfileController extends GetxController {
   }
 
   goToUpdateProfileScreen() {
-    Get.toNamed(AppRoutes.editProfileScreen)
+    Get.toNamed(AppRoutes.updateProfileScreen)
         ?.then((value) async => await fetchProfileScreeData());
   }
 
-  void goToPlanScreen() {
-    Get.toNamed(AppRoutes.planScreen);
+  void goToPackageScreen() {
+    Get.toNamed(AppRoutes.packageScreen);
   }
 
   void goToSubscriptionHistory() {
     Get.toNamed(AppRoutes.subscriptionHistoryScreen);
   }
 
-  void goToFeedbackScreen() {
-    Get.toNamed(AppRoutes.feedbackScreen);
+  void goToRequestScreen() {
+    Get.toNamed(AppRoutes.requestScreen);
+  }
+
+  void goToCertificateScreen() {
+    Get.toNamed(AppRoutes.certificateScreen);
+  }
+
+  void goToChangePasswordScreen() {
+    Get.toNamed(AppRoutes.changePasswordScreen);
   }
 }

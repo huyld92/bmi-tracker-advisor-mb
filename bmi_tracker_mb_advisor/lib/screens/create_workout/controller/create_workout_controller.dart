@@ -12,6 +12,7 @@ import '../model/create_workout_model.dart';
 import '../model/workout_exercise.dart';
 
 class CreateWorkoutController extends GetxController {
+  final GlobalKey<FormState> createWorkOutFormKey = GlobalKey<FormState>();
   late TextEditingController txtWorkoutNameController;
   late TextEditingController txtStandardWeightController;
   late TextEditingController txtWorkoutDescriptionController;
@@ -19,7 +20,9 @@ class CreateWorkoutController extends GetxController {
 
   List<WorkoutExerciseRequest> workoutExerciseRequests =
       List.empty(growable: true);
-
+  var workoutName = '';
+  var standardweight = '';
+  var workoutDescription = '';
   var isLoading = false.obs;
 
   @override
@@ -38,21 +41,42 @@ class CreateWorkoutController extends GetxController {
     super.onClose();
   }
 
+  String? validateWorkoutName(String value) {
+    if (value.isEmpty) {
+      return "Workout name is invalid";
+    }
+    return null;
+  }
+
+  String? validateStandardWeight(String value) {
+    if (value.isEmpty) {
+      return "Standard weight is invalid";
+    }
+    return null;
+  }
+
+  String? validateWorkoutDescription(String value) {
+    if (value.isEmpty) {
+      return "Workout Description is invalid";
+    }
+    return null;
+  }
+
   Future<void> createNewWorkout() async {
-    String workoutName = txtWorkoutNameController.text;
-    if (workoutName.isEmpty) {
+    isLoading = true.obs;
+
+    final isValid = createWorkOutFormKey.currentState!.validate();
+    if (!isValid) {
       return;
     }
-    String weight = txtStandardWeightController.text;
-    if (weight.isEmpty) {
-      return;
-    }
-    weight = weight.isEmpty ? "0" : weight;
-    int standardWeight = int.parse(weight);
+    createWorkOutFormKey.currentState!.save();
+
+    // weight = weight.isEmpty ? "0" : weight;
+    // int standardWeight = int.parse(weight);
     CreateWorkoutModel createWorkoutModel = CreateWorkoutModel(
       workoutDescription: txtWorkoutDescriptionController.text,
-      workoutName: workoutName,
-      standardWeight: standardWeight,
+      workoutName: txtWorkoutNameController.text,
+      standardWeight: int.parse(txtStandardWeightController.text),
       workoutExerciseRequests: workoutExerciseRequests,
     );
     // gọi API create new workout

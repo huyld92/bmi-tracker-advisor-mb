@@ -24,15 +24,20 @@ class StatisticsCaloriesController extends GetxController {
     isLoading.value = true;
     int memberID = Get.arguments;
     // String date = DateTime.now().format();
-    DateTime date = DateTime.parse("2024-05-31");
+    // DateTime date = DateTime.parse("2024-05-31");
+    DateTime date = DateTime.now();
     await getStatisticCalories(memberID, date.format());
     // tính giá trị trung bình
-    averageCaloriesIn.value =
-        calculateAverageCaloriesIn().formatWithThousandSeparator();
-    averageCaloriesOut.value =
-        calculateAverageCaloriesOut().formatWithThousandSeparator();
-
-    goalCalories.value = dailyRecordModels[0].defaultCalories!;
+    if (dailyRecordModels.isEmpty) {
+      averageCaloriesIn.value = "0";
+      averageCaloriesOut.value = "0";
+    } else {
+      averageCaloriesIn.value =
+          calculateAverageCaloriesIn().formatWithThousandSeparator();
+      averageCaloriesOut.value =
+          calculateAverageCaloriesOut().formatWithThousandSeparator();
+      goalCalories.value = dailyRecordModels[0].defaultCalories!;
+    }
 
     isLoading.value = false;
   }
@@ -42,9 +47,10 @@ class StatisticsCaloriesController extends GetxController {
     var response =
         await StatisticsRepository.getStatisticCalories(memberID, date);
     // kiểm tra kết quả
-
+    print('response${response.body}');
     if (response.statusCode == 200) {
       dailyRecordModels.value = statisticsDailyRecordsFromJson(response.body);
+      dailyRecordModels.sort((a, b) => a.date!.compareTo(b.date!),);
     } else if (response.statusCode == 204) {
       dailyRecordModels.clear();
     } else if (response.statusCode == 401) {
@@ -53,8 +59,8 @@ class StatisticsCaloriesController extends GetxController {
         Get.snackbar('Session Expired', 'Please login again');
       }
     } else {
-      Get.snackbar("Error server ${response.statusCode}",
-          jsonDecode(response.body)['message']);
+      // Get.snackbar("Error server ${response.statusCode}",
+      //     jsonDecode(response.body)['message']);
     }
   }
 

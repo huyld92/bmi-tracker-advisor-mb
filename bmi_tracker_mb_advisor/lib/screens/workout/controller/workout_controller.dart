@@ -8,6 +8,7 @@ import '../../../models/workout_model.dart';
 
 class WorkoutController extends GetxController {
   RxList<WorkoutModel> workouts = RxList.empty();
+  RxString currentSortCriteria = 'Sort Ascending'.obs;
 
   var isLoading = false.obs;
 
@@ -22,7 +23,7 @@ class WorkoutController extends GetxController {
     isLoading.value = true;
 
     await getAllWorkout();
-
+    sortItems("Sort Newest");
     isLoading.value = false;
   }
 
@@ -66,7 +67,8 @@ class WorkoutController extends GetxController {
       // 204 thành công cập nhật giá trị tại index
       workouts[index].isActive = false;
       workouts.refresh();
-      Get.snackbar("Deactivate workout", "Deactivate workout success!");
+      // Get.snackbar("Deactivate workout", "Deactivate workout success!",
+      //     duration: Duration(milliseconds: 700));
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -88,7 +90,7 @@ class WorkoutController extends GetxController {
       workouts[index].isActive = true;
       workouts.refresh();
 
-      Get.snackbar("Activate workout", "Activate workout success!");
+      // Get.snackbar("Activate workout", "Activate workout success!");
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -103,9 +105,27 @@ class WorkoutController extends GetxController {
   void goToUpdateWorkout(int index) {
     Get.toNamed(AppRoutes.updateWorkoutScreen, arguments: workouts[index])
         ?.then((value) {
-          if(value!=null){
-            workouts[index]= value;
-          }
+      if (value != null) {
+        workouts[index] = value;
+      }
     });
+  }
+
+  void sortItems(String? newValue) {
+    currentSortCriteria.value = newValue!;
+    switch (currentSortCriteria.value) {
+      case 'Sort Ascending':
+        workouts.sort((a, b) => a.workoutName!.compareTo(b.workoutName!));
+        break;
+      case 'Sort Descending':
+        workouts.sort((a, b) => b.workoutName!.compareTo(a.workoutName!));
+        break;
+      case 'Sort Newest':
+        workouts.sort((a, b) => b.workoutID!.compareTo(a.workoutID!));
+        break;
+      case 'Sort Oldest':
+        workouts.sort((a, b) => a.workoutID!.compareTo(b.workoutID!));
+        break;
+    }
   }
 }

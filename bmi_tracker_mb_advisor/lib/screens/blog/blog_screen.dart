@@ -28,15 +28,14 @@ class BlogScreen extends GetView<BlogController> {
         child: Scaffold(
           backgroundColor: Colors.grey[50],
           appBar: AppBar(
-            toolbarHeight: 100,
-            title: Column(
+             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
                     'List Blog',
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
               ],
@@ -65,13 +64,17 @@ class BlogScreen extends GetView<BlogController> {
                 children: [
                   Expanded(
                     child: Container(
-                        margin: EdgeInsets.only(bottom: 15.v),
-                        child: Obx(
-                          () {
-                            if (controller.isLoading.value) {
-                              return const CircularProgressIndicator();
-                            } else {
-                              return GridView.builder(
+                      margin: EdgeInsets.only(bottom: 15.v),
+                      child: Obx(
+                        () {
+                          if (controller.isLoading.value) {
+                            return const CircularProgressIndicator();
+                          } else {
+                            return RefreshIndicator(
+                              onRefresh: () async {
+                                await controller.refreshData();
+                              }, // Define your refresh function
+                              child: GridView.builder(
                                 padding: const EdgeInsets.all(10.0),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
@@ -83,28 +86,32 @@ class BlogScreen extends GetView<BlogController> {
                                 ),
                                 itemCount: controller.blogList.length,
                                 itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      controller.goToBlogDetail(index);
-                                    },
-                                    child: Stack(
-                                      children: [
-                                        CustomBlogCard(
-                                          blog: controller.blogList[index],
-                                          // photoUrl: controller.blogModel.value.blogPhoto,
-                                          // title: controller.blogModel.value.blogName,
-                                          onTitleTap: () {
-                                            // Get.to(BlogDetailScreen());
-                                          },
-                                        ),
-                                      ],
+                                  return Obx(
+                                    () => GestureDetector(
+                                      onTap: () {
+                                        controller.goToBlogDetail(index);
+                                      },
+                                      child: Stack(
+                                        children: [
+                                          CustomBlogCard(
+                                            blog: controller.blogList[index],
+                                            // photoUrl: controller.blogModel.value.blogPhoto,
+                                            // title: controller.blogModel.value.blogName,
+                                            onTitleTap: () {
+                                              // Get.to(BlogDetailScreen());
+                                            },
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
-                              );
-                            }
-                          },
-                        )),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),

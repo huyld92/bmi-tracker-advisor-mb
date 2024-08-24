@@ -17,8 +17,7 @@ class WorkspaceScreen extends GetView<WorkspaceController> {
       child: Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text("Workplace", style: theme.textTheme.titleLarge),
+          title: Text("txt_workspace".tr, style: theme.textTheme.titleLarge),
           actions: [
             Container(
               margin: EdgeInsets.only(right: 10.h),

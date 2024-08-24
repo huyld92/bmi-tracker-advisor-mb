@@ -9,6 +9,7 @@ import '../../../repositories/menu_history_repository.dart';
 class MenuHistoryController extends GetxController {
   RxList<MenuHistoryModel> menuHistoryModels = RxList.empty();
   var isLoading = false.obs;
+  int memberID = 0;
 
   @override
   void onInit() {
@@ -18,7 +19,8 @@ class MenuHistoryController extends GetxController {
 
   Future<void> fetchDataMenuHistoryScreen() async {
     isLoading.value = true;
-    int memberID = Get.arguments!;
+    memberID = Get.arguments!;
+    memberID = Get.arguments!;
     await getMenuHistoryOfMember(memberID);
     isLoading.value = false;
   }
@@ -53,8 +55,7 @@ class MenuHistoryController extends GetxController {
   }
 
   void assignMenu() {
-    Get.toNamed(AppRoutes.assignMenuScreen,
-            arguments: menuHistoryModels[0].memberID)
+    Get.toNamed(AppRoutes.assignMenuScreen, arguments: memberID)
         ?.then((value) async {
       if (value != null && value) {
         await fetchDataMenuHistoryScreen();

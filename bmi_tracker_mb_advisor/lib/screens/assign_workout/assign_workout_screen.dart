@@ -25,7 +25,7 @@ class AssignWorkoutScreen extends GetView<AssignWorkoutController> {
           //     onPressed: () => Get.back(),
           //     icon: const Icon(LineAwesomeIcons.angle_left)),
           title:
-              Text('txt_assign_workout'.tr, style: theme.textTheme.titleLarge),
+              Text('title_appbar_assign_workout'.tr, style: theme.textTheme.titleLarge),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.h),

@@ -114,14 +114,14 @@ class SubscriptionItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Plan duration",
+                        "Member Name",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ),
                   Obx(
                     () => Text(
-                      "${controller.subscriptionModels[index].advisorID} days",
+                      "${controller.subscriptionModels[index].memberName}",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),

@@ -12,20 +12,24 @@ import 'package:bmi_tracker_mb_advisor/screens/blog/blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/blog_detail/blog_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/binding/bottom_nav_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/bottom_nav.dart';
+import 'package:bmi_tracker_mb_advisor/screens/certificate/binding/certificate_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/certificate/certificate_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_certificate/binding/create_certificate_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_certificate/create_certificate_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/binding/create_menu_biding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_menu/create_menu_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/binding/create_plan_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/create_plan/create_plan_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_blog/binding/edit_blog_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_blog/edit_blog_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_profile/binding/edit_profile_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/edit_profile/edit_profile_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/binding/create_package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_package/create_package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_request/binding/create_request_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/create_request/create_request_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/exercise_detail/binding/exercise_detail_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/exercise_detail/exercise_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/forgot_password/binding/forgot_password_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/forgot_password/forgot_password_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/binding/login_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/login/login_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/meal_logs/binding/meal_logs_binding.dart';
@@ -41,12 +45,20 @@ import 'package:bmi_tracker_mb_advisor/screens/menus_history/binding/menus_histo
 import 'package:bmi_tracker_mb_advisor/screens/menus_history/menus_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/binding/notification_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/notification/notification_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/binding/plan_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan/plan_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/binding/plan_details_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/plan_detail/plan_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/binding/package_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package/package_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package_detail/binding/package_details_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/package_detail/package_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/binding/profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_account/binding/register_account_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_account/register_account_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_certificate/binding/register_certificate_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/register_certificate/register_certificate_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request/binding/request_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request/request_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request_detail/binding/request_detail_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/request_detail/request_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/binding/statistics_calories_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/statistics_calories_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/binding/statistics_weight_binding.dart';
@@ -54,7 +66,10 @@ import 'package:bmi_tracker_mb_advisor/screens/statistics_weight/statistics_weig
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history/binding/subscription_history_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history/subscription_history_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/subscription_history_detail/subscription_history_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_blog/binding/update_blog_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_blog/update_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/update_menu/update_menu_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/update_profile/binding/update_profile_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/update_workout/update_workout_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/binding/workout_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/workout_details/workout_details_screen.dart';
@@ -65,11 +80,14 @@ import 'package:bmi_tracker_mb_advisor/screens/workspace/workspace_screen.dart';
 
 import '../screens/blog/binding/blog_binding.dart';
 import '../screens/blog_detail/binding/blog_details_binding.dart';
+import '../screens/change_password/binding/change_password_binding.dart';
+import '../screens/change_password/change_password_screen.dart';
 import '../screens/create_workout/binding/create_workout_binding.dart';
 import '../screens/create_workout/create_workout_screen.dart';
 import '../screens/member_details/member_details_screen.dart';
 import '../screens/subscription_history_detail/binding/subscription_history_details_binding.dart';
 import '../screens/update_menu/binding/update_menu_binding.dart';
+import '../screens/update_profile/update_profile_screen.dart';
 import '../screens/update_workout/binding/update_workout_binding.dart';
 import '../util/app_export.dart';
 
@@ -85,12 +103,10 @@ class AppRoutes {
   static const String bottomNavScreen = '/bottomNavScreen';
   static const String createBlogScreen = '/createBlogScreen';
   static const String createMenuScreen = '/createMenuScreen';
-  static const String createPlanScreen = '/createPlanScreen';
+  static const String createPackageScreen = '/createPackageScreen';
   static const String createWorkoutScreen = '/createWorkoutScreen';
-  static const String editBlogScreen = '/editBlogScreen';
-  static const String editProfileScreen = '/editProfileScreen';
-  static const String feedbackScreen = '/feedbackScreen';
   static const String foodDetailsScreen = '/foodDetailsScreen';
+  static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String loginScreen = '/loginScreen';
   static const String mealLogsScreen = '/mealLogsScreen';
   static const String memberScreen = '/memberScreen';
@@ -99,29 +115,103 @@ class AppRoutes {
   static const String menuDetailsScreen = '/menuDetailsScreen';
   static const String menuHistoryScreen = '/menuHistoryScreen';
   static const String notificationScreen = '/notificationScreen';
-  static const String planScreen = '/planScreen';
-  static const String planDetailsScreen = '/planDetailsScreen';
+  static const String packageScreen = '/packageScreen';
+  static const String packageDetailsScreen = '/packageDetailsScreen';
   static const String profileScreen = '/profileScreen';
   static const String statisticsCaloriesScreen = '/statisticsCaloriesScreen';
   static const String statisticsWeightScreen = '/statisticsWeightScreen';
   static const String subscriptionHistoryScreen = '/subscriptionHistoryScreen';
   static const String subscriptionHistoryDetailsScreen =
       '/subscriptionHistoryDetailsScreen';
+  static const String updateBlogScreen = '/updateBlogScreen';
   static const String updateMenuScreen = '/updateMenuScreen';
+  static const String updateProfileScreen = '/updateProfileScreen';
   static const String updateWorkoutScreen = '/updateWorkoutScreen';
   static const String workoutScreen = '/workoutScreen';
   static const String workoutDetailsScreen = '/workoutDetailsScreen';
   static const String workoutHistoryScreen = '/workoutHistoryScreen';
   static const String workspaceScreen = '/workspaceScreen';
+  static const String requestDetailScreen = '/requestDetailScreen';
+  static const String createRequestScreen = '/createRequestScreen';
+  static const String requestScreen = '/requestScreen';
+  static const String registerAccountScreen = '/registerAccountScreen';
+  static const String registerCertificateScreen = '/registerCertificateScreen';
+  static const String certificateScreen = '/certificateScreen';
+  static const String createCertificateScreen = '/createCertificateScreen';
+  static const String exerciseDetailsScreen = '/exerciseDetailsScreen';
+  static const String changePasswordScreen = '/changePasswordScreen';
 
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
     GetPage(
-      name: createPlanScreen,
-      page: () => const CreatePlanScreen(),
+      name: changePasswordScreen,
+      page: () => const ChangePasswordScreen(),
       bindings: [
-        CreatePlanBinding(),
+        ChangePasswordBinding(),
+      ],
+    ),
+    GetPage(
+      name: exerciseDetailsScreen,
+      page: () => const ExerciseDetailsScreen(),
+      bindings: [
+        ExerciseDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: createCertificateScreen,
+      page: () => const CreateCertificateScreen(),
+      bindings: [
+        CreateCertificateBinding(),
+      ],
+    ),
+    GetPage(
+      name: certificateScreen,
+      page: () => const CertificateScreen(),
+      bindings: [
+        CertificateBinding(),
+      ],
+    ),
+    GetPage(
+      name: registerCertificateScreen,
+      page: () => const RegisterCertificateScreen(),
+      bindings: [
+        RegisterCertificateBinding(),
+      ],
+    ),
+    GetPage(
+      name: registerAccountScreen,
+      page: () => const RegisterAccountScreen(),
+      bindings: [
+        RegisterAccountBinding(),
+      ],
+    ),
+    GetPage(
+      name: requestScreen,
+      page: () => const RequestScreen(),
+      bindings: [
+        RequestBinding(),
+      ],
+    ),
+    GetPage(
+      name: requestDetailScreen,
+      page: () => const RequestDetailsScreen(),
+      bindings: [
+        RequestDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: createRequestScreen,
+      page: () => const CreateRequestScreen(),
+      bindings: [
+        CreateRequestBinding(),
+      ],
+    ),
+    GetPage(
+      name: createPackageScreen,
+      page: () => const CreatePackageScreen(),
+      bindings: [
+        CreatePackageBinding(),
       ],
     ),
     GetPage(
@@ -206,31 +296,17 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: editBlogScreen,
-      page: () => const EditBlogScreen(),
-      bindings: [
-        EditBlogBinding(),
-      ],
-    ),
-    GetPage(
-      name: editProfileScreen,
-      page: () => const EditProfileScreen(),
-      bindings: [
-        EditProfileBinding(),
-      ],
-    ),
-    GetPage(
-      name: feedbackScreen,
-      page: () => const FeedbackScreen(),
-      bindings: [
-        FeedbackBinding(),
-      ],
-    ),
-    GetPage(
       name: foodDetailsScreen,
       page: () => const FoodDetailScreen(),
       bindings: [
         FoodDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: forgotPasswordScreen,
+      page: () => const ForgotPasswordScreen(),
+      bindings: [
+        ForgotPasswordBinding(),
       ],
     ),
     GetPage(
@@ -290,17 +366,17 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: planScreen,
-      page: () => const PlanScreen(),
+      name: packageScreen,
+      page: () => const PackageScreen(),
       bindings: [
-        PlanBinding(),
+        PackageBinding(),
       ],
     ),
     GetPage(
-      name: planDetailsScreen,
-      page: () => const PlanDetailScreen(),
+      name: packageDetailsScreen,
+      page: () => const PackageDetailScreen(),
       bindings: [
-        PlanDetailsBinding(),
+        PackageDetailsBinding(),
       ],
     ),
     GetPage(
@@ -339,10 +415,24 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: updateBlogScreen,
+      page: () => const UpdateBlogScreen(),
+      bindings: [
+        UpdateBlogBinding(),
+      ],
+    ),
+    GetPage(
       name: updateMenuScreen,
       page: () => const UpdateMenuScreen(),
       bindings: [
         UpdateMenuBinding(),
+      ],
+    ),
+    GetPage(
+      name: updateProfileScreen,
+      page: () => const UpdateProfileScreen(),
+      bindings: [
+        UpdateProfileBinding(),
       ],
     ),
     GetPage(

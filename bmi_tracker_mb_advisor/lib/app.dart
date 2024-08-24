@@ -1,9 +1,8 @@
-import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
-
 import 'package:bmi_tracker_mb_advisor/localization/app_localization.dart';
 import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/initial_bindings.dart';
+import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
 
 import 'config/constants.dart';
@@ -19,7 +18,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
     UIKitSettings uiKitSettings = (UIKitSettingsBuilder()
           ..subscriptionType = CometChatSubscriptionType.allUsers
           ..autoEstablishSocketConnection = true
@@ -45,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      translations: AppLocalization(),  
+      translations: AppLocalization(),
       theme: theme,
       locale: Get.deviceLocale,
       //for setting localization strings

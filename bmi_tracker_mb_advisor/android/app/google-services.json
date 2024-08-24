@@ -7,25 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:631475575592:android:5be56e52ece687b56ace1d",
-        "android_client_info": {
-          "package_name": "com.example.flutter_health_menu"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBNyV_pWcxwQdiR4gn0dSVxouopqtbthP0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:631475575592:android:981e5bcc73d15d146ace1d",
         "android_client_info": {
           "package_name": "com.fu.bmi.bmi_tracker_mb_advisor"

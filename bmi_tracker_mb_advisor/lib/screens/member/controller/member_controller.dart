@@ -23,6 +23,14 @@ class MemberController extends GetxController {
     isLoading.value = false;
   }
 
+  Future<void> refreshData() async {
+    // isLoading.value = true;
+    // await Future.delayed(Duration(seconds: 1));
+    await fetchMemberScreenData();
+    // isLoading.value = false;
+    update();
+  }
+
   getAllMember() async {
     // gọi API lấy danh sách member của advisor
     var response = await MemberRepository.getAllMember();
@@ -49,4 +57,6 @@ class MemberController extends GetxController {
     Get.toNamed(AppRoutes.memberDetailsScreen,
         arguments: members[index].memberID);
   }
+
+  void goToMessagesScreen() {}
 }

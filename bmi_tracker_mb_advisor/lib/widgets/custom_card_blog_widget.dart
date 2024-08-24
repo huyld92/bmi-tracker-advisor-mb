@@ -2,6 +2,7 @@ import 'package:bmi_tracker_mb_advisor/screens/blog/model/blog_model.dart';
 import 'package:bmi_tracker_mb_advisor/theme/custom_text_style.dart';
 import 'package:bmi_tracker_mb_advisor/theme/theme_helper.dart';
 import 'package:bmi_tracker_mb_advisor/util/size_utils.dart';
+import 'package:bmi_tracker_mb_advisor/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
 
 class CustomBlogCard extends StatelessWidget {
@@ -38,15 +39,19 @@ class CustomBlogCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image.network(
-                '${blog.blogPhoto}',
-                height: 120.v,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+            CustomImageView(
+              imagePath: '${blog.blogPhoto}',
+              height: 120.v,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(10.0),
+            //   child: Image.network(
+            //     '${blog.blogPhoto}',
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             SizedBox(height: 5.v),
             Padding(
               padding: EdgeInsets.only(bottom: 5.v),

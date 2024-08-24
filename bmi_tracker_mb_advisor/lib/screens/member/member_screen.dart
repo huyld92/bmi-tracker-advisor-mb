@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bmi_tracker_mb_advisor/screens/member/controller/member_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/member_card.dart';
+import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
 
 class MemberScreen extends GetView<MemberController> {
@@ -65,13 +66,20 @@ class MemberScreen extends GetView<MemberController> {
                             width: 128.adaptSize),
                         Text("${"txt_no_results_found".tr}.",
                             style: CustomTextStyles.titleMedium16Black),
-                        Text("body_no_results".tr, style: theme.textTheme.bodyMedium,)
+                        Text(
+                          "body_no_results".tr,
+                          style: theme.textTheme.bodyMedium,
+                        )
                       ],
                     ),
                   );
                 } else {
-                  return Obx(
-                    () => ListView.builder(
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      // Call your refresh function here
+                      await controller.refreshData();
+                    },
+                    child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: controller.members.length,
                       itemBuilder: (context, index) {
@@ -87,31 +95,6 @@ class MemberScreen extends GetView<MemberController> {
                                 },
                                 onMessageClick: () {
                                   log('message clicked');
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) =>
-                                  //         CometChatConversationsWithMessages(
-                                  //       conversationsConfiguration:
-                                  //           ConversationsConfiguration(
-                                  //         backButton: IconButton(
-                                  //           onPressed: () {
-                                  //             controller.getBack();
-                                  //           },
-                                  //           icon:
-                                  //               const Icon(Icons.arrow_back_ios_new),
-                                  //         ),
-                                  //       ),
-                                  //       // user: User.fromUID(
-                                  //       //   uid: controller
-                                  //       //       .memberList[index].memberID
-                                  //       //       .toString(),
-                                  //       //   name: controller
-                                  //       //       .memberList[index].fullName,
-                                  //       // ),
-                                  //     ),
-                                  //   ),
-                                  // );
                                 },
                               ),
                               SizedBox(height: 10.h),
@@ -124,6 +107,25 @@ class MemberScreen extends GetView<MemberController> {
                 }
               }),
             ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: appTheme.green500,
+            onPressed: () {
+              Get.to(()=> CometChatConversationsWithMessages(
+                conversationsConfiguration:
+                ConversationsConfiguration(
+                  backButton: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.arrow_back),
+                  ),
+                ),
+              ),);
+              // controller.goToMessagesScreen();
+            },
+            child: Icon(Icons.message, size: 30.adaptSize, color: appTheme.white),
           ),
         ),
       );

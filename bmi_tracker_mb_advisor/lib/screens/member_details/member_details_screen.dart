@@ -1,5 +1,6 @@
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/member_info_card.dart';
+import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
 
 import 'controller/member_details_controller.dart';
@@ -76,7 +77,21 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                         // Messages button
                         FilledButton(
                           onPressed: () {
-                            controller.chat();
+                            Get.to(()=>CometChatMessages(
+                              messageComposerConfiguration:
+                              const MessageComposerConfiguration(
+                                hideVoiceRecording: true,
+                              ),
+                              user: User.fromUID(
+                                uid: controller.member.value.accountID
+                                    .toString(),
+                                name:
+                                controller.member.value.fullName!,
+                                avatar: controller
+                                    .member.value.accountPhoto,
+                              ),
+                              hideDetails: true,
+                            ));
                           },
                           style: FilledButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,
@@ -92,8 +107,10 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                       padding: EdgeInsets.symmetric(vertical: 10.v),
                       child: Obx(
                         () => MemberInfoCard(
-                          height: controller.member.value.height.toString(),
-                          weight: controller.member.value.weight.toString(),
+                          height:
+                              '${controller.member.value.height.toString()} cm',
+                          weight:
+                              '${controller.member.value.weight.toString()} kg',
                           bmi: controller.member.value.bmi!.round().toString(),
                         ),
                       ),

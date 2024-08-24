@@ -24,6 +24,8 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<dynamic>(
+      dropdownColor: Colors.white,
+
       underline: const SizedBox(),
       value: widget.textValue,
       // items: menuItems.map<DropdownMenuItem<String>>(
@@ -35,6 +37,14 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       //   },
       // ).toList(),
       items: const <DropdownMenuItem>[
+        DropdownMenuItem(
+          child: Text('Create food request'),
+          value: 'Create food request',
+        ),
+        DropdownMenuItem(
+          child: Text('Create exercise request'),
+          value: 'Create exercise request',
+        ),
         DropdownMenuItem(
           child: Text('Menu'),
           value: 'Menu',
@@ -48,16 +58,16 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           value: 'Ingredient',
         ),
         DropdownMenuItem(
-          child: Text('Trainer'),
-          value: 'Trainer',
+          child: Text('Member'),
+          value: 'Member',
         ),
         DropdownMenuItem(
           child: Text('Blog'),
           value: 'Blog',
         ),
         DropdownMenuItem(
-          child: Text('Tracking'),
-          value: 'Tracking',
+          child: Text('Other'),
+          value: 'Other',
         )
       ],
       onChanged: widget.onChange,

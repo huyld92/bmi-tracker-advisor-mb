@@ -8,6 +8,7 @@ import '../../../util/app_export.dart';
 
 class MenuScreenController extends GetxController {
   RxList<MenuModel> menus = RxList.empty();
+  RxString currentSortCriteria = 'Sort Ascending'.obs;
 
   var isLoading = false.obs;
 
@@ -17,10 +18,19 @@ class MenuScreenController extends GetxController {
     super.onInit();
   }
 
+  Future<void> refreshData() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 1));
+    await fetchMenuScreenData();
+    isLoading.value = false;
+    update();
+  }
+
   Future<void> fetchMenuScreenData() async {
     isLoading.value = true;
 
     await getAllMenu();
+    sortItems("Sort Newest");
 
     isLoading.value = false;
   }
@@ -64,7 +74,7 @@ class MenuScreenController extends GetxController {
       // 204 thành công cập nhật giá trị tại index
       menus[index].isActive = false;
       menus.refresh();
-      Get.snackbar("Deactivate menu", "Deactivate menu success!");
+      // Get.snackbar("Deactivate menu", "Deactivate menu success!");
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -95,7 +105,7 @@ class MenuScreenController extends GetxController {
       menus[index].isActive = true;
       menus.refresh();
 
-      Get.snackbar("Activate menu", "Activate menu success!");
+      // Get.snackbar("Activate menu", "Activate menu success!");
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -104,6 +114,24 @@ class MenuScreenController extends GetxController {
     } else {
       Get.snackbar("Error server ${response.statusCode}",
           jsonDecode(response.body)['message']);
+    }
+  }
+
+  void sortItems(String? newValue) {
+    currentSortCriteria.value = newValue!;
+    switch (currentSortCriteria.value) {
+      case 'Sort Ascending':
+        menus.sort((a, b) => a.menuName!.compareTo(b.menuName!));
+        break;
+      case 'Sort Descending':
+        menus.sort((a, b) => b.menuName!.compareTo(a.menuName!));
+        break;
+      case 'Sort Newest':
+        menus.sort((a, b) => b.menuID!.compareTo(a.menuID!));
+        break;
+      case 'Sort Oldest':
+        menus.sort((a, b) => a.menuID!.compareTo(b.menuID!));
+        break;
     }
   }
 }

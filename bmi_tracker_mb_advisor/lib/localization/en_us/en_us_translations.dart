@@ -47,11 +47,11 @@ final Map<String, String> enUs = {
 //Create menu
   "txt_foods": "Foods",
   "txt_save": "Save",
-  "txt_add_food": "Add Food",
+  "txt_add_food": "Add food",
   "txt_menu_name": "Menu name",
-  "txt_hint_menu_name": "Enter Menu Name",
+  "txt_hint_menu_name": "Enter menu name",
   "txt_menu_description": "Menu Description",
-  "txt_hint_menu_description": "Enter Menu Description",
+  "txt_hint_menu_description": "Enter menu description",
 
 //Add food to menu
   "txt_add_food_to_menu": "Add food to menu",
@@ -65,11 +65,11 @@ final Map<String, String> enUs = {
   "txt_add_exercise": "Add exercises",
   "title_appbar_crete_workout": "Create Workout",
   "txt_workout_name": "Workout name",
-  "txt_hint_workout_name": "Enter Workout Name",
+  "txt_hint_workout_name": "Enter workout name",
   "txt_standard_weight": "Standard weight",
   "txt_hint_standard_weight": "Enter weight",
-  "txt_workout_description": "Workout Description",
-  "txt_hint_workout_description": "Enter Workout Description",
+  "txt_workout_description": "Workout description",
+  "txt_hint_workout_description": "Enter workout description",
 
 // Add exercise to workout
   "title_add_exercise_to_workout": "Add Exercise",
@@ -155,12 +155,13 @@ final Map<String, String> enUs = {
 // Create user request
   "title_appbar_create_request": "Create Request",
   "txt_type": "Type",
-  "txt_enter_food_name": "Enter food name",
-  "txt_food_name": "Food Name",
+  "txt_enter_name": "Enter name",
+  "txt_name": "Name",
   "txt_purpose": "Purpose",
   "txt_enter_your_purpose": "Enter your purpose",
   "msg_purpose_create_food_request":
       "Enter the link with information about the food and the purpose of creating the food.",
   "msg_purpose_request_other": "Provide the purpose of the request.",
-  "msg_purpose_create_exercise_request": "Enter the link with information about the exercise and the purpose of creating the exercise.",
+  "msg_purpose_create_exercise_request":
+      "Enter the link with information about the exercise and the purpose of creating the exercise.",
 };

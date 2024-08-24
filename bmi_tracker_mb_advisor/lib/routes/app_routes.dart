@@ -14,6 +14,10 @@ import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/binding/bottom_nav_bin
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/bottom_nav.dart';
 import 'package:bmi_tracker_mb_advisor/screens/certificate/binding/certificate_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/certificate/certificate_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/commission/binding/commission_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/commission/commision_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/commission_detail/binding/commission_detail_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/commission_detail/commission_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_certificate/binding/create_certificate_binding.dart';
@@ -143,10 +147,26 @@ class AppRoutes {
   static const String createCertificateScreen = '/createCertificateScreen';
   static const String exerciseDetailsScreen = '/exerciseDetailsScreen';
   static const String changePasswordScreen = '/changePasswordScreen';
+  static const String commissionScreen = '/commissionScreen';
+  static const String commissionDetailsScreen = '/commissionDetailsScreen';
 
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
+    GetPage(
+      name: commissionDetailsScreen,
+      page: () => const CommissionDetailsScreen(),
+      bindings: [
+        CommissionDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: commissionScreen,
+      page: () => const CommisionScreen(),
+      bindings: [
+        CommisionBinding(),
+      ],
+    ),
     GetPage(
       name: changePasswordScreen,
       page: () => const ChangePasswordScreen(),

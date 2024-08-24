@@ -56,8 +56,7 @@ class CreatePackageScreen extends GetView<CreatePackageController> {
                           backgroundColor: Color.fromARGB(255, 136, 212, 241),
                           radius: 40,
                           child: Image(
-                            image:
-                                const AssetImage('assets/images/package.png'),
+                            image: const AssetImage('assets/images/plan.png'),
                             width: 40.adaptSize,
                             height: 40.adaptSize,
                           ),

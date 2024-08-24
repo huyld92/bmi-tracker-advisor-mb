@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../repositories/authentication_repository.dart';
+import '../../../routes/app_routes.dart';
 
 class ChangePasswordController extends GetxController {
   final GlobalKey<FormState> changePasswordFormKey = GlobalKey<FormState>();
@@ -82,9 +83,10 @@ class ChangePasswordController extends GetxController {
         'accounts/change-password?oldPassword=$oldPassword&newPassword=$newPassword');
 
     if (response.statusCode == 200) {
-      Get.offAll(() => const ProfileScreen());
-
-      // isUpdate = true;
+      Get.back();
+      oldPasswordController.clear();
+      newPasswordController.clear();
+      rePasswordController.clear();
       Get.snackbar("Success", 'You have changed your password');
     } else {
       errorString.value = 'Error your password';

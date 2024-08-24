@@ -53,7 +53,8 @@ class WorkoutScreen extends GetView<WorkoutController> {
                             child: Text(value),
                           );
                         }).toList(),
-                        underline: const SizedBox.shrink(), // Remove the underline
+                        underline:
+                            const SizedBox.shrink(), // Remove the underline
                       ),
                     ),
                   ],
@@ -62,140 +63,148 @@ class WorkoutScreen extends GetView<WorkoutController> {
               Expanded(
                   flex: 15,
                   child: Obx(
-                    () => ListView.builder(
-                      itemCount: controller.workouts.length,
-                      itemBuilder: (context, index) {
-                        return Slidable(
-                          key: Key(
-                              controller.workouts[index].workoutID.toString()),
-                          endActionPane: ActionPane(
-                              motion: const ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  onPressed: (context) {
-                                    controller.goToUpdateWorkout(index);
-                                  },
-                                  backgroundColor: const Color(0xFF1FBE1B),
-                                  foregroundColor: Colors.white,
-                                  icon: Icons.edit,
-                                  label: 'txt_update'.tr,
-                                ),
-                                Obx(() {
-                                  if (controller.workouts[index].isActive!) {
-                                    return SlidableAction(
-                                      onPressed: (context) {
-                                        controller.deactivateWorkout(index);
-                                      },
-                                      backgroundColor: appTheme.red500,
-                                      foregroundColor: Colors.white,
-                                      icon: Icons.delete,
-                                      label: 'txt_deactivate'.tr,
-                                    );
-                                  } else {
-                                    return SlidableAction(
-                                      onPressed: (context) {
-                                        controller.activateWorkout(index);
-                                      },
-                                      backgroundColor: const Color(0xFF1FBE1B),
-                                      foregroundColor: Colors.white,
-                                      icon: Icons.check_circle,
-                                      label: 'txt_activate'.tr,
-                                    );
-                                  }
-                                }),
-                              ]),
-                          //exercise list
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10.h, vertical: 10.v),
-                            margin: EdgeInsets.only(bottom: 10.v),
-                            decoration: BoxDecoration(
-                              color: appTheme.white,
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10.adaptSize)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: appTheme.grey300,
-                                )
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 7,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                          "${controller.workouts[index].workoutName}",
-                                          style: theme.textTheme.titleLarge),
-                                      Text(
-                                        "${controller.workouts[index].totalCaloriesBurned} kcal",
-                                        style: CustomTextStyles.bodyMedium14Red,
-                                      ),
-                                      Text(
-                                        "${controller.workouts[index].workoutDescription}",
-                                        maxLines: 3,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: theme.textTheme.bodySmall,
-                                      ),
-                                      Obx(
-                                        () => Row(
-                                          children: [
-                                            Container(
-                                              margin:
-                                                  EdgeInsets.only(right: 5.h),
-                                              child: Icon(
-                                                Icons.circle,
-                                                color: controller
-                                                        .workouts[index]
-                                                        .isActive!
-                                                    ? appTheme.green500
-                                                    : appTheme.red500,
-                                              ),
-                                            ),
-                                            Obx(() {
-                                              if (controller
-                                                  .workouts[index].isActive!) {
-                                                return Text(
-                                                  "Active",
-                                                  style: CustomTextStyles
-                                                      .bodyMedium14Green,
-                                                );
-                                              } else {
-                                                return Text(
-                                                  "Inactive",
-                                                  style: CustomTextStyles
-                                                      .bodyMedium14Red,
-                                                );
-                                              }
-                                            })
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                // const Spacer(),
-                                Expanded(
-                                  flex: 3,
-                                  child: TextButton(
-                                    onPressed: () {
-                                      controller.goToWorkoutDetails(index);
+                    () => RefreshIndicator(
+                      onRefresh: () async {
+                        // Call your refresh function here
+                        await controller.refreshData();
+                      },
+                      child: ListView.builder(
+                        itemCount: controller.workouts.length,
+                        itemBuilder: (context, index) {
+                          return Slidable(
+                            key: Key(controller.workouts[index].workoutID
+                                .toString()),
+                            endActionPane: ActionPane(
+                                motion: const ScrollMotion(),
+                                children: [
+                                  SlidableAction(
+                                    onPressed: (context) {
+                                      controller.goToUpdateWorkout(index);
                                     },
-                                    child: Text(
-                                      "txt_view_details".tr,
-                                      style: CustomTextStyles.linkTextStyle14,
+                                    backgroundColor: const Color(0xFF1FBE1B),
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.edit,
+                                    label: 'txt_update'.tr,
+                                  ),
+                                  Obx(() {
+                                    if (controller.workouts[index].isActive!) {
+                                      return SlidableAction(
+                                        onPressed: (context) {
+                                          controller.deactivateWorkout(index);
+                                        },
+                                        backgroundColor: appTheme.red500,
+                                        foregroundColor: Colors.white,
+                                        icon: Icons.delete,
+                                        label: 'txt_deactivate'.tr,
+                                      );
+                                    } else {
+                                      return SlidableAction(
+                                        onPressed: (context) {
+                                          controller.activateWorkout(index);
+                                        },
+                                        backgroundColor:
+                                            const Color(0xFF1FBE1B),
+                                        foregroundColor: Colors.white,
+                                        icon: Icons.check_circle,
+                                        label: 'txt_activate'.tr,
+                                      );
+                                    }
+                                  }),
+                                ]),
+                            //exercise list
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10.h, vertical: 10.v),
+                              margin: EdgeInsets.only(bottom: 10.v),
+                              decoration: BoxDecoration(
+                                color: appTheme.white,
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(10.adaptSize)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: appTheme.grey300,
+                                  )
+                                ],
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    flex: 7,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            "${controller.workouts[index].workoutName}",
+                                            style: theme.textTheme.titleLarge),
+                                        Text(
+                                          "${controller.workouts[index].totalCaloriesBurned} kcal",
+                                          style:
+                                              CustomTextStyles.bodyMedium14Red,
+                                        ),
+                                        Text(
+                                          "${controller.workouts[index].workoutDescription}",
+                                          maxLines: 3,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: theme.textTheme.bodySmall,
+                                        ),
+                                        Obx(
+                                          () => Row(
+                                            children: [
+                                              Container(
+                                                margin:
+                                                    EdgeInsets.only(right: 5.h),
+                                                child: Icon(
+                                                  Icons.circle,
+                                                  color: controller
+                                                          .workouts[index]
+                                                          .isActive!
+                                                      ? appTheme.green500
+                                                      : appTheme.red500,
+                                                ),
+                                              ),
+                                              Obx(() {
+                                                if (controller.workouts[index]
+                                                    .isActive!) {
+                                                  return Text(
+                                                    "Active",
+                                                    style: CustomTextStyles
+                                                        .bodyMedium14Green,
+                                                  );
+                                                } else {
+                                                  return Text(
+                                                    "Inactive",
+                                                    style: CustomTextStyles
+                                                        .bodyMedium14Red,
+                                                  );
+                                                }
+                                              })
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  // const Spacer(),
+                                  Expanded(
+                                    flex: 3,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        controller.goToWorkoutDetails(index);
+                                      },
+                                      child: Text(
+                                        "txt_view_details".tr,
+                                        style: CustomTextStyles.linkTextStyle14,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ))
             ],

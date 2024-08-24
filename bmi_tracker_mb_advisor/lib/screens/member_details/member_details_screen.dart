@@ -71,6 +71,15 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                                     .bodyLarge!
                                     .copyWith(color: Colors.grey[25]),
                               ),
+                            ),
+                            Obx(
+                              () => Text(
+                                '${"Dietary preference".tr}: ${controller.member.value.dietaryPreference}',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(color: Colors.grey[25]),
+                              ),
                             )
                           ],
                         ),
@@ -120,6 +129,8 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                               '${controller.member.value.height.toString()} cm',
                           weight:
                               '${controller.member.value.weight.toString()} kg',
+                          targetWeight:
+                              '${controller.member.value.targetWeight.toString()} kg',
                           bmi: controller.member.value.bmi!.round().toString(),
                         ),
                       ),
@@ -246,7 +257,7 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                               ),
                             ),
                             Text(
-                              'txt_activity_logs'.tr,
+                              'Exercise logs'.tr,
                               textAlign: TextAlign.center,
                             ),
                           ],

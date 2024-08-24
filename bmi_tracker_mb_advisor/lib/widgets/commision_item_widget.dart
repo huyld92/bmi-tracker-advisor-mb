@@ -1,13 +1,12 @@
-import 'package:bmi_tracker_mb_advisor/screens/certificate/controller/certificate_controller.dart';
+import 'package:bmi_tracker_mb_advisor/screens/commission/controller/commission_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../util/app_export.dart';
 
 // ignore: must_be_immutable
-class CertificateItemWidget extends StatelessWidget {
-  CertificateItemWidget(
+class CommissionItemWidget extends StatelessWidget {
+  CommissionItemWidget(
     this.index, {
     Key? key,
   }) : super(
@@ -16,19 +15,18 @@ class CertificateItemWidget extends StatelessWidget {
 
   int index;
 
-  var controller = Get.find<CertificateController>();
+  var controller = Get.find<CommisionController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // controller.goToCertificateDetail(index);
-        // Get.to(PlanDetailScreen());
+        controller.goToCommissionDetails(index);
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 4.v),
         decoration: ShapeDecoration(
-          color: Color.fromARGB(255, 230, 250, 208),
+          color: Color.fromARGB(255, 197, 214, 248),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -45,7 +43,7 @@ class CertificateItemWidget extends StatelessWidget {
                     //   Icons.account_balance_rounded,
                     //   color: Colors.white,
                     // ),
-                    Image(image: AssetImage('assets/images/certificate.png')),
+                    Image(image: AssetImage('assets/images/comission.png')),
                 radius: 20,
                 // backgroundColor: Colors.green,
               ),
@@ -62,13 +60,25 @@ class CertificateItemWidget extends StatelessWidget {
               // backgroundColor: Theme.of(context).primaryColor,
             ),
             SizedBox(height: 3.v),
-
+            Opacity(
+              opacity: 0.5,
+              child: Padding(
+                padding: EdgeInsets.only(left: 16.h),
+                child: Obx(
+                  () => Text(
+                    controller.commissionModels[index].expectedPaymentDate!
+                        .format(),
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ),
+              ),
+            ),
             const Divider(
               color: Color.fromARGB(255, 112, 105, 105),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.h),
-              child: Column(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Opacity(
@@ -76,14 +86,14 @@ class CertificateItemWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 1.v),
                       child: Text(
-                        "Certificate Name",
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        "Status",
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ),
                   Obx(
                     () => Text(
-                      "${controller.certificateModel[index].certificateName}",
+                      "${controller.commissionModels[index].paymentStatus}",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -98,59 +108,21 @@ class CertificateItemWidget extends StatelessWidget {
                 children: [
                   Opacity(
                     opacity: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 1.v),
-                      child: Text(
-                        "Link",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
+                    child: Text(
+                      "Amount",
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      // Uri phoneUrl = Uri(
-                      //   scheme: 'tel',
-                      //   path:
-                      //       '${controller.certificateModel[index].certificateLink}',
-                      // );
-                      launchUrl(Uri.parse(
-                          controller.certificateModel[index].certificateLink!));
-                    },
-                    child: Text(
-                      'View Link',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          ),
+                  Obx(
+                    () => Text(
+                      "${controller.commissionModels[index].commissionAmount?.round().formatWithThousandSeparator()} VND",
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 9.v),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 16.h),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       Opacity(
-            //         opacity: 1,
-            //         child: Text(
-            //           "Number Of Uses",
-            //           style: Theme.of(context).textTheme.bodyLarge,
-            //         ),
-            //       ),
-            //       Obx(
-            //         () => Text(
-            //           "${controller.packageModel[index].numberOfUses}",
-            //           style: Theme.of(context).textTheme.bodySmall,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(height: 1.v),
+            SizedBox(height: 1.v),
           ],
         ),
       ),

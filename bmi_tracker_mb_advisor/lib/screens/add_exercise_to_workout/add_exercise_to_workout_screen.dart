@@ -65,8 +65,8 @@ class AddExerciseToWorkoutScreen
                             controller.sortExercise(newValue);
                           },
                           items: <String>[
-                            'Sort Ascending',
-                            'Sort Descending',
+                            'Sort A-Z',
+                            'Sort Z-A',
                             'Sort Newest',
                             'Sort Oldest',
                           ].map<DropdownMenuItem<String>>((String value) {

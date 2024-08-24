@@ -35,7 +35,7 @@ class BlogScreen extends GetView<BlogController> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
-                    'List Blog',
+                    'Blog List',
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),

@@ -35,7 +35,7 @@ class AddFoodToMenuController extends GetxController {
   String selectedFilter = 'All';
 
   // giá trị của sort
-  RxString currentSortCriteria = 'Sort Ascending'.obs;
+  RxString currentSortCriteria = 'Sort A-Z'.obs;
 
   @override
   Future<void> onInit() async {
@@ -55,7 +55,7 @@ class AddFoodToMenuController extends GetxController {
     isLoading.value = true;
     menuID = Get.arguments;
     await getAllFood();
-    sortFood("Sort Ascending");
+    sortFood("Sort A-Z");
     foodSelected = RxList.generate(foodUIModels.length, (index) => false);
     isLoading.value = false;
   }
@@ -165,11 +165,11 @@ class AddFoodToMenuController extends GetxController {
     // Xác định giá trị đang được chọn
     switch (currentSortCriteria.value) {
       // Alphabet giảm dần
-      case 'Sort Ascending':
+      case 'Sort A-Z':
         foodUIModels.sort((a, b) => a.foodName!.compareTo(b.foodName!));
         break;
       // Alphabet tăbg dần
-      case 'Sort Descending':
+      case 'Sort Z-A':
         foodUIModels.sort((a, b) => b.foodName!.compareTo(a.foodName!));
         break;
       // food mới nhất

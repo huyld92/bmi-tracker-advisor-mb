@@ -12,6 +12,7 @@ class CreateRequestController extends GetxController {
   final GlobalKey<FormState> createRequestFormKey = GlobalKey<FormState>();
 
   late TextEditingController txtFoodNameController;
+  late TextEditingController txtExerciseNameController;
   late TextEditingController txtPurposeController;
 
   RxString requestType = ''.obs;
@@ -48,10 +49,11 @@ class CreateRequestController extends GetxController {
       dropDownType.add(requestType.value);
       purposeToolTip = 'msg_purpose_create_food_request'.tr;
       txtFoodNameController = TextEditingController();
-    } else if(argument == EUserRequestType.CREATE_EXERCISE){
+    } else if (argument == EUserRequestType.CREATE_EXERCISE) {
       requestType.value = argument.name;
       dropDownType.add(requestType.value);
       purposeToolTip = 'msg_purpose_create_exercise_request'.tr;
+      txtExerciseNameController = TextEditingController();
     } else {
       requestType.value = argument.name;
       dropDownType.add("Create food request");
@@ -82,11 +84,21 @@ class CreateRequestController extends GetxController {
     isLoading = true.obs;
     final isValid = createRequestFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading = false.obs;
       return;
     }
     createRequestFormKey.currentState!.save();
-    String purpose =
-        "Food name:${txtFoodNameController.text}\n${txtPurposeController.text}";
+    String purpose;
+    if (requestType.value == EUserRequestType.CREATE_FOOD.name) {
+      purpose =
+          "Food name:${txtFoodNameController.text}\n${txtPurposeController.text}";
+    } else if (requestType.value == EUserRequestType.CREATE_EXERCISE.name) {
+      purpose =
+          "Exrecise name:${txtExerciseNameController.text}\n${txtPurposeController.text}";
+    } else {
+      purpose = "${txtPurposeController.text}";
+    }
+
     RequestModel createRequest = RequestModel(
       type: requestType.value,
       purpose: purpose,
@@ -95,13 +107,13 @@ class CreateRequestController extends GetxController {
     var response = await RequestRepository.createNewRequest(createRequest);
     print('response:${response.statusCode}');
     //kiểm tra kết quả
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       Get.back();
       Get.snackbar('Success', 'Create request successful');
       log(jsonDecode(response.body));
     } else if (response.statusCode == 400) {
       // thông báo lỗi
-      Get.snackbar("Create failed!", jsonDecode(response.body)["message"]);
+      Get.snackbar("Create failed!", jsonDecode(response.body)["purpose"]);
     } else {
       Get.snackbar("Error server ${response.statusCode}",
           jsonDecode(response.body)['message']);
@@ -112,5 +124,10 @@ class CreateRequestController extends GetxController {
 
   void selectType(String? newValue) {
     requestType.value = newValue!;
+    if (requestType.value == EUserRequestType.CREATE_FOOD.name) {
+      txtFoodNameController = TextEditingController();
+    } else if (requestType.value == EUserRequestType.CREATE_EXERCISE.name) {
+      txtExerciseNameController = TextEditingController();
+    }
   }
 }

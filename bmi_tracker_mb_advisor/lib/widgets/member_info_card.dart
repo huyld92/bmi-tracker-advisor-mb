@@ -5,11 +5,13 @@ class MemberInfoCard extends StatelessWidget {
   final String height;
   final String weight;
   final String bmi;
+  final String targetWeight;
 
   const MemberInfoCard({
     required this.height,
     required this.weight,
     required this.bmi,
+    required this.targetWeight,
     super.key,
   });
 
@@ -48,6 +50,26 @@ class MemberInfoCard extends StatelessWidget {
                   Text(
                     'txt_weight'.tr,
                     textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: 1.h,
+              height: 55.v,
+              color: Colors.black,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    targetWeight,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  Text(
+                    'Target weight'.tr,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ],
               ),

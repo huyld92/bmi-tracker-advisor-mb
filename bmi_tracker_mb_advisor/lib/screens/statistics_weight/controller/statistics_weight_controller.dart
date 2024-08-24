@@ -24,7 +24,7 @@ class StatisticsWeightController extends GetxController {
     var arguments = Get.arguments;
     int memberID = arguments[0];
     goalWeight.value = arguments[1].toString();
-    DateTime date = DateTime.parse("2024-05-31");
+    DateTime date = DateTime.parse(DateTime.now().format());
     // DateTime date = DateTime.now();
 
     await getStatisticBodyMass(memberID, date.format());
@@ -40,8 +40,9 @@ class StatisticsWeightController extends GetxController {
     if (response.statusCode == 200) {
       statisticsBodyMassModels.value =
           statisticsMemberBodyMassFromJson(response.body);
-      statisticsBodyMassModels.sort((a, b) => a.dateInput!.compareTo(b.dateInput!),);
-
+      statisticsBodyMassModels.sort(
+        (a, b) => a.dateInput!.compareTo(b.dateInput!),
+      );
     } else if (response.statusCode == 204) {
       statisticsBodyMassModels.clear();
     } else if (response.statusCode == 401) {

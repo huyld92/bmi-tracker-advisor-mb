@@ -127,8 +127,8 @@ class AddFoodToMenuScreen extends GetView<AddFoodToMenuController> {
                             controller.sortFood(newValue);
                           },
                           items: <String>[
-                            'Sort Ascending',
-                            'Sort Descending',
+                            'Sort A-Z',
+                            'Sort Z-A',
                             'Sort Newest',
                             'Sort Oldest',
                           ].map<DropdownMenuItem<String>>((String value) {

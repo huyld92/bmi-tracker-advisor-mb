@@ -62,6 +62,10 @@ class ProfileController extends GetxController {
     Get.toNamed(AppRoutes.subscriptionHistoryScreen);
   }
 
+  void goToCommission() {
+    Get.toNamed(AppRoutes.commissionScreen);
+  }
+
   void goToRequestScreen() {
     Get.toNamed(AppRoutes.requestScreen);
   }

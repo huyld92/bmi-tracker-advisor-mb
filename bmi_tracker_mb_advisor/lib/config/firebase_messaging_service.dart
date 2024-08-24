@@ -28,7 +28,7 @@ class FirebaseMessagingService {
       print('Received a message while in the foreground!');
       print('Message data: ${message.data}');
 
-      Get.snackbar("title", "${message.data}");
+      Get.snackbar("${message.data['titile']}", "${message.data['body']}");
       if (message.notification != null) {
         print('Message also contained a notification: ${message.notification}');
       }

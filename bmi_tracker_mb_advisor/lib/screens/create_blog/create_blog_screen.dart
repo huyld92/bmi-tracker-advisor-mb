@@ -145,7 +145,7 @@ class CreateBlogScreen extends GetView<CreateBlogController> {
                       ),
                       SizedBox(height: 10.v),
                       Text(
-                        'Video Link',
+                        'Link',
                         style: theme.textTheme.titleLarge,
                       ),
                       SizedBox(height: 10.v),

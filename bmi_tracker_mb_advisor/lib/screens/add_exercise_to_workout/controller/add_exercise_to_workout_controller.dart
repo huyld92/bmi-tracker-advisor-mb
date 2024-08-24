@@ -23,7 +23,7 @@ class AddExerciseToWorkoutController extends GetxController {
   var isLoading = false.obs;
 
   // giá trị của sort
-  RxString currentSortCriteria = 'Sort Ascending'.obs;
+  RxString currentSortCriteria = 'Sort A-Z'.obs;
 
   @override
   Future<void> onInit() async {
@@ -342,12 +342,12 @@ class AddExerciseToWorkoutController extends GetxController {
     // Xác định giá trị đang được chọn
     switch (currentSortCriteria.value) {
       // Alphabet giảm dần
-      case 'Sort Ascending':
+      case 'Sort A-Z':
         exerciseUIModels
             .sort((a, b) => a.exerciseName!.compareTo(b.exerciseName!));
         break;
-      // Alphabet tăbg dần
-      case 'Sort Descending':
+      // Alphabet tăng dần
+      case 'Sort Z-A':
         exerciseUIModels
             .sort((a, b) => b.exerciseName!.compareTo(a.exerciseName!));
         break;

@@ -76,6 +76,14 @@ class ProfileScreen extends GetView<ProfileController> {
                   },
                 ),
                 ProfileAccountWidget(
+                  title: "Commission".tr,
+                  iconimage: const AssetImage('assets/images/comission.png'),
+                  onPress: () {
+                    controller.goToCommission();
+                  },
+                ),
+
+                ProfileAccountWidget(
                   title: 'Support Request',
                   iconimage: const AssetImage('assets/images/request.png'),
                   onPress: () {

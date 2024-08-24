@@ -81,7 +81,7 @@ class CreateRequestScreen extends GetView<CreateRequestController> {
                     ),
                     SizedBox(height: 10.v),
                     Container(
-                        width: 170.h,
+                        width: 190.h,
                         padding: EdgeInsets.symmetric(horizontal: 10.h),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
@@ -109,7 +109,7 @@ class CreateRequestScreen extends GetView<CreateRequestController> {
                           children: [
                             SizedBox(height: 10.v),
                             Text(
-                              'txt_food_name'.tr,
+                              'Food name'.tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
@@ -127,7 +127,43 @@ class CreateRequestScreen extends GetView<CreateRequestController> {
                               },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: 'txt_enter_food_name'.tr,
+                                hintText: 'txt_enter_name'.tr,
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.green, width: 1.0),
+                                ),
+                                fillColor: Colors.white,
+                                filled: true,
+                              ),
+                            ),
+                          ],
+                        );
+                      } else if (controller.requestType.value ==
+                          EUserRequestType.CREATE_EXERCISE.name) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 10.v),
+                            Text(
+                              'Exercise name'.tr,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 10.v),
+                            TextFormField(
+                              maxLines: 1,
+                              controller: controller.txtExerciseNameController,
+                              onSaved: (value) {
+                                // controller.purpose = value!;
+                              },
+                              validator: (value) {
+                                return controller.validatePurpose(value!);
+                              },
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'txt_enter_name'.tr,
                                 focusedBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.green, width: 1.0),

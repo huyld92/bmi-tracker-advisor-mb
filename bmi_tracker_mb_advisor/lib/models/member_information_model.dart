@@ -8,6 +8,7 @@ class MemberInformationModel {
   String? fullName;
   String? gender;
   String? phoneNumber;
+  String? dietaryPreference;
   DateTime? endDateOfPlan;
   DateTime? birthday;
   int? height;
@@ -26,6 +27,7 @@ class MemberInformationModel {
     this.fullName,
     this.gender,
     this.phoneNumber,
+    this.dietaryPreference,
     this.endDateOfPlan,
     this.birthday,
     this.height,
@@ -46,6 +48,7 @@ class MemberInformationModel {
       fullName: json['fullName'],
       gender: json['gender'],
       phoneNumber: json['phoneNumber'],
+      dietaryPreference: json['dietaryPreference'],
       endDateOfPlan: json['endDateOfPlan'] != null
           ? DateTime.parse(json['endDateOfPlan'])
           : null,
@@ -70,6 +73,7 @@ class MemberInformationModel {
       'fullName': fullName,
       'gender': gender,
       'phoneNumber': phoneNumber,
+      'dietaryPreference': dietaryPreference,
       'endDateOfPlan': endDateOfPlan?.toIso8601String(),
       'birthday': birthday?.toIso8601String(),
       'height': height,

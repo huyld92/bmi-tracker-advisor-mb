@@ -28,7 +28,7 @@ class ActivityLogsScreen extends GetView<ActivityLogsController> {
                 final DateTime? picked = await showDatePicker(
                   context: context,
                   initialDate:
-                  DateTime.parse(controller.date.value) ?? DateTime.now(),
+                      DateTime.parse(controller.date.value) ?? DateTime.now(),
                   firstDate: DateTime.parse("2023-05-01"),
                   lastDate: DateTime.now(),
                 );
@@ -63,12 +63,11 @@ class ActivityLogsScreen extends GetView<ActivityLogsController> {
                   width: double.maxFinite,
                   padding: EdgeInsets.only(bottom: 5.v),
                   child: Obx(
-                        () => Center(
+                    () => Center(
                         child: Text("Date: ${controller.date}",
                             style: CustomTextStyles.bodyMedium16)),
                   ),
                 ),
-
                 Expanded(
                   child: Obx(
                     () => ListView.builder(
@@ -77,7 +76,7 @@ class ActivityLogsScreen extends GetView<ActivityLogsController> {
                           return Padding(
                             padding: EdgeInsets.all(10.v),
                             child: ActivityItem(
-                                emoji: controller.activityLogModels[index].emoji,
+                                // emoji: controller.activityLogModels[index].emoji,
                                 name:
                                     "${controller.activityLogModels[index].activityName} ",
                                 duration:

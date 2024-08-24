@@ -40,7 +40,7 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Forget Password',
+                          'Forgot Password',
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         Text(

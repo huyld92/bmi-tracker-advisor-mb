@@ -19,6 +19,14 @@ class WorkoutController extends GetxController {
     super.onInit();
   }
 
+  Future<void> refreshData() async {
+    // isLoading.value = true;
+    // await Future.delayed(Duration(seconds: 1));
+    await fetchWorkoutScreenData();
+    // isLoading.value = false;
+    update();
+  }
+
   fetchWorkoutScreenData() async {
     isLoading.value = true;
 

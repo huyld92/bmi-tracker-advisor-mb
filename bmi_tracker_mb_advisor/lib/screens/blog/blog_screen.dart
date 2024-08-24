@@ -28,15 +28,14 @@ class BlogScreen extends GetView<BlogController> {
         child: Scaffold(
           backgroundColor: Colors.grey[50],
           appBar: AppBar(
-            toolbarHeight: 100,
-            title: Column(
+             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
                     'List Blog',
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
               ],

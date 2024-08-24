@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:bmi_tracker_mb_advisor/models/enums/enum_user_request.dart';
 import 'package:bmi_tracker_mb_advisor/models/request_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/request_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/request/controller/request_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +47,7 @@ class CreateRequestController extends GetxController {
       dropDownType.add(requestType.value);
       purposeToolTip = 'msg_purpose_create_food_request'.tr;
       txtFoodNameController = TextEditingController();
-    } else if(argument == EUserRequestType.CREATE_EXERCISE){
+    } else if (argument == EUserRequestType.CREATE_EXERCISE) {
       requestType.value = argument.name;
       dropDownType.add(requestType.value);
       purposeToolTip = 'msg_purpose_create_exercise_request'.tr;
@@ -56,8 +55,6 @@ class CreateRequestController extends GetxController {
       requestType.value = argument.name;
       dropDownType.add("Create food request");
       dropDownType.add("Create exercise request");
-      dropDownType.add("Menu");
-      dropDownType.add("Food");
       dropDownType.add("Member");
       dropDownType.add("Other");
       purposeToolTip = 'msg_purpose_request_other'.tr;
@@ -79,11 +76,14 @@ class CreateRequestController extends GetxController {
   }
 
   Future<void> createRequest() async {
-    isLoading = true.obs;
+    isLoading.value = true;
     final isValid = createRequestFormKey.currentState!.validate();
+
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
+
     createRequestFormKey.currentState!.save();
     String purpose =
         "Food name:${txtFoodNameController.text}\n${txtPurposeController.text}";
@@ -107,10 +107,17 @@ class CreateRequestController extends GetxController {
           jsonDecode(response.body)['message']);
     }
 
-    isLoading = false.obs;
+    isLoading.value = false;
   }
 
   void selectType(String? newValue) {
     requestType.value = newValue!;
+
+    if (newValue == EUserRequestType.CREATE_FOOD.name) {
+      purposeToolTip = 'msg_purpose_create_food_request'.tr;
+      txtFoodNameController = TextEditingController();
+    } else if (newValue == EUserRequestType.CREATE_EXERCISE.name) {
+      purposeToolTip = 'msg_purpose_create_exercise_request'.tr;
+    }
   }
 }

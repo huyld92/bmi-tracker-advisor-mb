@@ -15,7 +15,6 @@ class PackageController extends GetxController {
   @override
   void onInit() async {
     await fetchDataPackageScreen();
-    isLoading.value = false;
     super.onInit();
   }
 

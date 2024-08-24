@@ -11,7 +11,6 @@ class PackageDetailsController extends GetxController {
     packageModel.value = Get.arguments;
 
     print('PlanModel:${packageModel.toString()}');
-    // TODO: implement onInit
     super.onInit();
   }
 }

@@ -57,12 +57,14 @@ class CreatePackageController extends GetxController {
 
   String? validatePackagePrice(String value) {
     if (value.isEmpty) {
-      return "Price is invalid";
+      return "The price is invalid";
     }
     // Kiểm tra xem phải là số dương
     int? packagePrice = int.tryParse(value);
     if (packagePrice! <= 0) {
-      return "Price is invalid";
+      return "The price is invalid";
+    } else if (packagePrice < 20000) {
+      return "The price must be greater than 5,000 VND.";
     }
     return null;
   }
@@ -75,16 +77,21 @@ class CreatePackageController extends GetxController {
   }
 
   String? validatePackageDuration(String value) {
+    int? packageDuration = value.isNum ? int.tryParse(value) : 0;
+
     if (value.isEmpty) {
       return "Package Duration is invalid";
+    } else if (packageDuration! <= 0) {
+      return "The price must be greater than 1 day.";
     }
     return null;
   }
 
   Future<void> createPackage() async {
-    isLoading = true.obs;
+    isLoading.value = true;
     final isValid = createPackageFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
     createPackageFormKey.currentState!.save();
@@ -116,6 +123,6 @@ class CreatePackageController extends GetxController {
           jsonDecode(response.body)['message']);
     }
 
-    isLoading = false.obs;
+    isLoading.value = false;
   }
 }

@@ -55,12 +55,12 @@ class MemberDetailsController extends GetxController {
   }
 
   void goToMenuHistory() {
-    Get.toNamed(AppRoutes.menuHistoryScreen,arguments: member.value.memberID);
+    Get.toNamed(AppRoutes.menuHistoryScreen, arguments: member.value.memberID);
   }
 
   void goToWorkoutHistory() {
-    Get.toNamed(AppRoutes.workoutHistoryScreen,arguments: member.value.memberID);
-
+    Get.toNamed(AppRoutes.workoutHistoryScreen,
+        arguments: member.value.memberID);
   }
 
   void goToActivityLogs() {
@@ -69,5 +69,14 @@ class MemberDetailsController extends GetxController {
 
   void goToMealLogs() {
     Get.toNamed(AppRoutes.mealLogsScreen, arguments: member.value.memberID);
+  }
+
+  void goToChat() {
+    Get.toNamed(
+        AppRoutes.chatScreen, arguments: [
+      member.value.accountID,
+      member.value.fullName,
+      member.value.accountPhoto
+    ]);
   }
 }

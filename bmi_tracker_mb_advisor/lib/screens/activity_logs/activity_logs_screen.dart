@@ -20,8 +20,7 @@ class ActivityLogsScreen extends GetView<ActivityLogsController> {
       }
       return Scaffold(
         appBar: AppBar(
-          title:
-              Text("txt_activity_logs".tr, style: theme.textTheme.titleLarge),
+          title: Text("Exercise logs".tr, style: theme.textTheme.titleLarge),
           actions: [
             IconButton(
               onPressed: () async {

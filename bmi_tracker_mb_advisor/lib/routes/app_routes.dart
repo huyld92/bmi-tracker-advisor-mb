@@ -14,6 +14,8 @@ import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/binding/bottom_nav_bin
 import 'package:bmi_tracker_mb_advisor/screens/bottom_nav/bottom_nav.dart';
 import 'package:bmi_tracker_mb_advisor/screens/certificate/binding/certificate_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/certificate/certificate_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/chat/binding/chat_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/chat/chat_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_certificate/binding/create_certificate_binding.dart';
@@ -101,6 +103,7 @@ class AppRoutes {
   static const String blogScreen = '/blogScreen';
   static const String blogDetailsScreen = '/blogDetailsScreen';
   static const String bottomNavScreen = '/bottomNavScreen';
+  static const String chatScreen = '/chatScreen';
   static const String createBlogScreen = '/createBlogScreen';
   static const String createMenuScreen = '/createMenuScreen';
   static const String createPackageScreen = '/createPackageScreen';
@@ -156,6 +159,13 @@ class AppRoutes {
       page: () => const ExerciseDetailsScreen(),
       bindings: [
         ExerciseDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: chatScreen,
+      page: () =>   ChatScreen(),
+      bindings: [
+        ChatBinding(),
       ],
     ),
     GetPage(

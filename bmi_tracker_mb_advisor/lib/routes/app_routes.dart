@@ -18,6 +18,8 @@ import 'package:bmi_tracker_mb_advisor/screens/commission/binding/commission_bin
 import 'package:bmi_tracker_mb_advisor/screens/commission/commision_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/commission_detail/binding/commission_detail_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/commission_detail/commission_detail_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/chat/binding/chat_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/chat/chat_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_certificate/binding/create_certificate_binding.dart';
@@ -30,8 +32,6 @@ import 'package:bmi_tracker_mb_advisor/screens/create_request/binding/create_req
 import 'package:bmi_tracker_mb_advisor/screens/create_request/create_request_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/exercise_detail/binding/exercise_detail_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/exercise_detail/exercise_detail_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/feedback/binding/feedback_binding.dart';
-import 'package:bmi_tracker_mb_advisor/screens/feedback/feedback_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/binding/food_details_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/food_detail/food_detail_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/forgot_password/binding/forgot_password_binding.dart';
@@ -107,11 +107,11 @@ class AppRoutes {
   static const String blogScreen = '/blogScreen';
   static const String blogDetailsScreen = '/blogDetailsScreen';
   static const String bottomNavScreen = '/bottomNavScreen';
+  static const String chatScreen = '/chatScreen';
   static const String createBlogScreen = '/createBlogScreen';
   static const String createMenuScreen = '/createMenuScreen';
   static const String createPackageScreen = '/createPackageScreen';
   static const String createWorkoutScreen = '/createWorkoutScreen';
-  static const String feedbackScreen = '/feedbackScreen';
   static const String foodDetailsScreen = '/foodDetailsScreen';
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String loginScreen = '/loginScreen';
@@ -179,6 +179,13 @@ class AppRoutes {
       page: () => const ExerciseDetailsScreen(),
       bindings: [
         ExerciseDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: chatScreen,
+      page: () => ChatScreen(),
+      bindings: [
+        ChatBinding(),
       ],
     ),
     GetPage(
@@ -316,13 +323,6 @@ class AppRoutes {
       page: () => const CreateWorkoutScreen(),
       bindings: [
         CreateWorkoutBinding(),
-      ],
-    ),
-    GetPage(
-      name: feedbackScreen,
-      page: () => const FeedbackScreen(),
-      bindings: [
-        FeedbackBinding(),
       ],
     ),
     GetPage(

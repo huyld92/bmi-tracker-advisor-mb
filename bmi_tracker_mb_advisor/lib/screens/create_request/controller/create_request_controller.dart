@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:bmi_tracker_mb_advisor/models/enums/enum_user_request.dart';
 import 'package:bmi_tracker_mb_advisor/models/request_model.dart';
 import 'package:bmi_tracker_mb_advisor/repositories/request_repository.dart';
-import 'package:bmi_tracker_mb_advisor/screens/request/controller/request_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -58,8 +57,6 @@ class CreateRequestController extends GetxController {
       requestType.value = argument.name;
       dropDownType.add("Create food request");
       dropDownType.add("Create exercise request");
-      dropDownType.add("Menu");
-      dropDownType.add("Food");
       dropDownType.add("Member");
       dropDownType.add("Other");
       purposeToolTip = 'msg_purpose_request_other'.tr;
@@ -81,12 +78,14 @@ class CreateRequestController extends GetxController {
   }
 
   Future<void> createRequest() async {
-    isLoading = true.obs;
+    isLoading.value = true;
     final isValid = createRequestFormKey.currentState!.validate();
+
     if (!isValid) {
-      isLoading = false.obs;
+      isLoading.value = false;
       return;
     }
+
     createRequestFormKey.currentState!.save();
     String purpose;
     if (requestType.value == EUserRequestType.CREATE_FOOD.name) {
@@ -119,15 +118,17 @@ class CreateRequestController extends GetxController {
           jsonDecode(response.body)['message']);
     }
 
-    isLoading = false.obs;
+    isLoading.value = false;
   }
 
   void selectType(String? newValue) {
     requestType.value = newValue!;
-    if (requestType.value == EUserRequestType.CREATE_FOOD.name) {
+
+    if (newValue == EUserRequestType.CREATE_FOOD.name) {
+      purposeToolTip = 'msg_purpose_create_food_request'.tr;
       txtFoodNameController = TextEditingController();
-    } else if (requestType.value == EUserRequestType.CREATE_EXERCISE.name) {
-      txtExerciseNameController = TextEditingController();
+    } else if (newValue == EUserRequestType.CREATE_EXERCISE.name) {
+      purposeToolTip = 'msg_purpose_create_exercise_request'.tr;
     }
   }
 }

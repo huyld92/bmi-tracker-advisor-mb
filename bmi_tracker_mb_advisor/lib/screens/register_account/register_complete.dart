@@ -18,7 +18,7 @@ class RegisterComplete extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "All Set!",
+              "Register success!",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             Text(

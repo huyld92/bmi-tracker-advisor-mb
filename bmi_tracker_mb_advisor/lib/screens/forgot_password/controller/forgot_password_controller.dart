@@ -36,12 +36,14 @@ class ForgotPasswordController extends GetxController {
   }
 
   Future<void> forgotPassword() async {
-    isLoading = true.obs;
+    isLoading.value = true;
 
     final isValid = forgotPasswordFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
+
     forgotPasswordFormKey.currentState!.save();
 
     String email = txtEmailController.text;
@@ -58,7 +60,6 @@ class ForgotPasswordController extends GetxController {
       Get.snackbar("Error server ${response.statusCode}",
           jsonDecode(response.body)['message']);
     }
-
     isLoading.value = false;
   }
 }

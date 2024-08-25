@@ -11,39 +11,31 @@ class ChangePasswordScreen extends GetView<ChangePasswordController> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Scaffold(
+          backgroundColor: appTheme.white,
+          body: Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
+          ),
+        );
+      }
+      return GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Change Your Password',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Change Your Password',
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
               Expanded(
                 flex: 5,
                 child: Padding(
@@ -166,16 +158,16 @@ class ChangePasswordScreen extends GetView<ChangePasswordController> {
               )
             ],
           ),
+          bottomSheet: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: CustomElevatedButton(
+                onPressed: () {
+                  controller.changePassword();
+                },
+                text: 'Continue'),
+          ),
         ),
-        bottomSheet: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: CustomElevatedButton(
-              onPressed: () {
-                controller.changePassword();
-              },
-              text: 'Continue'),
-        ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -88,180 +88,194 @@ class LoginBottomScreen extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20),
-            topLeft: Radius.circular(20),
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Scaffold(
+          backgroundColor: appTheme.white,
+          body: Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
           ),
-        ),
-        height: double.infinity,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 30.h,
-            vertical: 30.v,
+        );
+      }
+      return GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20),
+              topLeft: Radius.circular(20),
+            ),
           ),
-          child: Form(
-            key: controller.loginFormKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Welcome back!",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Text(
-                        "Hello there, sign in to continue!",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Obx(
-                              () => Text(
-                                controller.errorString.value,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 15.h),
-                          Container(
-                            margin: EdgeInsets.only(top: 15.v, bottom: 10.v),
-                            child: Text(
-                              'Your email',
-                              style: theme.textTheme.titleSmall,
-                              //! email field
-                            ),
-                          ),
-                          CustomTextFormField(
-                            controller: controller.emailController,
-                            onSaved: (value) {
-                              // controller.email = value!;
-                            },
-                            validator: (value) {
-                              return controller.validateEmail(value!);
-                            },
-                            hintTxt: 'Enter your email',
-                            suffixIcon: const Icon(Icons.email_outlined),
-                          ),
-
-                          Container(
-                            margin: EdgeInsets.only(top: 15.v, bottom: 10.v),
-                            child: Text(
-                              'Password',
-                              style: theme.textTheme.titleSmall,
-                            ),
-                          ),
-
-                          //! password field
-                          Obx(
-                            () => CustomTextPasswordField(
-                              keyboardType: TextInputType.visiblePassword,
-                              controller: controller.passwordController,
-                              // onSaved: (value) {
-                              //   controller.password = value!;
-                              // },
-                              // validator: (value) {
-                              //   return controller.validatePassword(value!);
-                              // },
-                              hintTxt: 'Enter your password',
-                              isObscure: controller.passwordVisible.value,
-                              suffixIcon: IconButton(
-                                icon: controller.passwordVisible.value
-                                    ? const Icon(Icons.visibility)
-                                    : const Icon(Icons.visibility_off),
-                                onPressed: () {
-                                  // chuyển đổi trạng thái ẩn hiện mât khẩu
-                                  controller.passwordVisible.value =
-                                      !controller.passwordVisible.value;
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          controller.goToForgotPasswordScreen();
-                          // Get.to(ForgotPasswordScreen());
-                        },
-                        child: Text(
-                          'Forgot password?',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: Theme.of(context).primaryColor,
-                                  ),
+          height: double.infinity,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 30.h,
+              vertical: 30.v,
+            ),
+            child: Form(
+              key: controller.loginFormKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Welcome back!",
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
-                      ),
-                    ],
+                        Text(
+                          "Hello there, sign in to continue!",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      CustomElevatedButton(
-                          onPressed: () async {
-                            FocusScope.of(context).unfocus();
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Obx(
+                                () => Text(
+                                  controller.errorString.value,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 15.h),
+                            Container(
+                              margin: EdgeInsets.only(top: 15.v, bottom: 10.v),
+                              child: Text(
+                                'Your email',
+                                style: theme.textTheme.titleSmall,
+                                //! email field
+                              ),
+                            ),
+                            CustomTextFormField(
+                              controller: controller.emailController,
+                              onSaved: (value) {
+                                // controller.email = value!;
+                              },
+                              validator: (value) {
+                                return controller.validateEmail(value!);
+                              },
+                              hintTxt: 'Enter your email',
+                              suffixIcon: const Icon(Icons.email_outlined),
+                            ),
 
-                            //! login comet chat
-                            // await CometChatUIKit.login(loginedUser.userId!,
-                            //     onSuccess: (User user) {
-                            //   debugPrint(
-                            //       "User logged in successfully  ${user.name}");
-                            // }, onError: (CometChatException e) {
-                            //   debugPrint(
-                            //       "Login failed with exception: ${e.message}");
-                            // });
-                            controller.login(context);
+                            Container(
+                              margin: EdgeInsets.only(top: 15.v, bottom: 10.v),
+                              child: Text(
+                                'Password',
+                                style: theme.textTheme.titleSmall,
+                              ),
+                            ),
+
+                            //! password field
+                            Obx(
+                              () => CustomTextPasswordField(
+                                keyboardType: TextInputType.visiblePassword,
+                                controller: controller.passwordController,
+                                // onSaved: (value) {
+                                //   controller.password = value!;
+                                // },
+                                // validator: (value) {
+                                //   return controller.validatePassword(value!);
+                                // },
+                                hintTxt: 'Enter your password',
+                                isObscure: controller.passwordVisible.value,
+                                suffixIcon: IconButton(
+                                  icon: controller.passwordVisible.value
+                                      ? const Icon(Icons.visibility)
+                                      : const Icon(Icons.visibility_off),
+                                  onPressed: () {
+                                    // chuyển đổi trạng thái ẩn hiện mât khẩu
+                                    controller.passwordVisible.value =
+                                        !controller.passwordVisible.value;
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            controller.goToForgotPasswordScreen();
+                            // Get.to(ForgotPasswordScreen());
                           },
-                          text: 'Login'),
-                    ],
+                          child: Text(
+                            'Forgot password?',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      Text("Don't have an account?",
-                          style: Theme.of(context).textTheme.labelLarge),
-                      const SizedBox(height: 10),
-                      CustomElevatedButton(
-                        onPressed: () {
-                          FocusScope.of(context).unfocus();
-                          controller.goToRegisterScreen();
-                        },
-                        text: 'Register',
-                      )
-                    ],
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        CustomElevatedButton(
+                            onPressed: () async {
+                              FocusScope.of(context).unfocus();
+
+                              //! login comet chat
+                              // await CometChatUIKit.login(loginedUser.userId!,
+                              //     onSuccess: (User user) {
+                              //   debugPrint(
+                              //       "User logged in successfully  ${user.name}");
+                              // }, onError: (CometChatException e) {
+                              //   debugPrint(
+                              //       "Login failed with exception: ${e.message}");
+                              // });
+                              controller.login(context);
+                            },
+                            text: 'Login'),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        Text("Don't have an account?",
+                            style: Theme.of(context).textTheme.labelLarge),
+                        const SizedBox(height: 10),
+                        CustomElevatedButton(
+                          onPressed: () {
+                            FocusScope.of(context).unfocus();
+                            controller.goToRegisterScreen();
+                          },
+                          text: 'Register',
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

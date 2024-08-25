@@ -58,11 +58,12 @@ class LoginController extends GetxController {
 
   Future<void> login(BuildContext context) async {
     // Show loading khi đợi xác thực login
-    isLoading = true.obs;
+    isLoading.value = true;
 
     // kiểm tra các field đã hợp lệ chưa
     final isValid = loginFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
     loginFormKey.currentState!.save();
@@ -139,11 +140,10 @@ class LoginController extends GetxController {
     } else {
       // Cập nhật errorString khi bắt được lỗi
       errorString.value = 'Your email or password is incorrect!!';
-      isLoading = false.obs;
     }
 
     // ẩn dialog loading
-    isLoading = false.obs;
+    isLoading.value = false;
   }
 
   Future<void> loginComet(String accountID) async {

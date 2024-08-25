@@ -9,7 +9,18 @@ class CreateCertificateScreen extends GetView<CreateCertificateController> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Scaffold(
+          backgroundColor: appTheme.white,
+          body: Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(appTheme.green500),
+            ),
+          ),
+        );
+      }
+      return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
@@ -138,6 +149,6 @@ class CreateCertificateScreen extends GetView<CreateCertificateController> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
-    );
+    );});
   }
 }

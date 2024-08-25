@@ -28,7 +28,6 @@ class BlogScreen extends GetView<BlogController> {
         child: Scaffold(
           backgroundColor: Colors.grey[50],
           appBar: AppBar(
-            toolbarHeight: 100,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

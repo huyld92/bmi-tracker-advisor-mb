@@ -16,7 +16,7 @@ import '../register_complete.dart';
 
 class RegisterAccountController extends GetxController {
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-  late TextEditingController fullnameController;
+  late TextEditingController fullNameController;
   late TextEditingController emailController;
   late TextEditingController phoneNumberController;
   late TextEditingController passwordController;
@@ -28,30 +28,27 @@ class RegisterAccountController extends GetxController {
   var fullName = '';
   var email = '';
   var phoneNumber = '';
-  late RxString birthday = 'yyyy-MM-dd'.obs;
+  late RxString birthday = 'dd-MM-yyyy'.obs;
 
-  // var birthday = '';
-  var gender = '';
+  RxString birthdayError = ''.obs;
+
+  // var gender = '';
   var password = '';
   var rePassword = '';
-  var errorString = ''.obs;
-  var isLoading = true.obs;
+
+  // var errorString = ''.obs;
+  var isLoading = false.obs;
   var registeredAccount = RegisterAccountModel().obs;
 
   @override
   void onInit() {
     super.onInit();
-    fullnameController = TextEditingController();
-    emailController = TextEditingController();
-    phoneNumberController = TextEditingController();
-    passwordController = TextEditingController();
-    rePasswordController = TextEditingController();
-    genderValue = 'Male';
+    fetchRegisterScreen();
   }
 
   @override
   void onClose() {
-    fullnameController.dispose();
+    fullNameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
     passwordController.dispose();
@@ -59,9 +56,20 @@ class RegisterAccountController extends GetxController {
     super.onClose();
   }
 
-  String? validateFullname(String value) {
+  void fetchRegisterScreen() {
+    isLoading.value = true;
+    fullNameController = TextEditingController();
+    emailController = TextEditingController();
+    phoneNumberController = TextEditingController();
+    passwordController = TextEditingController();
+    rePasswordController = TextEditingController();
+    genderValue = 'Male';
+    isLoading.value = false;
+  }
+
+  String? validateFullName(String value) {
     if (value.isEmpty || value.length < 8) {
-      return "fullname must have more than 8 characters";
+      return "full name must have more than 8 characters";
     }
     return null;
   }
@@ -108,16 +116,33 @@ class RegisterAccountController extends GetxController {
     return null;
   }
 
+  String? validateBirthday(String value) {
+    if (value.isEmpty) {
+      return "Birthday is invalid";
+    } else if (value == 'dd-MM-yyyy') {
+      return "Birthday is invalid";
+    }
+    return null;
+  }
+
   Future<String?> registerEmail(BuildContext context) async {
+    isLoading.value = true;
     final isValid = registerFormKey.currentState!.validate();
-    if (!isValid) {
+    String? isBirthday = validateBirthday(birthday.value);
+    if (isBirthday != null) {
+      birthdayError.value = isBirthday;
+    } else {
+      birthdayError.value = '';
+    }
+    if (!isValid || birthdayError.isNotEmpty) {
+      isLoading.value = false;
       return null;
     }
     registerFormKey.currentState!.save();
     // Alert.showLoadingIndicatorDialog(context);
 
     RegisterAccountModel registerAccount = RegisterAccountModel(
-      fullName: fullnameController.text,
+      fullName: fullNameController.text,
       email: emailController.text,
       password: passwordController.text,
       phoneNumber: phoneNumberController.text,
@@ -144,7 +169,7 @@ class RegisterAccountController extends GetxController {
           jsonDecode(response.body)['message']);
     }
 
-    errorString.value = '';
+    // errorString.value = '';
 
     isLoading.value = false;
     return null;

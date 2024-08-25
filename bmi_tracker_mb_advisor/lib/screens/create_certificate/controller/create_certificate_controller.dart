@@ -49,9 +49,10 @@ class CreateCertificateController extends GetxController {
   }
 
   Future<void> createCertificate() async {
-    isLoading = true.obs;
+    isLoading.value = true;
     final isValid = createCertificateFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
     createCertificateFormKey.currentState!.save();
@@ -81,6 +82,6 @@ class CreateCertificateController extends GetxController {
           jsonDecode(response.body)['message']);
     }
 
-    isLoading = false.obs;
+    isLoading.value = false;
   }
 }

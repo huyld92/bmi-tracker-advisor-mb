@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bmi_tracker_mb_advisor/screens/member/controller/member_controller.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/member_card.dart';
+import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
 
 class MemberScreen extends GetView<MemberController> {
@@ -106,6 +107,25 @@ class MemberScreen extends GetView<MemberController> {
                 }
               }),
             ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: appTheme.green500,
+            onPressed: () {
+              Get.to(()=> CometChatConversationsWithMessages(
+                conversationsConfiguration:
+                ConversationsConfiguration(
+                  backButton: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.arrow_back),
+                  ),
+                ),
+              ),);
+              // controller.goToMessagesScreen();
+            },
+            child: Icon(Icons.message, size: 30.adaptSize, color: appTheme.white),
           ),
         ),
       );

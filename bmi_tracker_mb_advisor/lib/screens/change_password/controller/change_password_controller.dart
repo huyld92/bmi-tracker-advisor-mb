@@ -1,4 +1,4 @@
-import 'package:bmi_tracker_mb_advisor/screens/profile/profile_screen.dart';
+import 'package:bmi_tracker_mb_advisor/routes/app_routes.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -69,10 +69,10 @@ class ChangePasswordController extends GetxController {
   }
 
   Future<void> changePassword() async {
-    isLoading = true.obs;
-
+    isLoading.value = true;
     final isValid = changePasswordFormKey.currentState!.validate();
     if (!isValid) {
+      isLoading.value = false;
       return;
     }
     changePasswordFormKey.currentState!.save();

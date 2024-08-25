@@ -61,7 +61,7 @@ class RequestScreen extends GetView<RequestController> {
           }),
           floatingActionButton: FloatingActionButton(
             shape: const CircleBorder(),
-            backgroundColor: Color.fromARGB(255, 104, 127, 142),
+            backgroundColor: const Color.fromARGB(255, 104, 127, 142),
             onPressed: () {
               // controller.goToCreateBlog();
               controller.goToCreateRequest();

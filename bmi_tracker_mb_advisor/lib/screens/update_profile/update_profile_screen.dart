@@ -212,7 +212,7 @@ class UpdateProfileScreen extends GetView<UpdateProfileController> {
                                     lastDate: DateTime.now(),
                                   );
                                   if (pickedDate != null) {
-                                    controller.accountModel.value.birthday =
+                                     controller.accountModel.value.birthday =
                                         pickedDate;
                                     controller.birthday.value =
                                         pickedDate.format();

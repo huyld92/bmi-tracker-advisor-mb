@@ -1,4 +1,5 @@
 import 'package:bmi_tracker_mb_advisor/screens/update_menu/update_menu_screen.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -146,7 +147,7 @@ class MenuScreen extends GetView<MenuScreenController> {
                                             "${controller.menus[index].menuName}",
                                             style: theme.textTheme.titleLarge),
                                         Text(
-                                          "${controller.menus[index].totalCalories} kcal",
+                                          "${controller.menus[index].totalCalories!.formatWithThousandSeparator()} kcal",
                                           style: CustomTextStyles
                                               .bodyMedium14Green,
                                         ),

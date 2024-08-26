@@ -14,4 +14,16 @@ extension DateTimeExtension on DateTime {
     }
     return DateFormat(pattern, locale).format(this);
   }
+
+  static DateTime parseWithFormat(
+    String dateString, {
+    String format = dateTimeFormatPattern,
+    String? locale,
+  }) {
+    if (locale != null && locale.isNotEmpty) {
+      initializeDateFormatting(locale);
+    }
+    DateFormat dateFormat = DateFormat(format, locale);
+    return dateFormat.parse(dateString);
+  }
 }

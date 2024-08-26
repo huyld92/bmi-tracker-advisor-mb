@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../config/constants.dart';
 import '../../../repositories/member_repository.dart';
@@ -140,14 +141,14 @@ class RegisterAccountController extends GetxController {
     }
     registerFormKey.currentState!.save();
     // Alert.showLoadingIndicatorDialog(context);
-
+    final DateFormat dateFormat = DateFormat('dd-MM-yyyy');
     RegisterAccountModel registerAccount = RegisterAccountModel(
       fullName: fullNameController.text,
       email: emailController.text,
       password: passwordController.text,
       phoneNumber: phoneNumberController.text,
       gender: genderValue,
-      birthday: DateTime.parse(birthday.value),
+      birthday: dateFormat.parse(birthday.value),
     );
 
     http.Response response = await MemberRepository.registerAccount(

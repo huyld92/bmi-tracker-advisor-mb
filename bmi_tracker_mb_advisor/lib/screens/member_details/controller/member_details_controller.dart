@@ -72,8 +72,7 @@ class MemberDetailsController extends GetxController {
   }
 
   void goToChat() {
-    Get.toNamed(
-        AppRoutes.chatScreen, arguments: [
+    Get.toNamed(AppRoutes.chatScreen, arguments: [
       member.value.accountID,
       member.value.fullName,
       member.value.accountPhoto

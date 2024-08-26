@@ -19,7 +19,7 @@ class RequestModel {
   String? processNote;
   String? status;
   DateTime? creationDate;
-  dynamic? processingDate;
+  dynamic processingDate;
   String? fullName;
 
   RequestModel({

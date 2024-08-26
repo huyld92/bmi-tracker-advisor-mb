@@ -21,7 +21,7 @@ class BlogController extends GetxController {
 
   Future<void> refreshData() async {
     isLoading.value = true;
-    await Future.delayed(Duration(seconds: 1));
+    // await Future.delayed(Duration(seconds: 1));
     await fetchDataBlogScreen();
     isLoading.value = false;
     update();

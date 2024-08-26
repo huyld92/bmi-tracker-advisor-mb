@@ -45,7 +45,7 @@ class AddFoodToMenuController extends GetxController {
 
   Future<void> refreshData() async {
     isLoading.value = true;
-    await Future.delayed(Duration(seconds: 1));
+    // await Future.delayed(Duration(seconds: 1));
     await fetchAddFoodToMenuData();
     isLoading.value = false;
     update();

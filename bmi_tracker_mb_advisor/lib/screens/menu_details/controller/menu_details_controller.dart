@@ -43,6 +43,10 @@ class MenuDetailsController extends GetxController {
       if (message.contains("JWT token is expired")) {
         Get.snackbar('Session Expired', 'Please login again');
       }
+    } else if (response.statusCode == 400) {
+      String message = jsonDecode(response.body)['message'];
+      Get.back();
+      Get.snackbar('Menu error', jsonDecode(response.body)['message']);
     } else {
       Get.snackbar("Error server ${response.statusCode}",
           jsonDecode(response.body)['message']);

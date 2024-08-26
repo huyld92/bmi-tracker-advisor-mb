@@ -129,6 +129,7 @@ class CreateRequestController extends GetxController {
       txtFoodNameController = TextEditingController();
     } else if (newValue == EUserRequestType.CREATE_EXERCISE.name) {
       purposeToolTip = 'msg_purpose_create_exercise_request'.tr;
+      txtExerciseNameController = TextEditingController();
     }
   }
 }

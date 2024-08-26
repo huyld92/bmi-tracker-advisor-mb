@@ -113,29 +113,7 @@ class MemberScreen extends GetView<MemberController> {
               shape: const CircleBorder(),
               backgroundColor: appTheme.green500,
               onPressed: () {
-                Get.to(
-                  () => CometChatConversationsWithMessages(
-                    conversationsConfiguration: ConversationsConfiguration(
-                        backButton: IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: const Icon(Icons.arrow_back),
-                        ),
-                        appBarOptions: []),
-                    messageConfiguration: MessageConfiguration(
-                      messageListView: (user, group, context) {
-                        return CometChatMessageList(
-                          user: user,
-                          stateCallBack: (messageListState) {
-                            controller.messageListState = messageListState;
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                );
-                // controller.goToMessagesScreen();
+                controller.goToMessagesScreen();
               },
               child: Icon(Icons.message,
                   size: 30.adaptSize, color: appTheme.white),

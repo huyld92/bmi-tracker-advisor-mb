@@ -16,6 +16,8 @@ import 'package:bmi_tracker_mb_advisor/screens/certificate/binding/certificate_b
 import 'package:bmi_tracker_mb_advisor/screens/certificate/certificate_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/chat/binding/chat_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/chat/chat_screen.dart';
+import 'package:bmi_tracker_mb_advisor/screens/chat_conversations/binding/chat_conversations_binding.dart';
+import 'package:bmi_tracker_mb_advisor/screens/chat_conversations/chat_conversations_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/binding/create_blog_binding.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_blog/create_blog_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/create_certificate/binding/create_certificate_binding.dart';
@@ -104,6 +106,7 @@ class AppRoutes {
   static const String blogDetailsScreen = '/blogDetailsScreen';
   static const String bottomNavScreen = '/bottomNavScreen';
   static const String chatScreen = '/chatScreen';
+  static const String chatConversationsScreen = '/chatConversationsScreen';
   static const String createBlogScreen = '/createBlogScreen';
   static const String createMenuScreen = '/createMenuScreen';
   static const String createPackageScreen = '/createPackageScreen';
@@ -163,9 +166,16 @@ class AppRoutes {
     ),
     GetPage(
       name: chatScreen,
-      page: () =>   ChatScreen(),
+      page: () => ChatScreen(),
       bindings: [
         ChatBinding(),
+      ],
+    ),
+    GetPage(
+      name: chatConversationsScreen,
+      page: () => ChatConversationsScreen(),
+      bindings: [
+        ChatConversationBinding(),
       ],
     ),
     GetPage(

@@ -11,7 +11,6 @@ class MemberController extends GetxController with MessageListener {
   var isLoading = false.obs;
   RxList<MemberBasicModel> members = RxList.empty();
 
-  CometChatMessageListController? messageListState;
   RxInt unreadMessage = 0.obs;
 
   @override
@@ -50,7 +49,7 @@ class MemberController extends GetxController with MessageListener {
     // await Future.delayed(Duration(seconds: 1));
     await fetchMemberScreenData();
     // isLoading.value = false;
-   }
+  }
 
   getAllMember() async {
     // gọi API lấy danh sách member của advisor
@@ -79,5 +78,7 @@ class MemberController extends GetxController with MessageListener {
         arguments: members[index].memberID);
   }
 
-  void goToMessagesScreen() {}
+  void goToMessagesScreen() {
+    Get.toNamed(AppRoutes.chatConversationsScreen);
+  }
 }

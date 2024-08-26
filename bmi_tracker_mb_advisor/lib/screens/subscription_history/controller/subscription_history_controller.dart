@@ -41,7 +41,9 @@ class SubscriptionHistoryController extends GetxController {
     var response = await SubscriptionsRepository.getAllSubscriptionByAdvisor();
     if (response.statusCode == 200) {
       // convert list foods from json
-      subscriptionModels.value = subscriptionModelsFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      subscriptionModels.value = subscriptionModelsFromJson(jsonResult);
       subscriptionModels
           .sort((a, b) => b.subscriptionDate!.compareTo(a.subscriptionDate!));
     } else if (response.statusCode == 204) {

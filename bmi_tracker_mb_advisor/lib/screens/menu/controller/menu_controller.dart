@@ -42,7 +42,9 @@ class MenuScreenController extends GetxController {
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       // convert list exercises from json
-      menus.value = menuModelsFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      menus.value = menuModelsFromJson(jsonResult);
     } else if (response.statusCode == 204) {
       // xóa list hiện tại khi kết quả là rỗng
       menus.clear();

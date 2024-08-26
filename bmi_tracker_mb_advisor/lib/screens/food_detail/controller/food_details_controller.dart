@@ -30,7 +30,9 @@ class FoodDetailsController extends GetxController {
 
     // kiểm tra kết quả
     if (response.statusCode == 200) {
-      foodModel.value = FoodDetailsModel.fromJson(jsonDecode(response.body));
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      foodModel.value = FoodDetailsModel.fromJson(jsonDecode(jsonResult));
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {

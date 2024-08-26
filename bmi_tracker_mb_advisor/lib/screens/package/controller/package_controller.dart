@@ -32,7 +32,9 @@ class PackageController extends GetxController {
     var response = await PackageRepository.getPackageByAdvisor();
     if (response.statusCode == 200) {
       // convert list foods from json
-      packageModel.value = packageModelFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      packageModel.value = packageModelFromJson(jsonResult);
       packageModel.sort(
         (a, b) => b.packageId!.compareTo(a.packageId!),
       );

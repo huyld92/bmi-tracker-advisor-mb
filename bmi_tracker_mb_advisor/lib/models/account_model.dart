@@ -31,7 +31,7 @@ class AccountModel {
 
   factory AccountModel.fromJson(Map<String, dynamic> json) {
     String date = json['birthday'] ?? "1998-05-01";
-    print('date:$date');
+
     return AccountModel(
       accountID: json['accountID'],
       email: json['email'],

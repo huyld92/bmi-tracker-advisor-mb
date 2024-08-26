@@ -154,7 +154,9 @@ class RegisterAccountController extends GetxController {
     http.Response response = await MemberRepository.registerAccount(
         registerAccountModelToJson(registerAccount),
         'auth/register-as-advisor');
-    var data = json.decode(response.body);
+    String jsonResult = utf8.decode(response.bodyBytes);
+
+    var data = json.decode(jsonResult);
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       AccountModel currentAccount = AccountModel.fromJson(data);

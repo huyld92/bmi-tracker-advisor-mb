@@ -28,7 +28,9 @@ class CommisionController extends GetxController {
     var response = await CommisionRepository.getAllCommisionByAdvisor();
     if (response.statusCode == 200) {
       // convert list foods from json
-      commissionModels.value = commisionModelFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      commissionModels.value = commisionModelFromJson(jsonResult);
       commissionModels
           .sort((a, b) => b.commissionId!.compareTo(a.commissionId!));
     } else if (response.statusCode == 204) {

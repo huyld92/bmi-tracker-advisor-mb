@@ -32,7 +32,9 @@ class MenuHistoryController extends GetxController {
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       // convert list menu history from json
-      menuHistoryModels.value = menuHistoryModelsFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      menuHistoryModels.value = menuHistoryModelsFromJson(jsonResult);
       menuHistoryModels
           .sort((a, b) => b.dateOfAssigned!.compareTo(a.dateOfAssigned!));
     } else if (response.statusCode == 204) {

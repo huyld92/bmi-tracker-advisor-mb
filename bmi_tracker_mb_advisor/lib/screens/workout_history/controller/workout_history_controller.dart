@@ -33,7 +33,9 @@ class WorkoutHistoryController extends GetxController {
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       // convert list menu history from json
-      workoutHistoryModels.value = workoutHistoryModelsFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      workoutHistoryModels.value = workoutHistoryModelsFromJson(jsonResult);
       workoutHistoryModels
           .sort((a, b) => b.dateOfAssigned!.compareTo(a.dateOfAssigned!));
     } else if (response.statusCode == 204) {

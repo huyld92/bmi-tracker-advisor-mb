@@ -27,7 +27,9 @@ class ProfileController extends GetxController {
     var response = await AccountRepository.getProfile();
     if (response.statusCode == 200) {
       accountModel.value = AccountModel();
-      accountModel.value = AccountModel.fromJson(jsonDecode(response.body));
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      accountModel.value = AccountModel.fromJson(jsonDecode(jsonResult));
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {

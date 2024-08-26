@@ -39,7 +39,9 @@ class BlogController extends GetxController {
     // log('response: ${response}');
     if (response.statusCode == 200) {
       // chuyển dổi từ json sang advisor model
-      blogList.value = blogModelFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      blogList.value = blogModelFromJson(jsonResult);
       log('get all blog');
     } else if (response.statusCode == 204) {
       // Quay về màn hình trước đó khi advisor không tồn tại

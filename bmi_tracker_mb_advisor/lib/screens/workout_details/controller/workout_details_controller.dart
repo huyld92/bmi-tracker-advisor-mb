@@ -35,7 +35,9 @@ class WorkoutDetailsController extends GetxController {
     // kiểm tra kết quả
     if (response.statusCode == 200) {
       // convert list exercises from json
-      workoutModel.value = WorkoutModel.fromJson(jsonDecode(response.body));
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      workoutModel.value = WorkoutModel.fromJson(jsonDecode(jsonResult));
     } else if (response.statusCode == 204) {
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];

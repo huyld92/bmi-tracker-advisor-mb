@@ -28,7 +28,9 @@ class CertificateController extends GetxController {
     var response = await CertificateRepository.getCertificateByAdvisor();
     if (response.statusCode == 200) {
       // convert list foods from json
-      certificateModel.value = certificateModelFromJson(response.body);
+      String jsonResult = utf8.decode(response.bodyBytes);
+
+      certificateModel.value = certificateModelFromJson(jsonResult);
       certificateModel.sort(
         (a, b) => b.certificateId!.compareTo(a.certificateId!),
       );

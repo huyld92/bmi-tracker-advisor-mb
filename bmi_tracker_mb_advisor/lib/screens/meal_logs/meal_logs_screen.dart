@@ -29,12 +29,14 @@ class MealLogsScreen extends GetView<MealLogsController> {
                 final DateTime? picked = await showDatePicker(
                   context: context,
                   initialDate:
-                      DateTime.parse(controller.date.value) ?? DateTime.now(),
-                  firstDate: DateTime.parse("2023-05-01"),
+                      DateTimeExtension.parseWithFormat(controller.date.value),
+                  firstDate: DateTimeExtension.parseWithFormat("2023-05-01"),
                   lastDate: DateTime.now(),
                 );
                 if (picked != null &&
-                    picked != DateTime.parse(controller.date.value)) {
+                    picked !=
+                        DateTimeExtension.parseWithFormat(
+                            controller.date.value)) {
                   controller.onDatePicker(picked);
                 }
               },

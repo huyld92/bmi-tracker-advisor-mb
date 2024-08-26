@@ -2,7 +2,7 @@ import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
 
-import 'chat_controller.dart';
+import 'controller/chat_controller.dart';
 
 class ChatScreen extends GetView<ChatController> {
   const ChatScreen({super.key});

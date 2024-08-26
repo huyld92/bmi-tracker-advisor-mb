@@ -1,5 +1,6 @@
 import 'package:bmi_tracker_mb_advisor/models/statistics_daily_record_model.dart';
 import 'package:bmi_tracker_mb_advisor/screens/statistics_calories/controller/statistics_calories_controller.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -54,8 +55,10 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
                       () => Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("txt_last_7_days".tr,
-                              style:theme.textTheme.titleLarge,),
+                          Text(
+                            "txt_last_7_days".tr,
+                            style: theme.textTheme.titleLarge,
+                          ),
                           RichText(
                             text: TextSpan(
                                 text: "${"txt_average_calories_in".tr}: ",
@@ -102,23 +105,12 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
                       () => SfCartesianChart(
                         primaryXAxis: const CategoryAxis(),
                         primaryYAxis: NumericAxis(
-                            minimum: 0,
-                            maximum: controller.goalCalories.value + 1000,
-                            interval: 500,
-                            // đường kẻ ngang default calories
-                            plotBands: <PlotBand>[
-                              PlotBand(
-                                  verticalTextPadding: '5%',
-                                  horizontalTextPadding: '5%',
-                                  // text: 'txt_default'.tr,
-                                  textAngle: 0,
-                                  start: controller.goalCalories.value,
-                                  end: controller.goalCalories.value,
-                                  textStyle:
-                                      CustomTextStyles.bodyMedium16Green500,
-                                  borderColor: appTheme.blueA700,
-                                  borderWidth: 2)
-                            ]),
+                          minimum: 0,
+                          maximum:
+                              controller.dailyRecordModels[0].defaultCalories! +
+                                  1000,
+                          interval: 500,
+                        ),
                         tooltipBehavior: tooltip,
                         series: <CartesianSeries<StatisticsDailyRecordModel,
                             String>>[
@@ -126,7 +118,7 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
                             dataSource: controller.dailyRecordModels,
                             xValueMapper:
                                 (StatisticsDailyRecordModel data, _) =>
-                                    data.date!.format("MM-dd"),
+                                    data.date!.format("dd-MM"),
                             yValueMapper:
                                 (StatisticsDailyRecordModel data, _) =>
                                     data.totalCaloriesIn,
@@ -165,13 +157,15 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
                                   child: HistoryItem(
                                       date: controller
                                           .dailyRecordModels[index].date!
-                                          .format(),
+                                          .format("dd-MM"),
                                       caloriesIn: controller
                                           .dailyRecordModels[index]
-                                          .totalCaloriesIn!,
+                                          .totalCaloriesIn!
+                                          .formatWithThousandSeparator(),
                                       caloriesOut: controller
                                           .dailyRecordModels[index]
-                                          .totalCaloriesOut!),
+                                          .totalCaloriesOut!
+                                          .formatWithThousandSeparator()),
                                 ),
                                 const Divider()
                               ],
@@ -191,8 +185,8 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
 
 class HistoryItem extends StatelessWidget {
   final String date;
-  final int caloriesIn;
-  final int caloriesOut;
+  final String caloriesIn;
+  final String caloriesOut;
 
   const HistoryItem(
       {super.key,

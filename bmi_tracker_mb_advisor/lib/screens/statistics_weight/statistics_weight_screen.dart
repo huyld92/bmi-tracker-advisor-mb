@@ -53,10 +53,10 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                       () => Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "txt_last_30_days".tr,
-                            style: theme.textTheme.titleLarge,
-                          ),
+                          // Text(
+                          //   "txt_last_30_days".tr,
+                          //   style: theme.textTheme.titleLarge,
+                          // ),
                           RichText(
                             text: TextSpan(
                                 text: "${"txt_starting_weight".tr}: ",
@@ -65,8 +65,7 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                                   TextSpan(
                                       text:
                                           "${controller.statisticsBodyMassModels.first.weight} kg",
-                                      style:
-                                          CustomTextStyles.bodyMedium16Red)
+                                      style: CustomTextStyles.bodyMedium16Red)
                                 ]),
                           ),
                           RichText(
@@ -102,7 +101,7 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                     child: SfCartesianChart(
                       primaryXAxis: const CategoryAxis(),
                       // Điều chỉnh khoảng cách giữa các giá trị trên trục y
-                      primaryYAxis: const NumericAxis(interval: 2),
+                      primaryYAxis: const NumericAxis(interval: 5),
                       //Enables the tooltip for all the series
                       tooltipBehavior: TooltipBehavior(enable: true),
                       series: <CartesianSeries>[
@@ -110,7 +109,7 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                           dataSource: controller.statisticsBodyMassModels,
                           xValueMapper:
                               (StatisticsMemberBodyMassModel data, _) =>
-                                  data.dateInput!.format("MM-dd"),
+                                  data.dateInput!.format("dd-MM"),
                           yValueMapper:
                               (StatisticsMemberBodyMassModel data, _) =>
                                   data.weight,
@@ -136,7 +135,7 @@ class StatisticsWeightScreen extends GetView<StatisticsWeightController> {
                                     date: controller
                                         .statisticsBodyMassModels[index]
                                         .dateInput!
-                                        .format(),
+                                        .format("dd-MM"),
                                     weight: controller
                                         .statisticsBodyMassModels[index]
                                         .weight!),

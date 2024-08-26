@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import '../util/date_time_utils.dart';
+
 class AccountModel {
   int? accountID;
   String? email;
@@ -29,6 +31,7 @@ class AccountModel {
 
   factory AccountModel.fromJson(Map<String, dynamic> json) {
     String date = json['birthday'] ?? "1998-05-01";
+    print('date:$date');
     return AccountModel(
       accountID: json['accountID'],
       email: json['email'],
@@ -39,7 +42,7 @@ class AccountModel {
       gender: json['gender'] ?? "Male",
       bankName: json['bankName'] ?? "",
       bankNumber: json['bankNumber'] ?? "",
-      birthday: DateTime.parse(date),
+      birthday: DateTimeExtension.parseWithFormat(date, format: "yyyy-MM-dd"),
       roleNames: List<String>.from(json['roleNames']),
       isActive: json['isActive'],
     );
@@ -59,6 +62,11 @@ class AccountModel {
       'roleNames': roleNames,
       'isActive': isActive,
     };
+  }
+
+  @override
+  String toString() {
+    return 'AccountModel{accountID: $accountID, email: $email, fullName: $fullName, accountPhoto: $accountPhoto, phoneNumber: $phoneNumber, gender: $gender, bankName: $bankName, bankNumber: $bankNumber, birthday: $birthday, roleNames: $roleNames, isActive: $isActive}';
   }
 
   @override

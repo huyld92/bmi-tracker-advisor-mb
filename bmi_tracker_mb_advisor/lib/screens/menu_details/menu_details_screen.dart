@@ -1,4 +1,5 @@
 import 'package:bmi_tracker_mb_advisor/screens/menu_details/controller/menu_details_controller.dart';
+import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -79,7 +80,7 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                 children: [
                                   TextSpan(
                                     text:
-                                        "${controller.menuDetailsModel.value.totalCalories} kcal",
+                                        "${controller.menuDetailsModel.value.totalCalories!.formatWithThousandSeparator()} kcal",
                                     style: CustomTextStyles.bodyMedium16,
                                   )
                                 ]),
@@ -218,7 +219,7 @@ class MenuDetailsScreen extends GetView<MenuDetailsController> {
                                             style:
                                                 CustomTextStyles.bodyMedium16),
                                         Text(
-                                          "${controller.menuDetailsModel.value.menuFoods![index].foodCalories!} kcal",
+                                          "${controller.menuDetailsModel.value.menuFoods![index].foodCalories!.formatWithThousandSeparator()} kcal",
                                           style: CustomTextStyles.bodyMedium16,
                                         ),
                                       ],

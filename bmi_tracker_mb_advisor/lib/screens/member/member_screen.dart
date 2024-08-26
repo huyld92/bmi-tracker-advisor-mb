@@ -108,25 +108,33 @@ class MemberScreen extends GetView<MemberController> {
               }),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            shape: const CircleBorder(),
-            backgroundColor: appTheme.green500,
-            onPressed: () {
-              Get.to(()=> CometChatConversationsWithMessages(
-                conversationsConfiguration:
-                ConversationsConfiguration(
-                  backButton: IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: const Icon(Icons.arrow_back),
+          floatingActionButton: Stack(children: [
+            FloatingActionButton(
+              shape: const CircleBorder(),
+              backgroundColor: appTheme.green500,
+              onPressed: () {
+                controller.goToMessagesScreen();
+              },
+              child: Icon(Icons.message,
+                  size: 30.adaptSize, color: appTheme.white),
+            ),
+            Positioned(
+              left: 0,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                    color: appTheme.red500),
+                child: Center(
+                  child: Text(
+                    "${controller.unreadMessage.value}",
+                    style: CustomTextStyles.bodyMedium14White,
                   ),
                 ),
-              ),);
-              // controller.goToMessagesScreen();
-            },
-            child: Icon(Icons.message, size: 30.adaptSize, color: appTheme.white),
-          ),
+              ),
+            ),
+          ]),
         ),
       );
     });

@@ -6,7 +6,7 @@ import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/util/num_utils.dart';
 
 class StatisticsCaloriesController extends GetxController {
-  RxInt goalCalories = 0.obs;
+  RxString goalCalories = '0'.obs;
   RxString averageCaloriesIn = '0'.obs;
   RxString averageCaloriesOut = '0'.obs;
   var isLoading = false.obs;
@@ -36,7 +36,8 @@ class StatisticsCaloriesController extends GetxController {
           calculateAverageCaloriesIn().formatWithThousandSeparator();
       averageCaloriesOut.value =
           calculateAverageCaloriesOut().formatWithThousandSeparator();
-      goalCalories.value = dailyRecordModels[0].defaultCalories!;
+      goalCalories.value =
+          dailyRecordModels[0].defaultCalories!.formatWithThousandSeparator();
     }
 
     isLoading.value = false;
@@ -50,7 +51,9 @@ class StatisticsCaloriesController extends GetxController {
     print('response${response.body}');
     if (response.statusCode == 200) {
       dailyRecordModels.value = statisticsDailyRecordsFromJson(response.body);
-      dailyRecordModels.sort((a, b) => a.date!.compareTo(b.date!),);
+      dailyRecordModels.sort(
+        (a, b) => a.date!.compareTo(b.date!),
+      );
     } else if (response.statusCode == 204) {
       dailyRecordModels.clear();
     } else if (response.statusCode == 401) {

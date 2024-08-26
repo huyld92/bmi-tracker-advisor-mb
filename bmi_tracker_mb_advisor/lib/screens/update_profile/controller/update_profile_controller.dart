@@ -52,9 +52,10 @@ class UpdateProfileController extends GetxController {
 
   getProfile() async {
     var response = await AccountRepository.getProfile();
+
     if (response.statusCode == 200) {
       accountModel.value = AccountModel.fromJson(jsonDecode(response.body));
-      print('accountModel:${accountModel.value.accountPhoto}');
+      print('accountModel:${accountModel}');
     } else if (response.statusCode == 401) {
       String message = jsonDecode(response.body)['message'];
       if (message.contains("JWT token is expired")) {
@@ -160,7 +161,7 @@ class UpdateProfileController extends GetxController {
       "phoneNumber": txtPhoneNumberController.text,
       "gender": gender.value,
       "bankNumber": txtBankNumberController.text,
-      "birthday": birthday.value
+      "birthday": accountModel.value.birthday!.format("yyyy-MM-dd")
     };
     // gọi repository update profile
     var response = await AccountRepository.updateProfile(userUpdate);

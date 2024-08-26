@@ -82,7 +82,7 @@ final Map<String, String> enUs = {
   "txt_cancel": "Cancel",
 
 // Statistics calories screen
-  "txt_statistics_calories": "Statistics calories",
+  "txt_statistics_calories": "Calories statistics",
   "txt_last_7_days": "Last 7 Days",
   "txt_average_calories_in": "Average Calories In",
   "txt_average_calories_out": "Average Calories Out",

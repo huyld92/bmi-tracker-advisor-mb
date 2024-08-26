@@ -2,7 +2,6 @@ import 'package:bmi_tracker_mb_advisor/screens/chat/chat_screen.dart';
 import 'package:bmi_tracker_mb_advisor/screens/member_details/chat_ui.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/member_info_card.dart';
-import 'package:cometchat_chat_uikit/cometchat_chat_uikit.dart';
 import 'package:flutter/material.dart';
 
 import 'controller/member_details_controller.dart';
@@ -89,21 +88,6 @@ class MemberDetailsScreen extends GetView<MemberDetailsController> {
                         FilledButton(
                           onPressed: () {
                             controller.goToChat();
-                            // Get.to(()=>CometChatMessages(
-                            //   messageComposerConfiguration:
-                            //   const MessageComposerConfiguration(
-                            //     hideVoiceRecording: true,
-                            //   ),
-                            //   user: User.fromUID(
-                            //     uid: controller.member.value.accountID
-                            //         .toString(),
-                            //     name:
-                            //     controller.member.value.fullName!,
-                            //     avatar: controller
-                            //         .member.value.accountPhoto,
-                            //   ),
-                            //   hideDetails: true,
-                            // ));
                           },
                           style: FilledButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,

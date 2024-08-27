@@ -22,7 +22,7 @@ class MealLogsScreen extends GetView<MealLogsController> {
       return Scaffold(
         appBar: AppBar(
           title:
-              Text("${"txt_meal_logs".tr}", style: theme.textTheme.titleLarge),
+              Text("txt_meal_logs".tr, style: theme.textTheme.titleLarge),
           actions: [
             IconButton(
               onPressed: () async {
@@ -30,7 +30,7 @@ class MealLogsScreen extends GetView<MealLogsController> {
                   context: context,
                   initialDate:
                       DateTimeExtension.parseWithFormat(controller.date.value),
-                  firstDate: DateTimeExtension.parseWithFormat("2023-05-01"),
+                  firstDate: DateTimeExtension.parseWithFormat("2024-01-01"),
                   lastDate: DateTime.now(),
                 );
                 if (picked != null &&

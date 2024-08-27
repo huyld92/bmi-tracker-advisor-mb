@@ -29,7 +29,7 @@ class StatisticsMemberBodyMassModel {
       bmi: json['bmi'],
       dateInput: json['dateInput'] != null
           ? DateTimeExtension.parseWithFormat(json['dateInput'],
-              format: "dd-MM-yyyy")
+              format: "yyyy-MM-dd")
           : null,
     );
   }

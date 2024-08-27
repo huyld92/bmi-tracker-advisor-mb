@@ -8,8 +8,9 @@ extension NumberFormatting on num {
 }
 
 extension CurrencyFormatting on num {
-  String formatAsCurrency({String locale = 'en_US', String symbol = '\$'}) {
-    final formatter = NumberFormat.currency(locale: locale, symbol: symbol);
+  String formatAsCurrency({String locale = 'en_US', String symbol = 'VND'}) {
+    final formatter =
+        NumberFormat.currency(locale: locale, symbol: symbol, decimalDigits: 0);
     return formatter.format(this);
   }
 }

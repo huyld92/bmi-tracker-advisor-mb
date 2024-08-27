@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bmi_tracker_mb_advisor/repositories/commision_repository.dart';
+import 'package:bmi_tracker_mb_advisor/repositories/commission_repository.dart';
 import 'package:bmi_tracker_mb_advisor/screens/commission/model/commission_model.dart';
 
 import '../../../routes/app_routes.dart';
@@ -31,8 +31,8 @@ class CommisionController extends GetxController {
       String jsonResult = utf8.decode(response.bodyBytes);
 
       commissionModels.value = commisionModelFromJson(jsonResult);
-      commissionModels
-          .sort((a, b) => b.commissionId!.compareTo(a.commissionId!));
+      commissionModels.sort(
+          (a, b) => b.expectedPaymentDate!.compareTo(a.expectedPaymentDate!));
     } else if (response.statusCode == 204) {
       print('list empty');
     } else if (response.statusCode == 401) {

@@ -16,4 +16,14 @@ class CommisionRepository {
     ).timeout(const Duration(seconds: 30));
     return response;
   }
+
+  static Future<http.Response> getAllCommissionDetails(int commissionId) async {
+    var response = await interceptedClient
+        .get(
+          BuildServer.buildUrl(
+              "commissions/get-details?commissionID=$commissionId"),
+        )
+        .timeout(const Duration(seconds: 30));
+    return response;
+  }
 }

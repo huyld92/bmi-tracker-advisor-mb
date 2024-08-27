@@ -121,8 +121,10 @@ class LoginController extends GetxController {
       // );
     } else if (response.statusCode == 200) {
       // code 200 login thành công
-      var data = json.decode(response.body);
 
+      String jsonResult = utf8.decode(response.bodyBytes);
+      var data = json.decode(jsonResult);
+      print('data:$data');
       // loginedMember.value = MemberModel.fromJson(data);
 
       // lưu accessToken và refresh token vào SharedPreferences
@@ -133,7 +135,8 @@ class LoginController extends GetxController {
       // AccountModel currentAdvisor = AccountModel.fromJson(data);
       // await loginComet(currentAdvisor);
       errorString.value = "";
-      await loginComet(data["accountID"].toString());
+      await loginComet(
+          data["accountID"].toString(), data["fullName"], data["accountPhoto"]);
 
       // chuyển sang màn hình Home
       Get.offAllNamed(AppRoutes.bottomNavScreen);
@@ -141,20 +144,41 @@ class LoginController extends GetxController {
       // Cập nhật errorString khi bắt được lỗi
       errorString.value = 'Your email or password is incorrect!!';
     }
-
     // ẩn dialog loading
     isLoading.value = false;
   }
 
-  Future<void> loginComet(String accountID) async {
+  Future<void> loginComet(
+      String accountID, String fullName, String accountPhoto) async {
     final user = await CometChat.getLoggedInUser();
     if (user == null) {
       await CometChat.login(accountID, cometAuthKey, onSuccess: (User user) {
         log("User logged in successfully  ${user.name}");
-      }, onError: (CometChatException ce) {
+      }, onError: (CometChatException ce) async {
+        if (ce.code == "ERR_UID_NOT_FOUND") {
+          await registerComet(accountID, fullName, accountPhoto);
+        }
         log("Login failed with exception:  ${ce.message}");
       });
     }
+  }
+
+  Future<void> registerComet(
+      String accountID, String fullName, String accountPhoto) async {
+    CometChat.createUser(
+      User(
+        name: fullName,
+        uid: accountID,
+        avatar: accountPhoto,
+      ),
+      cometAuthKey,
+      onSuccess: (message) {
+        debugPrint('Register successfully: $message');
+      },
+      onError: (CometChatException ce) {
+        debugPrint('Create member failed: ${ce.message}');
+      },
+    );
   }
 
   void goToRegisterScreen() {

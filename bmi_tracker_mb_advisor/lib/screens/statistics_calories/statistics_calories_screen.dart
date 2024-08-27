@@ -25,8 +25,8 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
       }
       return Scaffold(
         appBar: AppBar(
-          title: Text("txt_statistics_calories".tr,
-              style: theme.textTheme.titleLarge),
+          title:
+              Text("Calories statistics".tr, style: theme.textTheme.titleLarge),
         ),
         body: Obx(() {
           if (controller.dailyRecordModels.isEmpty) {
@@ -157,7 +157,7 @@ class StatisticsCaloriesScreen extends GetView<StatisticsCaloriesController> {
                                   child: HistoryItem(
                                       date: controller
                                           .dailyRecordModels[index].date!
-                                          .format("dd-MM"),
+                                          .format(),
                                       caloriesIn: controller
                                           .dailyRecordModels[index]
                                           .totalCaloriesIn!

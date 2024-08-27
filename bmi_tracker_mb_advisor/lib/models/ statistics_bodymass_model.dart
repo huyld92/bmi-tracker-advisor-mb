@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
+
 class StatisticsMemberBodyMassModel {
   int? memberBodyMassID;
   int? height;
@@ -18,14 +20,17 @@ class StatisticsMemberBodyMassModel {
   });
 
   factory StatisticsMemberBodyMassModel.fromJson(Map<String, dynamic> json) {
+    print('json:${json['dateInput']}');
     return StatisticsMemberBodyMassModel(
       memberBodyMassID: json['memberBodyMassID'],
       height: json['height'],
       weight: json['weight'],
       age: json['age'],
       bmi: json['bmi'],
-      dateInput:
-          json['dateInput'] != null ? DateTime.parse(json['dateInput']) : null,
+      dateInput: json['dateInput'] != null
+          ? DateTimeExtension.parseWithFormat(json['dateInput'],
+              format: "dd-MM-yyyy")
+          : null,
     );
   }
 
@@ -53,9 +58,12 @@ class StatisticsMemberBodyMassModel {
   }
 }
 
-List<StatisticsMemberBodyMassModel> statisticsMemberBodyMassFromJson(String str) {
-  List<StatisticsMemberBodyMassModel> list = List<StatisticsMemberBodyMassModel>.from(
-      json.decode(str).map((x) => StatisticsMemberBodyMassModel.fromJson(x)));
+List<StatisticsMemberBodyMassModel> statisticsMemberBodyMassFromJson(
+    String str) {
+  List<StatisticsMemberBodyMassModel> list =
+      List<StatisticsMemberBodyMassModel>.from(json
+          .decode(str)
+          .map((x) => StatisticsMemberBodyMassModel.fromJson(x)));
 
   // Sort the list by dateInput in descending order
   list.sort((a, b) => a.dateInput!.compareTo(b.dateInput!));

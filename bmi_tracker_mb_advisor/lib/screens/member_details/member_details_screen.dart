@@ -1,5 +1,3 @@
-import 'package:bmi_tracker_mb_advisor/screens/chat/chat_screen.dart';
-import 'package:bmi_tracker_mb_advisor/screens/member_details/chat_ui.dart';
 import 'package:bmi_tracker_mb_advisor/util/app_export.dart';
 import 'package:bmi_tracker_mb_advisor/widgets/member_info_card.dart';
 import 'package:flutter/material.dart';

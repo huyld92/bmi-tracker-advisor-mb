@@ -24,9 +24,8 @@ class StatisticsWeightController extends GetxController {
     var arguments = Get.arguments;
     int memberID = arguments[0];
     goalWeight.value = arguments[1].toString();
-    DateTime date = DateTime.parse(DateTime.now().format());
+    DateTime date = DateTime.now();
     // DateTime date = DateTime.now();
-
     await getStatisticBodyMass(memberID, date.format());
     isLoading.value = false;
   }

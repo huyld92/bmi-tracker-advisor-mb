@@ -83,21 +83,21 @@ final Map<String, String> enUs = {
 
 // Statistics calories screen
   "txt_statistics_calories": "Calories statistics",
-  "txt_last_7_days": "Last 7 Days",
-  "txt_average_calories_in": "Average Calories In",
-  "txt_average_calories_out": "Average Calories Out",
+  "txt_last_7_days": "Last 7 days",
+  "txt_average_calories_in": "Average calories in",
+  "txt_average_calories_out": "Average calories out",
   "txt_goal": "Goal",
   "txt_default": "Default",
-  "txt_calories_in": "Calories In",
-  "txt_calories_out": "Calories Out",
+  "txt_calories_in": "Calories in",
+  "txt_calories_out": "Calories out",
   "txt_history": "History",
   "txt_not_enough_data_available_yet": "Not Enough data available yet",
 
 // Statistics weight screen
-  "txt_statistics_weight": "Statistics weight",
-  "txt_last_30_days": "Last 30 Days",
-  "txt_starting_weight": "Starting Weight",
-  "txt_goal_weight": "Goal Weight",
+  "txt_statistics_weight": "Weight statistics",
+  "txt_last_30_days": "Last 30 days",
+  "txt_starting_weight": "Starting weight",
+  "txt_goal_weight": "Goal weight",
   "txt_current": "Current",
 
 // Profile screen
@@ -109,7 +109,7 @@ final Map<String, String> enUs = {
 // Edit profile screen
   "txt_edit_profile": "Edit Profile",
   "txt_email": "Email",
-  "txt_update_profile": "Update Profile",
+  "txt_update_profile": "Edit Profile",
   "txt_full_name": "Full name",
   "txt_gender": "Gender",
   "txt_your_birthday": "Your birthday",
